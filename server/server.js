@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import errorHandler from "./middlewares/errorMiddleware.js";
 import usersRoute from "./routes/usersRoute.js";
+import hoodiesRoute from "./routes/hoodiesRoute.js";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", usersRoute);
+app.use("/hoodies", hoodiesRoute);
 
 app.use(errorHandler);
 

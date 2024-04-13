@@ -6,12 +6,12 @@ import {
   login,
 } from "../controllers/usersController.js";
 
-const router = express.Router();
+const route = express.Router();
 
-router.get("/", getAllUsers);
-router.post("/create", createUser);
-router.post("/login", login);
-router.delete("/delete/:id", deleteUser);
-router.delete("/delete", deleteUser);
+route.get("/", getAllUsers);
+route.post("/create", createUser);
+route.post("/login", login);
+route.delete("/delete/:id", deleteUser);
+route.delete("/delete", deleteUser);
 
-export default router;
+export default route;
