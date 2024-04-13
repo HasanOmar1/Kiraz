@@ -1,0 +1,24 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Home .background-container img {
+  height: 600px;
+  width: fit-content;
+}
+
+.Home .imgs-section {
+  margin: 0 5vw;
+  margin-top: 30px;
+}
+
+.Home .imgs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 50px;
+}

@@ -1,0 +1,30 @@
+.Navbar {
+  min-height: 8vh;
+  border-bottom: 3px solid #00acb553;
+  background-color: #222831;
+  color: white;
+}
+
+.Navbar .logo-container {
+  cursor: pointer;
+  margin-left: 15vw;
+  padding-top: 8.5px;
+  width: fit-content;
+}
+
+.Navbar .logo-container img {
+  width: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: box-shadow 0.2s;
+}
+
+.Navbar .logo-container img:hover {
+  box-shadow: 0px 0px 10px 1px rgb(29, 127, 154);
+}
+
+.Navbar .nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

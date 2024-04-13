@@ -1,0 +1,17 @@
+.HomeImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.HomeImg:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.HomeImg img {
+  height: 400px;
+  border-radius: 10px;
+}
