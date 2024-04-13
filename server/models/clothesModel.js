@@ -2,22 +2,27 @@ import mongoose from "mongoose";
 
 const clothesSchema = new mongoose.Schema(
   {
-    hoodies: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Hoodies",
+    name: {
+      type: String,
+      required: [true, "Enter a name"],
     },
-    pants: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Pants",
+    color: {
+      type: String,
+      required: [true, "Enter a color"],
     },
-    shirts: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Shirts",
+    size: {
+      type: String,
+      required: [true, "Enter a size"],
     },
-    shorts: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Shorts",
+    price: {
+      type: Number,
+      required: [true, "Enter a price"],
     },
+    img: {
+      type: String,
+      required: [true, "Enter an img"],
+    },
+    type: String,
   },
   {
     toJSON: {

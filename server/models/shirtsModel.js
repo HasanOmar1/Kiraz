@@ -22,6 +22,10 @@ const shirtSchema = new mongoose.Schema(
       type: String,
       required: [true, "Enter an img"],
     },
+    type: {
+      type: String,
+      default: "shirts",
+    },
   },
   {
     toJSON: {

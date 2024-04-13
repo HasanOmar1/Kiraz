@@ -22,6 +22,10 @@ const shortsSchema = new mongoose.Schema(
       type: String,
       required: [true, "Enter an img"],
     },
+    type: {
+      type: String,
+      default: "shorts",
+    },
   },
   {
     toJSON: {
