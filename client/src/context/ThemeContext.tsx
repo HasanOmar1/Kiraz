@@ -5,6 +5,7 @@ type Props = {
 };
 type ContextValue = {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
+  theme: string;
   getThemeClassName: () => string;
 };
 
@@ -18,7 +19,7 @@ const ThemeContextProvider = ({ children }: Props) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ setTheme, getThemeClassName }}>
+    <ThemeContext.Provider value={{ theme, setTheme, getThemeClassName }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -7,7 +7,7 @@
 
 .Home .background-container img {
   height: 600px;
-  width: fit-content;
+  width: 100%;
 }
 
 .Home .imgs-section {

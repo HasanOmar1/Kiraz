@@ -5,10 +5,14 @@
   color: white;
 }
 
+.Navbar .container {
+  display: flex;
+  padding-top: 8.5px;
+}
+
 .Navbar .logo-container {
   cursor: pointer;
   margin-left: 15vw;
-  padding-top: 8.5px;
   width: fit-content;
 }
 
@@ -23,8 +27,32 @@
   box-shadow: 0px 0px 10px 1px rgb(29, 127, 154);
 }
 
-.Navbar .nav-container {
+.Navbar .theme-container {
+  margin-left: 30px;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 30px;
+  padding: 10px;
+  gap: 20px;
+  position: relative;
+  height: 50px;
+  cursor: pointer;
+}
+
+.Navbar .active {
+  /* position: absolute;
+  background-color: darkcyan;
+  width: 50%;
+  height: 100%;
+  right: 0px;
+  padding-left: 10px;
+  border-radius: 30px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px; */
+}
+
+.Navbar .on-top {
+  z-index: 1;
 }
