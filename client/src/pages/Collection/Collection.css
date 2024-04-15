@@ -1,6 +1,7 @@
 .Collection .data-container {
   margin-top: 100px;
   padding: 50px 0 50px 200px;
+  display: flex;
 }
 
 .Collection .filters {
@@ -14,9 +15,44 @@
 .Collection .filter-by {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  width: 250px;
 }
 
-.Collection .filter-by hr {
-  width: 5%;
+.Collection #arrow-svg {
+  width: 25px;
+}
+
+.Collection .show-color-data,
+.Collection .show-size-data {
+  rotate: 180deg;
+  transition: 0.3s;
+}
+
+.Collection .hide-color-data,
+.Collection .hide-size-data {
+  rotate: 360deg;
+  transition: 0.3s;
+}
+
+.Collection .filter-by-data {
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.Collection hr {
+  border: 1px solid gray;
+}
+
+.Collection .colors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Collection .colors {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

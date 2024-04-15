@@ -2,12 +2,13 @@ import { useLocation } from "react-router-dom";
 import "./Collection.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import { useClothesContext } from "../../context/ClothesContext";
-import { useEffect } from "react";
-// import arrowSvg from "../../assets/svgs/arrow.svg";
+import { useEffect, useState } from "react";
+import arrowSvg from "../../assets/svgs/arrow.svg";
 
 const Collection = () => {
+  const [isShowingColors, setIsShowingColors] = useState(false);
+  const [isShowingSizes, setIsShowingSizes] = useState(false);
   const { getClothesByType, getClothesByTypeData } = useClothesContext();
-
   const { pathname } = useLocation();
   const { getThemeClassName } = useThemeContext();
 
@@ -31,10 +32,41 @@ const Collection = () => {
         <div className="filters">
           <p>FILTERS</p>
           <div className="filter-by">
-            <p>COLOR</p>
-            {/* <img src={arrowSvg} alt="" /> */}
+            <div className="colors-container">
+              <div
+                className="filter-by-data"
+                onClick={() => setIsShowingColors((prev) => !prev)}
+              >
+                <p>COLOR</p>
+                <img
+                  src={arrowSvg}
+                  alt="chevron svg"
+                  id="arrow-svg"
+                  className={`${
+                    isShowingColors ? "show-color-data" : "hide-color-data "
+                  }`}
+                />
+              </div>
+              <div className="colors">
+                <p>Green</p>
+                <p>Black</p>
+              </div>
+            </div>
             <hr />
-            <p>SIZE</p>
+            <div
+              className="filter-by-data"
+              onClick={() => setIsShowingSizes((prev) => !prev)}
+            >
+              <p>SIZE</p>
+              <img
+                src={arrowSvg}
+                alt="chevron svg"
+                id="arrow-svg"
+                className={`${
+                  isShowingSizes ? "show-size-data" : "hide-size-data "
+                }`}
+              />
+            </div>
             <hr />
           </div>
         </div>
