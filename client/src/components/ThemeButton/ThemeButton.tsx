@@ -15,7 +15,7 @@ const ThemeButton = ({ handleSwitchTheme }: ThemeButtonProps) => {
         type="checkbox"
         id="darkmode-toggle"
         checked={isChecked}
-        onClick={() => setIsChecked((prev) => !prev)}
+        onChange={() => setIsChecked((prev) => !prev)}
       />
       <label htmlFor="darkmode-toggle" onClick={handleSwitchTheme}></label>
       <img src={moonSvg} alt="moon svg" className="moon" />

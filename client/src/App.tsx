@@ -18,10 +18,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/collection/:name" element={<Collection />} />
-            {/* <Route path="/shirts" element={<Shirts />} />
-          <Route path="/hoodies" element={<Hoodies />} />
-          <Route path="/pants" element={<Pants />} />
-        <Route path="/shorts" element={<Shorts />} /> */}
+            {/* <Route path="/collection/shirts" element={<Shirts />} />
+            <Route path="/collection/hoodies" element={<Hoodies />} />
+            <Route path="/collection/pants" element={<Pants />} />
+            <Route path="/collection/shorts" element={<Shorts />} /> */}
           </Routes>
         </ClothesContextProvider>
       </ThemeContextProvider>

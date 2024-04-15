@@ -1,2 +1,22 @@
-.Collection {
+.Collection .data-container {
+  margin-top: 100px;
+  padding: 50px 0 50px 200px;
+}
+
+.Collection .filters {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.Collection .filter-by {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Collection .filter-by hr {
+  width: 5%;
 }

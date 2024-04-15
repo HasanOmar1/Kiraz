@@ -1,6 +1,5 @@
 .ThemeButton {
   position: relative;
-  margin-left: 50px;
 }
 
 .ThemeButton label {
@@ -51,7 +50,7 @@
 .ThemeButton .moon {
   width: 18px;
   position: absolute;
-  top: 45%;
+  top: 50%;
   right: 15%;
   pointer-events: none;
 }
@@ -59,7 +58,7 @@
 .ThemeButton .sun {
   width: 18px;
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 13%;
   pointer-events: none;
 }

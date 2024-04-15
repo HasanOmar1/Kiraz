@@ -21,3 +21,17 @@ body {
   background-color: #fff;
   color: #333;
 }
+
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  font-family: "Courier New", Courier, monospace;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#title p {
+  font-family: Arial, Helvetica, sans-serif;
+}
