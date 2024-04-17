@@ -1,0 +1,20 @@
+.Cards {
+  width: 300px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Cards p:first-of-type {
+  padding-top: 5px;
+  margin: 0 auto;
+}
+.Cards img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.Cards p {
+  font-size: 1.1rem;
+}

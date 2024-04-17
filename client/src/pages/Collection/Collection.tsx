@@ -3,7 +3,8 @@ import "./Collection.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect, useState } from "react";
-import arrowSvg from "../../assets/svgs/arrow.svg";
+import FilterData from "../../components/FilterData/FilterData";
+import Cards from "../../components/Cards/Cards";
 
 const Collection = () => {
   const [isShowingColors, setIsShowingColors] = useState(false);
@@ -21,6 +22,8 @@ const Collection = () => {
   console.log(getClothesByTypeData);
 
   const title = path.split("")[0].toUpperCase() + path.slice(1);
+  const COLORS = ["Green", "Black"];
+  const SIZES = ["L", "M", "S"];
 
   return (
     <main className={`Collection Page ${getThemeClassName()}`}>
@@ -30,47 +33,38 @@ const Collection = () => {
       </div>
       <div className="data-container">
         <div className="filters">
-          <p>FILTERS</p>
+          <p className="padding-left ">FILTERS</p>
           <div className="filter-by">
             <div className="colors-container">
-              <div
-                className="filter-by-data"
-                onClick={() => setIsShowingColors((prev) => !prev)}
-              >
-                <p>COLOR</p>
-                <img
-                  src={arrowSvg}
-                  alt="chevron svg"
-                  id="arrow-svg"
-                  className={`${
-                    isShowingColors ? "show-color-data" : "hide-color-data "
-                  }`}
-                />
-              </div>
-              <div className="colors">
-                <p>Green</p>
-                <p>Black</p>
-              </div>
-            </div>
-            <hr />
-            <div
-              className="filter-by-data"
-              onClick={() => setIsShowingSizes((prev) => !prev)}
-            >
-              <p>SIZE</p>
-              <img
-                src={arrowSvg}
-                alt="chevron svg"
-                id="arrow-svg"
-                className={`${
-                  isShowingSizes ? "show-size-data" : "hide-size-data "
-                }`}
+              <FilterData
+                FilterByText={"COLOR"}
+                classNameCondition={isShowingColors}
+                onClickFunction={() => setIsShowingColors((prev) => !prev)}
+                panelOptions={COLORS}
+              />
+              <FilterData
+                FilterByText={"SIZE"}
+                classNameCondition={isShowingSizes}
+                onClickFunction={() => setIsShowingSizes((prev) => !prev)}
+                panelOptions={SIZES}
               />
             </div>
-            <hr />
           </div>
         </div>
-        <div className="data"></div>
+        <div className="data">
+          {getClothesByTypeData?.map((clothes) => {
+            return (
+              <Cards
+                key={clothes._id}
+                name={clothes.name}
+                cover={clothes.img}
+                price={clothes.price}
+                size={clothes.size}
+                color={clothes.color}
+              />
+            );
+          })}
+        </div>
       </div>
     </main>
   );

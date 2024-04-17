@@ -1,0 +1,78 @@
+.FilterData .filter-by-data {
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.FilterData #FilterByText {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.FilterData #arrow-svg {
+  width: 25px;
+}
+
+.FilterData .show-color-data,
+.FilterData .show-size-data {
+  rotate: 360deg;
+  transition: 0.3s;
+}
+
+.FilterData .hide-color-data,
+.FilterData .hide-size-data {
+  rotate: 180deg;
+  transition: 0.3s;
+}
+
+.FilterData .panel {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  animation: slideDown 0.5s ease-in-out;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.FilterData .checkbox-container {
+  display: flex;
+  gap: 5px;
+}
+
+.FilterData .checkbox-container label {
+  cursor: pointer;
+  font-size: 0.93rem;
+}
+
+.FilterData .checkbox-container input {
+  width: 15px;
+  cursor: pointer;
+}
+
+.FilterData .colors-panel-css {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100px;
+  gap: 10px;
+}
+
+.FilterData .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.FilterData .colors-panel-css .Green {
+  background-color: green;
+}
+
+.FilterData .colors-panel-css .Black {
+  background-color: black;
+}

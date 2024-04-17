@@ -35,3 +35,11 @@ body {
 #title p {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+hr {
+  border: 1px solid gray;
+}
+
+.padding-left {
+  padding-left: 10px;
+}
