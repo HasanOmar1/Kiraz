@@ -14,16 +14,16 @@ const Collection = () => {
   const { getThemeClassName } = useThemeContext();
 
   const path = pathname.split("/")[2];
+  const COLORS = ["green", "black", "blue"];
+  const SIZES = ["L", "M", "S"];
 
-  useEffect(() => {
-    getClothesByType(path);
-  }, []);
+  // useEffect(() => {
+  //   getClothesByType(path);
+  // }, [path]);
 
-  console.log(getClothesByTypeData);
+  // console.log(getClothesByTypeData);
 
   const title = path.split("")[0].toUpperCase() + path.slice(1);
-  const COLORS = ["Green", "Black", "Blue"];
-  const SIZES = ["L", "M", "S"];
 
   return (
     <main className={`Collection Page ${getThemeClassName()}`}>
@@ -33,18 +33,18 @@ const Collection = () => {
       </div>
       <div className="data-container">
         <div className="filters">
-          <p className="padding-left ">FILTERS</p>
+          <p>FILTERS</p>
           <div className="filter-by">
             <div className="colors-container">
               <FilterData
-                FilterByText={"COLOR"}
+                filterByText={"COLOR"}
                 classNameCondition={isShowingColors}
                 onClickFunction={() => setIsShowingColors((prev) => !prev)}
                 panelOptions={COLORS}
                 hasColor={true}
               />
               <FilterData
-                FilterByText={"SIZE"}
+                filterByText={"SIZE"}
                 classNameCondition={isShowingSizes}
                 onClickFunction={() => setIsShowingSizes((prev) => !prev)}
                 panelOptions={SIZES}

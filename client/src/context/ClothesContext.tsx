@@ -43,9 +43,10 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
     }
   };
 
-  const getClothesByType = async (clothesType: string) => {
+  const getClothesByType = async (options: string) => {
     try {
-      const response = await axios.get(`/clothes/by?type=${clothesType}`);
+      // const response = await axios.get(`/clothes/by?type=${clothesType}`);
+      const response = await axios.get(`/clothes/by?type=${options}`);
       // console.log(response.data);
       setGetClothesByTypeData(response.data);
     } catch (error) {

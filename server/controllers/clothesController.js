@@ -37,24 +37,6 @@ export const getClothesByQuery = async (req, res, next) => {
       const clothesByColor = await Clothes.find({ size });
       res.send(clothesByColor);
     }
-
-    // if (type === "hoodies") {
-    //   const hoodiesByColor = await Hoodies.find({ color });
-    //   res.send(hoodiesByColor);
-    // }
-
-    // if (type === "pants") {
-    //   const pantsByColor = await Pants.find({ color });
-    //   res.send(pantsByColor);
-    // }
-    // if (type === "shirts") {
-    //   const shirtsByColor = await Shirts.find({ color });
-    //   res.send(shirtsByColor);
-    // }
-    // if (type === "shorts") {
-    //   const shortsByColor = await Shorts.find({ color });
-    //   res.send(shortsByColor);
-    // }
   } catch (error) {
     next(error);
   }

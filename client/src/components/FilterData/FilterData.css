@@ -22,7 +22,7 @@
   animation: slideDown 0.3s forwards;
 }
 
-.FilterData #FilterByText {
+.FilterData #filter-by-text {
   font-size: 1rem;
   font-weight: bold;
 }
@@ -62,8 +62,6 @@
 .FilterData .checkbox-container input {
   width: 17px;
   cursor: pointer;
-  color: red;
-  background-color: red;
 }
 
 .FilterData .circle {
@@ -72,14 +70,18 @@
   border-radius: 50%;
 }
 
-.FilterData .Green {
-  background-color: green;
+.FilterData .green {
+  background-color: rgb(33, 116, 33);
 }
 
-.FilterData .Black {
-  background-color: black;
+.FilterData .black {
+  background-color: rgba(10, 8, 8, 0.863);
 }
 
-.FilterData .Blue {
-  background-color: blue;
+.FilterData .blue {
+  background-color: rgb(49, 49, 198);
+}
+
+.FilterData #options-label {
+  color: rgb(128, 117, 117);
 }
