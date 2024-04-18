@@ -11,9 +11,9 @@ const Shirts = () => {
 
   const path = pathname.split("/")[2];
 
-  useEffect(() => {
-    getClothesByType(path);
-  }, []);
+  // useEffect(() => {
+  //   getClothesByType(path);
+  // }, []);
 
   console.log(getClothesByTypeData);
 

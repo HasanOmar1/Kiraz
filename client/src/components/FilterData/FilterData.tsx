@@ -28,11 +28,7 @@ const FilterData = ({
     black: false,
     blue: false,
   });
-  const [test, setTest] = useState({
-    green: false,
-    black: false,
-    blue: false,
-  });
+
   const { getClothesByType } = useClothesContext();
 
   const path = pathname.split("/")[2];
@@ -42,38 +38,21 @@ const FilterData = ({
 
   const checkIfChecked = (items: string) => {
     if (filterByText === "COLOR") {
-      if (items === "green") {
-        setIsChecked({
-          green: true,
-          black: false,
-          blue: false,
-        });
-        setOptions("&color=green");
-      }
-      if (items === "black") {
-        setIsChecked({
-          green: false,
-          black: true,
-          blue: false,
-        });
-        setOptions("&color=black");
-      }
-      if (items === "blue") {
-        setIsChecked({
-          green: false,
-          black: false,
-          blue: true,
-        });
-        setOptions("&color=blue");
-      }
-      // if (items === "black" && isChecked.green === true) {
-      //   setIsChecked({
-      //     green: true,
-      //     black: true,
-      //     blue: false,
-      //   });
-      //   setOptions("&color=black&color=green");
-      // }
+      setIsChecked((prevChecked) => {
+        const updatedChecked = {
+          ...prevChecked,
+          [items as keyof typeof isChecked]:
+            !prevChecked[items as keyof typeof isChecked],
+        };
+
+        const checkedOptions = Object.keys(updatedChecked)
+          .filter((key) => updatedChecked[key as keyof typeof isChecked])
+          .map((key) => `&color=${key}`)
+          .join("");
+
+        setOptions(checkedOptions);
+        return updatedChecked;
+      });
     }
   };
 
@@ -113,8 +92,6 @@ const FilterData = ({
                           : items === "black"
                           ? isChecked.black
                           : false
-                        // (items === "blue" && isChecked.blue) ||
-                        // (items === "black" && isChecked.black)
                       }
                       onChange={() => checkIfChecked(items)}
                     />
