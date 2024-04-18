@@ -22,7 +22,7 @@ const Collection = () => {
   console.log(getClothesByTypeData);
 
   const title = path.split("")[0].toUpperCase() + path.slice(1);
-  const COLORS = ["Green", "Black"];
+  const COLORS = ["Green", "Black", "Blue"];
   const SIZES = ["L", "M", "S"];
 
   return (
@@ -41,12 +41,14 @@ const Collection = () => {
                 classNameCondition={isShowingColors}
                 onClickFunction={() => setIsShowingColors((prev) => !prev)}
                 panelOptions={COLORS}
+                hasColor={true}
               />
               <FilterData
                 FilterByText={"SIZE"}
                 classNameCondition={isShowingSizes}
                 onClickFunction={() => setIsShowingSizes((prev) => !prev)}
                 panelOptions={SIZES}
+                hasColor={false}
               />
             </div>
           </div>
