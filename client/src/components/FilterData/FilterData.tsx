@@ -43,24 +43,27 @@ const FilterData = ({
   const checkIfChecked = (items: string) => {
     if (filterByText === "COLOR") {
       if (items === "green") {
-        setIsChecked((prev) => ({
-          ...prev,
+        setIsChecked({
           green: true,
-        }));
+          black: false,
+          blue: false,
+        });
         setOptions("&color=green");
       }
       if (items === "black") {
-        setIsChecked((prev) => ({
-          ...prev,
+        setIsChecked({
+          green: false,
           black: true,
-        }));
+          blue: false,
+        });
         setOptions("&color=black");
       }
       if (items === "blue") {
-        setIsChecked((prev) => ({
-          ...prev,
+        setIsChecked({
+          green: false,
+          black: false,
           blue: true,
-        }));
+        });
         setOptions("&color=blue");
       }
       // if (items === "black" && isChecked.green === true) {
@@ -73,16 +76,6 @@ const FilterData = ({
       // }
     }
   };
-
-  // console.log(isChecked);
-  // useEffect(() => {
-  //   setTest((prev) => {
-  //     return {
-  //       ...prev,
-  //       black: true,
-  //     };
-  //   });
-  // }, []);
 
   return (
     <>
