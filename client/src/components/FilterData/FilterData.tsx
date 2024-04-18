@@ -23,10 +23,15 @@ const FilterData = ({
   const { pathname } = useLocation();
   // console.log(path);
   const [options, setOptions] = useState("");
-  const [isChecked, setIsChecked] = useState({
+  const [isColorChecked, setIsColorChecked] = useState({
     green: false,
     black: false,
     blue: false,
+  });
+  const [isSizeChecked, setIsSizeChecked] = useState({
+    L: false,
+    M: false,
+    S: false,
   });
 
   const { getClothesByType } = useClothesContext();
@@ -38,16 +43,34 @@ const FilterData = ({
 
   const checkIfChecked = (items: string) => {
     if (filterByText === "COLOR") {
-      setIsChecked((prevChecked) => {
+      setIsColorChecked((prevChecked) => {
         const updatedChecked = {
           ...prevChecked,
-          [items as keyof typeof isChecked]:
-            !prevChecked[items as keyof typeof isChecked],
+          [items as keyof typeof isColorChecked]:
+            !prevChecked[items as keyof typeof isColorChecked],
         };
 
         const checkedOptions = Object.keys(updatedChecked)
-          .filter((key) => updatedChecked[key as keyof typeof isChecked])
+          .filter((key) => updatedChecked[key as keyof typeof isColorChecked])
           .map((key) => `&color=${key}`)
+          .join("");
+
+        setOptions(checkedOptions);
+        return updatedChecked;
+      });
+    }
+
+    if (filterByText === "SIZE") {
+      setIsSizeChecked((prevChecked) => {
+        const updatedChecked = {
+          ...prevChecked,
+          [items as keyof typeof isSizeChecked]:
+            !prevChecked[items as keyof typeof isSizeChecked],
+        };
+
+        const checkedOptions = Object.keys(updatedChecked)
+          .filter((key) => updatedChecked[key as keyof typeof isSizeChecked])
+          .map((key) => `&size=${key}`)
           .join("");
 
         setOptions(checkedOptions);
@@ -86,11 +109,17 @@ const FilterData = ({
                       id={items}
                       checked={
                         items === "green"
-                          ? isChecked.green
+                          ? isColorChecked.green
                           : items === "blue"
-                          ? isChecked.blue
+                          ? isColorChecked.blue
                           : items === "black"
-                          ? isChecked.black
+                          ? isColorChecked.black
+                          : items === "L"
+                          ? isSizeChecked.L
+                          : items === "M"
+                          ? isSizeChecked.M
+                          : items === "S"
+                          ? isSizeChecked.S
                           : false
                       }
                       onChange={() => checkIfChecked(items)}
