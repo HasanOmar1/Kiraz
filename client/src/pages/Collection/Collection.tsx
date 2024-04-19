@@ -1,27 +1,21 @@
-import { useLocation } from "react-router-dom";
 import "./Collection.css";
+import { useLocation } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import { useClothesContext } from "../../context/ClothesContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FilterData from "../../components/FilterData/FilterData";
 import Cards from "../../components/Cards/Cards";
 
 const Collection = () => {
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
-  const { getClothesByType, getClothesByTypeData } = useClothesContext();
+  const { getClothesByTypeData } = useClothesContext();
   const { pathname } = useLocation();
   const { getThemeClassName } = useThemeContext();
 
   const path = pathname.split("/")[2];
   const COLORS = ["green", "black", "blue"];
   const SIZES = ["L", "M", "S"];
-
-  // useEffect(() => {
-  //   getClothesByType(path);
-  // }, [path]);
-
-  // console.log(getClothesByTypeData);
 
   const title = path.split("")[0].toUpperCase() + path.slice(1);
 

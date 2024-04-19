@@ -1,9 +1,9 @@
 import "./FilterData.css";
 import arrowSvg from "../../assets/svgs/arrow.svg";
-import upperCaseLetter from "../../utils/UpperCaseLetter";
 import { useEffect, useState } from "react";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useLocation } from "react-router-dom";
+import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 
 type FilterDataProps = {
   onClickFunction: () => void;
@@ -21,7 +21,7 @@ const FilterData = ({
   hasColor,
 }: FilterDataProps) => {
   const { pathname } = useLocation();
-  // console.log(path);
+
   const [options, setOptions] = useState("");
   const [isColorChecked, setIsColorChecked] = useState({
     green: false,
@@ -36,20 +36,23 @@ const FilterData = ({
 
   const { getClothesByType } = useClothesContext();
 
-  const path = pathname.split("/")[2];
+  const clothingType = pathname.split("/")[2];
   useEffect(() => {
-    getClothesByType(path + options);
-  }, [path, options]);
+    getClothesByType(clothingType + options);
+  }, [clothingType, options]);
 
   const checkIfChecked = (items: string) => {
     if (filterByText === "COLOR") {
       setIsColorChecked((prevChecked) => {
         const updatedChecked = {
           ...prevChecked,
+          //keyof = value can only be the keys of isColorChecked which are green || black || blue (union)
+          //keyof typeof = is the same like keyof but used on objects
+
           [items as keyof typeof isColorChecked]:
             !prevChecked[items as keyof typeof isColorChecked],
         };
-
+        //Object.keys(object) returns an array of the object's keys
         const checkedOptions = Object.keys(updatedChecked)
           .filter((key) => updatedChecked[key as keyof typeof isColorChecked])
           .map((key) => `&color=${key}`)
@@ -79,6 +82,21 @@ const FilterData = ({
     }
   };
 
+  const isCheckBoxChecked = (items: string) =>
+    items === "green"
+      ? isColorChecked.green
+      : items === "blue"
+      ? isColorChecked.blue
+      : items === "black"
+      ? isColorChecked.black
+      : items === "L"
+      ? isSizeChecked.L
+      : items === "M"
+      ? isSizeChecked.M
+      : items === "S"
+      ? isSizeChecked.S
+      : false;
+
   return (
     <>
       <div className="FilterData">
@@ -96,47 +114,12 @@ const FilterData = ({
           </div>
 
           {classNameCondition && (
-            <div className={"panel"}>
-              {panelOptions.map((items) => {
-                return (
-                  <label
-                    className="checkbox-container"
-                    htmlFor={items}
-                    key={items}
-                  >
-                    <input
-                      type="checkbox"
-                      id={items}
-                      checked={
-                        items === "green"
-                          ? isColorChecked.green
-                          : items === "blue"
-                          ? isColorChecked.blue
-                          : items === "black"
-                          ? isColorChecked.black
-                          : items === "L"
-                          ? isSizeChecked.L
-                          : items === "M"
-                          ? isSizeChecked.M
-                          : items === "S"
-                          ? isSizeChecked.S
-                          : false
-                      }
-                      onChange={() => checkIfChecked(items)}
-                    />
-                    {hasColor && (
-                      <label
-                        className={`circle ${items}`}
-                        htmlFor={items}
-                      ></label>
-                    )}
-                    <label htmlFor={items} id="options-label">
-                      {upperCaseLetter(items)}
-                    </label>
-                  </label>
-                );
-              })}
-            </div>
+            <FilterDataOptions
+              checkIfChecked={checkIfChecked}
+              hasColor={hasColor}
+              isCheckBoxChecked={isCheckBoxChecked}
+              panelOptions={panelOptions}
+            />
           )}
         </div>
       </div>
