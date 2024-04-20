@@ -5,19 +5,22 @@ import Home from "./pages/Home/Home";
 import Collection from "./pages/Collection/Collection";
 import ClothesContextProvider from "./context/ClothesContext";
 import LoginContextProvider from "./context/LoginContext";
+import ModalContextProvider from "./context/ModalContext";
 
 function App() {
   return (
     <>
       <ThemeContextProvider>
         <ClothesContextProvider>
-          <LoginContextProvider>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/collection/:name" element={<Collection />} />
-            </Routes>
-          </LoginContextProvider>
+          <ModalContextProvider>
+            <LoginContextProvider>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/collection/:name" element={<Collection />} />
+              </Routes>
+            </LoginContextProvider>
+          </ModalContextProvider>
         </ClothesContextProvider>
       </ThemeContextProvider>
     </>

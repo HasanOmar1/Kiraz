@@ -7,13 +7,12 @@ import logoutSvg from "../../assets/svgs/logout.svg";
 import ThemeButton from "../ThemeButton/ThemeButton";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
-import useModal from "../../hooks/useModal";
+import { useModalContext } from "../../context/ModalContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { setTheme, theme } = useThemeContext();
-  const { closeModal, isModalOpen, openModal } = useModal();
-
+  const { closeModal, isModalOpen, openModal } = useModalContext();
   const goHome = () => {
     navigate("/");
   };

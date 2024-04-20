@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
-import { useNavigate } from "react-router-dom";
+import { useModalContext } from "./ModalContext";
 
 type CreatedUser = {
   name: string;
@@ -32,7 +32,7 @@ const LoginContextProvider = ({ children }: Props) => {
     null
   );
   const [errorMsg, setErrorMsg] = useState("");
-  const navigate = useNavigate();
+  const { closeModal } = useModalContext();
 
   useEffect(() => {
     getAllUsers();
@@ -66,7 +66,7 @@ const LoginContextProvider = ({ children }: Props) => {
       console.log(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       setCurrentUser(response.data);
-      navigate("/");
+      closeModal();
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
       console.log(error.response?.data.message);
