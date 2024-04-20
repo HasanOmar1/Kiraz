@@ -1,0 +1,53 @@
+.Login .kiraz-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.Login #kiraz-logo {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.Login #close-modal:hover {
+  color: red;
+}
+
+.Login form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login label {
+  font-size: 1.6rem;
+}
+
+.Login input {
+  padding: 10px;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.Login #login-btn {
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  margin-top: 30px;
+  font-size: 1.3rem;
+}

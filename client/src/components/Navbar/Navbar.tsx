@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import loginSvg from "../../assets/svgs/login.svg";
 import logoutSvg from "../../assets/svgs/logout.svg";
-
 import ThemeButton from "../ThemeButton/ThemeButton";
+import LoginModal from "../Login/Login";
+import GenericModal from "../GenericModal/GenericModal";
+import useModal from "../../hooks/useModal";
 
 const Navbar = () => {
-  const { setTheme, theme } = useThemeContext();
   const navigate = useNavigate();
+  const { setTheme, theme } = useThemeContext();
+  const { closeModal, isModalOpen, openModal } = useModal();
 
   const goHome = () => {
     navigate("/");
@@ -27,9 +30,19 @@ const Navbar = () => {
         </div>
         <div className="svgs-container">
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
-          <img src={loginSvg} alt="login icon" className="svg" />
+          <img
+            src={loginSvg}
+            alt="login icon"
+            className="svg"
+            onClick={openModal}
+          />
           <img src={logoutSvg} alt="logout icon" className="svg" />
         </div>
+      </div>
+      <div className="modal-container">
+        <GenericModal isOpen={isModalOpen} closeModal={closeModal}>
+          <LoginModal />
+        </GenericModal>
       </div>
     </nav>
   );

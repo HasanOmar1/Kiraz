@@ -41,3 +41,13 @@
   padding-top: 18px;
   cursor: pointer;
 }
+
+.Navbar .login-modal {
+  position: fixed;
+  top: 10%;
+  left: 35%;
+}
+
+.Navbar .modal-container {
+  position: absolute;
+}

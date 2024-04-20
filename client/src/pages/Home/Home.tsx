@@ -6,11 +6,13 @@ import hoodieImg from "../../assets/hoodie.jpg";
 import pantsImg from "../../assets/pants.jpg";
 import shortImg from "../../assets/short.jpg";
 import HomeImg from "../../components/HomeImg/HomeImg";
+import LoginModal from "../../components/Login/Login";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();
   return (
     <main className={`Home Page ${getThemeClassName()}`}>
+      {/* <LoginModal /> */}
       <div className="background-container">
         <img src={backgroundImg} alt="background img" />
       </div>
