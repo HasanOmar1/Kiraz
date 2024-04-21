@@ -4,14 +4,20 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  transition: 0.4s scale;
 }
 
 .HomeImg:hover {
   cursor: pointer;
   text-decoration: underline;
+  text-decoration-color: gold;
 }
 
 .HomeImg img {
   height: 400px;
   border-radius: 10px;
+}
+
+.HomeImg:hover {
+  scale: 0.95;
 }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
 
 type ClothesContextProviderProps = {
@@ -29,9 +29,9 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
     []
   );
 
-  //   useEffect(() => {
-  //     getAllClothes();
-  //   }, []);
+  useEffect(() => {
+    getAllClothes();
+  }, []);
 
   const getAllClothes = async () => {
     try {

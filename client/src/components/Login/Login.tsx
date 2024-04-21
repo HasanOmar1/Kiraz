@@ -5,10 +5,7 @@ import { useLoginContext } from "../../context/LoginContext";
 import emailSvg from "../../assets/svgs/email-input.svg";
 import nameSvg from "../../assets/svgs/name-input.svg";
 import lockSvg from "../../assets/svgs/lock-input.svg";
-import LoginInputs from "../LoginInputs/LoginInputs";
 import { LoginForm } from "../LoginForm/LoginForm";
-
-type ChangeStateCallback = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 const LoginModal = () => {
   const [isRegister, setIsRegister] = useState(false);
