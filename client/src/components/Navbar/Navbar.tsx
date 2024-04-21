@@ -9,12 +9,14 @@ import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
 import { useModalContext } from "../../context/ModalContext";
 import { useClothesContext } from "../../context/ClothesContext";
+import { useLoginContext } from "../../context/LoginContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { setTheme, theme } = useThemeContext();
   const { closeModal, isModalOpen, openModal } = useModalContext();
   const { setGetClothesByTypeData } = useClothesContext();
+  const { currentUser, setCurrentUser } = useLoginContext();
 
   const handleSwitchTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -25,12 +27,18 @@ const Navbar = () => {
     setGetClothesByTypeData([]);
   };
 
+  const handleLogOut = () => {
+    localStorage.clear();
+    setCurrentUser(null);
+  };
+
   return (
     <nav className="Navbar">
       <div className="container">
         <div className="logo-container">
-          <img src={logo} alt="Kiraz Kids Logo" onClick={goHome}></img>
+          <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} />
         </div>
+        {currentUser && <p>Welcome {currentUser.name}</p>}
         <div className="svgs-container">
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
           <img
@@ -39,14 +47,23 @@ const Navbar = () => {
             className="svg"
             onClick={openModal}
           />
-          <img src={logoutSvg} alt="logout icon" className="svg" />
+          {currentUser && (
+            <img
+              src={logoutSvg}
+              alt="logout icon"
+              className="svg"
+              onClick={handleLogOut}
+            />
+          )}
         </div>
       </div>
-      <div className="modal-container">
-        <GenericModal isOpen={isModalOpen} closeModal={closeModal}>
-          <LoginModal />
-        </GenericModal>
-      </div>
+      {!currentUser && (
+        <div className="modal-container">
+          <GenericModal isOpen={isModalOpen} closeModal={closeModal}>
+            <LoginModal />
+          </GenericModal>
+        </div>
+      )}
     </nav>
   );
 };

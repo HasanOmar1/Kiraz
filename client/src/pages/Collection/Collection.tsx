@@ -53,18 +53,24 @@ const Collection = () => {
           </div>
         </div>
         <div className="data">
-          {getClothesByTypeData?.map((clothes) => {
-            return (
-              <Cards
-                key={clothes._id}
-                name={clothes.name}
-                cover={clothes.img}
-                price={clothes.price}
-                size={clothes.size}
-                color={clothes.color}
-              />
-            );
-          })}
+          {getClothesByTypeData ? (
+            <>
+              {getClothesByTypeData.map((clothes) => {
+                return (
+                  <Cards
+                    key={clothes._id}
+                    name={clothes.name}
+                    cover={clothes.img}
+                    price={clothes.price}
+                    size={clothes.size}
+                    color={clothes.color}
+                  />
+                );
+              })}
+            </>
+          ) : (
+            <h1>Loading...</h1>
+          )}
         </div>
       </div>
     </main>

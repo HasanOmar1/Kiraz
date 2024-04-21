@@ -9,6 +9,9 @@ type LoginContextValues = {
   createUser: (user: Type.CreatedUser) => void;
   errorMsg: string;
   setErrorMsg: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentUser: React.Dispatch<
+    React.SetStateAction<Type.CurrentLoggedUser | null>
+  >;
 };
 
 type Props = {
@@ -64,7 +67,14 @@ const LoginContextProvider = ({ children }: Props) => {
   };
   return (
     <LoginContext.Provider
-      value={{ currentUser, loginUser, errorMsg, createUser, setErrorMsg }}
+      value={{
+        currentUser,
+        loginUser,
+        errorMsg,
+        createUser,
+        setErrorMsg,
+        setCurrentUser,
+      }}
     >
       {children}
     </LoginContext.Provider>

@@ -6,9 +6,12 @@ import hoodieImg from "../../assets/hoodie.jpg";
 import pantsImg from "../../assets/pants.jpg";
 import shortImg from "../../assets/short.jpg";
 import HomeImg from "../../components/HomeImg/HomeImg";
+import { useEffect } from "react";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();
+  const { theme } = useThemeContext();
+
   return (
     <main className={`Home Page ${getThemeClassName()}`}>
       <div className="background-container">
