@@ -27,9 +27,9 @@ const LoginContextProvider = ({ children }: Props) => {
   const [errorMsg, setErrorMsg] = useState("");
   const { closeModal } = useModalContext();
 
-  useEffect(() => {
-    getAllUsers();
-  }, []);
+  // useEffect(() => {
+  //   getAllUsers();
+  // }, []);
 
   const getAllUsers = async () => {
     try {

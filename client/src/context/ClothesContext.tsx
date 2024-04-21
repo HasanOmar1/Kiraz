@@ -1,36 +1,27 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
+import * as Type from "../types/ClothesTypes";
 
 type ClothesContextProviderProps = {
   children: React.ReactNode;
 };
 
-type Clothes = {
-  color: string;
-  img: string;
-  name: string;
-  price: number;
-  size: string;
-  type: string;
-  _id: string;
-};
-
 type ClothesContextValues = {
-  getClothes: Clothes[];
-  getClothesByTypeData: Clothes[];
+  getClothes: Type.Clothes[];
+  getClothesByTypeData: Type.Clothes[];
   getClothesByType: (clothesType: string) => void;
   optionsForQuery: string;
   setOptionsForQuery: React.Dispatch<React.SetStateAction<string>>;
-  setGetClothesByTypeData: React.Dispatch<React.SetStateAction<Clothes[]>>;
+  setGetClothesByTypeData: React.Dispatch<React.SetStateAction<Type.Clothes[]>>;
 };
 
 const ClothesContext = createContext<null | ClothesContextValues>(null);
 
 const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
-  const [getClothes, setGetClothes] = useState<Clothes[]>([]);
-  const [getClothesByTypeData, setGetClothesByTypeData] = useState<Clothes[]>(
-    []
-  );
+  const [getClothes, setGetClothes] = useState<Type.Clothes[]>([]);
+  const [getClothesByTypeData, setGetClothesByTypeData] = useState<
+    Type.Clothes[]
+  >([]);
   const [optionsForQuery, setOptionsForQuery] = useState("");
 
   useEffect(() => {
