@@ -2,22 +2,27 @@ import "./Collection.css";
 import { useLocation } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import { useClothesContext } from "../../context/ClothesContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterData from "../../components/FilterData/FilterData";
 import Cards from "../../components/Cards/Cards";
 
 const Collection = () => {
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
-  const { getClothesByTypeData } = useClothesContext();
+  const { getClothesByTypeData, getClothesByType, optionsForQuery } =
+    useClothesContext();
   const { pathname } = useLocation();
   const { getThemeClassName } = useThemeContext();
 
-  const path = pathname.split("/")[2];
   const COLORS = ["green", "black", "blue"];
   const SIZES = ["L", "M", "S"];
 
-  const title = path.split("")[0].toUpperCase() + path.slice(1);
+  const clothingType = pathname.split("/")[2];
+  const title = clothingType.split("")[0].toUpperCase() + clothingType.slice(1);
+
+  useEffect(() => {
+    getClothesByType(clothingType + optionsForQuery);
+  }, [clothingType, optionsForQuery]);
 
   return (
     <main className={`Collection Page ${getThemeClassName()}`}>

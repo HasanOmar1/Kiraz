@@ -1,8 +1,7 @@
 import "./FilterData.css";
 import arrowSvg from "../../assets/svgs/arrow.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useClothesContext } from "../../context/ClothesContext";
-import { useLocation } from "react-router-dom";
 import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 
 type FilterDataProps = {
@@ -20,9 +19,6 @@ const FilterData = ({
   panelOptions,
   hasColor,
 }: FilterDataProps) => {
-  const { pathname } = useLocation();
-
-  const [options, setOptions] = useState("");
   const [isColorChecked, setIsColorChecked] = useState({
     green: false,
     black: false,
@@ -34,12 +30,7 @@ const FilterData = ({
     S: false,
   });
 
-  const { getClothesByType } = useClothesContext();
-
-  const clothingType = pathname.split("/")[2];
-  useEffect(() => {
-    getClothesByType(clothingType + options);
-  }, [clothingType, options]);
+  const { setOptionsForQuery } = useClothesContext();
 
   const checkIfChecked = (items: string) => {
     if (filterByText === "COLOR") {
@@ -58,7 +49,7 @@ const FilterData = ({
           .map((key) => `&color=${key}`)
           .join("");
 
-        setOptions(checkedOptions);
+        setOptionsForQuery(checkedOptions);
         return updatedChecked;
       });
     }
@@ -76,7 +67,7 @@ const FilterData = ({
           .map((key) => `&size=${key}`)
           .join("");
 
-        setOptions(checkedOptions);
+        setOptionsForQuery(checkedOptions);
         return updatedChecked;
       });
     }
