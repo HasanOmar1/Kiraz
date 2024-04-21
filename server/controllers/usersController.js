@@ -48,7 +48,7 @@ export const createUser = async (req, res, next) => {
     if (createdUser) {
       res.status(STATUS_CODE.CREATED);
       res.send({
-        message: "User has been created",
+        _id: createdUser._id,
         name: createdUser.name,
         email: createdUser.email,
         password: createdUser.password,

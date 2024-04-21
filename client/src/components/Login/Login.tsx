@@ -3,6 +3,7 @@ import "./Login.css";
 import logo from "../../assets/logo.jpg";
 import { useLoginContext } from "../../context/LoginContext";
 import emailSvg from "../../assets/svgs/email-input.svg";
+import nameSvg from "../../assets/svgs/name-input.svg";
 import lockSvg from "../../assets/svgs/lock-input.svg";
 
 const LoginModal = () => {
@@ -10,7 +11,7 @@ const LoginModal = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const { loginUser, errorMsg, createUser } = useLoginContext();
+  const { loginUser, errorMsg, createUser, setErrorMsg } = useLoginContext();
 
   const handleLogIn = (e: FormEvent) => {
     e.preventDefault();
@@ -33,6 +34,12 @@ const LoginModal = () => {
     setPassword("");
   };
 
+  const handleLoginOrRegister = () => {
+    setIsRegister((prev) => !prev);
+    setErrorMsg("");
+    setEmail("");
+    setPassword("");
+  };
   return (
     <div className="Login">
       <div className="kiraz-logo-container">
@@ -47,7 +54,7 @@ const LoginModal = () => {
       <form onSubmit={isRegister ? handleRegister : handleLogIn}>
         {isRegister && (
           <div className="input-container">
-            <img src={emailSvg} alt="name svg" />
+            <img src={nameSvg} alt="name svg" />
             <input
               type="text"
               name="Name"
@@ -86,29 +93,10 @@ const LoginModal = () => {
       </form>
       <hr />
       <p id="register">
-        {isRegister ? (
-          <>
-            Already have an account?
-            <span
-              id="create-account-msg"
-              onClick={() => setIsRegister((prev) => !prev)}
-            >
-              Sign In
-            </span>
-          </>
-        ) : (
-          <>
-            <>
-              Don't have an account?
-              <span
-                id="create-account-msg"
-                onClick={() => setIsRegister((prev) => !prev)}
-              >
-                Sign Up
-              </span>
-            </>
-          </>
-        )}
+        {isRegister ? "Already have an account?" : "Don't have an account?"}
+        <span id="create-account-msg" onClick={handleLoginOrRegister}>
+          {isRegister ? "Sign In" : "Sign Up"}
+        </span>
       </p>
     </div>
   );

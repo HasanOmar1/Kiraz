@@ -1,25 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
 import { useModalContext } from "./ModalContext";
-
-type CreatedUser = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-type LoginUser = Omit<CreatedUser, "name">;
-
-type CurrentLoggedUser = Omit<CreatedUser, "password"> & {
-  token: string;
-  _id: string;
-};
+import * as Type from "../types/LoginContextTypes";
 
 type LoginContextValues = {
-  currentUser: CurrentLoggedUser | null;
-  loginUser: (user: LoginUser) => void;
-  createUser: (user: CreatedUser) => void;
+  currentUser: Type.CurrentLoggedUser | null;
+  loginUser: (user: Type.LoginUser) => void;
+  createUser: (user: Type.CreatedUser) => void;
   errorMsg: string;
+  setErrorMsg: React.Dispatch<React.SetStateAction<string>>;
 };
 
 type Props = {
@@ -29,7 +18,7 @@ type Props = {
 const LoginContext = createContext<null | LoginContextValues>(null);
 
 const LoginContextProvider = ({ children }: Props) => {
-  const [currentUser, setCurrentUser] = useState<CurrentLoggedUser | null>(
+  const [currentUser, setCurrentUser] = useState<Type.CurrentLoggedUser | null>(
     null
   );
   const [errorMsg, setErrorMsg] = useState("");
@@ -48,7 +37,7 @@ const LoginContextProvider = ({ children }: Props) => {
     }
   };
 
-  const createUser = async (user: CreatedUser) => {
+  const createUser = async (user: Type.CreatedUser) => {
     try {
       const response = await axios.post(`/users/create`, user);
       console.log(response.data);
@@ -56,11 +45,11 @@ const LoginContextProvider = ({ children }: Props) => {
       closeModal();
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
-      console.log(error.response?.data.message);
+      // console.log(error.response?.data.message);
     }
   };
 
-  const loginUser = async (user: LoginUser) => {
+  const loginUser = async (user: Type.LoginUser) => {
     try {
       const response = await axios.post(`/users/login`, user);
       console.log(response.data);
@@ -70,12 +59,12 @@ const LoginContextProvider = ({ children }: Props) => {
       closeModal();
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
-      console.log(error.response?.data.message);
+      // console.log(error.response?.data.message);
     }
   };
   return (
     <LoginContext.Provider
-      value={{ currentUser, loginUser, errorMsg, createUser }}
+      value={{ currentUser, loginUser, errorMsg, createUser, setErrorMsg }}
     >
       {children}
     </LoginContext.Provider>
