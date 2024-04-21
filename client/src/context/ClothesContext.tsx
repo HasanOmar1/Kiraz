@@ -21,6 +21,7 @@ type ClothesContextValues = {
   getClothesByType: (clothesType: string) => void;
   optionsForQuery: string;
   setOptionsForQuery: React.Dispatch<React.SetStateAction<string>>;
+  setGetClothesByTypeData: React.Dispatch<React.SetStateAction<Clothes[]>>;
 };
 
 const ClothesContext = createContext<null | ClothesContextValues>(null);
@@ -33,7 +34,7 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   const [optionsForQuery, setOptionsForQuery] = useState("");
 
   useEffect(() => {
-    getAllClothes();
+    // getAllClothes();
   }, []);
 
   const getAllClothes = async () => {
@@ -65,6 +66,7 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
         getClothesByType,
         optionsForQuery,
         setOptionsForQuery,
+        setGetClothesByTypeData,
       }}
     >
       {children}
