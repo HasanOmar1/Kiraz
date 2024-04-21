@@ -2,8 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .Login #kiraz-logo {
@@ -11,6 +10,18 @@
   border-radius: 50%;
 }
 
+.Login hr {
+  outline: 1px dotted rgb(99, 99, 99);
+}
+
+.Login .title-container {
+  text-align: center;
+  padding: 30px 0;
+  color: rgb(99, 99, 99);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 .Login #close-modal:hover {
   color: red;
 }
@@ -21,33 +32,68 @@
   gap: 20px;
   justify-content: center;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .Login .input-container {
   display: flex;
-  flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-.Login label {
-  font-size: 1.6rem;
+.Login .input-container img {
+  position: absolute;
+  left: 5px;
 }
-
 .Login input {
   padding: 10px;
   font-size: 1.3rem;
-  border-radius: 10px;
   border: none;
   outline: none;
+  border-bottom: 1px solid rgb(99, 99, 99);
+  padding-left: 35px;
 }
 
 .Login #login-btn {
-  padding: 10px 30px;
+  padding: 10px 35px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
-  margin-top: 30px;
+  margin-top: 10px;
   font-size: 1.3rem;
+  width: 78%;
+  background-color: rgb(11, 187, 11);
+  color: white;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.Login #login-btn:hover {
+  background-color: rgb(11, 135, 0);
+}
+
+.Login #error-msg {
+  text-align: center;
+  padding-bottom: 20px;
+  color: red;
+  font-size: 1.1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.Login #register {
+  padding-top: 20px;
+  text-align: center;
+  color: rgb(99, 99, 99);
+}
+
+.Login #create-account-msg {
+  color: rgb(11, 187, 11);
+  padding-left: 5px;
+}
+
+.Login #create-account-msg:hover {
+  color: rgb(11, 135, 0);
+  cursor: pointer;
 }

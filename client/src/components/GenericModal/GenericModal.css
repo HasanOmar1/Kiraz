@@ -1,5 +1,6 @@
 .GenericModal.form-container {
   position: relative;
+  z-index: 9999;
 }
 
 .GenericModal .modal-position-container {
@@ -17,7 +18,7 @@
 }
 
 .GenericModal .modal-body {
-  background-color: #9a9393;
+  background-color: white;
   margin: 100px auto;
   border-radius: 8px;
   box-shadow: 0 0 10px #00000066;

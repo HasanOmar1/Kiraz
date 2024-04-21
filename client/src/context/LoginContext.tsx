@@ -18,6 +18,7 @@ type CurrentLoggedUser = Omit<CreatedUser, "password"> & {
 type LoginContextValues = {
   currentUser: CurrentLoggedUser | null;
   loginUser: (user: LoginUser) => void;
+  createUser: (user: CreatedUser) => void;
   errorMsg: string;
 };
 
@@ -47,16 +48,15 @@ const LoginContextProvider = ({ children }: Props) => {
     }
   };
 
-  // not using it currently
   const createUser = async (user: CreatedUser) => {
-    const response = await axios.post(`/users/create`, {
-      user,
-    });
-    console.log(response.data);
-
     try {
-    } catch (error) {
-      console.log(error);
+      const response = await axios.post(`/users/create`, user);
+      console.log(response.data);
+      setErrorMsg("");
+      closeModal();
+    } catch (error: any) {
+      setErrorMsg(error.response?.data.message);
+      console.log(error.response?.data.message);
     }
   };
 
@@ -66,6 +66,7 @@ const LoginContextProvider = ({ children }: Props) => {
       console.log(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       setCurrentUser(response.data);
+      setErrorMsg("");
       closeModal();
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
@@ -73,7 +74,9 @@ const LoginContextProvider = ({ children }: Props) => {
     }
   };
   return (
-    <LoginContext.Provider value={{ currentUser, loginUser, errorMsg }}>
+    <LoginContext.Provider
+      value={{ currentUser, loginUser, errorMsg, createUser }}
+    >
       {children}
     </LoginContext.Provider>
   );

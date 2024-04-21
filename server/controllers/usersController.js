@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/usersModel.js";
 import STATUS_CODE from "../constants/statusCodes.js";
+import { capitalLetter } from "../utils/capitalLetter.js";
 
 const generateToken = (id, email) => {
   return jwt.sign({ id, email }, process.env.JWT_SECRET, { expiresIn: "7d" });
@@ -30,7 +31,7 @@ export const createUser = async (req, res, next) => {
       throw new Error("This email is already taken");
     }
 
-    const nameExists = await User.findOne({ name });
+    const nameExists = await User.findOne({ name: capitalLetter(name) });
     if (nameExists) {
       res.status(STATUS_CODE.CONFLICT);
       throw new Error("This name is already taken");
@@ -39,7 +40,7 @@ export const createUser = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const createdUser = await User.create({
-      name,
+      name: capitalLetter(name),
       email,
       password: hashedPassword,
     });
