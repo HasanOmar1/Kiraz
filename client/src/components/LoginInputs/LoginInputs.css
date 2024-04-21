@@ -1,0 +1,20 @@
+.LoginInputs.input-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.LoginInputs.input-container img {
+  position: absolute;
+  left: 5px;
+}
+.LoginInputs input {
+  padding: 10px;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgb(99, 99, 99);
+  padding-left: 35px;
+}

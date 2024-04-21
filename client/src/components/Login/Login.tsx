@@ -5,41 +5,84 @@ import { useLoginContext } from "../../context/LoginContext";
 import emailSvg from "../../assets/svgs/email-input.svg";
 import nameSvg from "../../assets/svgs/name-input.svg";
 import lockSvg from "../../assets/svgs/lock-input.svg";
+import LoginInputs from "../LoginInputs/LoginInputs";
+import { LoginForm } from "../LoginForm/LoginForm";
+
+type ChangeStateCallback = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 const LoginModal = () => {
   const [isRegister, setIsRegister] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+  const [nameValue, setNameValue] = useState("");
   const { loginUser, errorMsg, createUser, setErrorMsg } = useLoginContext();
 
   const handleLogIn = (e: FormEvent) => {
     e.preventDefault();
     loginUser({
-      email: email,
-      password: password,
+      email: emailValue,
+      password: passwordValue,
     });
-    setEmail("");
-    setPassword("");
+    setEmailValue("");
+    setPasswordValue("");
   };
 
   const handleRegister = (e: FormEvent) => {
     e.preventDefault();
     createUser({
-      name: name,
-      email: email,
-      password: password,
+      name: nameValue,
+      email: emailValue,
+      password: passwordValue,
     });
-    setEmail("");
-    setPassword("");
+    setNameValue("");
+    setEmailValue("");
+    setPasswordValue("");
   };
 
   const handleLoginOrRegister = () => {
     setIsRegister((prev) => !prev);
     setErrorMsg("");
-    setEmail("");
-    setPassword("");
+    setEmailValue("");
+    setPasswordValue("");
   };
+
+  const handleChangeNameValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNameValue(e.target.value);
+  };
+  const handleChangeEmailValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(e.target.value);
+  };
+
+  const handleChangePasswordValue = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPasswordValue(e.target.value);
+  };
+
+  const inputsArray = [
+    {
+      name: "Name",
+      svg: nameSvg,
+      type: "text",
+      value: nameValue,
+      onChange: handleChangeNameValue,
+    },
+    {
+      name: "Email",
+      svg: emailSvg,
+      type: "email",
+      value: emailValue,
+      onChange: handleChangeEmailValue,
+    },
+    {
+      name: "Password",
+      svg: lockSvg,
+      type: "password",
+      value: passwordValue,
+      onChange: handleChangePasswordValue,
+    },
+  ];
+
   return (
     <div className="Login">
       <div className="kiraz-logo-container">
@@ -51,47 +94,18 @@ const LoginModal = () => {
       </div>
       {errorMsg && <p id="error-msg">{errorMsg}</p>}
 
-      <form onSubmit={isRegister ? handleRegister : handleLogIn}>
-        {isRegister && (
-          <div className="input-container">
-            <img src={nameSvg} alt="name svg" />
-            <input
-              type="text"
-              name="Name"
-              id="Name"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-        )}
-        <div className="input-container">
-          <img src={emailSvg} alt="email svg" />
-          <input
-            type="email"
-            name="Email"
-            id="Email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="input-container">
-          <img src={lockSvg} alt="lock svg" />
-          <input
-            type="password"
-            name="Password"
-            id="Password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" id="login-btn">
-          {isRegister ? "Sign Up" : "Sign In"}
-        </button>
-      </form>
+      <LoginForm
+        handleChangeNameValue={handleChangeNameValue}
+        handleLogIn={handleLogIn}
+        handleRegister={handleRegister}
+        inputsArray={inputsArray}
+        isRegister={isRegister}
+        nameSvg={nameSvg}
+        nameValue={nameValue}
+      />
+
       <hr />
+
       <p id="register">
         {isRegister ? "Already have an account?" : "Don't have an account?"}
         <span id="create-account-msg" onClick={handleLoginOrRegister}>
