@@ -13,6 +13,7 @@ const useFilteredArray = (array: Types.Clothes[]) => {
     S: false,
   });
 
+  //   HMMMMMMMMMMMMMMMMMMM
   const filteredArray = array.filter((pants: Types.Clothes) => {
     if (
       isColorChecked.green &&

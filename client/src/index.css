@@ -43,3 +43,7 @@ hr {
 .hide {
   display: none;
 }
+
+#loading {
+  margin: 0 25vw;
+}

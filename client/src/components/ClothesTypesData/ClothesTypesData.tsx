@@ -3,6 +3,7 @@ import Cards from "../Cards/Cards";
 import * as Types from "../../types/ClothesTypes";
 import FilterData from "../FilterData/FilterData";
 import useFilteredArray from "../../hooks/useFilteredArray";
+import loadingGif from "../../assets/loading-animation.gif";
 
 type ClothesTypesDataProps = {
   text: string;
@@ -23,6 +24,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
     setIsSizeChecked,
   } = useFilteredArray(array);
 
+  console.log(filteredArray);
   return (
     <>
       <div id="title">
@@ -60,7 +62,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
           </div>
         </div>
         <div className="data">
-          {filteredArray ? (
+          {filteredArray.length > 0 ? (
             <>
               {filteredArray.map((clothes: Types.Clothes) => {
                 return (
@@ -76,7 +78,9 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
               })}
             </>
           ) : (
-            <h1>Loading...</h1>
+            <div id="loading">
+              <img src={loadingGif} alt="loading animation" />
+            </div>
           )}
         </div>
       </div>
