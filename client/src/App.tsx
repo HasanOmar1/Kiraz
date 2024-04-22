@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import ThemeContextProvider from "./context/ThemeContext";
 import Home from "./pages/Home/Home";
-import Collection from "./pages/Collection/Collection";
 import ClothesContextProvider from "./context/ClothesContext";
 import LoginContextProvider from "./context/LoginContext";
 import ModalContextProvider from "./context/ModalContext";
@@ -23,7 +22,6 @@ function App() {
                 <Navbar />
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/collection/:name" element={<Collection />} />
                   {/* Clothes */}
                   <Route path="/pants" element={<PantsPage />} />
                   <Route path="/shirts" element={<ShirtsPage />} />

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "../axiosConfig";
 import * as Type from "../types/ClothesTypes";
 
@@ -7,7 +7,6 @@ type ClothesContextProviderProps = {
 };
 
 type ClothesContextValues = {
-  getClothes: Type.Clothes[];
   getClothesByTypeData: Type.Clothes[];
   getClothesByType: (clothesType: string) => void;
   optionsForQuery: string;
@@ -18,25 +17,10 @@ type ClothesContextValues = {
 const ClothesContext = createContext<null | ClothesContextValues>(null);
 
 const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
-  const [getClothes, setGetClothes] = useState<Type.Clothes[]>([]);
   const [getClothesByTypeData, setGetClothesByTypeData] = useState<
     Type.Clothes[]
   >([]);
   const [optionsForQuery, setOptionsForQuery] = useState("");
-
-  useEffect(() => {
-    // getAllClothes();
-  }, []);
-
-  const getAllClothes = async () => {
-    try {
-      const response = await axios.get("/clothes");
-      console.log(response.data);
-      setGetClothes(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const getClothesByType = async (options: string) => {
     try {
@@ -52,7 +36,6 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   return (
     <ClothesContext.Provider
       value={{
-        getClothes,
         getClothesByTypeData,
         getClothesByType,
         optionsForQuery,

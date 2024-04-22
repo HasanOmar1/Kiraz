@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "../axiosConfig";
 import { useModalContext } from "./ModalContext";
 import * as Type from "../types/LoginContextTypes";
@@ -31,14 +31,14 @@ const LoginContextProvider = ({ children }: Props) => {
   //   getAllUsers();
   // }, []);
 
-  const getAllUsers = async () => {
-    try {
-      const response = await axios.get("/users");
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getAllUsers = async () => {
+  //   try {
+  //     const response = await axios.get("/users");
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const createUser = async (user: Type.CreatedUser) => {
     try {
