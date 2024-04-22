@@ -30,7 +30,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.get("/shirts");
       setGetShirts(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +39,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.get("/hoodies");
       setGetHoodies(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +48,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.get("/pants");
       setGetPants(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +57,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.get("/shorts");
       setGetShorts(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(error);
     }

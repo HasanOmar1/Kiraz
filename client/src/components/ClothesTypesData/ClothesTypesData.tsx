@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Cards from "../Cards/Cards";
 import * as Types from "../../types/ClothesTypes";
-import FilterDataTest from "../FilterDataTest/FilterDataTest";
+import FilterData from "../FilterData/FilterData";
+import useFilteredArray from "../../hooks/useFilteredArray";
 
 type ClothesTypesDataProps = {
   text: string;
@@ -14,56 +15,13 @@ const SIZES = ["L", "M", "S"];
 const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
-  const [isColorChecked, setIsColorChecked] = useState({
-    green: false,
-    black: false,
-    blue: false,
-  });
-  const [isSizeChecked, setIsSizeChecked] = useState({
-    L: false,
-    M: false,
-    S: false,
-  });
-
-  // const filterBy = (items: Types.Clothes[]) => {
-  const filteredArray = array.filter((pants) => {
-    if (isColorChecked.green && isColorChecked.black && isColorChecked.blue) {
-      return (
-        pants.color === "green" ||
-        pants.color === "black" ||
-        pants.color === "blue"
-      );
-    }
-
-    if (isColorChecked.green && isColorChecked.black) {
-      return pants.color === "green" || pants.color === "black";
-    }
-
-    if (isColorChecked.green && isColorChecked.blue) {
-      return pants.color === "green" || pants.color === "blue";
-    }
-
-    if (isColorChecked.black && isColorChecked.blue) {
-      return pants.color === "black" || pants.color === "blue";
-    }
-
-    if (isColorChecked.green) pants.color === "green";
-    if (isColorChecked.blue) pants.color === "blue";
-    if (isColorChecked.black) return pants.color === "black";
-
-    // if (isSizeChecked.L) {
-    //   return pants.size === "L";
-    // } else if (isSizeChecked.M) {
-    //   return pants.size === "M";
-    // } else if (isSizeChecked.S) {
-    //   return pants.size === "S";
-
-    // }
-    return pants;
-  });
-  // };
-
-  console.log(filteredArray);
+  const {
+    filteredArray,
+    isColorChecked,
+    isSizeChecked,
+    setIsColorChecked,
+    setIsSizeChecked,
+  } = useFilteredArray(array);
 
   return (
     <>
@@ -76,7 +34,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
           <p>FILTERS</p>
           <div className="filter-by">
             <div className="colors-container">
-              <FilterDataTest
+              <FilterData
                 filterByText={"COLOR"}
                 classNameCondition={isShowingColors}
                 onClickFunction={() => setIsShowingColors((prev) => !prev)}
@@ -87,7 +45,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
                 setIsColorChecked={setIsColorChecked}
                 setIsSizeChecked={setIsSizeChecked}
               />
-              <FilterDataTest
+              <FilterData
                 filterByText={"SIZE"}
                 classNameCondition={isShowingSizes}
                 onClickFunction={() => setIsShowingSizes((prev) => !prev)}
@@ -104,7 +62,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
         <div className="data">
           {filteredArray ? (
             <>
-              {filteredArray.map((clothes) => {
+              {filteredArray.map((clothes: Types.Clothes) => {
                 return (
                   <Cards
                     key={clothes._id}
