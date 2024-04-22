@@ -23,7 +23,6 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
     setIsColorChecked,
     setIsSizeChecked,
   } = useFilteredArray(array);
-
   console.log(filteredArray);
   return (
     <>
