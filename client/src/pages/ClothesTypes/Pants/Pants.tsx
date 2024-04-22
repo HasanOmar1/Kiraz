@@ -12,6 +12,8 @@ const PantsPage = () => {
     getAllPants();
   }, []);
 
+  // const blue = getPants.filter((pants) => pants.color === "green");
+
   return (
     <main className={`ClothesPage Page ${getThemeClassName()} `}>
       <ClothesTypesData array={getPants} text="Pants" />

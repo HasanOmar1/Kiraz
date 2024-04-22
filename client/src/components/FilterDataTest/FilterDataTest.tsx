@@ -1,8 +1,18 @@
 import "./FilterData.css";
 import arrowSvg from "../../assets/svgs/arrow.svg";
-import { useState } from "react";
-import { useClothesContext } from "../../context/ClothesContext";
-import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
+import FilterDataOptionsTest from "../FilterDataOptionsTest/FilterDataOptionsTest";
+
+type Colors = {
+  green: boolean;
+  black: boolean;
+  blue: boolean;
+};
+
+type Sizes = {
+  L: boolean;
+  M: boolean;
+  S: boolean;
+};
 
 type FilterDataProps = {
   onClickFunction: () => void;
@@ -10,46 +20,37 @@ type FilterDataProps = {
   filterByText: string;
   panelOptions: string[];
   hasColor: boolean;
+  isColorChecked: Colors;
+  setIsColorChecked: React.Dispatch<React.SetStateAction<Colors>>;
+  isSizeChecked: Sizes;
+  setIsSizeChecked: React.Dispatch<React.SetStateAction<Sizes>>;
 };
 
-const FilterData = ({
+const FilterDataTest = ({
   onClickFunction,
   classNameCondition,
   filterByText,
   panelOptions,
   hasColor,
+  isColorChecked,
+  setIsColorChecked,
+  isSizeChecked,
+  setIsSizeChecked,
 }: FilterDataProps) => {
-  const [isColorChecked, setIsColorChecked] = useState({
-    green: false,
-    black: false,
-    blue: false,
-  });
-  const [isSizeChecked, setIsSizeChecked] = useState({
-    L: false,
-    M: false,
-    S: false,
-  });
-
-  // const { setOptionsForQuery } = useClothesContext();
-
+  //
   const checkIfChecked = (items: string) => {
     if (filterByText === "COLOR") {
       setIsColorChecked((prevChecked) => {
         const updatedChecked = {
           ...prevChecked,
-          //keyof = value can only be the keys of isColorChecked which are green || black || blue (union)
+          //keyof = value can only be the keys of isColorChecked which are green | black | blue (union)
           //keyof typeof = is the same like keyof but used on objects
 
           [items as keyof typeof isColorChecked]:
             !prevChecked[items as keyof typeof isColorChecked],
         };
         //Object.keys(object) returns an array of the object's keys
-        const checkedOptions = Object.keys(updatedChecked)
-          .filter((key) => updatedChecked[key as keyof typeof isColorChecked])
-          .map((key) => `&color=${key}`)
-          .join("");
 
-        // setOptionsForQuery(checkedOptions);
         return updatedChecked;
       });
     }
@@ -62,16 +63,11 @@ const FilterData = ({
             !prevChecked[items as keyof typeof isSizeChecked],
         };
 
-        const checkedOptions = Object.keys(updatedChecked)
-          .filter((key) => updatedChecked[key as keyof typeof isSizeChecked])
-          .map((key) => `&size=${key}`)
-          .join("");
-
-        // setOptionsForQuery(checkedOptions);
         return updatedChecked;
       });
     }
   };
+  //
 
   const isCheckBoxChecked = (items: string) =>
     items === "green"
@@ -87,6 +83,26 @@ const FilterData = ({
       : items === "S"
       ? isSizeChecked.S
       : false;
+
+  // const filterBy = (items: Clothes[]) => {
+  //   const filteredArray = items.filter((pants) => {
+  //     if (isSizeChecked.L) {
+  //       return pants.size === "L";
+  //     } else if (isSizeChecked.M) {
+  //       return pants.size === "M";
+  //     } else if (isSizeChecked.S) {
+  //       return pants.size === "S";
+  //     }
+
+  //     if (isColorChecked.green) {
+  //       return pants.color === "green";
+  //     } else if (isColorChecked.blue) {
+  //       return pants.color === "blue";
+  //     } else if (isColorChecked.black) {
+  //       return pants.color === "black";
+  //     }
+  //   });
+  // };
 
   return (
     <>
@@ -105,7 +121,7 @@ const FilterData = ({
           </div>
 
           {classNameCondition && (
-            <FilterDataOptions
+            <FilterDataOptionsTest
               checkIfChecked={checkIfChecked}
               hasColor={hasColor}
               isCheckBoxChecked={isCheckBoxChecked}
@@ -119,4 +135,4 @@ const FilterData = ({
   );
 };
 
-export default FilterData;
+export default FilterDataTest;

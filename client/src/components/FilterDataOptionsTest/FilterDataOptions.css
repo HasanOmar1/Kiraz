@@ -1,0 +1,44 @@
+.FilterDataOptions.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.FilterDataOptions .checkbox-container {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.FilterDataOptions .checkbox-container label {
+  cursor: pointer;
+  font-size: 0.93rem;
+}
+
+.FilterDataOptions .checkbox-container input {
+  width: 17px;
+  cursor: pointer;
+  accent-color: gold;
+}
+
+.FilterDataOptions .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.FilterDataOptions .green {
+  background-color: rgb(33, 116, 33);
+}
+
+.FilterDataOptions .black {
+  background-color: rgba(10, 8, 8, 0.863);
+}
+
+.FilterDataOptions .blue {
+  background-color: rgb(49, 49, 198);
+}
+
+.FilterDataOptions #options-label {
+  color: rgb(128, 117, 117);
+}

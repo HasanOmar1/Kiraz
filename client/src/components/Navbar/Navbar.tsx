@@ -41,19 +41,25 @@ const Navbar = () => {
         {currentUser && <p>Welcome {currentUser.name}</p>}
         <div className="svgs-container">
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
-          <img
-            src={loginSvg}
-            alt="login icon"
-            className="svg"
-            onClick={openModal}
-          />
-          {currentUser && (
+          {currentUser ? (
+            <img src={loginSvg} alt="login icon" className="svg" />
+          ) : (
             <img
-              src={logoutSvg}
-              alt="logout icon"
+              src={loginSvg}
+              alt="login icon"
               className="svg"
-              onClick={handleLogOut}
+              onClick={openModal}
             />
+          )}
+          {currentUser && (
+            <div>
+              <img
+                src={logoutSvg}
+                alt="logout icon"
+                className="svg"
+                onClick={handleLogOut}
+              />
+            </div>
           )}
         </div>
       </div>
