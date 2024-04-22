@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import "./Cards.css";
+import { Clothes } from "../../types/ClothesTypes";
 
 type CardsProps = {
   cover: string;
@@ -6,14 +8,18 @@ type CardsProps = {
   color: string;
   price: number;
   size: string;
+  id: string;
+  state: Clothes;
 };
 
-const Cards = ({ cover, name, color, price, size }: CardsProps) => {
+const Cards = ({ cover, name, color, price, size, id, state }: CardsProps) => {
   color = color[0].toUpperCase() + color.slice(1);
 
   return (
     <div className="Cards">
-      <img src={cover} alt="img cover" />
+      <Link to={`/product/${id}`} state={state}>
+        <img src={cover} alt="img cover" />
+      </Link>
       <p>{name}</p>
       <p>Size: {size}</p>
       <p>Color: {color}</p>

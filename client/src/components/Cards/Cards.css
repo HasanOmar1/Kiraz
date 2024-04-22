@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  outline: 1px solid rgba(128, 128, 128, 0.327);
+}
+.Cards p {
+  padding: 0 15px;
 }
 .Cards p:first-of-type {
   padding-top: 5px;

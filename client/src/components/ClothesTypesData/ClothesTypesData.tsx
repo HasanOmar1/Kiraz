@@ -23,7 +23,8 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
     setIsColorChecked,
     setIsSizeChecked,
   } = useFilteredArray(array);
-  console.log(filteredArray);
+
+  // console.log(filteredArray);
   return (
     <>
       <div id="title">
@@ -66,6 +67,8 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
               {filteredArray.map((clothes: Types.Clothes) => {
                 return (
                   <Cards
+                    state={clothes}
+                    id={clothes._id}
                     key={clothes._id}
                     name={clothes.name}
                     cover={clothes.img}
