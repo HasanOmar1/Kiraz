@@ -29,7 +29,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
     <>
       <div id="title">
         <h1>{text}</h1>
-        <p>{array?.length} Products</p>
+        <p>{filteredArray?.length} Products</p>
       </div>
       <div className="data-container">
         <div className="filters">

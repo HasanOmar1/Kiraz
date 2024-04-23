@@ -21,9 +21,9 @@ const Cards = ({ cover, name, color, price, size, id, state }: CardsProps) => {
         <img src={cover} alt="img cover" loading="lazy" />
       </Link>
       <p>{name}</p>
+      <p>{color}</p>
       <p>Size: {size}</p>
-      <p>Color: {color}</p>
-      <p>Price: ${price}</p>
+      <p>{price}$</p>
     </div>
   );
 };

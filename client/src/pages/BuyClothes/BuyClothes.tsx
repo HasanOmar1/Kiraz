@@ -8,15 +8,17 @@ import upperCaseLetter from "../../utils/UpperCaseLetter";
 const BuyClothes = () => {
   const { getClothesById, clothesById } = useClothesContext();
   const { id } = useParams();
-  const [currentColor, setCurrentColor] = useState(
-    clothesById?.color ?? "green"
-  );
+  const [currentColor, setCurrentColor] = useState(clothesById?.color);
   const { getThemeClassName } = useThemeContext();
 
   useEffect(() => {
     getClothesById(id);
   }, [id]);
   console.log(clothesById);
+
+  useEffect(() => {
+    setCurrentColor(clothesById?.color);
+  }, [clothesById?.color]);
 
   const currentActiveColor = (color: string) => {
     setCurrentColor(color);
@@ -65,18 +67,24 @@ const BuyClothes = () => {
               </span>
             </h2>
             <div className="colors-container">
-              <div
-                className={`green ${currentColor === "green" && "active"}`}
-                onClick={() => currentActiveColor("green")}
-              ></div>
-              <div
-                className={`black ${currentColor === "black" && "active"}`}
-                onClick={() => currentActiveColor("black")}
-              ></div>
-              <div
-                className={`blue ${currentColor === "blue" && "active"}`}
-                onClick={() => currentActiveColor("blue")}
-              ></div>
+              {clothesById.greenImg && (
+                <div
+                  className={`green ${currentColor === "green" && "active"}`}
+                  onClick={() => currentActiveColor("green")}
+                ></div>
+              )}
+              {clothesById.blackImg && (
+                <div
+                  className={`black ${currentColor === "black" && "active"}`}
+                  onClick={() => currentActiveColor("black")}
+                ></div>
+              )}
+              {clothesById.blueImg && (
+                <div
+                  className={`blue ${currentColor === "blue" && "active"}`}
+                  onClick={() => currentActiveColor("blue")}
+                ></div>
+              )}
             </div>
             <p id="type-info">{typeInfo}</p>
             <div className="buy-btn-container">
