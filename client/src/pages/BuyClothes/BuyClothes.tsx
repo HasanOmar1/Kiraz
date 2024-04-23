@@ -23,22 +23,31 @@ const BuyClothes = () => {
     setCurrentColor(color);
   };
 
+  const typeInfo =
+    clothesById?.type === "pants"
+      ? "Fit: True to size—designed with a long, slim leg and ribbed ankle cuffs"
+      : clothesById?.type === "shirts"
+      ? "Fit: True to size—designed for a relaxed fit"
+      : clothesById?.type === "hoodies"
+      ? "Fit: Unisex style. Designed for a boxy, oversized look—size down if you prefer a closer fit."
+      : clothesById?.type === "shorts"
+      ? `Fit: True to size—designed with a shorter inseam than our classic 7" styles`
+      : "";
+
+  const currentImg =
+    currentColor === "blue"
+      ? clothesById?.blueImg
+      : currentColor === "green"
+      ? clothesById?.greenImg
+      : currentColor === "black"
+      ? clothesById?.blackImg
+      : "";
+
   return (
     <main className={`Page BuyClothes ${getThemeClassName()}`}>
       {clothesById && (
         <div className="data-container">
-          <img
-            src={
-              currentColor === "blue"
-                ? clothesById.blueImg
-                : currentColor === "green"
-                ? clothesById.greenImg
-                : currentColor === "black"
-                ? clothesById.blackImg
-                : ""
-            }
-            alt="product img"
-          />
+          <img src={currentImg} alt="product img" />
           <div className="data">
             <h1>{clothesById.name}</h1>
             <h2>
@@ -70,17 +79,7 @@ const BuyClothes = () => {
                 onClick={() => currentActiveColor("blue")}
               ></div>
             </div>
-            <p id="type-info">
-              {clothesById.type === "pants"
-                ? "Fit: True to size—designed with a long, slim leg and ribbed ankle cuffs"
-                : clothesById.type === "shirts"
-                ? "Fit: True to size—designed for a relaxed fit"
-                : clothesById.type === "hoodies"
-                ? "Fit: Unisex style. Designed for a boxy, oversized look—size down if you prefer a closer fit."
-                : clothesById.type === "shorts"
-                ? `Fit: True to size—designed with a shorter inseam than our classic 7" styles`
-                : ""}
-            </p>
+            <p id="type-info">{typeInfo}</p>
             <div className="buy-btn-container">
               <button id="buy-btn">Add To Bag</button>
             </div>
