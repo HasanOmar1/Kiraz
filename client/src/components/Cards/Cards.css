@@ -1,6 +1,6 @@
 .Cards {
   width: 300px;
-  height: 600px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -25,4 +25,25 @@
 
 .Cards p {
   font-size: 1.1rem;
+}
+
+.Cards .colors-container {
+  display: flex;
+  flex-direction: row;
+  /* gap: 20px; */
+  justify-content: center;
+  align-items: center;
+}
+
+.Cards .green,
+.Cards .black,
+.Cards .blue {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.Cards #more-colors {
+  font-size: 0.7rem;
+  color: gray;
 }

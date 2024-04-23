@@ -10,9 +10,23 @@ type CardsProps = {
   size: string;
   id: string;
   state: Clothes;
+  greenImg: string | undefined;
+  blackImg: string | undefined;
+  blueImg: string | undefined;
 };
 
-const Cards = ({ cover, name, color, price, size, id, state }: CardsProps) => {
+const Cards = ({
+  cover,
+  name,
+  color,
+  price,
+  size,
+  id,
+  state,
+  greenImg,
+  blackImg,
+  blueImg,
+}: CardsProps) => {
   color = color[0].toUpperCase() + color.slice(1);
 
   return (
@@ -24,6 +38,12 @@ const Cards = ({ cover, name, color, price, size, id, state }: CardsProps) => {
       <p>{color}</p>
       <p>Size: {size}</p>
       <p>{price}$</p>
+      <p id="more-colors">More colors</p>
+      <div className="colors-container">
+        {greenImg && <div className={`green`}></div>}
+        {blackImg && <div className={`black `}></div>}
+        {blueImg && <div className={`blue`}></div>}
+      </div>
     </div>
   );
 };

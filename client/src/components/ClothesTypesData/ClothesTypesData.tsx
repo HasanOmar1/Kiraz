@@ -72,9 +72,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
                     key={clothes._id}
                     name={clothes.name}
                     cover={
-                      clothes.img
-                        ? clothes.img
-                        : clothes.color === "green"
+                      clothes.color === "green"
                         ? clothes.greenImg
                         : clothes.color === "black"
                         ? clothes.blackImg
@@ -82,6 +80,9 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
                         ? clothes.blueImg
                         : ""
                     }
+                    greenImg={clothes.greenImg}
+                    blackImg={clothes.blackImg}
+                    blueImg={clothes.blueImg}
                     price={clothes.price}
                     size={clothes.size}
                     color={clothes.color}
