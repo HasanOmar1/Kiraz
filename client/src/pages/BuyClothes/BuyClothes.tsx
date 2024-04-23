@@ -11,7 +11,6 @@ const BuyClothes = () => {
   const [currentColor, setCurrentColor] = useState(
     clothesById?.color ?? "green"
   );
-
   const { getThemeClassName } = useThemeContext();
 
   useEffect(() => {
