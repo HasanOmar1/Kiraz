@@ -26,21 +26,23 @@ export const getClothesTypeById = async (type, req, res, next) => {
   }
 };
 
-export const addClothesType = async (type1, req, res, next) => {
+export const addClothesType = async (type, req, res, next) => {
   try {
-    const { name, color, size, price, img } = req.body;
+    const { name, color, size, price, greenImg, blackImg, blueImg } = req.body;
 
-    if (!name || !color || !size || !price || !img) {
+    if (!name || !color || !size || !price) {
       res.status(STATUS_CODE.BAD_REQUEST);
       throw new Error("Please fill all fields");
     }
 
-    const newClothes = await type1.create({
+    const newClothes = await type.create({
       name,
       color,
       size,
       price,
-      img,
+      greenImg,
+      blueImg,
+      blackImg,
     });
 
     await Clothes.create({
@@ -49,7 +51,9 @@ export const addClothesType = async (type1, req, res, next) => {
       color,
       size,
       price,
-      img,
+      greenImg,
+      blueImg,
+      blackImg,
       type: newClothes.type,
     });
 

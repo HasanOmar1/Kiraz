@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as Types from "../types/ClothesTypes";
 
-const useFilteredArray = (array: Types.Clothes[]) => {
+const useFilteredArray = (array?: Types.Clothes[]) => {
   const [isColorChecked, setIsColorChecked] = useState({
     green: false,
     black: false,
@@ -14,7 +14,7 @@ const useFilteredArray = (array: Types.Clothes[]) => {
   });
 
   //   HMMMMMMMMMMMMMMMMMMM
-  const filteredArray = array.filter((pants: Types.Clothes) => {
+  const filteredArray = array?.filter((pants: Types.Clothes) => {
     if (
       isColorChecked.green &&
       isColorChecked.black &&

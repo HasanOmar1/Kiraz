@@ -1,6 +1,6 @@
 import "./FilterData.css";
 import arrowSvg from "../../assets/svgs/arrow.svg";
-import FilterDataOptionsTest from "../FilterDataOptions/FilterDataOptions";
+import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 
 type Colors = {
   green: boolean;
@@ -26,7 +26,7 @@ type FilterDataProps = {
   setIsSizeChecked: React.Dispatch<React.SetStateAction<Sizes>>;
 };
 
-const FilterDataTest = ({
+const FilterData = ({
   onClickFunction,
   classNameCondition,
   filterByText,
@@ -101,7 +101,7 @@ const FilterDataTest = ({
           </div>
 
           {classNameCondition && (
-            <FilterDataOptionsTest
+            <FilterDataOptions
               checkIfChecked={checkIfChecked}
               hasColor={hasColor}
               isCheckBoxChecked={isCheckBoxChecked}
@@ -115,4 +115,4 @@ const FilterDataTest = ({
   );
 };
 
-export default FilterDataTest;
+export default FilterData;

@@ -47,3 +47,15 @@ hr {
 #loading {
   margin: 0 25vw;
 }
+
+.green {
+  background-color: rgb(12, 142, 12);
+}
+
+.black {
+  background-color: rgb(12, 9, 9);
+}
+
+.blue {
+  background-color: rgb(14, 14, 121);
+}

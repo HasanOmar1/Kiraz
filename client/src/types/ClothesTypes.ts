@@ -1,6 +1,9 @@
 export type Clothes = {
   color: string;
-  img: string;
+  img?: string;
+  greenImg?: string;
+  blackImg?: string;
+  blueImg?: string;
   name: string;
   price: number;
   size: string;

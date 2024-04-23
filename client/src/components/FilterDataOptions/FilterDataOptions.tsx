@@ -8,7 +8,7 @@ type FilterDataOptionsProps = {
   hasColor: boolean;
 };
 
-const FilterDataOptionsTest = ({
+const FilterDataOptions = ({
   panelOptions,
   isCheckBoxChecked,
   checkIfChecked,
@@ -39,4 +39,4 @@ const FilterDataOptionsTest = ({
   );
 };
 
-export default FilterDataOptionsTest;
+export default FilterDataOptions;

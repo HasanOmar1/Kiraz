@@ -7,41 +7,29 @@ type ClothesContextProviderProps = {
 };
 
 type ClothesContextValues = {
-  getClothesByTypeData: Type.Clothes[];
-  getClothesByType: (clothesType: string) => void;
-  optionsForQuery: string;
-  setOptionsForQuery: React.Dispatch<React.SetStateAction<string>>;
-  setGetClothesByTypeData: React.Dispatch<React.SetStateAction<Type.Clothes[]>>;
+  getClothesById: (id: string | undefined) => void;
+  clothesById: null | Type.Clothes;
+  setClothesById: React.Dispatch<React.SetStateAction<Type.Clothes | null>>;
 };
 
 const ClothesContext = createContext<null | ClothesContextValues>(null);
 
 const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
-  const [getClothesByTypeData, setGetClothesByTypeData] = useState<
-    Type.Clothes[]
-  >([]);
-  const [optionsForQuery, setOptionsForQuery] = useState("");
+  const [clothesById, setClothesById] = useState<null | Type.Clothes>(null);
 
-  const getClothesByType = async (options: string) => {
+  const getClothesById = async (id: string | undefined) => {
     try {
-      // const response = await axios.get(`/clothes/by?type=${clothesType}`);
-      const response = await axios.get(`/clothes/by?type=${options}`);
+      const response = await axios.get(`/clothes/${id}`);
       // console.log(response.data);
-      setGetClothesByTypeData(response.data);
-    } catch (error) {
+      setClothesById(response.data);
+    } catch (error: any) {
       console.log(error);
     }
   };
 
   return (
     <ClothesContext.Provider
-      value={{
-        getClothesByTypeData,
-        getClothesByType,
-        optionsForQuery,
-        setOptionsForQuery,
-        setGetClothesByTypeData,
-      }}
+      value={{ getClothesById, clothesById, setClothesById }}
     >
       {children}
     </ClothesContext.Provider>

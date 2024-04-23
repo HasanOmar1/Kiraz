@@ -62,16 +62,26 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
           </div>
         </div>
         <div className="data">
-          {filteredArray.length > 0 ? (
+          {filteredArray?.length ?? 0 > 0 ? (
             <>
-              {filteredArray.map((clothes: Types.Clothes) => {
+              {filteredArray?.map((clothes: Types.Clothes) => {
                 return (
                   <Cards
                     state={clothes}
                     id={clothes._id}
                     key={clothes._id}
                     name={clothes.name}
-                    cover={clothes.img}
+                    cover={
+                      clothes.img
+                        ? clothes.img
+                        : clothes.color === "green"
+                        ? clothes.greenImg
+                        : clothes.color === "black"
+                        ? clothes.blackImg
+                        : clothes.color === "blue"
+                        ? clothes.blueImg
+                        : ""
+                    }
                     price={clothes.price}
                     size={clothes.size}
                     color={clothes.color}

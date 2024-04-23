@@ -3,7 +3,7 @@ import "./Cards.css";
 import { Clothes } from "../../types/ClothesTypes";
 
 type CardsProps = {
-  cover: string;
+  cover: string | undefined;
   name: string;
   color: string;
   price: number;
@@ -18,7 +18,7 @@ const Cards = ({ cover, name, color, price, size, id, state }: CardsProps) => {
   return (
     <div className="Cards">
       <Link to={`/product/${id}`} state={state}>
-        <img src={cover} alt="img cover" />
+        <img src={cover} alt="img cover" loading="lazy" />
       </Link>
       <p>{name}</p>
       <p>Size: {size}</p>

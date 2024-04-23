@@ -3,40 +3,18 @@ import Hoodies from "../models/hoodiesModel.js";
 import Pants from "../models/pantsModel.js";
 import Shirts from "../models/shirtsModel.js";
 import Shorts from "../models/shortsModel.js";
-import { getAllClothesType } from "../utils/clothingTypeController.js";
+import {
+  getAllClothesType,
+  getClothesTypeById,
+} from "../utils/clothingTypeController.js";
 
 export const getAllClothes = async (req, res, next) => {
   getAllClothesType(Clothes, req, res, next);
 };
 
-export const getClothesByQuery = async (req, res, next) => {
-  const { type } = req.query;
-  const { color } = req.query;
-  const { size } = req.query;
-
+export const getAllClothesById = async (req, res, next) => {
   try {
-    if (type && color && size) {
-      const clothesByColor = await Clothes.find({ type, color, size });
-      res.send(clothesByColor);
-    } else if (type && color) {
-      const clothesByColor = await Clothes.find({ type, color });
-      res.send(clothesByColor);
-    } else if (type && size) {
-      const clothesByColor = await Clothes.find({ type, size });
-      res.send(clothesByColor);
-    } else if (color && size) {
-      const clothesByColor = await Clothes.find({ color, size });
-      res.send(clothesByColor);
-    } else if (type) {
-      const clothesByColor = await Clothes.find({ type });
-      res.send(clothesByColor);
-    } else if (color) {
-      const clothesByColor = await Clothes.find({ color });
-      res.send(clothesByColor);
-    } else if (size) {
-      const clothesByColor = await Clothes.find({ size });
-      res.send(clothesByColor);
-    }
+    getClothesTypeById(Clothes, req, res, next);
   } catch (error) {
     next(error);
   }

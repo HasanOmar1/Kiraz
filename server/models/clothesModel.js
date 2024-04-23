@@ -18,10 +18,9 @@ const clothesSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Enter a price"],
     },
-    img: {
-      type: String,
-      required: [true, "Enter an img"],
-    },
+    greenImg: String,
+    blackImg: String,
+    blueImg: String,
     type: String,
   },
   {

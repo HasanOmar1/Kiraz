@@ -27,18 +27,6 @@
   border-radius: 50%;
 }
 
-.FilterDataOptions .green {
-  background-color: rgb(33, 116, 33);
-}
-
-.FilterDataOptions .black {
-  background-color: rgba(10, 8, 8, 0.863);
-}
-
-.FilterDataOptions .blue {
-  background-color: rgb(49, 49, 198);
-}
-
 .FilterDataOptions #options-label {
   color: rgb(128, 117, 117);
 }

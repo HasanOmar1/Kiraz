@@ -1,2 +1,73 @@
-.BuyClothes {
+.BuyClothes .data-container {
+  padding: 60px 400px;
+  display: flex;
+  gap: 100px;
+}
+
+.BuyClothes img {
+  height: 600px;
+  border-radius: 10px;
+}
+
+.BuyClothes .data {
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier New", Courier, monospace;
+  gap: 20px;
+  width: 100%;
+}
+
+.BuyClothes .data h1 {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.BuyClothes .data span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.BuyClothes .colors-container {
+  display: flex;
+  gap: 20px;
+}
+
+.BuyClothes .green,
+.BuyClothes .black,
+.BuyClothes .blue {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.BuyClothes .active {
+  outline: 1px solid red;
+  outline-offset: 5px;
+}
+
+.BuyClothes .buy-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.BuyClothes #buy-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-size: 1.5rem;
+  width: 70%;
+  transition: opacity 0.2s;
+}
+.BuyClothes #buy-btn:hover {
+  opacity: 0.8;
+}
+.BuyClothes #type-info {
+  padding-top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }

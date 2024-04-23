@@ -8,15 +8,15 @@ import ThemeButton from "../ThemeButton/ThemeButton";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
 import { useModalContext } from "../../context/ModalContext";
-import { useClothesContext } from "../../context/ClothesContext";
 import { useLoginContext } from "../../context/LoginContext";
+import { useClothesContext } from "../../context/ClothesContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { setTheme, theme } = useThemeContext();
   const { closeModal, isModalOpen, openModal } = useModalContext();
-  const { setGetClothesByTypeData } = useClothesContext();
   const { currentUser, setCurrentUser } = useLoginContext();
+  const { setClothesById } = useClothesContext();
 
   const handleSwitchTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const goHome = () => {
     navigate("/");
-    setGetClothesByTypeData([]);
+    setClothesById(null);
   };
 
   const handleLogOut = () => {

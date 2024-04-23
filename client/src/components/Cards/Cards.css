@@ -6,6 +6,10 @@
   gap: 10px;
   outline: 1px solid rgba(128, 128, 128, 0.327);
 }
+
+.Cards:hover {
+  outline: 1px solid rgba(204, 51, 51, 0.742);
+}
 .Cards p {
   padding: 0 15px;
 }
