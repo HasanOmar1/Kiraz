@@ -84,3 +84,8 @@ hr {
   align-items: center;
   gap: 10px;
 }
+
+#back-btn:hover {
+  background-color: rgb(247, 66, 66);
+  color: wheat;
+}
