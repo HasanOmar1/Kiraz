@@ -1,4 +1,5 @@
 import STATUS_CODE from "../constants/statusCodes.js";
+import BagHistory from "../models/bagHistoryModel.js";
 import Bag from "../models/bagModel.js";
 import User from "../models/usersModel.js";
 
@@ -29,6 +30,11 @@ export const addToBag = async (req, res, next) => {
       { new: true }
     );
 
+    await BagHistory.create({
+      bags: newBag,
+    });
+
+    res.status(STATUS_CODE.CREATED);
     res.send(newBag);
   } catch (error) {
     next(error);
@@ -48,7 +54,6 @@ export const deleteBag = async (req, res, next) => {
       { $pull: { bag: id } },
       { new: true }
     );
-
     res.send({
       message: "Bag has been deleted",
       bag: bag,
@@ -62,6 +67,26 @@ export const deleteAllBags = async (req, res, next) => {
   try {
     const bags = await Bag.deleteMany({});
     res.send(bags);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const bagHistory = async (req, res, next) => {
+  try {
+    const bag = await Bag.find({});
+    console.log(bag);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Bag History
+
+export const getBagHistory = async (req, res, next) => {
+  try {
+    const bagHistory = await BagHistory.find({}).populate("bags");
+    res.send(bagHistory);
   } catch (error) {
     next(error);
   }
