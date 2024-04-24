@@ -10,7 +10,7 @@ import PantsPage from "./pages/ClothesTypes/Pants/Pants";
 import ShirtsPage from "./pages/ClothesTypes/Shirts/Shirts";
 import ShortsPage from "./pages/ClothesTypes/Shorts/Shorts";
 import HoodiesPage from "./pages/ClothesTypes/Hoodies/Hoodies";
-import BuyClothes from "./pages/BuyClothes/BuyClothes";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
                 <Navbar />
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/product/:id" element={<BuyClothes />} />
+                  <Route path="/product/:id" element={<ProductPage />} />
                   {/* Clothes */}
                   <Route path="/pants" element={<PantsPage />} />
                   <Route path="/shirts" element={<ShirtsPage />} />

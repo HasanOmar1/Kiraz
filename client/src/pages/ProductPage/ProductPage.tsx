@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect, useState } from "react";
-import "./BuyClothes.css";
+import "./ProductPage.css";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
 
-const BuyClothes = () => {
+const ProductPage = () => {
   const { getClothesById, clothesById } = useClothesContext();
   const { id } = useParams();
   const [currentColor, setCurrentColor] = useState(clothesById?.color);
@@ -45,7 +45,7 @@ const BuyClothes = () => {
       : "";
 
   return (
-    <main className={`Page BuyClothes ${getThemeClassName()}`}>
+    <main className={`Page ProductPage ${getThemeClassName()}`}>
       {clothesById && (
         <div className="data-container">
           <img src={currentImg} alt="product img" />
@@ -97,4 +97,4 @@ const BuyClothes = () => {
   );
 };
 
-export default BuyClothes;
+export default ProductPage;

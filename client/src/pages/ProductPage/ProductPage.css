@@ -1,15 +1,15 @@
-.BuyClothes .data-container {
+.ProductPage .data-container {
   padding: 60px 400px;
   display: flex;
   gap: 100px;
 }
 
-.BuyClothes img {
+.ProductPage img {
   height: 600px;
   border-radius: 10px;
 }
 
-.BuyClothes .data {
+.ProductPage .data {
   display: flex;
   flex-direction: column;
   font-family: "Courier New", Courier, monospace;
@@ -17,43 +17,38 @@
   width: 100%;
 }
 
-.BuyClothes .data h1 {
+.ProductPage .data h1 {
   text-align: center;
   padding-bottom: 40px;
 }
 
-.BuyClothes .data span {
+.ProductPage .data span {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
 }
 
-.BuyClothes .colors-container {
+.ProductPage .colors-container {
   display: flex;
   gap: 20px;
 }
 
-.BuyClothes .green,
-.BuyClothes .black,
-.BuyClothes .blue {
+.ProductPage .green,
+.ProductPage .black,
+.ProductPage .blue {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.BuyClothes .active {
-  outline: 1px solid red;
-  outline-offset: 5px;
-}
-
-.BuyClothes .buy-btn-container {
+.ProductPage .buy-btn-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
 }
-.BuyClothes #buy-btn {
+.ProductPage #buy-btn {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -64,10 +59,10 @@
   width: 70%;
   transition: opacity 0.2s;
 }
-.BuyClothes #buy-btn:hover {
+.ProductPage #buy-btn:hover {
   opacity: 0.8;
 }
-.BuyClothes #type-info {
+.ProductPage #type-info {
   padding-top: 5px;
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -59,3 +59,13 @@ hr {
 .blue {
   background-color: rgb(14, 14, 121);
 }
+
+.active {
+  outline: 1px solid rgb(255, 0, 179);
+  outline-offset: 3px;
+}
+
+.link {
+  text-decoration: none;
+  width: fit-content;
+}

@@ -16,6 +16,7 @@ const SIZES = ["L", "M", "S"];
 const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
+
   const {
     filteredArray,
     isColorChecked,
@@ -67,7 +68,6 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
               {filteredArray?.map((clothes: Types.Clothes) => {
                 return (
                   <Cards
-                    state={clothes}
                     id={clothes._id}
                     key={clothes._id}
                     name={clothes.name}
