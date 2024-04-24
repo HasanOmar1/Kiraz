@@ -69,3 +69,18 @@ hr {
   text-decoration: none;
   width: fit-content;
 }
+
+#back-btn {
+  padding: 10px 15px;
+  background-color: transparent;
+  border: none;
+  color: rgb(247, 66, 66);
+  border: 1px solid rgb(247, 66, 66);
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

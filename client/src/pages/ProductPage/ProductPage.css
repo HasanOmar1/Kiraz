@@ -1,7 +1,8 @@
-.ProductPage .data-container {
+.ProductPage {
   padding: 60px 400px;
   display: flex;
-  gap: 100px;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .ProductPage img {
@@ -9,6 +10,14 @@
   border-radius: 10px;
 }
 
+.ProductPage .back-container {
+  display: flex;
+}
+
+.ProductPage .data-container {
+  display: flex;
+  gap: 100px;
+}
 .ProductPage .data {
   display: flex;
   flex-direction: column;
@@ -65,4 +74,9 @@
 .ProductPage #type-info {
   padding-top: 5px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.ProductPage #back-btn img {
+  width: 15px;
+  height: fit-content;
 }

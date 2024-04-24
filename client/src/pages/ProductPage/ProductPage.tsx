@@ -1,15 +1,18 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect, useState } from "react";
 import "./ProductPage.css";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
+import backSvg from "../../assets/svgs/back-arrow.svg";
 
 const ProductPage = () => {
   const { getClothesById, clothesById } = useClothesContext();
   const { id } = useParams();
   const [currentColor, setCurrentColor] = useState(clothesById?.color);
   const { getThemeClassName } = useThemeContext();
+  const navigate = useNavigate();
+  const { setClothesById } = useClothesContext();
 
   useEffect(() => {
     getClothesById(id);
@@ -22,6 +25,11 @@ const ProductPage = () => {
 
   const currentActiveColor = (color: string) => {
     setCurrentColor(color);
+  };
+
+  const goBackOnePage = () => {
+    navigate(-1);
+    setClothesById(null);
   };
 
   const typeInfo =
@@ -46,6 +54,12 @@ const ProductPage = () => {
 
   return (
     <main className={`Page ProductPage ${getThemeClassName()}`}>
+      <div className="back-container">
+        <button id="back-btn" onClick={goBackOnePage}>
+          <img src={backSvg} alt="back arrow svg" />
+          Back
+        </button>
+      </div>
       {clothesById && (
         <div className="data-container">
           <img src={currentImg} alt="product img" />
