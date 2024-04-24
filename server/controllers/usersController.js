@@ -10,7 +10,12 @@ const generateToken = (id, email) => {
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({}).populate({
+      path: "bag",
+      populate: {
+        path: "clothes",
+      },
+    });
     res.send(users);
   } catch (error) {
     next(error);

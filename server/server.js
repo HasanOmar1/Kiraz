@@ -9,6 +9,7 @@ import clothesRoute from "./routes/clothesRoute.js";
 import pantsRoute from "./routes/pantsRoute.js";
 import shirtsRoute from "./routes/shirtsRoute.js";
 import shortsRoute from "./routes/shortsRoute.js";
+import bagRoute from "./routes/bagRoute.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use("/hoodies", hoodiesRoute);
 app.use("/pants", pantsRoute);
 app.use("/shirts", shirtsRoute);
 app.use("/shorts", shortsRoute);
+app.use("/bag", bagRoute);
 
 app.use(errorHandler);
 

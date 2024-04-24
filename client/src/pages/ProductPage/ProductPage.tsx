@@ -17,7 +17,7 @@ const ProductPage = () => {
   useEffect(() => {
     getClothesById(id);
   }, [id]);
-  console.log(clothesById);
+  // console.log(clothesById);
 
   useEffect(() => {
     setCurrentColor(clothesById?.color);

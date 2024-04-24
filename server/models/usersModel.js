@@ -17,6 +17,12 @@ const usersSchema = new mongoose.Schema(
       required: [true, "Please provide a password"],
       minLength: [2, "Please provide at least two characters"],
     },
+    bag: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Bag",
+      },
+    ],
   },
   {
     toJSON: {
