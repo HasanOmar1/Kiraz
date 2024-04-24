@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Cards.css";
-import { useEffect, useState } from "react";
-import { useClothesContext } from "../../context/ClothesContext";
+import { useState } from "react";
 import { useThemeContext } from "../../context/ThemeContext";
 
 type CardsProps = {
