@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import ThemeContextProvider from "./context/ThemeContext";
 import Home from "./pages/Home/Home";
@@ -11,8 +11,15 @@ import ShirtsPage from "./pages/ClothesTypes/Shirts/Shirts";
 import ShortsPage from "./pages/ClothesTypes/Shorts/Shorts";
 import HoodiesPage from "./pages/ClothesTypes/Hoodies/Hoodies";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import { useEffect } from "react";
 
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <ThemeContextProvider>
