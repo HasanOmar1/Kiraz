@@ -37,6 +37,13 @@
   gap: 15px;
 }
 
+.Navbar .signed-in-svgs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
 .Navbar .svgs-container .svg {
   padding-top: 18px;
   cursor: pointer;
