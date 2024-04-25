@@ -28,6 +28,11 @@ const Navbar = () => {
     setClothesById(null);
   };
 
+  // when the user goes back one page using the browser.
+  window.onpopstate = () => {
+    setClothesById(null);
+  };
+
   const handleLogOut = () => {
     localStorage.clear();
     setCurrentUser(null);

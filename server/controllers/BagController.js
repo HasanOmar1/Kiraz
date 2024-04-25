@@ -30,9 +30,9 @@ export const addToBag = async (req, res, next) => {
       { new: true }
     );
 
-    await BagHistory.create({
-      bags: newBag,
-    });
+    // await BagHistory.create({
+    //   bags: newBag,
+    // });
 
     res.status(STATUS_CODE.CREATED);
     res.send(newBag);
@@ -63,10 +63,16 @@ export const deleteBag = async (req, res, next) => {
   }
 };
 
-export const deleteAllBags = async (req, res, next) => {
+export const checkout = async (req, res, next) => {
   try {
-    const bags = await Bag.deleteMany({});
-    res.send(bags);
+    const updateUser = await User.updateMany(
+      { _id: req.user._id },
+      {
+        $unset: { bag: 1 },
+      }
+    );
+
+    res.send(updateUser);
   } catch (error) {
     next(error);
   }
@@ -85,7 +91,9 @@ export const bagHistory = async (req, res, next) => {
 
 export const getBagHistory = async (req, res, next) => {
   try {
-    const bagHistory = await BagHistory.find({}).populate("bags");
+    const bagHistory = await Bag.find({ user: req.user._id }).populate(
+      "clothes"
+    );
     res.send(bagHistory);
   } catch (error) {
     next(error);

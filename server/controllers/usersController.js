@@ -16,6 +16,7 @@ export const getAllUsers = async (req, res, next) => {
         path: "clothes",
       },
     });
+
     res.send(users);
   } catch (error) {
     next(error);
