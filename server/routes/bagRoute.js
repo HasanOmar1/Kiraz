@@ -14,6 +14,6 @@ router.get("/", getAllBag);
 router.get("/history", protect, getBagHistory);
 router.post("/add", protect, addToBag);
 router.delete("/delete/:id", protect, deleteBag);
-router.delete("/delete-all", protect, checkout);
+router.delete("/checkout", protect, checkout);
 
 export default router;

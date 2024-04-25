@@ -23,7 +23,7 @@ const protect = asyncHandler(async (req, res, next) => {
 
   if (!token) {
     res.status(STATUS_CODE.FORBIDDEN);
-    throw new Error("User is not authorized or token is missing");
+    throw new Error("You must be logged in to do this action");
   }
 });
 

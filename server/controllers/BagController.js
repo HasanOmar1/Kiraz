@@ -1,5 +1,4 @@
 import STATUS_CODE from "../constants/statusCodes.js";
-import BagHistory from "../models/bagHistoryModel.js";
 import Bag from "../models/bagModel.js";
 import User from "../models/usersModel.js";
 
@@ -29,10 +28,6 @@ export const addToBag = async (req, res, next) => {
       { $push: { bag: newBag } },
       { new: true }
     );
-
-    // await BagHistory.create({
-    //   bags: newBag,
-    // });
 
     res.status(STATUS_CODE.CREATED);
     res.send(newBag);
@@ -77,17 +72,6 @@ export const checkout = async (req, res, next) => {
     next(error);
   }
 };
-
-export const bagHistory = async (req, res, next) => {
-  try {
-    const bag = await Bag.find({});
-    console.log(bag);
-  } catch (error) {
-    next(error);
-  }
-};
-
-// Bag History
 
 export const getBagHistory = async (req, res, next) => {
   try {
