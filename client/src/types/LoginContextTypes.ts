@@ -7,7 +7,7 @@ export type CreatedUser = {
   password: string;
 };
 
-export type LoginUser = Omit<CreatedUser, "name">;
+export type LoginUser = Omit<CreatedUser, "name" | "bag">;
 
 export type CurrentLoggedUser = Omit<CreatedUser, "password"> & {
   token: string;

@@ -30,6 +30,7 @@ const LoginModal = () => {
       name: nameValue,
       email: emailValue,
       password: passwordValue,
+      bag: [],
     });
     setNameValue("");
     setEmailValue("");
