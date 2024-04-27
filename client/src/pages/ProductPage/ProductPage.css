@@ -14,68 +14,6 @@
   display: flex;
 }
 
-.ProductPage .data-container {
-  display: flex;
-  gap: 100px;
-}
-.ProductPage .data {
-  display: flex;
-  flex-direction: column;
-  font-family: "Courier New", Courier, monospace;
-  gap: 20px;
-  width: 100%;
-}
-
-.ProductPage .data h1 {
-  text-align: center;
-  padding-bottom: 40px;
-}
-
-.ProductPage .data span {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-.ProductPage .colors-container {
-  display: flex;
-  gap: 20px;
-}
-
-.ProductPage .green,
-.ProductPage .black,
-.ProductPage .blue {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.ProductPage .buy-btn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-}
-.ProductPage #buy-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  font-size: 1.5rem;
-  width: 70%;
-  transition: opacity 0.2s;
-}
-.ProductPage #buy-btn:hover {
-  opacity: 0.8;
-}
-.ProductPage #type-info {
-  padding-top: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .ProductPage #back-btn img {
   width: 15px;
   height: fit-content;
