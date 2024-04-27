@@ -24,6 +24,7 @@ const LoginContextProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<Type.CurrentLoggedUser | null>(
     null
   );
+
   const [errorMsg, setErrorMsg] = useState("");
   const { closeModal } = useModalContext();
 
@@ -62,7 +63,6 @@ const LoginContextProvider = ({ children }: Props) => {
       setCurrentUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       localStorage.setItem("token", response.data.token);
-
       setErrorMsg("");
       closeModal();
     } catch (error: any) {
@@ -70,6 +70,7 @@ const LoginContextProvider = ({ children }: Props) => {
       // console.log(error.response?.data.message);
     }
   };
+
   return (
     <LoginContext.Provider
       value={{

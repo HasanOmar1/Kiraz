@@ -24,7 +24,6 @@ const Bag = () => {
   const removeItem = (id: string) => {
     removeItemFromBag(id);
   };
-
   return (
     <div className={`Bag Page ${getThemeClassName()}`}>
       <div className="big-container">

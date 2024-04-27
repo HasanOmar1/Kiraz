@@ -1,5 +1,6 @@
 import axios from "../axiosConfig";
 import { createContext, useContext } from "react";
+import { useLoginContext } from "./LoginContext";
 
 type Props = {
   children: React.ReactNode;
@@ -17,9 +18,14 @@ const config = {
 };
 
 const BagContextProvider = ({ children }: Props) => {
+  const { setCurrentUser } = useLoginContext();
+
   const removeItemFromBag = async (id: string) => {
     try {
       const response = await axios.delete(`/bag/delete/${id}`, config);
+      const userJSON = JSON.stringify(response.data);
+      localStorage.setItem("user", userJSON);
+      setCurrentUser(response.data);
       console.log(response.data);
     } catch (error: any) {
       console.log(error);

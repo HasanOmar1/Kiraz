@@ -44,15 +44,17 @@ export const deleteBag = async (req, res, next) => {
       res.status(STATUS_CODE.NOT_FOUND);
       throw new Error("Bag id not found");
     }
-    await User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       { $pull: { bag: id } },
       { new: true }
-    );
-    res.send({
-      message: "Bag has been deleted",
-      bag: bag,
+    ).populate({
+      path: "bag",
+      populate: {
+        path: "clothes",
+      },
     });
+    res.send(updatedUser);
   } catch (error) {
     next(error);
   }

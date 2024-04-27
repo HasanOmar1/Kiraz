@@ -118,3 +118,28 @@ export const deleteUser = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getCurrentUser = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id).populate({
+      path: "bag",
+      populate: {
+        path: "clothes",
+      },
+    });
+    if (!user) {
+      res.status(STATUS_CODE.NOT_FOUND);
+      throw new Error("User not found");
+    }
+
+    res.send({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      bag: user.bag,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

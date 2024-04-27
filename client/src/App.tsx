@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import ThemeContextProvider from "./context/ThemeContext";
 import Home from "./pages/Home/Home";
 import ClothesContextProvider from "./context/ClothesContext";
-import LoginContextProvider from "./context/LoginContext";
+// import LoginContextProvider from "./context/LoginContext";
 import ModalContextProvider from "./context/ModalContext";
 import AllClothesTypesContextProvider from "./context/AllClothesTypesContext";
 import PantsPage from "./pages/ClothesTypes/Pants/Pants";
@@ -24,30 +24,30 @@ function App() {
 
   return (
     <>
-      <ThemeContextProvider>
-        <BagContextProvider>
-          <ClothesContextProvider>
-            <AllClothesTypesContextProvider>
-              <ModalContextProvider>
-                <LoginContextProvider>
-                  <Navbar />
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/bag" element={<Bag />} />
-                    <Route path="/product/:id" element={<ProductPage />} />
-                    {/* Clothes */}
-                    <Route path="/pants" element={<PantsPage />} />
-                    <Route path="/shirts" element={<ShirtsPage />} />
-                    <Route path="/shorts" element={<ShortsPage />} />
-                    <Route path="/hoodies" element={<HoodiesPage />} />
-                    {/*  */}
-                  </Routes>
-                </LoginContextProvider>
-              </ModalContextProvider>
-            </AllClothesTypesContextProvider>
-          </ClothesContextProvider>
-        </BagContextProvider>
-      </ThemeContextProvider>
+      {/* <ThemeContextProvider> */}
+      {/* <ModalContextProvider> */}
+      {/* <LoginContextProvider> */}
+      <BagContextProvider>
+        <ClothesContextProvider>
+          <AllClothesTypesContextProvider>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/bag" element={<Bag />} />
+              <Route path="/product/:id" element={<ProductPage />} />
+              {/* Clothes */}
+              <Route path="/pants" element={<PantsPage />} />
+              <Route path="/shirts" element={<ShirtsPage />} />
+              <Route path="/shorts" element={<ShortsPage />} />
+              <Route path="/hoodies" element={<HoodiesPage />} />
+              {/*  */}
+            </Routes>
+          </AllClothesTypesContextProvider>
+        </ClothesContextProvider>
+      </BagContextProvider>
+      {/* </LoginContextProvider> */}
+      {/* </ModalContextProvider> */}
+      {/* </ThemeContextProvider> */}
     </>
   );
 }
