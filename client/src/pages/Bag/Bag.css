@@ -1,0 +1,93 @@
+.Bag {
+  padding: 0 300px;
+  padding-top: 150px;
+}
+.Bag #my-items {
+  padding-bottom: 15px;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 2px;
+}
+.Bag .big-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Bag .container {
+  max-height: 700px;
+  min-height: 200px;
+  border: 3px solid rgb(23, 83, 92);
+  margin: 0 auto;
+  width: 700px;
+  max-width: 700px;
+  min-width: 500px;
+}
+
+.Bag .items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.Bag .list {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  padding-left: 30px;
+  border-bottom: 2px solid rgb(165, 147, 147);
+  align-items: center;
+}
+.Bag .list:last-of-type {
+  border: none;
+}
+
+.Bag .list img {
+  width: fit-content;
+  height: 150px;
+}
+
+.Bag .list-data {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.Bag .color-size {
+  display: flex;
+  gap: 50px;
+}
+
+.Bag .remove-btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: crimson;
+  color: white;
+  cursor: pointer;
+  margin-top: 15%;
+}
+
+.Bag .items span {
+  padding-left: 5px;
+  font-size: 0.9rem;
+}
+
+.Bag #clothing-name {
+  cursor: pointer;
+  width: fit-content;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.Bag #clothing-name:hover {
+  color: orange;
+  text-decoration: underline;
+  text-decoration-color: orange;
+}

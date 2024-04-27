@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
 import { useModalContext } from "./ModalContext";
 import * as Type from "../types/LoginContextTypes";
@@ -27,9 +27,12 @@ const LoginContextProvider = ({ children }: Props) => {
   const [errorMsg, setErrorMsg] = useState("");
   const { closeModal } = useModalContext();
 
-  // useEffect(() => {
-  //   getAllUsers();
-  // }, []);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setCurrentUser(JSON.parse(user));
+    }
+  }, []);
 
   // const getAllUsers = async () => {
   //   try {
@@ -56,8 +59,10 @@ const LoginContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.post(`/users/login`, user);
       console.log(response.data);
-      localStorage.setItem("user", JSON.stringify(response.data));
       setCurrentUser(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem("token", response.data.token);
+
       setErrorMsg("");
       closeModal();
     } catch (error: any) {

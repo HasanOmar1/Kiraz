@@ -28,6 +28,10 @@ const Navbar = () => {
     setClothesById(null);
   };
 
+  const goToBag = () => {
+    navigate("/bag");
+  };
+
   // when the user goes back one page using the browser.
   window.onpopstate = () => {
     setClothesById(null);
@@ -36,7 +40,10 @@ const Navbar = () => {
   const handleLogOut = () => {
     localStorage.clear();
     setCurrentUser(null);
+    navigate("/");
   };
+
+  console.log(currentUser);
 
   return (
     <nav className="Navbar">
@@ -44,13 +51,20 @@ const Navbar = () => {
         <div className="logo-container">
           <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} />
         </div>
-        {currentUser && <p>Welcome {currentUser.name}</p>}
+        {/* {currentUser && <p>Welcome {currentUser.name}</p>} */}
         <div className="svgs-container">
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
           {currentUser ? (
             <div className="signed-in-svgs-container">
               <img src={loginSvg} alt="login icon" className="svg" />
-              <img src={bagSvg} alt="login icon" className="svg" />
+
+              <img
+                src={bagSvg}
+                alt="bag icon"
+                className="svg"
+                onClick={goToBag}
+              />
+
               <img
                 src={logoutSvg}
                 alt="logout icon"

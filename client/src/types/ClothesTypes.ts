@@ -10,3 +10,9 @@ export type Clothes = {
   type: string;
   _id: string;
 };
+
+export type BagItems = {
+  clothes: Clothes;
+  user: string;
+  _id: string;
+};

@@ -12,6 +12,8 @@ import ShortsPage from "./pages/ClothesTypes/Shorts/Shorts";
 import HoodiesPage from "./pages/ClothesTypes/Hoodies/Hoodies";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
+import Bag from "./pages/Bag/Bag";
+import BagContextProvider from "./context/BagContext";
 
 function App() {
   const { pathname } = useLocation();
@@ -23,25 +25,28 @@ function App() {
   return (
     <>
       <ThemeContextProvider>
-        <ClothesContextProvider>
-          <AllClothesTypesContextProvider>
-            <ModalContextProvider>
-              <LoginContextProvider>
-                <Navbar />
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/product/:id" element={<ProductPage />} />
-                  {/* Clothes */}
-                  <Route path="/pants" element={<PantsPage />} />
-                  <Route path="/shirts" element={<ShirtsPage />} />
-                  <Route path="/shorts" element={<ShortsPage />} />
-                  <Route path="/hoodies" element={<HoodiesPage />} />
-                  {/*  */}
-                </Routes>
-              </LoginContextProvider>
-            </ModalContextProvider>
-          </AllClothesTypesContextProvider>
-        </ClothesContextProvider>
+        <BagContextProvider>
+          <ClothesContextProvider>
+            <AllClothesTypesContextProvider>
+              <ModalContextProvider>
+                <LoginContextProvider>
+                  <Navbar />
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/bag" element={<Bag />} />
+                    <Route path="/product/:id" element={<ProductPage />} />
+                    {/* Clothes */}
+                    <Route path="/pants" element={<PantsPage />} />
+                    <Route path="/shirts" element={<ShirtsPage />} />
+                    <Route path="/shorts" element={<ShortsPage />} />
+                    <Route path="/hoodies" element={<HoodiesPage />} />
+                    {/*  */}
+                  </Routes>
+                </LoginContextProvider>
+              </ModalContextProvider>
+            </AllClothesTypesContextProvider>
+          </ClothesContextProvider>
+        </BagContextProvider>
       </ThemeContextProvider>
     </>
   );

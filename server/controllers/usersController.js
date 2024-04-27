@@ -57,6 +57,7 @@ export const createUser = async (req, res, next) => {
         _id: createdUser._id,
         name: createdUser.name,
         email: createdUser.email,
+        bag: createdUser.bag,
         password: createdUser.password,
         token: generateToken(createdUser._id, createdUser.email),
       });
@@ -75,12 +76,19 @@ export const login = async (req, res, next) => {
       throw new Error("All fields must be filled");
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate({
+      path: "bag",
+      populate: {
+        path: "clothes",
+      },
+    });
+
     if (user && (await bcrypt.compare(password, user.password))) {
       res.send({
         _id: user.id,
         name: user.name,
         email: user.email,
+        bag: user.bag,
         token: generateToken(user._id, user.email),
       });
     } else {
