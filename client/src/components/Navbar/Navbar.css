@@ -65,9 +65,8 @@
 
 .Navbar .bag-counter {
   position: absolute;
-  top: 55%;
-  left: 5px;
+  top: 58%;
+  left: 6px;
   pointer-events: none;
-
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
