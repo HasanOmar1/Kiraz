@@ -64,7 +64,7 @@ const Navbar = () => {
                   className="svg"
                   onClick={goToBag}
                 />
-                <div className="bag-counter">{currentUser.bag.length}</div>
+                <div className="bag-counter">{currentUser?.bag?.length}</div>
               </div>
               <div>
                 <img
