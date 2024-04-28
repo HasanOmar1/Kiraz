@@ -43,7 +43,7 @@ const Navbar = () => {
     navigate("/");
   };
 
-  console.log(currentUser);
+  // currentUser && console.log(currentUser);
 
   return (
     <nav className="Navbar">
