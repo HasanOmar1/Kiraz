@@ -1,6 +1,7 @@
 import axios from "../axiosConfig";
 import { createContext, useContext, useState } from "react";
 import { useLoginContext } from "./LoginContext";
+import { BagItemsUpdated } from "../types/ClothesTypes";
 
 type addToBag = {
   clothes: string;
@@ -12,7 +13,8 @@ type Props = {
 
 type BagContextValues = {
   removeItemFromBag: (id: string) => void;
-  addToBag: (bag: addToBag) => void;
+  // addToBag: (bag: addToBag) => void;
+  addToBag: (bag: BagItemsUpdated) => void;
   errorMsg: string;
 };
 
@@ -22,14 +24,13 @@ const BagContextProvider = ({ children }: Props) => {
   const [errorMsg, setErrorMsg] = useState("");
   const { setCurrentUser } = useLoginContext();
 
-  const addToBag = async (bag: addToBag) => {
+  const addToBag = async (bag: BagItemsUpdated) => {
     try {
-      const response = await axios.post(`/bag/add`, bag);
+      const response = await axios.post(`/bag-items/add`, bag);
       setCurrentUser(response.data);
       const userJSON = JSON.stringify(response.data);
       localStorage.setItem("user", userJSON);
       console.log(response.data);
-      // setErrorMsg("Item has been added to your bag");
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
       // console.log(error.response?.data.message);
@@ -38,7 +39,7 @@ const BagContextProvider = ({ children }: Props) => {
 
   const removeItemFromBag = async (id: string) => {
     try {
-      const response = await axios.delete(`/bag/delete/${id}`);
+      const response = await axios.delete(`/bag-items/delete/${id}`);
       setCurrentUser(response.data);
       const userJSON = JSON.stringify(response.data);
       localStorage.setItem("user", userJSON);

@@ -30,13 +30,6 @@ const ProductDetails = () => {
     setCurrentColor(color);
   };
 
-  const addToBagFunction = (id: string) => {
-    openModal();
-    addToBag({
-      clothes: id,
-    });
-  };
-
   const currentImg =
     currentColor === "blue"
       ? clothesById?.blueImg
@@ -45,6 +38,19 @@ const ProductDetails = () => {
       : currentColor === "black"
       ? clothesById?.blackImg
       : "";
+
+  const addToBagFunction = () => {
+    openModal();
+
+    addToBag({
+      color: currentColor,
+      name: clothesById?.name,
+      price: clothesById?.price,
+      size: clothesById?.size,
+      img: currentImg,
+      type: clothesById?.type,
+    });
+  };
 
   return (
     <div className="ProductDetails">
@@ -59,10 +65,7 @@ const ProductDetails = () => {
             />
 
             <div className="buy-btn-container">
-              <button
-                id="buy-btn"
-                onClick={() => addToBagFunction(clothesById._id)}
-              >
+              <button id="buy-btn" onClick={addToBagFunction}>
                 Add To Bag
               </button>
             </div>

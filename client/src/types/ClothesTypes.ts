@@ -1,15 +1,19 @@
 export type Clothes = {
-  color: string;
-  img?: string;
+  color?: string;
   greenImg?: string;
   blackImg?: string;
   blueImg?: string;
-  name: string;
-  price: number;
-  size: string;
-  type: string;
-  _id: string;
+  name?: string;
+  price?: number;
+  size?: string;
+  type?: string;
+  _id?: string;
 };
+
+export type BagItemsUpdated = Omit<
+  Clothes,
+  "greenImg" | "blackImg" | "blueImg"
+> & { img?: string };
 
 export type BagItems = {
   clothes: Clothes;
