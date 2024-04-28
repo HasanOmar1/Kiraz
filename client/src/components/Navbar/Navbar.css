@@ -58,3 +58,16 @@
 .Navbar .modal-container {
   position: absolute;
 }
+
+.Navbar .bag-container {
+  position: relative;
+}
+
+.Navbar .bag-counter {
+  position: absolute;
+  top: 55%;
+  left: 5px;
+  pointer-events: none;
+
+  font-size: 0.9rem;
+}

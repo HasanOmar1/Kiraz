@@ -1,5 +1,6 @@
 .ThemeButton {
   position: relative;
+  top: -4px;
 }
 
 .ThemeButton label {

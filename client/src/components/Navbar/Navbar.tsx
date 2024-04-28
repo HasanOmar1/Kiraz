@@ -56,29 +56,34 @@ const Navbar = () => {
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
           {currentUser ? (
             <div className="signed-in-svgs-container">
-              <img src={loginSvg} alt="login icon" className="svg" />
-
-              <img
-                src={bagSvg}
-                alt="bag icon"
-                className="svg"
-                onClick={goToBag}
-              />
-
-              <img
-                src={logoutSvg}
-                alt="logout icon"
-                className="svg"
-                onClick={handleLogOut}
-              />
+              {/* <img src={loginSvg} alt="login icon" className="svg" /> */}
+              <div className="bag-container">
+                <img
+                  src={bagSvg}
+                  alt="bag icon"
+                  className="svg"
+                  onClick={goToBag}
+                />
+                <div className="bag-counter">{currentUser.bag.length}</div>
+              </div>
+              <div>
+                <img
+                  src={logoutSvg}
+                  alt="logout icon"
+                  className="svg"
+                  onClick={handleLogOut}
+                />
+              </div>
             </div>
           ) : (
-            <img
-              src={loginSvg}
-              alt="login icon"
-              className="svg"
-              onClick={openModal}
-            />
+            <div>
+              <img
+                src={loginSvg}
+                alt="login icon"
+                className="svg"
+                onClick={openModal}
+              />
+            </div>
           )}
         </div>
       </div>
