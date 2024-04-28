@@ -34,9 +34,9 @@
 .Bag .list {
   display: flex;
   gap: 20px;
-  padding: 10px;
-  padding-left: 30px;
+  padding: 20px 0;
   border-bottom: 2px solid rgb(165, 147, 147);
+  justify-content: center;
   align-items: center;
 }
 .Bag .list:last-of-type {
@@ -90,4 +90,14 @@
   color: orange;
   text-decoration: underline;
   text-decoration-color: orange;
+}
+
+.Bag .no-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 2px;
 }

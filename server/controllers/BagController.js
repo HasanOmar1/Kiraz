@@ -23,14 +23,19 @@ export const addToBag = async (req, res, next) => {
       user: req.user._id,
     });
 
-    await User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       { $push: { bag: newBag } },
       { new: true }
-    );
+    ).populate({
+      path: "bag",
+      populate: {
+        path: "clothes",
+      },
+    });
 
     res.status(STATUS_CODE.CREATED);
-    res.send(newBag);
+    res.send(updatedUser);
   } catch (error) {
     next(error);
   }

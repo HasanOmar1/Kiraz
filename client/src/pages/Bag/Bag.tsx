@@ -5,6 +5,7 @@ import { BagItems } from "../../types/ClothesTypes";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
 import "./Bag.css";
 import { useBagContext } from "../../context/BagContext";
+import emptyBag from "../../assets/empty-bag.png";
 
 const Bag = () => {
   const { getThemeClassName, theme } = useThemeContext();
@@ -27,11 +28,11 @@ const Bag = () => {
   return (
     <div className={`Bag Page ${getThemeClassName()}`}>
       <div className="big-container">
-        <h3 id="my-items">My Items</h3>
-        <div className="container">
-          <div className="items">
-            {currentUser && (
-              <>
+        {currentUser && currentUser.bag.length > 0 ? (
+          <>
+            <h3 id="my-items">My Items</h3>
+            <div className="container">
+              <div className="items">
                 {currentUser.bag.map((items) => {
                   return (
                     <div key={items._id} className="list">
@@ -73,10 +74,15 @@ const Bag = () => {
                     </div>
                   );
                 })}
-              </>
-            )}
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="no-items">
+            <h3 id="empty">Your bag is empty</h3>
+            <img src={emptyBag} alt="" />
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
