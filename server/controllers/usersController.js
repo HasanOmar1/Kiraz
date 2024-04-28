@@ -12,9 +12,6 @@ export const getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find({}).populate({
       path: "bag",
-      populate: {
-        path: "clothes",
-      },
     });
 
     res.send(users);
@@ -76,12 +73,7 @@ export const login = async (req, res, next) => {
       throw new Error("All fields must be filled");
     }
 
-    const user = await User.findOne({ email }).populate({
-      path: "bag",
-      populate: {
-        path: "clothes",
-      },
-    });
+    const user = await User.findOne({ email }).populate("bag");
 
     if (user && (await bcrypt.compare(password, user.password))) {
       res.send({
@@ -122,12 +114,7 @@ export const deleteUser = async (req, res, next) => {
 export const getCurrentUser = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const user = await User.findById(id).populate({
-      path: "bag",
-      populate: {
-        path: "clothes",
-      },
-    });
+    const user = await User.findById(id).populate("bag");
     if (!user) {
       res.status(STATUS_CODE.NOT_FOUND);
       throw new Error("User not found");

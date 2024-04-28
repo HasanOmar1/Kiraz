@@ -1,26 +1,31 @@
 import STATUS_CODE from "../constants/statusCodes.js";
 import BagItems from "../models/bagItemsModel.js";
-import Bag from "../models/bagModel.js";
 import User from "../models/usersModel.js";
 
-export const getAllBag = async (req, res, next) => {
+export const getBagItems = async (req, res, next) => {
   try {
-    const bag = await Bag.find({}).populate("clothes");
-    res.send(bag);
+    const bagItems = await BagItems.find({});
+    res.send(bagItems);
   } catch (error) {
     next(error);
   }
 };
 
-export const addToBag = async (req, res, next) => {
+export const addItemToBag = async (req, res, next) => {
   try {
-    const { clothes } = req.body;
-    if (!clothes) {
+    const { name, color, size, price, img, type } = req.body;
+
+    if (!name || !color || !size || !price || !img || !type) {
       res.status(STATUS_CODE.BAD_REQUEST);
-      throw new Error("Clothe's id is missing");
+      throw new Error("Please fill all fields");
     }
-    const newBag = await Bag.create({
-      clothes,
+    const newBag = await BagItems.create({
+      name,
+      color,
+      size,
+      price,
+      img,
+      type,
       user: req.user._id,
     });
 
@@ -28,12 +33,7 @@ export const addToBag = async (req, res, next) => {
       req.user._id,
       { $push: { bag: newBag } },
       { new: true }
-    ).populate({
-      path: "bag",
-      populate: {
-        path: "clothes",
-      },
-    });
+    ).populate("bag");
 
     res.status(STATUS_CODE.CREATED);
     res.send(updatedUser);
@@ -42,10 +42,10 @@ export const addToBag = async (req, res, next) => {
   }
 };
 
-export const deleteBag = async (req, res, next) => {
+export const deleteBagItem = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const bag = await Bag.findByIdAndDelete(id);
+    const bag = await BagItems.findByIdAndDelete(id);
     if (!bag) {
       res.status(STATUS_CODE.NOT_FOUND);
       throw new Error("Bag id not found");
@@ -54,12 +54,7 @@ export const deleteBag = async (req, res, next) => {
       req.user._id,
       { $pull: { bag: id } },
       { new: true }
-    ).populate({
-      path: "bag",
-      populate: {
-        path: "clothes",
-      },
-    });
+    ).populate("bag");
     res.send(updatedUser);
   } catch (error) {
     next(error);
@@ -81,11 +76,9 @@ export const checkout = async (req, res, next) => {
   }
 };
 
-export const getBagHistory = async (req, res, next) => {
+export const getBagItemsHistory = async (req, res, next) => {
   try {
-    const bagHistory = await Bag.find({ user: req.user._id }).populate(
-      "clothes"
-    );
+    const bagHistory = await BagItems.find({ user: req.user._id });
     res.send(bagHistory);
   } catch (error) {
     next(error);

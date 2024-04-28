@@ -6,11 +6,11 @@ import {
   removeShorts,
 } from "../controllers/shortsController.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get("/", getAllShorts);
-route.get("/:id", getShortsById);
-route.post("/add", addShorts);
-route.delete("/delete/:id", removeShorts);
+router.get("/", getAllShorts);
+router.get("/:id", getShortsById);
+router.post("/add", addShorts);
+router.delete("/delete/:id", removeShorts);
 
-export default route;
+export default router;

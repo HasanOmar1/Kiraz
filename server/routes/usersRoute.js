@@ -6,15 +6,14 @@ import {
   login,
   getCurrentUser,
 } from "../controllers/usersController.js";
-import protect from "../middlewares/authMiddleware.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get("/", getAllUsers);
-route.get("/current-user/:id", getCurrentUser);
-route.post("/create", createUser);
-route.post("/login", login);
-route.delete("/delete/:id", deleteUser);
-route.delete("/delete", deleteUser);
+router.get("/", getAllUsers);
+router.get("/current-user/:id", getCurrentUser);
+router.post("/create", createUser);
+router.post("/login", login);
+router.delete("/delete/:id", deleteUser);
+router.delete("/delete", deleteUser);
 
-export default route;
+export default router;

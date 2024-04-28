@@ -51,7 +51,6 @@ const Navbar = () => {
         <div className="logo-container">
           <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} />
         </div>
-        {/* {currentUser && <p>Welcome {currentUser.name}</p>} */}
         <div className="svgs-container">
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
           {currentUser ? (

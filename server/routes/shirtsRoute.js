@@ -6,11 +6,11 @@ import {
   removeShirts,
 } from "../controllers/shirtsController.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get("/", getAllShirts);
-route.get("/:id", getShirtsById);
-route.post("/add", addShirts);
-route.delete("/delete/:id", removeShirts);
+router.get("/", getAllShirts);
+router.get("/:id", getShirtsById);
+router.post("/add", addShirts);
+router.delete("/delete/:id", removeShirts);
 
-export default route;
+export default router;

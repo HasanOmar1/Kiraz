@@ -1,4 +1,3 @@
-import ColorsContainer from "../ColorsContainer/ColorsContainer";
 import loadingGif from "../../assets/loading-animation.gif";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect, useState } from "react";
@@ -14,7 +13,7 @@ const ProductDetails = () => {
   const { getClothesById, clothesById } = useClothesContext();
   const [currentColor, setCurrentColor] = useState(clothesById?.color);
   const { currentUser } = useLoginContext();
-  const { addToBag, errorMsg: addToBagErrorMsg, setErrorMsg } = useBagContext();
+  const { addToBag, errorMsg: addToBagErrorMsg } = useBagContext();
   const { id } = useParams();
   const { closeModal, isModalOpen, openModal } = useModal();
 
@@ -27,12 +26,6 @@ const ProductDetails = () => {
     setCurrentColor(clothesById?.color);
   }, [clothesById?.color]);
 
-  // useEffect(() => {
-  //   if (isModalOpen === false) {
-  //     setErrorMsg("");
-  //   }
-  // }, [isModalOpen]);
-
   const currentActiveColor = (color: string) => {
     setCurrentColor(color);
   };
@@ -43,17 +36,6 @@ const ProductDetails = () => {
       clothes: id,
     });
   };
-
-  const typeInfo =
-    clothesById?.type === "pants"
-      ? "Fit: True to size—designed with a long, slim leg and ribbed ankle cuffs"
-      : clothesById?.type === "shirts"
-      ? "Fit: True to size—designed for a relaxed fit"
-      : clothesById?.type === "hoodies"
-      ? "Fit: Unisex style. Designed for a boxy, oversized look—size down if you prefer a closer fit."
-      : clothesById?.type === "shorts"
-      ? `Fit: True to size—designed with a shorter inseam than our classic 7" styles`
-      : "";
 
   const currentImg =
     currentColor === "blue"
@@ -73,13 +55,7 @@ const ProductDetails = () => {
             <ProductData
               clothesById={clothesById}
               currentColor={currentColor}
-            />
-
-            <ColorsContainer
-              clothesById={clothesById}
               currentActiveColor={currentActiveColor}
-              currentColor={currentColor}
-              typeInfo={typeInfo}
             />
 
             <div className="buy-btn-container">

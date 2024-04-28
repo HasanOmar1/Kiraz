@@ -6,11 +6,11 @@ import {
   removeHoodie,
 } from "../controllers/hoodiesController.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get("/", getAllHoodies);
-route.get("/:id", getHoodieById);
-route.post("/add", addHoodie);
-route.delete("/delete/:id", removeHoodie);
+router.get("/", getAllHoodies);
+router.get("/:id", getHoodieById);
+router.post("/add", addHoodie);
+router.delete("/delete/:id", removeHoodie);
 
-export default route;
+export default router;

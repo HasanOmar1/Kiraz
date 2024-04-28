@@ -4,7 +4,7 @@ const bagSchema = new mongoose.Schema(
   {
     clothes: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Clothes",
+      ref: "BagItems",
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -21,4 +21,5 @@ const bagSchema = new mongoose.Schema(
 );
 
 const Bag = mongoose.model("Bag", bagSchema);
+
 export default Bag;

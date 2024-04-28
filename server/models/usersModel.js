@@ -20,7 +20,7 @@ const usersSchema = new mongoose.Schema(
     bag: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Bag",
+        ref: "BagItems",
       },
     ],
   },

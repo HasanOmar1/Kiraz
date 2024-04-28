@@ -3,12 +3,15 @@ import {
   getAllClothes,
   getAllClothesById,
   removeAllClothes,
+  updateClothing,
 } from "../controllers/clothesController.js";
+import protect from "../middlewares/authMiddleware.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get("/", getAllClothes);
-route.get("/:id", getAllClothesById);
-route.delete("/delete-all", removeAllClothes);
+router.get("/", getAllClothes);
+router.get("/:id", getAllClothesById);
+router.put("/update/:id", protect, updateClothing);
+router.delete("/delete-all", removeAllClothes);
 
-export default route;
+export default router;

@@ -14,7 +14,6 @@ type BagContextValues = {
   removeItemFromBag: (id: string) => void;
   addToBag: (bag: addToBag) => void;
   errorMsg: string;
-  setErrorMsg: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const BagContext = createContext<null | BagContextValues>(null);
@@ -50,9 +49,7 @@ const BagContextProvider = ({ children }: Props) => {
   };
 
   return (
-    <BagContext.Provider
-      value={{ removeItemFromBag, addToBag, errorMsg, setErrorMsg }}
-    >
+    <BagContext.Provider value={{ removeItemFromBag, addToBag, errorMsg }}>
       {children}
     </BagContext.Provider>
   );

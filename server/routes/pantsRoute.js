@@ -6,11 +6,11 @@ import {
   removePants,
 } from "../controllers/pantsController.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get("/", getAllPants);
-route.get("/:id", getPantsById);
-route.post("/add", addPants);
-route.delete("/delete/:id", removePants);
+router.get("/", getAllPants);
+router.get("/:id", getPantsById);
+router.post("/add", addPants);
+router.delete("/delete/:id", removePants);
 
-export default route;
+export default router;
