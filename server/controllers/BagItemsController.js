@@ -13,13 +13,14 @@ export const getBagItems = async (req, res, next) => {
 
 export const addItemToBag = async (req, res, next) => {
   try {
-    const { name, color, size, price, img, type } = req.body;
+    const { name, color, size, price, img, type, id } = req.body;
 
-    if (!name || !color || !size || !price || !img || !type) {
+    if (!name || !color || !size || !price || !img || !type || !id) {
       res.status(STATUS_CODE.BAD_REQUEST);
       throw new Error("Please fill all fields");
     }
     const newBag = await BagItems.create({
+      id,
       name,
       color,
       size,

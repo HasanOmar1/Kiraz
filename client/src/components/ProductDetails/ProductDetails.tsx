@@ -43,6 +43,7 @@ const ProductDetails = () => {
     openModal();
 
     addToBag({
+      id: clothesById?._id,
       color: currentColor,
       name: clothesById?.name,
       price: clothesById?.price,

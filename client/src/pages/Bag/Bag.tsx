@@ -15,6 +15,16 @@ const Bag = () => {
   const removeItem = (id: string) => {
     removeItemFromBag(id);
   };
+
+  const sizes = (items: BagItemsUpdated) => {
+    return items.size === "S"
+      ? "Small"
+      : items.size === "L"
+      ? "Large"
+      : items.size === "M"
+      ? "Medium"
+      : " ";
+  };
   return (
     <div className={`Bag Page ${getThemeClassName()}`}>
       <div className="big-container">
@@ -24,15 +34,14 @@ const Bag = () => {
             <div className="container">
               <div className="items">
                 {currentUser?.bag?.map((items: BagItemsUpdated) => {
-                  console.log(items);
                   return (
                     <div key={items._id} className="list">
-                      <Link to={`/product/${items._id}`}>
+                      <Link to={`/product/${items.id}`}>
                         <img src={items.img} alt="img" />
                       </Link>
                       <div className="list-data">
                         <Link
-                          to={`/product/${items._id}`}
+                          to={`/product/${items.id}`}
                           className="link"
                           style={{
                             color: theme === "dark" ? "white" : "black",
@@ -47,7 +56,7 @@ const Bag = () => {
                           </p>
                           <p>
                             Size:
-                            <span>{items.size}</span>
+                            <span>{sizes(items)}</span>
                           </p>
                         </div>
                         <p>

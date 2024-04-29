@@ -15,7 +15,7 @@ export type Clothes = {
 export type BagItemsUpdated = Omit<
   Clothes,
   "greenImg" | "blackImg" | "blueImg"
-> & { img?: string };
+> & { img?: string; id?: string };
 
 export type BagItems = {
   clothes: Clothes;
