@@ -35,9 +35,7 @@ const ProductData = ({
       <hr />
       <h2>
         Color :{" "}
-        <span>
-          {upperCaseLetter(currentColor ? currentColor : clothesById.color)}
-        </span>
+        <span>{currentColor ? upperCaseLetter(currentColor) : "Unknown"}</span>
       </h2>
       <ColorsContainer
         clothesById={clothesById}

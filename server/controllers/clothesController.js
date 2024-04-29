@@ -21,6 +21,15 @@ export const getAllClothesById = async (req, res, next) => {
   }
 };
 
+export const getLatestAddedClothes = async (req, res, next) => {
+  try {
+    const clothes = await Clothes.find({}).limit(5).sort({ createdAt: -1 });
+    res.send(clothes);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const removeAllClothes = async (req, res, next) => {
   try {
     const clothes = await Clothes.deleteMany({});
