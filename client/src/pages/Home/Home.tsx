@@ -6,9 +6,17 @@ import hoodieImg from "../../assets/hoodie.jpg";
 import pantsImg from "../../assets/pants.jpg";
 import shortImg from "../../assets/short.jpg";
 import HomeImg from "../../components/HomeImg/HomeImg";
+import { useClothesContext } from "../../context/ClothesContext";
+import { useEffect } from "react";
+import ProductsCards from "../../components/ProductsCards/ProductsCards";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();
+  const { latestProducts, getLatestAddedProduct } = useClothesContext();
+
+  useEffect(() => {
+    getLatestAddedProduct();
+  }, []);
 
   return (
     <main className={`Home Page ${getThemeClassName()}`}>
@@ -22,6 +30,10 @@ const Home = () => {
           <HomeImg img={pantsImg} text="pants" />
           <HomeImg img={shortImg} text="shorts" />
         </div>
+      </section>
+      <section className="latest-products">
+        <h3>Latest Added Products</h3>
+        <ProductsCards array={latestProducts} />
       </section>
     </main>
   );

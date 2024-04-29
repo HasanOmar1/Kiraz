@@ -2,24 +2,6 @@
   display: flex;
   gap: 100px;
 }
-.ProductDetails .data {
-  display: flex;
-  flex-direction: column;
-  font-family: "Courier New", Courier, monospace;
-  gap: 20px;
-  width: 100%;
-}
-
-.ProductDetails .data h1 {
-  text-align: center;
-  padding-bottom: 40px;
-}
-
-.ProductDetails .data span {
-  font-family: Arial, Helvetica, sans-serif;
-  /* font-size: 1.5rem; */
-  font-weight: 400;
-}
 
 .ProductDetails .buy-btn-container {
   display: flex;
@@ -42,11 +24,6 @@
   opacity: 0.8;
 }
 
-.ProductDetails .loading {
-  width: 200px;
-  height: 200px;
-}
-
 .ProductDetails #added-msg {
   color: green;
   font-family: Arial, Helvetica, sans-serif;
@@ -55,7 +32,6 @@
 
 .ProductDetails #added-msg span {
   border-bottom: 1px solid black;
-  /* font-size: 1.2rem; */
 }
 
 .ProductDetails #error-msg {

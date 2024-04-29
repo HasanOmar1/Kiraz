@@ -8,6 +8,8 @@ export type Clothes = {
   size?: string;
   type?: string;
   _id?: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export type BagItemsUpdated = Omit<

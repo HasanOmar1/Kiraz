@@ -19,7 +19,7 @@
   width: 250px;
 }
 
-.ClothesPage .colors-container {
+.ClothesPage .filter-container {
   display: flex;
   flex-direction: column;
   gap: 20px;

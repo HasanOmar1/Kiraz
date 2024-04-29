@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import "./Cards.css";
-import { useState } from "react";
 import { useThemeContext } from "../../context/ThemeContext";
 
 type CardsProps = {
-  cover: string | undefined;
-  name: string;
-  color: string;
-  price: number;
-  size: string;
-  id: string;
-  greenImg: string | undefined;
-  blackImg: string | undefined;
-  blueImg: string | undefined;
+  cover?: string;
+  name?: string;
+  color?: string;
+  price?: number;
+  size?: string;
+  id?: string;
+  greenImg?: string;
+  blackImg?: string;
+  blueImg?: string;
 };
 
 const Cards = ({
@@ -26,14 +25,11 @@ const Cards = ({
   blackImg,
   blueImg,
 }: CardsProps) => {
-  const [currentActiveColor, setCurrentActiveColor] = useState(color);
   const { theme } = useThemeContext();
 
-  color = color[0].toUpperCase() + color.slice(1);
-
-  const greenColor = currentActiveColor === "green" && "active";
-  const blackColor = currentActiveColor === "black" && "active";
-  const blueColor = currentActiveColor === "blue" && "active";
+  const greenColor = color === "green" && "active";
+  const blackColor = color === "black" && "active";
+  const blueColor = color === "blue" && "active";
 
   return (
     <div className="Cards">

@@ -22,3 +22,20 @@
   gap: 30px;
   padding-bottom: 50px;
 }
+
+.Home .latest-products {
+  padding-bottom: 100px;
+}
+
+.Home .latest-products h3 {
+  padding: 30px 0;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.7rem;
+}
+
+.Home .data {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}

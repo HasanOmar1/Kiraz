@@ -4,6 +4,7 @@ import * as Types from "../../types/ClothesTypes";
 import FilterData from "../FilterData/FilterData";
 import useFilteredArray from "../../hooks/useFilteredArray";
 import loadingGif from "../../assets/loading-animation.gif";
+import ProductsCards from "../ProductsCards/ProductsCards";
 
 type ClothesTypesDataProps = {
   text: string;
@@ -36,7 +37,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
         <div className="filters">
           <p>FILTERS</p>
           <div className="filter-by">
-            <div className="colors-container">
+            <div className="filter-container">
               <FilterData
                 filterByText={"COLOR"}
                 classNameCondition={isShowingColors}
@@ -62,7 +63,8 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
             </div>
           </div>
         </div>
-        <div className="data">
+        <ProductsCards array={filteredArray} />
+        {/* <div className="data">
           {filteredArray?.length ?? 0 > 0 ? (
             <>
               {filteredArray?.map((clothes: Types.Clothes) => {
@@ -95,7 +97,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
               <img src={loadingGif} alt="loading animation" />
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </>
   );
