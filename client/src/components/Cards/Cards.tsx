@@ -31,6 +31,16 @@ const Cards = ({
   const blackColor = color === "black" && "active";
   const blueColor = color === "blue" && "active";
 
+  const sizes = (size: string | undefined) => {
+    return size === "S"
+      ? "Small"
+      : size === "L"
+      ? "Large"
+      : size === "M"
+      ? "Medium"
+      : " ";
+  };
+
   return (
     <div className="Cards">
       <Link to={`/product/${id}`}>
@@ -48,7 +58,7 @@ const Cards = ({
       >
         <p id="clothing-name">{name}</p>
       </Link>
-      <p>Size: {size}</p>
+      <p id="size">{sizes(size)}</p>
       <p id="price">{price}$</p>
     </div>
   );

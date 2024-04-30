@@ -56,6 +56,11 @@
   text-decoration-color: orange;
 }
 
+.Cards #size {
+  font-size: 0.9rem;
+  color: rgb(144, 136, 136);
+}
+
 .Cards #price {
   padding-top: 5px;
   color: crimson;

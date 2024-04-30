@@ -2,11 +2,7 @@
   padding: 0 300px;
   padding-top: 150px;
 }
-.Bag #my-items {
-  padding-bottom: 15px;
-  font-family: "Courier New", Courier, monospace;
-  letter-spacing: 2px;
-}
+
 .Bag .big-container {
   display: flex;
   flex-direction: column;
@@ -15,81 +11,40 @@
   padding-bottom: 40px;
 }
 
-.Bag .container {
-  min-height: 200px;
-  border: 3px solid rgb(23, 83, 92);
-  margin: 0 auto;
-  width: 700px;
-  max-width: 700px;
-  min-width: 500px;
-}
-
-.Bag .items {
+.Bag .data-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding-top: 10px;
-}
-
-.Bag .list {
-  display: flex;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 2px solid rgb(165, 147, 147);
   justify-content: center;
   align-items: center;
-}
-.Bag .list:last-of-type {
-  border: none;
+  position: relative;
 }
 
-.Bag .list img {
-  width: fit-content;
-  height: 150px;
-}
-
-.Bag .list-data {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 50%;
-  justify-content: center;
-  align-items: center;
-}
-
-.Bag .color-size {
-  display: flex;
-  gap: 50px;
-}
-
-.Bag .remove-btn {
-  padding: 10px 30px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  background-color: crimson;
-  color: white;
+.Bag .history-btn,
+.Bag .history-btn-empty {
+  border: 2px solid #166d8a;
+  position: absolute;
+  padding: 5px 20px;
+  top: 6px;
+  right: 0;
+  border-radius: 2px;
   cursor: pointer;
-  margin-top: 15%;
+}
+.Bag .history-btn-empty {
+  top: -40px;
+  right: -100px;
+}
+.Bag #my-items {
+  padding-bottom: 50px;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 2px;
 }
 
-.Bag .items span {
-  padding-left: 5px;
-  font-size: 0.9rem;
+.Bag #clear-bag {
+  background-color: transparent;
 }
 
-.Bag #clothing-name {
-  cursor: pointer;
-  width: fit-content;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s;
-}
-
-.Bag #clothing-name:hover {
-  color: orange;
-  text-decoration: underline;
-  text-decoration-color: orange;
+.Bag #check-out {
+  background-color: rgb(21, 174, 21);
 }
 
 .Bag .no-items {

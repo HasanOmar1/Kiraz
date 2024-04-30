@@ -2,6 +2,8 @@ import { createContext, useContext, useState } from "react";
 import axios from "../axiosConfig";
 import * as Type from "../types/ClothesTypes";
 
+//not used
+
 type Props = {
   children: React.ReactNode;
 };

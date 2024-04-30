@@ -77,6 +77,15 @@ export const checkout = async (req, res, next) => {
   }
 };
 
+// export const clearBag = async (req, res, next) => {
+//   try {
+//     const bagItems = await BagItems.deleteMany({ user: req.user._id });
+//     res.send(bagItems);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
 export const getBagItemsHistory = async (req, res, next) => {
   try {
     const bagHistory = await BagItems.find({ user: req.user._id });

@@ -16,12 +16,15 @@ type BagContextValues = {
   // addToBag: (bag: addToBag) => void;
   addToBag: (bag: BagItemsUpdated) => void;
   errorMsg: string;
+  userBagHistory: BagItemsUpdated[];
+  getBagHistory: () => void;
 };
 
 const BagContext = createContext<null | BagContextValues>(null);
 
 const BagContextProvider = ({ children }: Props) => {
   const [errorMsg, setErrorMsg] = useState("");
+  const [userBagHistory, setUserBagHistory] = useState([]);
   const { setCurrentUser } = useLoginContext();
 
   const addToBag = async (bag: BagItemsUpdated) => {
@@ -49,8 +52,26 @@ const BagContextProvider = ({ children }: Props) => {
     }
   };
 
+  const getBagHistory = async () => {
+    try {
+      const response = await axios.get(`/bag-items/history`);
+      setUserBagHistory(response.data);
+      console.log(response.data);
+    } catch (error: any) {
+      console.log(error.response?.data.message);
+    }
+  };
+
   return (
-    <BagContext.Provider value={{ removeItemFromBag, addToBag, errorMsg }}>
+    <BagContext.Provider
+      value={{
+        removeItemFromBag,
+        addToBag,
+        errorMsg,
+        userBagHistory,
+        getBagHistory,
+      }}
+    >
       {children}
     </BagContext.Provider>
   );

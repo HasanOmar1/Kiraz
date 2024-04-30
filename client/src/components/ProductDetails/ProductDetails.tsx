@@ -1,7 +1,7 @@
 import loadingGif from "../../assets/loading-animation.gif";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
 import { useBagContext } from "../../context/BagContext";
@@ -14,12 +14,14 @@ const ProductDetails = () => {
   const [currentColor, setCurrentColor] = useState(clothesById?.color);
   const { currentUser } = useLoginContext();
   const { addToBag, errorMsg: addToBagErrorMsg } = useBagContext();
-  const { id } = useParams();
   const { closeModal, isModalOpen, openModal } = useModal();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getClothesById(id);
   }, [id]);
+  console.log(id);
   console.log(clothesById);
 
   useEffect(() => {
@@ -28,6 +30,11 @@ const ProductDetails = () => {
 
   const currentActiveColor = (color: string) => {
     setCurrentColor(color);
+  };
+
+  const goToBag = () => {
+    navigate("/bag");
+    closeModal();
   };
 
   const currentImg =
@@ -70,11 +77,21 @@ const ProductDetails = () => {
                 Add To Bag
               </button>
             </div>
+
             <GenericModal closeModal={closeModal} isOpen={isModalOpen}>
               {currentUser ? (
-                <div id="added-msg">
-                  <span>{clothesById.name}</span> has been added to your bag
-                </div>
+                <>
+                  <div id="added-msg">
+                    <span>{clothesById.name}</span>
+                    <p>has been added to your bag</p>
+                  </div>
+
+                  <div className="buy-btn-container">
+                    <button id="buy-btn" onClick={goToBag}>
+                      Go To Bag
+                    </button>
+                  </div>
+                </>
               ) : (
                 <div id="error-msg">{addToBagErrorMsg}</div>
               )}

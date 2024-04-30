@@ -23,11 +23,21 @@ const ProductData = ({
       : clothesById?.type === "shorts"
       ? `Fit: True to size—designed with a shorter inseam than our classic 7" styles`
       : "";
+
+  const sizes = (size: string | undefined) => {
+    return size === "S"
+      ? "Small"
+      : size === "L"
+      ? "Large"
+      : size === "M"
+      ? "Medium"
+      : " ";
+  };
   return (
     <>
       <h1>{clothesById.name}</h1>
       <h2>
-        Size : <span>{clothesById.size}</span>
+        Size : <span>{sizes(clothesById.size)}</span>
       </h2>
       <h2>
         Price : <span>{clothesById.price}$</span>

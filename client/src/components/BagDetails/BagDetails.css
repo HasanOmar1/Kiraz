@@ -1,0 +1,95 @@
+.BagDetails.container {
+  min-height: 200px;
+  border: 3px solid rgb(23, 83, 92);
+  margin: 0 auto;
+  width: 700px;
+  max-width: 700px;
+  min-width: 500px;
+  position: relative;
+}
+
+.Bag .actions-container {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  top: -37px;
+  right: -10px;
+  position: absolute;
+}
+
+.Bag .actions-container p {
+  cursor: pointer;
+  border: 3px solid rgb(23, 83, 92);
+  padding: 5px 10px;
+  transform: skewX(-20deg);
+  font-size: 1.1rem;
+}
+
+.BagDetails .items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.BagDetails .list {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 2px solid rgb(165, 147, 147);
+  justify-content: center;
+  align-items: center;
+}
+.BagDetails .list:last-of-type {
+  border: none;
+}
+
+.BagDetails .list img {
+  width: fit-content;
+  height: 150px;
+}
+
+.BagDetails .list-data {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.BagDetails .color-size {
+  display: flex;
+  gap: 50px;
+}
+
+.BagDetails .remove-btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: crimson;
+  color: white;
+  cursor: pointer;
+  margin-top: 15%;
+}
+
+.BagDetails .items span {
+  padding-left: 5px;
+  font-size: 0.9rem;
+}
+
+.BagDetails #clothing-name {
+  cursor: pointer;
+  width: fit-content;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.BagDetails #clothing-name:hover {
+  color: orange;
+  text-decoration: underline;
+  text-decoration-color: orange;
+}
