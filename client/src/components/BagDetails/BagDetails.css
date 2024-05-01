@@ -108,7 +108,7 @@
 .BagDetails .modal-btns {
   display: flex;
   gap: 50px;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 .BagDetails .modal-btns button {

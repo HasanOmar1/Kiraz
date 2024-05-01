@@ -32,17 +32,6 @@ export const addItemToBag = async (req, res, next) => {
       user: req.user._id,
     });
 
-    // await Bag.create({
-    //   id,
-    //   name,
-    //   color,
-    //   size,
-    //   price,
-    //   img,
-    //   type,
-    //   user: req.user._id,
-    // });
-
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       { $push: { bag: newBag } },
@@ -77,7 +66,6 @@ export const deleteBagItem = async (req, res, next) => {
 
 export const checkout = async (req, res, next) => {
   try {
-    // Store the user's bag array before removing it
     const user = await User.findById(req.user._id).populate("bag");
     const userBag = user.bag;
 
@@ -105,7 +93,8 @@ export const checkout = async (req, res, next) => {
       }))
     );
 
-    // Send the updated user document as response
+    await BagItems.deleteMany({ user: req.user._id });
+
     res.send(updateUser);
   } catch (error) {
     next(error);
@@ -114,12 +103,11 @@ export const checkout = async (req, res, next) => {
 
 export const clearBag = async (req, res, next) => {
   try {
-    const updateUser = await BagItems.deleteMany(
-      { user: req.user._id },
-      { new: true }
-    );
+    await BagItems.deleteMany({ user: req.user._id });
 
-    res.send(updateUser);
+    const user = await User.findById(req.user._id).populate("bag");
+
+    res.send(user);
   } catch (error) {
     next(error);
   }

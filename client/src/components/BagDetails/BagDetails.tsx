@@ -14,7 +14,7 @@ type BagDetailsProps = {
 
 const BagDetails = ({ showActions, array }: BagDetailsProps) => {
   const { theme } = useThemeContext();
-  const { removeItemFromBag, checkOut } = useBagContext();
+  const { removeItemFromBag, checkOut, clearBag } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
 
   const sizes = (items: BagItemsUpdated) => {
@@ -40,7 +40,9 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
       <div className="items">
         {showActions && (
           <div className="actions-container">
-            <p id="clear-bag">Clear Bag</p>
+            <p id="clear-bag" onClick={clearBag}>
+              Clear Bag
+            </p>
             <p id="check-out" onClick={checkOutModal}>
               Check Out
             </p>

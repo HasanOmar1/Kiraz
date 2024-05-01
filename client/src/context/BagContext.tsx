@@ -14,6 +14,7 @@ type BagContextValues = {
   userBagHistory: BagItemsUpdated[];
   getBagHistory: () => Promise<void>;
   checkOut: () => Promise<void>;
+  clearBag: () => Promise<void>;
 };
 
 const BagContext = createContext<null | BagContextValues>(null);
@@ -72,6 +73,9 @@ const BagContextProvider = ({ children }: Props) => {
   const clearBag = async () => {
     try {
       const response = await axios.delete("/bag-items/clear-bag");
+      setCurrentUser(response.data);
+      const userJSON = JSON.stringify(response.data);
+      localStorage.setItem("user", userJSON);
     } catch (error: any) {
       console.log(error.response?.data.message);
     }
@@ -86,6 +90,7 @@ const BagContextProvider = ({ children }: Props) => {
         userBagHistory,
         getBagHistory,
         checkOut,
+        clearBag,
       }}
     >
       {children}
