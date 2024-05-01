@@ -4,6 +4,8 @@ import "./BagDetails.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
 import { useBagContext } from "../../context/BagContext";
+import GenericModal from "../GenericModal/GenericModal";
+import useModal from "../../hooks/useModal";
 
 type BagDetailsProps = {
   showActions?: boolean;
@@ -12,7 +14,8 @@ type BagDetailsProps = {
 
 const BagDetails = ({ showActions, array }: BagDetailsProps) => {
   const { theme } = useThemeContext();
-  const { removeItemFromBag } = useBagContext();
+  const { removeItemFromBag, checkOut } = useBagContext();
+  const { closeModal, isModalOpen, openModal } = useModal();
 
   const sizes = (items: BagItemsUpdated) => {
     return items.size === "S"
@@ -28,13 +31,19 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
     removeItemFromBag(id);
   };
 
+  const checkOutModal = () => {
+    openModal();
+  };
+
   return (
     <div className="BagDetails container">
       <div className="items">
         {showActions && (
           <div className="actions-container">
             <p id="clear-bag">Clear Bag</p>
-            <p id="check-out">Check Out</p>
+            <p id="check-out" onClick={checkOutModal}>
+              Check Out
+            </p>
           </div>
         )}
 
@@ -81,6 +90,17 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
             </div>
           );
         })}
+      </div>
+      <div className="modal-container">
+        <GenericModal closeModal={closeModal} isOpen={isModalOpen}>
+          <div className="modal">
+            <h3>Are you sure you want to check-out ?</h3>
+            <div className="modal-btns">
+              <button onClick={closeModal}>No</button>
+              <button onClick={checkOut}>Yes</button>
+            </div>
+          </div>
+        </GenericModal>
       </div>
     </div>
   );

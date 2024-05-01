@@ -6,7 +6,7 @@ import Bag from "../models/bagModel.js";
 
 export const getAllBag = async (req, res, next) => {
   try {
-    const bag = await Bag.find({});
+    const bag = await Bag.find({ user: req.user._id });
     res.send(bag);
   } catch (error) {
     next(error);

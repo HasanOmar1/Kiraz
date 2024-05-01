@@ -3,21 +3,17 @@ import { createContext, useContext, useState } from "react";
 import { useLoginContext } from "./LoginContext";
 import { BagItemsUpdated } from "../types/ClothesTypes";
 
-type addToBag = {
-  clothes: string;
-};
-
 type Props = {
   children: React.ReactNode;
 };
 
 type BagContextValues = {
   removeItemFromBag: (id: string) => void;
-  // addToBag: (bag: addToBag) => void;
   addToBag: (bag: BagItemsUpdated) => void;
   errorMsg: string;
   userBagHistory: BagItemsUpdated[];
-  getBagHistory: () => void;
+  getBagHistory: () => Promise<void>;
+  checkOut: () => Promise<void>;
 };
 
 const BagContext = createContext<null | BagContextValues>(null);
@@ -33,7 +29,7 @@ const BagContextProvider = ({ children }: Props) => {
       setCurrentUser(response.data);
       const userJSON = JSON.stringify(response.data);
       localStorage.setItem("user", userJSON);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
       // console.log(error.response?.data.message);
@@ -46,7 +42,7 @@ const BagContextProvider = ({ children }: Props) => {
       setCurrentUser(response.data);
       const userJSON = JSON.stringify(response.data);
       localStorage.setItem("user", userJSON);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error: any) {
       console.log(error.response?.data.message);
     }
@@ -54,9 +50,28 @@ const BagContextProvider = ({ children }: Props) => {
 
   const getBagHistory = async () => {
     try {
-      const response = await axios.get(`/bag-items/history`);
+      const response = await axios.get(`/bag/history`);
       setUserBagHistory(response.data);
       console.log(response.data);
+    } catch (error: any) {
+      console.log(error.response?.data.message);
+    }
+  };
+
+  const checkOut = async () => {
+    try {
+      const response = await axios.delete("/bag-items/checkout");
+      setCurrentUser(response.data);
+      const userJSON = JSON.stringify(response.data);
+      localStorage.setItem("user", userJSON);
+    } catch (error: any) {
+      console.log(error.response?.data.message);
+    }
+  };
+
+  const clearBag = async () => {
+    try {
+      const response = await axios.delete("/bag-items/clear-bag");
     } catch (error: any) {
       console.log(error.response?.data.message);
     }
@@ -70,6 +85,7 @@ const BagContextProvider = ({ children }: Props) => {
         errorMsg,
         userBagHistory,
         getBagHistory,
+        checkOut,
       }}
     >
       {children}

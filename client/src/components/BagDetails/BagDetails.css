@@ -93,3 +93,41 @@
   text-decoration: underline;
   text-decoration-color: orange;
 }
+
+.BagDetails .modal-container {
+  position: absolute;
+}
+
+.BagDetails .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.BagDetails .modal-btns {
+  display: flex;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.BagDetails .modal-btns button {
+  padding: 10px 30px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.BagDetails .modal-btns button:hover {
+  opacity: 0.9;
+}
+
+.BagDetails .modal-btns button:nth-child(1) {
+  background-color: crimson;
+}
+
+.BagDetails .modal-btns button:nth-child(2) {
+  background-color: rgb(52, 211, 52);
+}
