@@ -1,17 +1,26 @@
-// import STATUS_CODE from "../constants/statusCodes.js";
+import STATUS_CODE from "../constants/statusCodes.js";
 // import BagItems from "../models/bagItemsModel.js";
-// import Bag from "../models/bagModel.js";
 // import User from "../models/usersModel.js";
 
-// export const getAllBag = async (req, res, next) => {
-//   try {
-//     const bag = await Bag.find({}).populate("clothes");
-//     res.send(bag);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+import Bag from "../models/bagModel.js";
 
+export const getAllBag = async (req, res, next) => {
+  try {
+    const bag = await Bag.find({});
+    res.send(bag);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteAllBagHistory = async (req, res, next) => {
+  try {
+    const bags = await Bag.deleteMany({});
+    res.send(bags);
+  } catch (error) {
+    next(error);
+  }
+};
 // export const addToBag = async (req, res, next) => {
 //   try {
 //     const { clothes } = req.body;

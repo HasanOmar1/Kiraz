@@ -1,9 +1,7 @@
 import { useState } from "react";
-import Cards from "../Cards/Cards";
 import * as Types from "../../types/ClothesTypes";
 import FilterData from "../FilterData/FilterData";
 import useFilteredArray from "../../hooks/useFilteredArray";
-import loadingGif from "../../assets/loading-animation.gif";
 import ProductsCards from "../ProductsCards/ProductsCards";
 
 type ClothesTypesDataProps = {
@@ -64,40 +62,6 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
           </div>
         </div>
         <ProductsCards array={filteredArray} />
-        {/* <div className="data">
-          {filteredArray?.length ?? 0 > 0 ? (
-            <>
-              {filteredArray?.map((clothes: Types.Clothes) => {
-                return (
-                  <Cards
-                    id={clothes._id}
-                    key={clothes._id}
-                    name={clothes.name}
-                    cover={
-                      clothes.color === "green"
-                        ? clothes.greenImg
-                        : clothes.color === "black"
-                        ? clothes.blackImg
-                        : clothes.color === "blue"
-                        ? clothes.blueImg
-                        : ""
-                    }
-                    greenImg={clothes.greenImg}
-                    blackImg={clothes.blackImg}
-                    blueImg={clothes.blueImg}
-                    price={clothes.price}
-                    size={clothes.size}
-                    color={clothes.color}
-                  />
-                );
-              })}
-            </>
-          ) : (
-            <div id="loading">
-              <img src={loadingGif} alt="loading animation" />
-            </div>
-          )}
-        </div> */}
       </div>
     </>
   );

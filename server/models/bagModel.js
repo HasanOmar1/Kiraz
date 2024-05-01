@@ -2,9 +2,33 @@ import mongoose from "mongoose";
 
 const bagSchema = new mongoose.Schema(
   {
-    clothes: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "BagItems",
+    id: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      required: true,
+    },
+    size: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,

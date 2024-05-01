@@ -80,8 +80,8 @@ export const login = async (req, res, next) => {
         _id: user.id,
         name: user.name,
         email: user.email,
-        bag: user.bag,
         token: generateToken(user._id, user.email),
+        bag: user.bag,
       });
     } else {
       res.status(STATUS_CODE.NOT_FOUND);

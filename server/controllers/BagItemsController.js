@@ -1,5 +1,7 @@
+import mongoose from "mongoose";
 import STATUS_CODE from "../constants/statusCodes.js";
 import BagItems from "../models/bagItemsModel.js";
+import Bag from "../models/bagModel.js";
 import User from "../models/usersModel.js";
 
 export const getBagItems = async (req, res, next) => {
@@ -29,6 +31,17 @@ export const addItemToBag = async (req, res, next) => {
       type,
       user: req.user._id,
     });
+
+    // await Bag.create({
+    //   id,
+    //   name,
+    //   color,
+    //   size,
+    //   price,
+    //   img,
+    //   type,
+    //   user: req.user._id,
+    // });
 
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
@@ -64,11 +77,46 @@ export const deleteBagItem = async (req, res, next) => {
 
 export const checkout = async (req, res, next) => {
   try {
-    const updateUser = await User.updateMany(
+    // Store the user's bag array before removing it
+    const user = await User.findById(req.user._id).populate("bag");
+    const userBag = user.bag;
+
+    // Remove the bag array from the user document
+    const updateUser = await User.findByIdAndUpdate(
       { _id: req.user._id },
       {
         $unset: { bag: 1 },
-      }
+      },
+      { new: true }
+    );
+
+    // Create a new document in the Bag collection for each bag
+    await Bag.insertMany(
+      userBag.map((bagItem) => ({
+        _id: new mongoose.Types.ObjectId(),
+        id: bagItem.id,
+        name: bagItem.name,
+        color: bagItem.color,
+        size: bagItem.size,
+        img: bagItem.img,
+        price: bagItem.price,
+        type: bagItem.type,
+        user: user._id,
+      }))
+    );
+
+    // Send the updated user document as response
+    res.send(updateUser);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const clearBag = async (req, res, next) => {
+  try {
+    const updateUser = await BagItems.deleteMany(
+      { user: req.user._id },
+      { new: true }
     );
 
     res.send(updateUser);
@@ -77,18 +125,9 @@ export const checkout = async (req, res, next) => {
   }
 };
 
-// export const clearBag = async (req, res, next) => {
-//   try {
-//     const bagItems = await BagItems.deleteMany({ user: req.user._id });
-//     res.send(bagItems);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 export const getBagItemsHistory = async (req, res, next) => {
   try {
-    const bagHistory = await BagItems.find({ user: req.user._id });
+    const bagHistory = await Bag.find({ user: req.user._id });
     res.send(bagHistory);
   } catch (error) {
     next(error);

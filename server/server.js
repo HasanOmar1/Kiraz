@@ -24,7 +24,7 @@ app.use("/hoodies", hoodiesRoute);
 app.use("/pants", pantsRoute);
 app.use("/shirts", shirtsRoute);
 app.use("/shorts", shortsRoute);
-// app.use("/bag", bagRoute);
+app.use("/bag", bagRoute);
 app.use("/bag-items", bagItemsRoute);
 
 app.use(errorHandler);

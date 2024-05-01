@@ -23,7 +23,7 @@ const shirtSchema = new mongoose.Schema(
     blueImg: String,
     type: {
       type: String,
-      default: "pants",
+      default: "shirts",
     },
   },
   {
