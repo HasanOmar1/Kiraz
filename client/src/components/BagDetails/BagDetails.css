@@ -8,7 +8,7 @@
   position: relative;
 }
 
-.Bag .actions-container {
+.BagDetails .actions-container {
   display: flex;
   gap: 5px;
   justify-content: center;
@@ -18,7 +18,7 @@
   position: absolute;
 }
 
-.Bag .actions-container p {
+.BagDetails .actions-container p {
   cursor: pointer;
   border: 3px solid rgb(23, 83, 92);
   padding: 5px 10px;

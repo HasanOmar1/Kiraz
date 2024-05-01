@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import { BagItemsUpdated } from "../../types/ClothesTypes";
+import { BagItems, BagItemsUpdated } from "../../types/ClothesTypes";
 import "./BagDetails.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
 import { useBagContext } from "../../context/BagContext";
-import { CurrentLoggedUser } from "../../types/LoginContextTypes";
 
 type BagDetailsProps = {
-  currentUser: CurrentLoggedUser | null;
+  showActions?: boolean;
+  array: BagItems[] | BagItemsUpdated[];
 };
 
-const BagDetails = ({ currentUser }: BagDetailsProps) => {
+const BagDetails = ({ showActions, array }: BagDetailsProps) => {
   const { theme } = useThemeContext();
   const { removeItemFromBag } = useBagContext();
 
@@ -31,11 +31,14 @@ const BagDetails = ({ currentUser }: BagDetailsProps) => {
   return (
     <div className="BagDetails container">
       <div className="items">
-        <div className="actions-container">
-          <p id="clear-bag">Clear Bag</p>
-          <p id="check-out">Check Out</p>
-        </div>
-        {currentUser?.bag?.map((items: BagItemsUpdated) => {
+        {showActions && (
+          <div className="actions-container">
+            <p id="clear-bag">Clear Bag</p>
+            <p id="check-out">Check Out</p>
+          </div>
+        )}
+
+        {array?.map((items: BagItemsUpdated) => {
           return (
             <div key={items._id} className="list">
               <Link to={`/product/${items.id}`}>
@@ -67,12 +70,14 @@ const BagDetails = ({ currentUser }: BagDetailsProps) => {
                 </p>
                 <p>{items.price}$</p>
               </div>
-              <button
-                className="remove-btn"
-                onClick={() => removeItem(items._id ?? "")}
-              >
-                Remove
-              </button>
+              {showActions && (
+                <button
+                  className="remove-btn"
+                  onClick={() => removeItem(items._id ?? "")}
+                >
+                  Remove
+                </button>
+              )}
             </div>
           );
         })}

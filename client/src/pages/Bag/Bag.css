@@ -24,7 +24,7 @@
   border: 2px solid #166d8a;
   position: absolute;
   padding: 5px 20px;
-  top: 6px;
+  top: 57px;
   right: 0;
   border-radius: 2px;
   cursor: pointer;
@@ -37,6 +37,7 @@
   padding-bottom: 50px;
   font-family: "Courier New", Courier, monospace;
   letter-spacing: 2px;
+  padding-bottom: 100px;
 }
 
 .Bag #clear-bag {

@@ -14,6 +14,7 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
 import Bag from "./pages/Bag/Bag";
 import BagContextProvider from "./context/BagContext";
+import History from "./pages/History/History";
 
 function App() {
   const { pathname } = useLocation();
@@ -24,9 +25,6 @@ function App() {
 
   return (
     <>
-      {/* <ThemeContextProvider> */}
-      {/* <ModalContextProvider> */}
-      {/* <LoginContextProvider> */}
       <BagContextProvider>
         <ClothesContextProvider>
           <AllClothesTypesContextProvider>
@@ -34,6 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/bag" element={<Bag />} />
+              <Route path="/history" element={<History />} />
               <Route path="/product/:id" element={<ProductPage />} />
               {/* Clothes */}
               <Route path="/pants" element={<PantsPage />} />
@@ -45,9 +44,6 @@ function App() {
           </AllClothesTypesContextProvider>
         </ClothesContextProvider>
       </BagContextProvider>
-      {/* </LoginContextProvider> */}
-      {/* </ModalContextProvider> */}
-      {/* </ThemeContextProvider> */}
     </>
   );
 }

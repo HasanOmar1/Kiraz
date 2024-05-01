@@ -3,10 +3,16 @@ import { useThemeContext } from "../../context/ThemeContext";
 import "./Bag.css";
 import emptyBag from "../../assets/empty-bag.png";
 import BagDetails from "../../components/BagDetails/BagDetails";
+import { useNavigate } from "react-router-dom";
 
 const Bag = () => {
   const { getThemeClassName } = useThemeContext();
   const { currentUser } = useLoginContext();
+  const navigate = useNavigate();
+
+  const goToPurchaseHistory = () => {
+    navigate(`/history`);
+  };
 
   return (
     <div className={`Bag Page ${getThemeClassName()}`}>
@@ -14,13 +20,17 @@ const Bag = () => {
         {currentUser && (
           <div className="data-container">
             {currentUser.bag.length === 0 && (
-              <div className="history-btn-empty">Purchase History</div>
+              <div className="history-btn-empty" onClick={goToPurchaseHistory}>
+                Purchase History
+              </div>
             )}
             {currentUser.bag.length > 0 ? (
               <>
-                <div className="history-btn">Purchase History</div>
+                <div className="history-btn" onClick={goToPurchaseHistory}>
+                  Purchase History
+                </div>
                 <h3 id="my-items">My Items</h3>
-                <BagDetails currentUser={currentUser} />
+                <BagDetails array={currentUser?.bag} showActions={true} />
               </>
             ) : (
               <div className="no-items">
