@@ -1,6 +1,6 @@
 .Cards {
-  width: 300px;
-  height: 600px;
+  width: 280px;
+  height: 570px;
   display: flex;
   flex-direction: column;
   outline: 1px solid rgba(128, 128, 128, 0.327);

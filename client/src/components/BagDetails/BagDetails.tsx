@@ -6,6 +6,7 @@ import upperCaseLetter from "../../utils/UpperCaseLetter";
 import { useBagContext } from "../../context/BagContext";
 import GenericModal from "../GenericModal/GenericModal";
 import useModal from "../../hooks/useModal";
+import { useEffect, useState } from "react";
 
 type BagDetailsProps = {
   showActions?: boolean;
@@ -16,6 +17,21 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
   const { theme } = useThemeContext();
   const { removeItemFromBag, checkOut, clearBag } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
+  const [debouncedCheckOut, setDebouncedCheckOut] = useState<Function | null>(
+    null
+  );
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (debouncedCheckOut) {
+        debouncedCheckOut();
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [debouncedCheckOut]);
 
   const sizes = (items: BagItemsUpdated) => {
     return items.size === "S"
@@ -33,6 +49,11 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
 
   const checkOutModal = () => {
     openModal();
+  };
+
+  const handleCheckOut = () => {
+    setDebouncedCheckOut(() => checkOut);
+    closeModal();
   };
 
   return (
@@ -99,7 +120,7 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
             <h3>Are you sure you want to check-out ?</h3>
             <div className="modal-btns">
               <button onClick={closeModal}>No</button>
-              <button onClick={checkOut}>Yes</button>
+              <button onClick={handleCheckOut}>Yes</button>
             </div>
           </div>
         </GenericModal>

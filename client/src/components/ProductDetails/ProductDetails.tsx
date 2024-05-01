@@ -21,7 +21,6 @@ const ProductDetails = () => {
   useEffect(() => {
     getClothesById(id);
   }, [id]);
-  console.log(id);
   console.log(clothesById);
 
   useEffect(() => {
