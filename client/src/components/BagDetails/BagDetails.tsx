@@ -4,9 +4,9 @@ import "./BagDetails.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
 import { useBagContext } from "../../context/BagContext";
-import GenericModal from "../GenericModal/GenericModal";
 import useModal from "../../hooks/useModal";
 import { useEffect, useState } from "react";
+import BagDetailsModal from "../BagDetailsModal/BagDetailsModal";
 
 type BagDetailsProps = {
   showActions?: boolean;
@@ -114,17 +114,11 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
           );
         })}
       </div>
-      <div className="modal-container">
-        <GenericModal closeModal={closeModal} isOpen={isModalOpen}>
-          <div className="modal">
-            <h3>Are you sure you want to check-out ?</h3>
-            <div className="modal-btns">
-              <button onClick={closeModal}>No</button>
-              <button onClick={handleCheckOut}>Yes</button>
-            </div>
-          </div>
-        </GenericModal>
-      </div>
+      <BagDetailsModal
+        closeModal={closeModal}
+        handleCheckOut={handleCheckOut}
+        isModalOpen={isModalOpen}
+      />
     </div>
   );
 };

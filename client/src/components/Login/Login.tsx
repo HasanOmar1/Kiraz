@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.jpg";
 import { useLoginContext } from "../../context/LoginContext";
@@ -14,7 +14,7 @@ const LoginModal = () => {
   const [nameValue, setNameValue] = useState("");
   const { loginUser, errorMsg, createUser, setErrorMsg } = useLoginContext();
 
-  const handleLogIn = (e: FormEvent) => {
+  const handleLogIn = (e: React.FormEvent) => {
     e.preventDefault();
     loginUser({
       email: emailValue,
@@ -24,7 +24,7 @@ const LoginModal = () => {
     setPasswordValue("");
   };
 
-  const handleRegister = (e: FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     createUser({
       name: nameValue,

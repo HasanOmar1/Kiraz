@@ -1,0 +1,37 @@
+.BagDetailsModal.modal-container {
+  position: absolute;
+}
+
+.BagDetailsModal .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.BagDetailsModal .modal-btns {
+  display: flex;
+  gap: 50px;
+  margin-top: 25px;
+}
+
+.BagDetailsModal .modal-btns button {
+  padding: 10px 30px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.BagDetailsModal .modal-btns button:hover {
+  opacity: 0.9;
+}
+
+.BagDetailsModal .modal-btns button:nth-child(1) {
+  background-color: crimson;
+}
+
+.BagDetailsModal .modal-btns button:nth-child(2) {
+  background-color: rgb(52, 211, 52);
+}
