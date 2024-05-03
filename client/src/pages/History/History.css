@@ -7,13 +7,28 @@
   padding-bottom: 50px;
 }
 
-.History h3 {
+.History .title-container {
   text-align: center;
   padding-bottom: 40px;
+}
+
+.History .title-container h3 {
+  padding-bottom: 20px;
+}
+
+.History .title-container span {
+  color: rgb(24, 184, 24);
 }
 
 .History .no-items {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.History .page-number-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
 }

@@ -55,7 +55,6 @@ const Navbar = () => {
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
           {currentUser ? (
             <div className="signed-in-svgs-container">
-              {/* <img src={loginSvg} alt="login icon" className="svg" /> */}
               <div className="bag-container">
                 <img
                   src={bagSvg}

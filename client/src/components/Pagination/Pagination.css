@@ -11,3 +11,9 @@
 .Pagination button:hover {
   background-color: gray;
 }
+
+.Pagination .activePage {
+  border: 3px solid rgb(45, 149, 165);
+  scale: 1.2;
+  color: rgb(0, 176, 240);
+}

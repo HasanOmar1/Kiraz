@@ -1,12 +1,19 @@
+import { useState } from "react";
 import "./Pagination.css";
 
 type Props = {
   itemsPerPage?: number;
   totalItems?: number;
   paginate: (number: number) => void;
+  currentPage: number;
 };
 
-const Pagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
+const Pagination = ({
+  itemsPerPage,
+  totalItems,
+  paginate,
+  currentPage,
+}: Props) => {
   const pageNumbers = [];
 
   for (
@@ -20,7 +27,11 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
     <div className="Pagination">
       {pageNumbers.map((number) => {
         return (
-          <button key={number} onClick={() => paginate(number)}>
+          <button
+            key={number}
+            className={`${currentPage === number && "activePage"}`}
+            onClick={() => paginate(number)}
+          >
             {number}
           </button>
         );
