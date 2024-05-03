@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BagItemsUpdated } from "../../types/ClothesTypes";
+import { BagItems } from "../../types/ClothesTypes";
 import "./BagDetails.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
@@ -10,7 +10,7 @@ import BagDetailsModal from "../BagDetailsModal/BagDetailsModal";
 
 type BagDetailsProps = {
   showActions?: boolean;
-  array: BagItemsUpdated[];
+  array: BagItems[];
 };
 
 const BagDetails = ({ showActions, array }: BagDetailsProps) => {
@@ -33,7 +33,7 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
     };
   }, [debouncedCheckOut]);
 
-  const sizes = (items: BagItemsUpdated) => {
+  const sizes = (items: BagItems) => {
     return items.size === "S"
       ? "Small"
       : items.size === "L"
@@ -69,7 +69,7 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
         </div>
       )}
       <div className="items">
-        {array?.map((items: BagItemsUpdated) => {
+        {array?.map((items: BagItems) => {
           return (
             <div key={items._id} className="list">
               <Link to={`/product/${items.id}`}>

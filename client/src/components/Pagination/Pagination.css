@@ -1,0 +1,13 @@
+.Pagination {
+  padding-bottom: 30px;
+}
+.Pagination button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.Pagination button:hover {
+  background-color: gray;
+}

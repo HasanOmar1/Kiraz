@@ -1,7 +1,7 @@
 import axios from "../axiosConfig";
 import { createContext, useContext, useState } from "react";
 import { useLoginContext } from "./LoginContext";
-import { BagItemsUpdated } from "../types/ClothesTypes";
+import { BagItems } from "../types/ClothesTypes";
 
 type Props = {
   children: React.ReactNode;
@@ -9,9 +9,9 @@ type Props = {
 
 type BagContextValues = {
   removeItemFromBag: (id: string) => void;
-  addToBag: (bag: BagItemsUpdated) => void;
+  addToBag: (bag: BagItems) => void;
   errorMsg: string;
-  userBagHistory: BagItemsUpdated[];
+  userBagHistory: BagItems[];
   getBagHistory: () => Promise<void>;
   checkOut: () => Promise<void>;
   clearBag: () => Promise<void>;
@@ -24,7 +24,7 @@ const BagContextProvider = ({ children }: Props) => {
   const [userBagHistory, setUserBagHistory] = useState([]);
   const { setCurrentUser } = useLoginContext();
 
-  const addToBag = async (bag: BagItemsUpdated) => {
+  const addToBag = async (bag: BagItems) => {
     try {
       const response = await axios.post(`/bag-items/add`, bag);
       setCurrentUser(response.data);

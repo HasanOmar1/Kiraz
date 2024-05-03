@@ -12,7 +12,7 @@ export type Clothes = {
   updatedAt?: string;
 };
 
-export type BagItemsUpdated = Omit<
-  Clothes,
-  "greenImg" | "blackImg" | "blueImg"
-> & { img?: string; id?: string };
+export type BagItems = Omit<Clothes, "greenImg" | "blackImg" | "blueImg"> & {
+  img?: string;
+  id?: string;
+};

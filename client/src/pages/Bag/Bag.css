@@ -52,3 +52,9 @@
   font-family: "Courier New", Courier, monospace;
   letter-spacing: 2px;
 }
+
+.Bag .page-number-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
