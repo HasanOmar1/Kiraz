@@ -59,7 +59,7 @@ const Cards = ({
         <p id="clothing-name">{name}</p>
       </Link>
       <p id="size">{sizes(size)}</p>
-      <p id="price">{price}$</p>
+      <p id="price">${price}</p>
     </div>
   );
 };

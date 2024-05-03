@@ -16,9 +16,3 @@ export type BagItemsUpdated = Omit<
   Clothes,
   "greenImg" | "blackImg" | "blueImg"
 > & { img?: string; id?: string };
-
-export type BagItems = {
-  clothes: Clothes;
-  user: string;
-  _id: string;
-};

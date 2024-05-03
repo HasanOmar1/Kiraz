@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BagItems, BagItemsUpdated } from "../../types/ClothesTypes";
+import { BagItemsUpdated } from "../../types/ClothesTypes";
 import "./BagDetails.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
@@ -10,7 +10,7 @@ import BagDetailsModal from "../BagDetailsModal/BagDetailsModal";
 
 type BagDetailsProps = {
   showActions?: boolean;
-  array: BagItems[] | BagItemsUpdated[];
+  array: BagItemsUpdated[];
 };
 
 const BagDetails = ({ showActions, array }: BagDetailsProps) => {
@@ -58,18 +58,17 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
 
   return (
     <div className="BagDetails container">
+      {showActions && (
+        <div className="actions-container">
+          <p id="clear-bag" onClick={clearBag}>
+            Clear Bag
+          </p>
+          <p id="check-out" onClick={checkOutModal}>
+            Check Out
+          </p>
+        </div>
+      )}
       <div className="items">
-        {showActions && (
-          <div className="actions-container">
-            <p id="clear-bag" onClick={clearBag}>
-              Clear Bag
-            </p>
-            <p id="check-out" onClick={checkOutModal}>
-              Check Out
-            </p>
-          </div>
-        )}
-
         {array?.map((items: BagItemsUpdated) => {
           return (
             <div key={items._id} className="list">
@@ -100,7 +99,7 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
                   Type:
                   <span>{upperCaseLetter(items.type ?? "")}</span>
                 </p>
-                <p>{items.price}$</p>
+                <p>${items.price}</p>
               </div>
               {showActions && (
                 <button

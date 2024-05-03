@@ -40,7 +40,7 @@ const ProductData = ({
         Size : <span>{sizes(clothesById.size)}</span>
       </h2>
       <h2>
-        Price : <span>{clothesById.price}$</span>
+        Price : $<span>{clothesById.price}</span>
       </h2>
       <hr />
       <h2>

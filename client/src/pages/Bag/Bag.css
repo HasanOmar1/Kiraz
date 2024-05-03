@@ -1,33 +1,27 @@
 .Bag {
-  padding: 0 300px;
-  padding-top: 150px;
-}
-
-.Bag .big-container {
+  padding-top: 70px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding-bottom: 40px;
 }
 
 .Bag .data-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
 .Bag .history-btn,
 .Bag .history-btn-empty {
-  border: 2px solid #166d8a;
+  border: 3px solid rgb(23, 83, 92);
   position: absolute;
   padding: 5px 20px;
-  top: 57px;
-  right: 0;
-  border-radius: 2px;
+  border-radius: 5px;
   cursor: pointer;
+}
+
+.Bag .history-btn {
+  top: 92px;
+  border-bottom: none;
+  right: 510px;
 }
 .Bag .history-btn-empty {
   top: -40px;
@@ -38,6 +32,7 @@
   font-family: "Courier New", Courier, monospace;
   letter-spacing: 2px;
   padding-bottom: 100px;
+  text-align: center;
 }
 
 .Bag #clear-bag {

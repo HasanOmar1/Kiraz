@@ -1,9 +1,9 @@
-import { BagItems } from "./ClothesTypes";
+import { BagItemsUpdated } from "./ClothesTypes";
 
 export type CreatedUser = {
   name: string;
   email: string;
-  bag: BagItems[];
+  bag: BagItemsUpdated[];
   password: string;
 };
 
