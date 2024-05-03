@@ -1,10 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import ThemeContextProvider from "./context/ThemeContext";
 import Home from "./pages/Home/Home";
 import ClothesContextProvider from "./context/ClothesContext";
-// import LoginContextProvider from "./context/LoginContext";
-import ModalContextProvider from "./context/ModalContext";
 import AllClothesTypesContextProvider from "./context/AllClothesTypesContext";
 import PantsPage from "./pages/ClothesTypes/Pants/Pants";
 import ShirtsPage from "./pages/ClothesTypes/Shirts/Shirts";
