@@ -1,0 +1,18 @@
+.NavBarSvgs.signed-in-svgs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.NavBarSvgs .bag-container {
+  position: relative;
+}
+
+.NavBarSvgs .bag-counter {
+  position: absolute;
+  top: 58%;
+  left: 6px;
+  pointer-events: none;
+  font-size: 0.7rem;
+}

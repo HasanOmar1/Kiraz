@@ -35,7 +35,7 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   const getLatestAddedProduct = async () => {
     try {
       const response = await axios.get(`/clothes/latest`);
-      console.log(response.data);
+      // console.log(response.data);
       setLatestProducts(response.data);
     } catch (error: any) {
       console.log(error);

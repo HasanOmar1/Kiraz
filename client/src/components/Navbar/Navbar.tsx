@@ -3,14 +3,13 @@ import logo from "../../assets/logo.jpg";
 import { useNavigate } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import loginSvg from "../../assets/svgs/login.svg";
-import logoutSvg from "../../assets/svgs/logout.svg";
-import bagSvg from "../../assets/svgs/bag.svg";
 import ThemeButton from "../ThemeButton/ThemeButton";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
 import { useModalContext } from "../../context/ModalContext";
 import { useLoginContext } from "../../context/LoginContext";
 import { useClothesContext } from "../../context/ClothesContext";
+import NavBarSvgs from "../NavBarSvgs/NavBarSvgs";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -28,9 +27,9 @@ const Navbar = () => {
     setClothesById(null);
   };
 
-  const goToBag = () => {
-    navigate("/bag");
-  };
+  // const goToBag = () => {
+  //   navigate("/bag");
+  // };
 
   // when the user goes back one page using the browser.
   window.onpopstate = () => {
@@ -43,8 +42,6 @@ const Navbar = () => {
     navigate("/");
   };
 
-  // currentUser && console.log(currentUser);
-
   return (
     <nav className="Navbar">
       <div className="container">
@@ -54,25 +51,7 @@ const Navbar = () => {
         <div className="svgs-container">
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
           {currentUser ? (
-            <div className="signed-in-svgs-container">
-              <div className="bag-container">
-                <img
-                  src={bagSvg}
-                  alt="bag icon"
-                  className="svg"
-                  onClick={goToBag}
-                />
-                <div className="bag-counter">{currentUser?.bag?.length}</div>
-              </div>
-              <div>
-                <img
-                  src={logoutSvg}
-                  alt="logout icon"
-                  className="svg"
-                  onClick={handleLogOut}
-                />
-              </div>
-            </div>
+            <NavBarSvgs handleLogOut={handleLogOut} currentUser={currentUser} />
           ) : (
             <div>
               <img
