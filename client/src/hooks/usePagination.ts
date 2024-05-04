@@ -14,7 +14,7 @@ const usePagination = (array: BagItems[]) => {
     setCurrentPage(number);
   };
 
-  return { paginate, itemsPerPage, currentPage, currentItems };
+  return { paginate, itemsPerPage, currentPage, currentItems, setCurrentPage };
 };
 
 export default usePagination;

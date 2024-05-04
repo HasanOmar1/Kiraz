@@ -6,18 +6,29 @@ import BagDetails from "../../components/BagDetails/BagDetails";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
+import { useEffect } from "react";
 
 const Bag = () => {
   const { getThemeClassName } = useThemeContext();
   const { currentUser } = useLoginContext();
-  const { currentItems, currentPage, itemsPerPage, paginate } = usePagination(
-    currentUser?.bag || []
-  );
+  const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
+    usePagination(currentUser?.bag || []);
   const navigate = useNavigate();
 
   const goToPurchaseHistory = () => {
     navigate(`/history`);
   };
+
+  useEffect(() => {
+    if (currentItems.length === 0) {
+      setCurrentPage((prev) => {
+        if (prev !== 1) {
+          return prev - 1;
+        }
+        return prev;
+      });
+    }
+  }, [currentItems]);
 
   return (
     <div className={`Bag Page ${getThemeClassName()}`}>
@@ -44,7 +55,11 @@ const Bag = () => {
                 </div>
                 <h3 id="my-items">My Items</h3>
                 <BagDetails
-                  array={currentItems ?? currentUser?.bag}
+                  array={
+                    currentUser?.bag.length <= 4
+                      ? currentUser?.bag
+                      : currentItems
+                  }
                   showActions={true}
                 />
                 <div className="page-number-container">

@@ -23,19 +23,24 @@ const Pagination = ({
   ) {
     pageNumbers.push(i);
   }
+
   return (
     <div className="Pagination">
-      {pageNumbers.map((number) => {
-        return (
-          <button
-            key={number}
-            className={`${currentPage === number && "activePage"}`}
-            onClick={() => paginate(number)}
-          >
-            {number}
-          </button>
-        );
-      })}
+      {totalItems && totalItems > 4 && (
+        <>
+          {pageNumbers.map((number) => {
+            return (
+              <button
+                key={number}
+                className={`${currentPage === number && "activePage"}`}
+                onClick={() => paginate(number)}
+              >
+                {number}
+              </button>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };
