@@ -27,14 +27,10 @@ const Navbar = () => {
     setClothesById(null);
   };
 
-  // const goToBag = () => {
-  //   navigate("/bag");
-  // };
-
   // when the user goes back one page using the browser.
-  window.onpopstate = () => {
-    setClothesById(null);
-  };
+  // window.onpopstate = () => {
+  //   // setClothesById(null);
+  // };
 
   const handleLogOut = () => {
     localStorage.clear();

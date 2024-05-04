@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import { useClothesContext } from "../../context/ClothesContext";
 import "./ProductPage.css";
@@ -8,11 +8,9 @@ import ProductDetails from "../../components/ProductDetails/ProductDetails";
 const ProductPage = () => {
   const { getThemeClassName } = useThemeContext();
   const navigate = useNavigate();
-  const { setClothesById } = useClothesContext();
 
   const goBackOnePage = () => {
     navigate(-1);
-    setClothesById(null);
   };
 
   return (

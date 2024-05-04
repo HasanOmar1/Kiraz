@@ -1,7 +1,7 @@
 import loadingGif from "../../assets/loading-animation.gif";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
 import { useBagContext } from "../../context/BagContext";
@@ -11,24 +11,30 @@ import { useLoginContext } from "../../context/LoginContext";
 
 const ProductDetails = () => {
   const { getClothesById, clothesById } = useClothesContext();
-  const [currentColor, setCurrentColor] = useState(clothesById?.color);
   const { currentUser } = useLoginContext();
   const { addToBag, errorMsg: addToBagErrorMsg } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
+
   const { id } = useParams();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const color = searchParams.get("color");
 
   useEffect(() => {
     getClothesById(id);
   }, [id]);
-  // console.log(clothesById);
 
   useEffect(() => {
-    setCurrentColor(clothesById?.color);
-  }, [clothesById?.color]);
+    if (!color) {
+      setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
+    } else {
+      setSearchParams({ color }, { replace: true });
+    }
+  }, [clothesById]);
 
   const currentActiveColor = (color: string) => {
-    setCurrentColor(color);
+    setSearchParams({ color }, { replace: true });
   };
 
   const goToBag = () => {
@@ -37,11 +43,11 @@ const ProductDetails = () => {
   };
 
   const currentImg =
-    currentColor === "blue"
+    color === "blue"
       ? clothesById?.blueImg
-      : currentColor === "green"
+      : color === "green"
       ? clothesById?.greenImg
-      : currentColor === "black"
+      : color === "black"
       ? clothesById?.blackImg
       : "";
 
@@ -50,7 +56,7 @@ const ProductDetails = () => {
 
     addToBag({
       id: clothesById?._id,
-      color: currentColor,
+      color: color ?? "unKnown",
       name: clothesById?.name,
       price: clothesById?.price,
       size: clothesById?.size,
@@ -67,7 +73,7 @@ const ProductDetails = () => {
           <div className="data">
             <ProductData
               clothesById={clothesById}
-              currentColor={currentColor}
+              currentColor={color ?? "unknown"}
               currentActiveColor={currentActiveColor}
             />
 
