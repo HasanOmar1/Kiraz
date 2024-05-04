@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import Bag from "./pages/Bag/Bag";
 import BagContextProvider from "./context/BagContext";
 import History from "./pages/History/History";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const { pathname } = useLocation();
@@ -38,7 +38,7 @@ function App() {
               <Route path="/shorts" element={<ShortsPage />} />
               <Route path="/hoodies" element={<HoodiesPage />} />
               {/*  */}
-              <Route path="*" element={<ErrorPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </AllClothesTypesContextProvider>
         </ClothesContextProvider>

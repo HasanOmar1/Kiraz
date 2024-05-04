@@ -1,4 +1,4 @@
-# Kiraz-Kids
+# Kiraz
 
 Still not finished , here is the website
 

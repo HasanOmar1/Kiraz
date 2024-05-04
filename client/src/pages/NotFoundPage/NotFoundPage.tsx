@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useThemeContext } from "../../context/ThemeContext";
-import "./ErrorPage.css";
+import "./NotFoundPage.css";
 import { useNavigate } from "react-router-dom";
 
-const ErrorPage = () => {
+const NotFoundPage = () => {
   const { getThemeClassName } = useThemeContext();
   const [timer, setTimer] = useState(3);
   const navigate = useNavigate();
@@ -15,17 +15,17 @@ const ErrorPage = () => {
   }, []);
 
   useEffect(() => {
-    if (timer === -1) {
-      navigate("/");
+    if (timer === 0) {
+      navigate(-1);
     }
   }, [timer]);
 
   return (
-    <main className={`ErrorPage Page ${getThemeClassName()}`}>
+    <main className={`NotFoundPage Page ${getThemeClassName()}`}>
       <h1>Page not found </h1>
-      <h2>Moving you to the home page in {timer} seconds</h2>
+      <h2>Moving you back in {timer} seconds</h2>
     </main>
   );
 };
 
-export default ErrorPage;
+export default NotFoundPage;
