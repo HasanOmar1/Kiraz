@@ -1,6 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
-import { useClothesContext } from "../../context/ClothesContext";
 import "./ProductPage.css";
 import backSvg from "../../assets/svgs/back-arrow.svg";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";

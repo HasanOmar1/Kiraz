@@ -1,6 +1,6 @@
 import loadingGif from "../../assets/loading-animation.gif";
 import { useClothesContext } from "../../context/ClothesContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
