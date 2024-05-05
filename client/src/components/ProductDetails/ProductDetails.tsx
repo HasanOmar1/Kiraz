@@ -1,6 +1,6 @@
 import loadingGif from "../../assets/loading-animation.gif";
 import { useClothesContext } from "../../context/ClothesContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
@@ -14,6 +14,7 @@ const ProductDetails = () => {
   const { currentUser } = useLoginContext();
   const { addToBag, errorMsg: addToBagErrorMsg } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
+  const [currentColor, setCurrentColor] = useState(clothesById?.color);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -23,34 +24,51 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getClothesById(id);
+    // setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
   }, [id]);
 
   useEffect(() => {
-    if (!color) {
-      setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
+    // if (!color) {
+    //   setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
+    // } else {
+    //   setSearchParams({ color }, { replace: true });
+    // }
+
+    if (color) {
+      setCurrentColor(color);
     } else {
-      setSearchParams({ color }, { replace: true });
+      setCurrentColor(clothesById?.color);
     }
   }, [clothesById?.color, id]);
 
-  console.log(`correct: `, clothesById?.color);
-  console.log(color);
-
   const currentActiveColor = (color: string) => {
     setSearchParams({ color }, { replace: true });
+    setCurrentColor(color);
   };
+
+  // console.log(`correct: `, clothesById?.color);
+  console.log(`color state: `, currentColor);
 
   const goToBag = () => {
     navigate("/bag");
     closeModal();
   };
 
+  // const currentImg =
+  //   color === "blue"
+  //     ? clothesById?.blueImg
+  //     : color === "green"
+  //     ? clothesById?.greenImg
+  //     : color === "black"
+  //     ? clothesById?.blackImg
+  //     : "";
+
   const currentImg =
-    color === "blue"
+    currentColor === "blue"
       ? clothesById?.blueImg
-      : color === "green"
+      : currentColor === "green"
       ? clothesById?.greenImg
-      : color === "black"
+      : currentColor === "black"
       ? clothesById?.blackImg
       : "";
 
@@ -59,7 +77,7 @@ const ProductDetails = () => {
 
     addToBag({
       id: clothesById?._id,
-      color: color ?? "unKnown",
+      color: currentColor,
       name: clothesById?.name,
       price: clothesById?.price,
       size: clothesById?.size,
@@ -76,7 +94,7 @@ const ProductDetails = () => {
           <div className="data">
             <ProductData
               clothesById={clothesById}
-              currentColor={color ?? "unknown"}
+              currentColor={currentColor}
               currentActiveColor={currentActiveColor}
             />
 
