@@ -5,6 +5,7 @@ const usersSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "Please provide a name"],
+      minlength: [3, "Please provide at least three characters"],
       unique: true,
     },
     email: {
@@ -15,7 +16,7 @@ const usersSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please provide a password"],
-      minLength: [2, "Please provide at least two characters"],
+      minlength: [3, "Please provide at least three characters"],
     },
     bag: [
       {

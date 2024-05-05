@@ -40,6 +40,16 @@ export const createUser = async (req, res, next) => {
       throw new Error("This name is already taken");
     }
 
+    if (password.length <= 2) {
+      res.status(STATUS_CODE.BAD_REQUEST);
+      throw new Error("Password must be at least three characters long");
+    }
+
+    if (name.length <= 2) {
+      res.status(STATUS_CODE.BAD_REQUEST);
+      throw new Error("Name must be at least three characters long");
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const createdUser = await User.create({

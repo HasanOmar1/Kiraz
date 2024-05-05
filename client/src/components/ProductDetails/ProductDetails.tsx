@@ -31,7 +31,10 @@ const ProductDetails = () => {
     } else {
       setSearchParams({ color }, { replace: true });
     }
-  }, [clothesById]);
+  }, [clothesById?.color, id]);
+
+  console.log(`correct: `, clothesById?.color);
+  console.log(color);
 
   const currentActiveColor = (color: string) => {
     setSearchParams({ color }, { replace: true });
