@@ -3,13 +3,20 @@ import { useThemeContext } from "../../context/ThemeContext";
 import "./ProductPage.css";
 import backSvg from "../../assets/svgs/back-arrow.svg";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
+import { useClothesContext } from "../../context/ClothesContext";
 
 const ProductPage = () => {
   const { getThemeClassName } = useThemeContext();
   const navigate = useNavigate();
+  const { setClothesById } = useClothesContext();
 
   const goBackOnePage = () => {
     navigate(-1);
+    setClothesById(null);
+  };
+
+  onpopstate = () => {
+    setClothesById(null);
   };
 
   return (

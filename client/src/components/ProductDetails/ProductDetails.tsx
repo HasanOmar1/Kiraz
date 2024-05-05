@@ -24,20 +24,17 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getClothesById(id);
-    // setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
   }, [id]);
 
   useEffect(() => {
-    // if (!color) {
-    //   setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
-    // } else {
-    //   setSearchParams({ color }, { replace: true });
-    // }
-
     if (color) {
       setCurrentColor(color);
     } else {
       setCurrentColor(clothesById?.color);
+
+      setTimeout(() => {
+        setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
+      }, 100);
     }
   }, [clothesById?.color, id]);
 
@@ -46,22 +43,10 @@ const ProductDetails = () => {
     setCurrentColor(color);
   };
 
-  // console.log(`correct: `, clothesById?.color);
-  console.log(`color state: `, currentColor);
-
   const goToBag = () => {
     navigate("/bag");
     closeModal();
   };
-
-  // const currentImg =
-  //   color === "blue"
-  //     ? clothesById?.blueImg
-  //     : color === "green"
-  //     ? clothesById?.greenImg
-  //     : color === "black"
-  //     ? clothesById?.blackImg
-  //     : "";
 
   const currentImg =
     currentColor === "blue"

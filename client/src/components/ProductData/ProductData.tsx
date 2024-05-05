@@ -24,7 +24,7 @@ const ProductData = ({
       ? `Fit: True to size—designed with a shorter inseam than our classic 7" styles`
       : "";
 
-  const sizes = (size: string | undefined) => {
+  const sizes = (size?: string | undefined) => {
     return size === "S"
       ? "Small"
       : size === "L"
