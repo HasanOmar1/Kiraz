@@ -7,8 +7,12 @@ type ThemeButtonProps = {
   handleSwitchTheme: () => void;
 };
 
+const localTheme = localStorage.getItem("theme");
+
 const ThemeButton = ({ handleSwitchTheme }: ThemeButtonProps) => {
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(
+    localTheme === "dark" ? true : false
+  );
   return (
     <div className="ThemeButton">
       <input
