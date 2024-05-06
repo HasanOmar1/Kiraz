@@ -40,3 +40,22 @@
   gap: 30px;
   width: 100%;
 }
+
+.Home .skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.Home.dark .skeleton,
+.Home.light .skeleton {
+  transition: all 0.3s;
+  width: 1500px;
+  height: 230px;
+  background-color: #05050533;
+  border-radius: 20px;
+}
+
+.Home.light .skeleton {
+  background-color: #33333399;
+}

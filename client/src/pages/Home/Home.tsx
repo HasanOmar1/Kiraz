@@ -39,6 +39,10 @@ const Home = () => {
       ) : (
         <>
           <img src={Loading} alt="Loading animation" />
+          <div className="skeleton-container">
+            <div className="skeleton"></div>
+            <div className="skeleton"></div>
+          </div>
         </>
       )}
     </main>
