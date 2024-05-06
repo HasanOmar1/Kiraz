@@ -1,12 +1,17 @@
 import { useThemeContext } from "../../context/ThemeContext";
 import "./Home.css";
-import backgroundImg from "../../assets/background.jpg";
-import { hoodieImg, pantsImg, shirtsImg, shortImg } from "../../utils/Imgs";
+import {
+  hoodieImg,
+  pantsImg,
+  shirtsImg,
+  shortImg,
+  backgroundImg,
+  Loading,
+} from "../../utils/assets";
 import HomeImg from "../../components/HomeImg/HomeImg";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect } from "react";
 import ProductsCards from "../../components/ProductsCards/ProductsCards";
-import Loading from "../../assets/loading-animation.gif";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();

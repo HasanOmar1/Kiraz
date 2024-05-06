@@ -1,6 +1,6 @@
 import "./ThemeButton.css";
-import moonSvg from "../../assets/svgs/moon.svg";
-import sunSvg from "../../assets/svgs/sun.svg";
+import { moonSvg, sunSvg } from "../../utils/assets";
+
 import { useState } from "react";
 
 type ThemeButtonProps = {

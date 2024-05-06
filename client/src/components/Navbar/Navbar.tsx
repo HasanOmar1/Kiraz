@@ -1,8 +1,7 @@
 import "./Navbar.css";
-import logo from "../../assets/logo.jpg";
+import { logo, loginSvg } from "../../utils/assets";
 import { useNavigate } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
-import loginSvg from "../../assets/svgs/login.svg";
 import ThemeButton from "../ThemeButton/ThemeButton";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";

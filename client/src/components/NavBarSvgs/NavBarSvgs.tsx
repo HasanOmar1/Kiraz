@@ -1,6 +1,5 @@
 import "./NavBarSvgs.css";
-import logoutSvg from "../../assets/svgs/logout.svg";
-import bagSvg from "../../assets/svgs/bag.svg";
+import { logoutSvg, bagSvg } from "../../utils/assets";
 import { useNavigate } from "react-router-dom";
 import { CurrentLoggedUser } from "../../types/LoginContextTypes";
 

@@ -1,10 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
-import logo from "../../assets/logo.jpg";
 import { useLoginContext } from "../../context/LoginContext";
-import emailSvg from "../../assets/svgs/email-input.svg";
-import nameSvg from "../../assets/svgs/name-input.svg";
-import lockSvg from "../../assets/svgs/lock-input.svg";
+import { emailSvg, nameSvg, lockSvg, logo } from "../../utils/assets";
 import { LoginForm } from "../LoginForm/LoginForm";
 
 const LoginModal = () => {
