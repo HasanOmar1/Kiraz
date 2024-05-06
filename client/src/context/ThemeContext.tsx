@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Props = {
   children: React.ReactNode;
@@ -11,8 +11,14 @@ type ContextValue = {
 
 const ThemeContext = createContext<null | ContextValue>(null);
 
+const localTheme = localStorage.getItem("theme");
+
 const ThemeContextProvider = ({ children }: Props) => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(localTheme ?? "dark");
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const getThemeClassName = () => {
     return theme === "dark" ? "dark" : "light";
