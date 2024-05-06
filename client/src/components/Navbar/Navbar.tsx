@@ -41,6 +41,7 @@ const Navbar = () => {
       <div className="container">
         <div className="logo-container">
           <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} />
+          <h2 onClick={goHome}>Kiraz</h2>
         </div>
         <div className="svgs-container">
           <ThemeButton handleSwitchTheme={handleSwitchTheme} />
