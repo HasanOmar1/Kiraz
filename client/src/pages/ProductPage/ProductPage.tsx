@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useThemeContext } from "../../context/ThemeContext";
 import "./ProductPage.css";
-import backSvg from "../../assets/svgs/back-arrow.svg";
+import { backSvg } from "../../utils/Assets";
+import { useClothesContext, useThemeContext } from "../../utils/Context";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
-import { useClothesContext } from "../../context/ClothesContext";
 
 const ProductPage = () => {
   const { getThemeClassName } = useThemeContext();

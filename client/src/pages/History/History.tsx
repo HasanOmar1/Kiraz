@@ -1,12 +1,14 @@
 import { useEffect } from "react";
-import { useBagContext } from "../../context/BagContext";
-import { useThemeContext } from "../../context/ThemeContext";
 import "./History.css";
 import BagDetails from "../../components/BagDetails/BagDetails";
-import { useLoginContext } from "../../context/LoginContext";
-import emptyBag from "../../assets/empty-bag.png";
+import { emptyBag } from "../../utils/Assets";
 import Pagination from "../../components/Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
+import {
+  useBagContext,
+  useThemeContext,
+  useLoginContext,
+} from "../../utils/Context";
 
 const History = () => {
   const { getThemeClassName } = useThemeContext();

@@ -1,8 +1,10 @@
 import "../ClothesStyles.css";
 import { useEffect } from "react";
 import ClothesTypesData from "../../../components/ClothesTypesData/ClothesTypesData";
-import { useThemeContext } from "../../../context/ThemeContext";
-import { useAllClothesTypesContext } from "../../../context/AllClothesTypesContext";
+import {
+  useThemeContext,
+  useAllClothesTypesContext,
+} from "../../../utils/Context";
 
 const ShirtsPage = () => {
   const { getAllShirts, getShirts } = useAllClothesTypesContext();

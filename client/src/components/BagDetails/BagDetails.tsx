@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { BagItems } from "../../types/ClothesTypes";
 import "./BagDetails.css";
-import { useThemeContext } from "../../context/ThemeContext";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
-import { useBagContext } from "../../context/BagContext";
+import { useThemeContext, useBagContext } from "../../utils/Context";
 import useModal from "../../hooks/useModal";
 import { useEffect, useState } from "react";
 import BagDetailsModal from "../BagDetailsModal/BagDetailsModal";

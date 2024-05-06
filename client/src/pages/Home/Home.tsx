@@ -1,4 +1,3 @@
-import { useThemeContext } from "../../context/ThemeContext";
 import "./Home.css";
 import {
   hoodieImg,
@@ -7,11 +6,11 @@ import {
   shortImg,
   backgroundImg,
   Loading,
-} from "../../utils/assets";
+} from "../../utils/Assets";
 import HomeImg from "../../components/HomeImg/HomeImg";
-import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect } from "react";
 import ProductsCards from "../../components/ProductsCards/ProductsCards";
+import { useThemeContext, useClothesContext } from "../../utils/Context";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();

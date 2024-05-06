@@ -1,7 +1,6 @@
-import { useLoginContext } from "../../context/LoginContext";
-import { useThemeContext } from "../../context/ThemeContext";
+import { useLoginContext, useThemeContext } from "../../utils/Context";
 import "./Bag.css";
-import emptyBag from "../../assets/empty-bag.png";
+import { emptyBag } from "../../utils/Assets";
 import BagDetails from "../../components/BagDetails/BagDetails";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";

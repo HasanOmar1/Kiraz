@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useThemeContext } from "../../context/ThemeContext";
 import "./NotFoundPage.css";
 import { useNavigate } from "react-router-dom";
+import { useThemeContext } from "../../utils/Context";
 
 const NotFoundPage = () => {
   const { getThemeClassName } = useThemeContext();

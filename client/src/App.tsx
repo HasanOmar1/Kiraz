@@ -1,8 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
-import ClothesContextProvider from "./context/ClothesContext";
-import AllClothesTypesContextProvider from "./context/AllClothesTypesContext";
 import PantsPage from "./pages/ClothesTypes/Pants/Pants";
 import ShirtsPage from "./pages/ClothesTypes/Shirts/Shirts";
 import ShortsPage from "./pages/ClothesTypes/Shorts/Shorts";
@@ -10,7 +8,11 @@ import HoodiesPage from "./pages/ClothesTypes/Hoodies/Hoodies";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
 import Bag from "./pages/Bag/Bag";
-import BagContextProvider from "./context/BagContext";
+import {
+  ClothesContextProvider,
+  AllClothesTypesContextProvider,
+  BagContextProvider,
+} from "./utils/Context";
 import History from "./pages/History/History";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 

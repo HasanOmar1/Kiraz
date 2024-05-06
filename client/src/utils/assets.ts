@@ -13,6 +13,10 @@ import logoutSvg from "../assets/svgs/logout.svg";
 import bagSvg from "../assets/svgs/bag.svg";
 import moonSvg from "../assets/svgs/moon.svg";
 import sunSvg from "../assets/svgs/sun.svg";
+import arrowSvg from "../assets/svgs/arrow.svg";
+import loadingGif from "../assets/loading-animation.gif";
+import emptyBag from "../assets/empty-bag.png";
+import backSvg from "../assets/svgs/back-arrow.svg";
 
 export {
   shirtsImg,
@@ -30,4 +34,8 @@ export {
   bagSvg,
   moonSvg,
   sunSvg,
+  arrowSvg,
+  loadingGif,
+  emptyBag,
+  backSvg,
 };

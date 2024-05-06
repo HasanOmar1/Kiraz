@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Cards.css";
-import { useThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../utils/Context";
 
 type CardsProps = {
   cover?: string;

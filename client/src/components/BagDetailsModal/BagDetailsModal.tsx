@@ -1,4 +1,4 @@
-import { useLoginContext } from "../../context/LoginContext";
+import { useLoginContext } from "../../utils/Context";
 import GenericModal from "../GenericModal/GenericModal";
 import "./BagDetailsModal.css";
 

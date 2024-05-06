@@ -1,5 +1,5 @@
 import "./FilterData.css";
-import arrowSvg from "../../assets/svgs/arrow.svg";
+import { arrowSvg } from "../../utils/Assets";
 import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 
 type Colors = {

@@ -1,13 +1,15 @@
-import loadingGif from "../../assets/loading-animation.gif";
-import { useClothesContext } from "../../context/ClothesContext";
+import { loadingGif } from "../../utils/Assets";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
-import { useBagContext } from "../../context/BagContext";
 import GenericModal from "../GenericModal/GenericModal";
 import useModal from "../../hooks/useModal";
-import { useLoginContext } from "../../context/LoginContext";
+import {
+  useBagContext,
+  useLoginContext,
+  useClothesContext,
+} from "../../utils/Context";
 
 const ProductDetails = () => {
   const { getClothesById, clothesById } = useClothesContext();

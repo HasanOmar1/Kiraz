@@ -1,14 +1,17 @@
 import "./Navbar.css";
-import { logo, loginSvg } from "../../utils/assets";
 import { useNavigate } from "react-router-dom";
-import { useThemeContext } from "../../context/ThemeContext";
 import ThemeButton from "../ThemeButton/ThemeButton";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
-import { useModalContext } from "../../context/ModalContext";
-import { useLoginContext } from "../../context/LoginContext";
-import { useClothesContext } from "../../context/ClothesContext";
+import {
+  useThemeContext,
+  useModalContext,
+  useLoginContext,
+  useClothesContext,
+} from "../../utils/Context";
+
 import NavBarSvgs from "../NavBarSvgs/NavBarSvgs";
+import { logo, loginSvg } from "../../utils/Assets";
 
 const Navbar = () => {
   const navigate = useNavigate();

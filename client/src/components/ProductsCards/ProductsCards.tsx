@@ -1,6 +1,6 @@
 import { Clothes } from "../../types/ClothesTypes";
 import Cards from "../Cards/Cards";
-import loadingGif from "../../assets/loading-animation.gif";
+import { loadingGif } from "../../utils/Assets";
 import "./ProductsCards.css";
 
 type ProductsCardsProps = {

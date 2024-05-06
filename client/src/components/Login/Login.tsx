@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./Login.css";
-import { useLoginContext } from "../../context/LoginContext";
-import { emailSvg, nameSvg, lockSvg, logo } from "../../utils/assets";
+import { useLoginContext } from "../../utils/Context";
+
+import { emailSvg, nameSvg, lockSvg, logo } from "../../utils/Assets";
 import { LoginForm } from "../LoginForm/LoginForm";
 
 const LoginModal = () => {
