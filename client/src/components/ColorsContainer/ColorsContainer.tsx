@@ -19,19 +19,19 @@ const ColorsContainer = ({
       <div className="ColorsContainer colors-container">
         {clothesById.greenImg && (
           <div
-            className={`green ${currentColor === "green" && "active"}`}
+            className={`green ${currentColor === "green" && "activeColor"}`}
             onClick={() => currentActiveColor("green")}
           ></div>
         )}
         {clothesById.blackImg && (
           <div
-            className={`black ${currentColor === "black" && "active"}`}
+            className={`black ${currentColor === "black" && "activeColor"}`}
             onClick={() => currentActiveColor("black")}
           ></div>
         )}
         {clothesById.blueImg && (
           <div
-            className={`blue ${currentColor === "blue" && "active"}`}
+            className={`blue ${currentColor === "blue" && "activeColor"}`}
             onClick={() => currentActiveColor("blue")}
           ></div>
         )}

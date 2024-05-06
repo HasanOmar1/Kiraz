@@ -66,9 +66,13 @@ hr {
   background-color: rgb(14, 14, 121);
 }
 
-.active {
+.activeColor {
   outline: 1px solid rgb(255, 0, 179);
   outline-offset: 3px;
+}
+
+.active {
+  background-color: #00acb553;
 }
 
 .link {

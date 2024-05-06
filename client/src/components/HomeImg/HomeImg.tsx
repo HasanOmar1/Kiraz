@@ -1,3 +1,4 @@
+import upperCaseLetter from "../../utils/UpperCaseLetter";
 import "./HomeImg.css";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +17,7 @@ const HomeImg = ({ img, text }: HomeImgProps) => {
   return (
     <div className="HomeImg" onClick={navigateToPage}>
       <img src={img} alt={img} />
-      <h3>{text}</h3>
+      <h3>{upperCaseLetter(text)}</h3>
     </div>
   );
 };

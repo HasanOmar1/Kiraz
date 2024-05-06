@@ -1,0 +1,9 @@
+export { default as Bag } from "./Bag/Bag";
+export { default as HoodiesPage } from "./ClothesTypes/Hoodies/Hoodies";
+export { default as PantsPage } from "./ClothesTypes/Pants/Pants";
+export { default as ShirtsPage } from "./ClothesTypes/Shirts/Shirts";
+export { default as ShortsPage } from "./ClothesTypes/Shorts/Shorts";
+export { default as History } from "./History/History";
+export { default as Home } from "./Home/Home";
+export { default as NotFoundPage } from "./NotFoundPage/NotFoundPage";
+export { default as ProductPage } from "./ProductPage/ProductPage";

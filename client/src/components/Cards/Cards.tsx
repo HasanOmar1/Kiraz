@@ -27,9 +27,9 @@ const Cards = ({
 }: CardsProps) => {
   const { theme } = useThemeContext();
 
-  const greenColor = color === "green" && "active";
-  const blackColor = color === "black" && "active";
-  const blueColor = color === "blue" && "active";
+  const greenColor = color === "green" && "activeColor";
+  const blackColor = color === "black" && "activeColor";
+  const blueColor = color === "blue" && "activeColor";
 
   const sizes = (size: string | undefined) => {
     return size === "S"

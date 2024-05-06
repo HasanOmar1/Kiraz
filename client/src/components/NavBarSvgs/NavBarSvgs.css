@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .NavBarSvgs .bag-container {
@@ -11,8 +11,9 @@
 
 .NavBarSvgs .bag-counter {
   position: absolute;
-  top: 58%;
-  left: 6px;
+  top: 50%;
+  left: 5px;
   pointer-events: none;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
+  color: white;
 }

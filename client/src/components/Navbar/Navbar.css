@@ -1,9 +1,7 @@
 .Navbar {
-  min-height: 8vh;
-  border-bottom: 3px solid #00acb553;
-  background-color: #222831;
-  color: white;
-  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 .Navbar .container {
@@ -13,12 +11,11 @@
 
 .Navbar .logo-container {
   margin-left: 15vw;
-  width: fit-content;
   display: flex;
-  gap: 20px;
   align-items: center;
   font-family: "Courier New", Courier, monospace;
 }
+
 .Navbar .logo-container h2 {
   cursor: pointer;
 }
@@ -31,9 +28,73 @@
   cursor: pointer;
 }
 
+.Navbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222831;
+  min-height: 8dvh;
+  border-bottom: 2px solid #00acb553;
+}
+
+.Navbar nav .title {
+  font-size: 1.5rem;
+  margin: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.Navbar ul {
+  display: flex;
+}
+
+.Navbar ul li {
+  list-style: none;
+}
+
+.Navbar ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 1.7rem;
+  transition: 0.1s;
+}
+
+.Navbar ul li a:not(.active):hover {
+  background-color: #333;
+}
+
+.Navbar .menu {
+  display: none;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.25rem;
+  height: 1.9rem;
+}
+
+.Navbar .menu span {
+  height: 0.4rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.2rem;
+}
+
+.Navbar .second-nav {
+  height: 6dvh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b2027;
+  border-bottom: 2px solid #525b6a;
+}
+
 .Navbar .svgs-container {
   position: absolute;
-  right: 15%;
+  right: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +102,7 @@
 }
 
 .Navbar .svgs-container .svg {
-  padding-top: 18px;
+  padding-top: 10px;
   cursor: pointer;
   width: 23px;
 }
@@ -54,4 +115,46 @@
 
 .Navbar .modal-container {
   position: absolute;
+}
+
+@media (max-width: 480px) {
+  .Navbar nav {
+    flex-direction: column;
+    align-items: start;
+    padding-bottom: 20px;
+  }
+
+  .Navbar .logo-container {
+    display: block;
+    margin: 0;
+    padding-top: 1rem;
+  }
+
+  .Navbar .logo-container img {
+    display: none;
+  }
+
+  .Navbar .menu {
+    display: flex;
+  }
+
+  .Navbar nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .Navbar nav ul li {
+    margin-top: 4%;
+    text-align: center;
+    width: 100%;
+  }
+
+  .Navbar ul.open {
+    display: flex;
+  }
+
+  .Navbar .second-nav {
+    height: 10dvh;
+  }
 }
