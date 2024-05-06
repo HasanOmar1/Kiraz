@@ -9,6 +9,7 @@ import HomeImg from "../../components/HomeImg/HomeImg";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect } from "react";
 import ProductsCards from "../../components/ProductsCards/ProductsCards";
+import Loading from "../../assets/loading-animation.gif";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();
@@ -20,7 +21,30 @@ const Home = () => {
 
   return (
     <main className={`Home Page ${getThemeClassName()}`}>
-      <div className="background-container">
+      {latestProducts ? (
+        <>
+          <div className="background-container">
+            <img src={backgroundImg} alt="background img" />
+          </div>
+          <section className="imgs-section">
+            <div className="imgs-container">
+              <HomeImg img={shirtsImg} text="shirts" />
+              <HomeImg img={hoodieImg} text="hoodies" />
+              <HomeImg img={pantsImg} text="pants" />
+              <HomeImg img={shortImg} text="shorts" />
+            </div>
+          </section>
+          <section className="latest-products">
+            <h3>Latest Added Products</h3>
+            <ProductsCards array={latestProducts} />
+          </section>
+        </>
+      ) : (
+        <>
+          <img src={Loading} alt="Loading animation" />
+        </>
+      )}
+      {/* <div className="background-container">
         <img src={backgroundImg} alt="background img" />
       </div>
       <section className="imgs-section">
@@ -34,7 +58,7 @@ const Home = () => {
       <section className="latest-products">
         <h3>Latest Added Products</h3>
         <ProductsCards array={latestProducts} />
-      </section>
+      </section> */}
     </main>
   );
 };
