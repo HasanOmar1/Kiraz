@@ -1,10 +1,7 @@
 import { useThemeContext } from "../../context/ThemeContext";
 import "./Home.css";
 import backgroundImg from "../../assets/background.jpg";
-import shirtsImg from "../../assets/shirts.jpg";
-import hoodieImg from "../../assets/hoodie.jpg";
-import pantsImg from "../../assets/pants.jpg";
-import shortImg from "../../assets/short.jpg";
+import { hoodieImg, pantsImg, shirtsImg, shortImg } from "../../utils/Imgs";
 import HomeImg from "../../components/HomeImg/HomeImg";
 import { useClothesContext } from "../../context/ClothesContext";
 import { useEffect } from "react";
@@ -44,21 +41,6 @@ const Home = () => {
           <img src={Loading} alt="Loading animation" />
         </>
       )}
-      {/* <div className="background-container">
-        <img src={backgroundImg} alt="background img" />
-      </div>
-      <section className="imgs-section">
-        <div className="imgs-container">
-          <HomeImg img={shirtsImg} text="shirts" />
-          <HomeImg img={hoodieImg} text="hoodies" />
-          <HomeImg img={pantsImg} text="pants" />
-          <HomeImg img={shortImg} text="shorts" />
-        </div>
-      </section>
-      <section className="latest-products">
-        <h3>Latest Added Products</h3>
-        <ProductsCards array={latestProducts} />
-      </section> */}
     </main>
   );
 };
