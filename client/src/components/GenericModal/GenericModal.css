@@ -6,7 +6,6 @@
 .GenericModal .modal-position-container {
   width: 100%;
   display: flex;
-  padding-bottom: 40px;
 }
 .GenericModal .modal-background {
   position: fixed;
