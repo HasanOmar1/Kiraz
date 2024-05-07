@@ -1,0 +1,39 @@
+.SecondNavbar.second-nav {
+  height: 6dvh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b2027;
+  border-bottom: 2px solid #525b6a;
+}
+
+.SecondNavbar .svgs-container {
+  position: absolute;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.SecondNavbar .svgs-container .svg {
+  padding-top: 10px;
+  cursor: pointer;
+  width: 23px;
+}
+
+.SecondNavbar .login-modal {
+  position: fixed;
+  top: 10%;
+  left: 35%;
+}
+
+.SecondNavbar .modal-container {
+  position: absolute;
+}
+
+@media (max-width: 480px) {
+  .SecondNavbar.second-nav {
+    height: 10dvh;
+  }
+}

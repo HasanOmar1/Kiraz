@@ -7,6 +7,7 @@ import {
   BagContextProvider,
 } from "./utils/Context";
 import * as Pages from "./pages/index";
+import SecondNavbar from "./components/SecondNavbar/SecondNavbar";
 
 function App() {
   const { pathname } = useLocation();
@@ -21,6 +22,7 @@ function App() {
         <ClothesContextProvider>
           <AllClothesTypesContextProvider>
             <Navbar />
+            <SecondNavbar />
             <Routes>
               <Route path="/" element={<Pages.Home />} />
               <Route path="/bag" element={<Pages.Bag />} />

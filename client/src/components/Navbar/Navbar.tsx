@@ -1,6 +1,5 @@
 import "./Navbar.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import ThemeButton from "../ThemeButton/ThemeButton";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
 import {
@@ -10,8 +9,7 @@ import {
   useClothesContext,
 } from "../../utils/Context";
 
-import NavBarSvgs from "../NavBarSvgs/NavBarSvgs";
-import { logo, loginSvg } from "../../utils/Assets";
+import { logo } from "../../utils/Assets";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -22,20 +20,9 @@ const Navbar = () => {
   const { setClothesById } = useClothesContext();
   const [openMenu, setOpenMenu] = useState(false);
 
-  const handleSwitchTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   const goHome = () => {
     navigate("/");
     setClothesById(null);
-  };
-
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setCurrentUser(null);
-    navigate("/");
   };
 
   const handleOpenMenu = () => {
@@ -43,21 +30,6 @@ const Navbar = () => {
   };
   return (
     <nav className="Navbar">
-      {/* <div className="svgs-container">
-        <ThemeButton handleSwitchTheme={handleSwitchTheme} />
-        {currentUser ? (
-          <NavBarSvgs handleLogOut={handleLogOut} currentUser={currentUser} />
-        ) : (
-          <div>
-            <img
-              src={loginSvg}
-              alt="login icon"
-              className="svg"
-              onClick={openModal}
-            />
-          </div>
-        )}
-      </div> */}
       {!currentUser && (
         <div className="modal-container">
           <GenericModal isOpen={isModalOpen} closeModal={closeModal}>
@@ -95,31 +67,6 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-
-      <div className="second-nav">
-        <div className="svgs-container">
-          <ThemeButton handleSwitchTheme={handleSwitchTheme} />
-          {currentUser ? (
-            <NavBarSvgs handleLogOut={handleLogOut} currentUser={currentUser} />
-          ) : (
-            <div>
-              <img
-                src={loginSvg}
-                alt="login icon"
-                className="svg"
-                onClick={openModal}
-              />
-            </div>
-          )}
-        </div>
-        {!currentUser && (
-          <div className="modal-container">
-            <GenericModal isOpen={isModalOpen} closeModal={closeModal}>
-              <LoginModal />
-            </GenericModal>
-          </div>
-        )}
-      </div>
     </nav>
   );
 };

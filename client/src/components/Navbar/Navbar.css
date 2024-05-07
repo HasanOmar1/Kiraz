@@ -83,40 +83,6 @@
   border-radius: 0.2rem;
 }
 
-.Navbar .second-nav {
-  height: 6dvh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1b2027;
-  border-bottom: 2px solid #525b6a;
-}
-
-.Navbar .svgs-container {
-  position: absolute;
-  right: 5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-.Navbar .svgs-container .svg {
-  padding-top: 10px;
-  cursor: pointer;
-  width: 23px;
-}
-
-.Navbar .login-modal {
-  position: fixed;
-  top: 10%;
-  left: 35%;
-}
-
-.Navbar .modal-container {
-  position: absolute;
-}
-
 @media (max-width: 480px) {
   .Navbar nav {
     flex-direction: column;
@@ -152,9 +118,5 @@
 
   .Navbar ul.open {
     display: flex;
-  }
-
-  .Navbar .second-nav {
-    height: 10dvh;
   }
 }
