@@ -14,10 +14,6 @@ const Bag = () => {
     usePagination(currentUser?.bag || []);
   const navigate = useNavigate();
 
-  const goToPurchaseHistory = () => {
-    navigate(`/history`);
-  };
-
   useEffect(() => {
     if (currentItems.length === 0) {
       setCurrentPage((prev) => {
@@ -28,6 +24,10 @@ const Bag = () => {
       });
     }
   }, [currentItems]);
+
+  const goToPurchaseHistory = () => {
+    navigate(`/history`);
+  };
 
   return (
     <div className={`Bag Page ${getThemeClassName()}`}>
@@ -54,6 +54,7 @@ const Bag = () => {
                 </div>
                 <h3 id="my-items">My Items</h3>
                 <BagDetails
+                  currentUser={currentUser}
                   array={
                     currentUser?.bag.length <= 4
                       ? currentUser?.bag

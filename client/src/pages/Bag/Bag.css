@@ -23,6 +23,7 @@
   border-bottom: none;
   right: 510px;
 }
+
 .Bag .history-btn-empty {
   top: -40px;
   right: -100px;
@@ -33,10 +34,6 @@
   letter-spacing: 2px;
   padding-bottom: 100px;
   text-align: center;
-}
-
-.Bag #clear-bag {
-  background-color: transparent;
 }
 
 .Bag #check-out {

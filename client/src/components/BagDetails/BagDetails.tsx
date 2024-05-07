@@ -6,13 +6,15 @@ import { useThemeContext, useBagContext } from "../../utils/Context";
 import useModal from "../../hooks/useModal";
 import { useEffect, useState } from "react";
 import BagDetailsModal from "../BagDetailsModal/BagDetailsModal";
+import { CurrentLoggedUser } from "../../types/LoginContextTypes";
 
 type BagDetailsProps = {
   showActions?: boolean;
   array: BagItems[];
+  currentUser?: CurrentLoggedUser;
 };
 
-const BagDetails = ({ showActions, array }: BagDetailsProps) => {
+const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
   const { theme } = useThemeContext();
   const { removeItemFromBag, checkOut, clearBag } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
@@ -55,15 +57,20 @@ const BagDetails = ({ showActions, array }: BagDetailsProps) => {
     closeModal();
   };
 
+  const itemsPrice = currentUser?.bag.reduce((a, b) => {
+    return a + (b.price || 0);
+  }, 0);
+
   return (
     <div className="BagDetails container">
       {showActions && (
         <div className="actions-container">
-          <p id="clear-bag" onClick={clearBag}>
-            Clear Bag
-          </p>
+          <p onClick={clearBag}>Clear Bag</p>
           <p id="check-out" onClick={checkOutModal}>
             Check Out
+          </p>
+          <p>
+            Price <span id="price-span">${itemsPrice}</span>
           </p>
         </div>
       )}
