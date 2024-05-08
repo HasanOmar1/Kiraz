@@ -6,6 +6,7 @@ type Props = {
   totalItems?: number;
   paginate: (number: number) => void;
   currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const Pagination = ({
@@ -13,6 +14,7 @@ const Pagination = ({
   totalItems,
   paginate,
   currentPage,
+  setCurrentPage,
 }: Props) => {
   const pageNumbers = [];
 
@@ -24,10 +26,29 @@ const Pagination = ({
     pageNumbers.push(i);
   }
 
+  const nextPage = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
+
+  const firstPage = currentPage === 1;
+
+  const lastPage =
+    currentPage === Math.ceil((totalItems || 0) / (itemsPerPage || 0));
+
   return (
     <div className="Pagination">
-      {totalItems && totalItems > 4 && (
+      {totalItems && itemsPerPage && totalItems > itemsPerPage && (
         <>
+          {!firstPage && (
+            <button onClick={prevPage} className="next-prev-btns prev-btn">
+              Prev
+            </button>
+          )}
+
           {pageNumbers.map((number) => {
             return (
               <button
@@ -39,6 +60,11 @@ const Pagination = ({
               </button>
             );
           })}
+          {!lastPage && (
+            <button onClick={nextPage} className="next-prev-btns next-btn">
+              Next
+            </button>
+          )}
         </>
       )}
     </div>

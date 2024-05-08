@@ -68,6 +68,7 @@ const Bag = () => {
                     totalItems={currentUser?.bag.length}
                     paginate={paginate}
                     currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
                   />
                 </div>
               </>

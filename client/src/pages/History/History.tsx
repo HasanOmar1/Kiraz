@@ -14,7 +14,7 @@ const History = () => {
   const { getThemeClassName } = useThemeContext();
   const { getBagHistory, userBagHistory } = useBagContext();
   const { currentUser } = useLoginContext();
-  const { currentItems, currentPage, itemsPerPage, paginate } =
+  const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
     usePagination(userBagHistory);
 
   useEffect(() => {
@@ -52,6 +52,7 @@ const History = () => {
                 totalItems={userBagHistory.length}
                 paginate={paginate}
                 currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
               />
             </div>
           </>
