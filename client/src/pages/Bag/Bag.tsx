@@ -1,8 +1,4 @@
-import {
-  useClothesContext,
-  useLoginContext,
-  useThemeContext,
-} from "../../utils/Context";
+import { useLoginContext, useThemeContext } from "../../utils/Context";
 import "./Bag.css";
 import { emptyBag } from "../../utils/Assets";
 import BagDetails from "../../components/BagDetails/BagDetails";
@@ -17,11 +13,6 @@ const Bag = () => {
   const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
     usePagination(currentUser?.bag || []);
   const navigate = useNavigate();
-  const { setClothesById } = useClothesContext();
-
-  useEffect(() => {
-    setClothesById(null);
-  }, []);
 
   useEffect(() => {
     if (currentItems.length === 0) {

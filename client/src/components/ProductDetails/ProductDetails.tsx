@@ -80,9 +80,6 @@ const ProductDetails = () => {
     });
   };
 
-  console.log(currentColor);
-  console.log(currentSize);
-
   return (
     <div className="ProductDetails">
       {clothesById ? (

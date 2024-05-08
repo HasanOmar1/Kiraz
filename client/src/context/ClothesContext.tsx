@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
 import * as Type from "../types/ClothesTypes";
+import { useLocation } from "react-router-dom";
 
 type ClothesContextProviderProps = {
   children: React.ReactNode;
@@ -21,6 +22,12 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   const [latestProducts, setLatestProducts] = useState<null | Type.Clothes[]>(
     null
   );
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setClothesById(null);
+  }, [pathname]);
 
   const getClothesById = async (id: string | undefined) => {
     try {

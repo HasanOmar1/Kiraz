@@ -2,27 +2,19 @@ import "./Navbar.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
-import {
-  useThemeContext,
-  useModalContext,
-  useLoginContext,
-  useClothesContext,
-} from "../../utils/Context";
+import { useModalContext, useLoginContext } from "../../utils/Context";
 
 import { logo } from "../../utils/Assets";
 import { useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { setTheme, theme } = useThemeContext();
-  const { closeModal, isModalOpen, openModal } = useModalContext();
-  const { currentUser, setCurrentUser } = useLoginContext();
-  const { setClothesById } = useClothesContext();
+  const { closeModal, isModalOpen } = useModalContext();
+  const { currentUser } = useLoginContext();
   const [openMenu, setOpenMenu] = useState(false);
 
   const goHome = () => {
     navigate("/");
-    setClothesById(null);
   };
 
   const handleOpenMenu = () => {
