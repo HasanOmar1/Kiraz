@@ -53,7 +53,7 @@ const BagContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.get(`/bag/history`);
       setUserBagHistory(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error: any) {
       console.log(error.response?.data.message);
     }

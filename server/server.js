@@ -9,7 +9,7 @@ import clothesRoute from "./routes/clothesRoute.js";
 import pantsRoute from "./routes/pantsRoute.js";
 import shirtsRoute from "./routes/shirtsRoute.js";
 import shortsRoute from "./routes/shortsRoute.js";
-import bagRoute from "./routes/bagRoute.js";
+import bagHistoryRoute from "./routes/bagHistoryRoute.js";
 import bagItemsRoute from "./routes/bagItemsRoute.js";
 
 dotenv.config();
@@ -24,7 +24,7 @@ app.use("/hoodies", hoodiesRoute);
 app.use("/pants", pantsRoute);
 app.use("/shirts", shirtsRoute);
 app.use("/shorts", shortsRoute);
-app.use("/bag", bagRoute);
+app.use("/bag", bagHistoryRoute);
 app.use("/bag-items", bagItemsRoute);
 
 app.use(errorHandler);
@@ -33,6 +33,6 @@ const port = process.env.PORT || 9999;
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
   app.listen(port, () => {
-    console.log(`Server Listening on port ${port}`);
+    console.log(`Server is Listening on port ${port}`);
   });
 });

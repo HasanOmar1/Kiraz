@@ -44,6 +44,6 @@ const bagSchema = new mongoose.Schema(
   }
 );
 
-const Bag = mongoose.model("Bag", bagSchema);
+const BagHistory = mongoose.model("Bag", bagSchema);
 
-export default Bag;
+export default BagHistory;

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import STATUS_CODE from "../constants/statusCodes.js";
 import BagItems from "../models/bagItemsModel.js";
-import Bag from "../models/bagModel.js";
+import BagHistory from "../models/bagHistoryModel.js";
 import User from "../models/usersModel.js";
 
 export const getBagItems = async (req, res, next) => {
@@ -79,7 +79,7 @@ export const checkout = async (req, res, next) => {
     );
 
     // Create a new document in the Bag collection for each bag
-    await Bag.insertMany(
+    await BagHistory.insertMany(
       userBag.map((bagItem) => ({
         _id: new mongoose.Types.ObjectId(),
         id: bagItem.id,
@@ -115,7 +115,7 @@ export const clearBag = async (req, res, next) => {
 
 export const getBagItemsHistory = async (req, res, next) => {
   try {
-    const bagHistory = await Bag.find({ user: req.user._id });
+    const bagHistory = await BagHistory.find({ user: req.user._id });
     res.send(bagHistory);
   } catch (error) {
     next(error);
