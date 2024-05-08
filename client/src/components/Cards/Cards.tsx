@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Cards.css";
 import { useThemeContext } from "../../utils/Context";
+import sizes from "../../utils/SizeLetterToWord";
 
 type CardsProps = {
   cover?: string;
@@ -30,16 +31,6 @@ const Cards = ({
   const greenColor = color === "green" && "activeColor";
   const blackColor = color === "black" && "activeColor";
   const blueColor = color === "blue" && "activeColor";
-
-  const sizes = (size: string | undefined) => {
-    return size === "S"
-      ? "Small"
-      : size === "L"
-      ? "Large"
-      : size === "M"
-      ? "Medium"
-      : " ";
-  };
 
   return (
     <div className="Cards">

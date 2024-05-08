@@ -1,53 +1,60 @@
 import { loadingGif } from "../../utils/Assets";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
-import GenericModal from "../GenericModal/GenericModal";
 import useModal from "../../hooks/useModal";
-import {
-  useBagContext,
-  useLoginContext,
-  useClothesContext,
-} from "../../utils/Context";
+import { useBagContext, useClothesContext } from "../../utils/Context";
+import ProductDetailsModal from "../ProductDetailsModal/ProductDetailsModal";
+import sizes from "../../utils/SizeLetterToWord";
 
 const ProductDetails = () => {
   const { getClothesById, clothesById } = useClothesContext();
-  const { currentUser } = useLoginContext();
   const { addToBag, errorMsg: addToBagErrorMsg } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
   const [currentColor, setCurrentColor] = useState(clothesById?.color);
-
+  const [currentSize, setCurrentSize] = useState(clothesById?.size);
   const { id } = useParams();
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const color = searchParams.get("color");
+  const size = searchParams.get("size");
 
   useEffect(() => {
     getClothesById(id);
   }, [id]);
 
   useEffect(() => {
-    if (color) {
+    if (color && size) {
       setCurrentColor(color);
+      setCurrentSize(sizes(size));
     } else {
       setCurrentColor(clothesById?.color);
+      setCurrentSize(sizes(clothesById?.size));
 
       setTimeout(() => {
-        setSearchParams({ color: clothesById?.color ?? "" }, { replace: true });
+        setSearchParams(
+          {
+            color: clothesById?.color ?? "",
+            size: sizes(clothesById?.size) ?? "",
+          },
+          { replace: true }
+        );
       }, 100);
     }
-  }, [clothesById?.color, id]);
+  }, [clothesById?.color, id, clothesById?.size]);
 
   const currentActiveColor = (color: string) => {
-    setSearchParams({ color }, { replace: true });
+    setSearchParams(
+      { color, size: sizes(currentSize) ?? "" },
+      { replace: true }
+    );
     setCurrentColor(color);
   };
 
-  const goToBag = () => {
-    navigate("/bag");
-    closeModal();
+  const currentActiveSize = (size: string) => {
+    setSearchParams({ size, color: currentColor ?? "" }, { replace: true });
+    setCurrentSize(size);
   };
 
   const currentImg =
@@ -67,11 +74,14 @@ const ProductDetails = () => {
       color: currentColor,
       name: clothesById?.name,
       price: clothesById?.price,
-      size: clothesById?.size,
+      size: currentSize,
       img: currentImg,
       type: clothesById?.type,
     });
   };
+
+  console.log(currentColor);
+  console.log(currentSize);
 
   return (
     <div className="ProductDetails">
@@ -83,6 +93,8 @@ const ProductDetails = () => {
               clothesById={clothesById}
               currentColor={currentColor}
               currentActiveColor={currentActiveColor}
+              currentActiveSize={currentActiveSize}
+              currentSize={currentSize}
             />
 
             <div className="buy-btn-container">
@@ -90,25 +102,12 @@ const ProductDetails = () => {
                 Add To Bag
               </button>
             </div>
-
-            <GenericModal closeModal={closeModal} isOpen={isModalOpen}>
-              {currentUser ? (
-                <>
-                  <div id="added-msg">
-                    <span>{clothesById.name}</span>
-                    <p>has been added to your bag</p>
-                  </div>
-
-                  <div className="buy-btn-container">
-                    <button id="buy-btn" onClick={goToBag}>
-                      Go To Bag
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div id="error-msg">{addToBagErrorMsg}</div>
-              )}
-            </GenericModal>
+            <ProductDetailsModal
+              addToBagErrorMsg={addToBagErrorMsg}
+              closeModal={closeModal}
+              clothesById={clothesById}
+              isModalOpen={isModalOpen}
+            />
           </div>
         </div>
       ) : (

@@ -34,16 +34,6 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
     };
   }, [debouncedCheckOut]);
 
-  const sizes = (items: BagItems) => {
-    return items.size === "S"
-      ? "Small"
-      : items.size === "L"
-      ? "Large"
-      : items.size === "M"
-      ? "Medium"
-      : " ";
-  };
-
   const removeItem = (id: string) => {
     removeItemFromBag(id);
   };
@@ -98,7 +88,7 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
                   </p>
                   <p>
                     Size:
-                    <span>{sizes(items)}</span>
+                    <span>{items.size}</span>
                   </p>
                 </div>
                 <p>
