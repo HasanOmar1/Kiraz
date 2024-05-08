@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const bagSchema = new mongoose.Schema(
+const bagHistorySchema = new mongoose.Schema(
   {
     id: {
       type: String,
@@ -44,6 +44,6 @@ const bagSchema = new mongoose.Schema(
   }
 );
 
-const BagHistory = mongoose.model("Bag", bagSchema);
+const BagHistory = mongoose.model("BagHistory", bagHistorySchema);
 
 export default BagHistory;
