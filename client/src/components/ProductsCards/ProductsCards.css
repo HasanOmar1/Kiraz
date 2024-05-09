@@ -1,7 +1,7 @@
 .ProductDetails .data {
   display: flex;
   flex-direction: column;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--courier-font);
   gap: 20px;
   width: 100%;
 }
@@ -12,7 +12,7 @@
 }
 
 .ProductDetails .data span {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--Segoe-font);
   font-size: 1.3rem;
   font-weight: 400;
 }

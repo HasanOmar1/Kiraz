@@ -4,12 +4,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --Segoe-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --courier-font: "Courier New", Courier, monospace;
+  --light-color: #fff;
+  --dark-color: #333;
+  --secondary-color: rgb(23, 83, 92);
+  --pick-color: rgba(255, 0, 179, 0.8);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--Segoe-font);
 }
 
 .Page {
@@ -17,14 +26,14 @@ body {
 }
 
 .dark {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--dark-color);
+  color: var(--light-color);
   transition: 0.3s all;
 }
 
 .light {
-  background-color: #fff;
-  color: #333;
+  background-color: var(--light-color);
+  color: var(--dark-color);
   transition: 0.3s all;
 }
 
@@ -33,13 +42,13 @@ body {
   justify-content: center;
   align-items: center;
   padding-top: 50px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--courier-font);
   flex-direction: column;
   gap: 7px;
 }
 
 #title p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--Segoe-font);
 }
 
 hr {
@@ -66,16 +75,13 @@ hr {
   background-color: rgb(14, 14, 121);
 }
 
-.activeColor {
-  border: 2px solid rgb(255, 0, 179) !important;
-}
-
+.activeColor,
 .activeSize {
-  border: 2px solid rgb(255, 0, 179) !important;
+  border: 2px solid var(--pick-color) !important;
 }
 
 .active {
-  background-color: #00acb553;
+  background-color: var(--secondary-color);
 }
 
 .link {
@@ -88,7 +94,7 @@ hr {
   background-color: transparent;
   border: none;
   color: rgb(247, 66, 66);
-  border: 1px solid rgb(247, 66, 66);
+  border: 2px solid rgb(247, 66, 66);
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;

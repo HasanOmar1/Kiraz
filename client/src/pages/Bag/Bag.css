@@ -11,7 +11,7 @@
 
 .Bag .history-btn,
 .Bag .history-btn-empty {
-  border: 3px solid rgb(23, 83, 92);
+  border: 3px solid var(--secondary-color);
   position: absolute;
   padding: 5px 20px;
   border-radius: 5px;
@@ -30,14 +30,10 @@
 }
 .Bag #my-items {
   padding-bottom: 50px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--courier-font);
   letter-spacing: 2px;
   padding-bottom: 100px;
   text-align: center;
-}
-
-.Bag #check-out {
-  background-color: rgb(21, 174, 21);
 }
 
 .Bag .no-items {
@@ -46,7 +42,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 50px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--courier-font);
   letter-spacing: 2px;
 }
 

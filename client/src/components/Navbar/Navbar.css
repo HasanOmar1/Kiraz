@@ -13,7 +13,7 @@
   margin-left: 15vw;
   display: flex;
   align-items: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--courier-font);
 }
 
 .Navbar .logo-container h2 {
@@ -34,7 +34,7 @@
   align-items: center;
   background-color: #222831;
   min-height: 8dvh;
-  border-bottom: 2px solid #00acb553;
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 .Navbar nav .title {
@@ -62,7 +62,7 @@
 }
 
 .Navbar ul li a:not(.active):hover {
-  background-color: #333;
+  background-color: var(--bg-color);
 }
 
 .Navbar .menu {
@@ -79,7 +79,7 @@
 .Navbar .menu span {
   height: 0.4rem;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--light-color);
   border-radius: 0.2rem;
 }
 

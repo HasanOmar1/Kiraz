@@ -18,9 +18,10 @@
   text-align: center;
   padding: 30px 0;
   color: rgb(99, 99, 99);
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--courier-font);
   font-size: 1.5rem;
   font-weight: bold;
+  letter-spacing: 3px;
 }
 .Login #close-modal:hover {
   color: red;
@@ -46,7 +47,8 @@
   background-color: rgb(11, 187, 11);
   color: white;
   font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--courier-font);
+  letter-spacing: 3px;
 }
 
 .Login #submit-btn:hover {

@@ -5,7 +5,7 @@
 
 .ThemeButton label {
   width: 70px;
-  height: 35px;
+  height: 28px;
   position: relative;
   display: block;
   background-color: #ebebeb;
@@ -19,7 +19,7 @@
 .ThemeButton label::after {
   content: "";
   width: 25px;
-  height: 25px;
+  height: 20px;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -51,7 +51,7 @@
 .ThemeButton .moon {
   width: 18px;
   position: absolute;
-  top: 50%;
+  top: 53%;
   right: 15%;
   pointer-events: none;
 }
@@ -59,7 +59,7 @@
 .ThemeButton .sun {
   width: 18px;
   position: absolute;
-  top: 50%;
+  top: 53%;
   left: 13%;
   pointer-events: none;
 }
