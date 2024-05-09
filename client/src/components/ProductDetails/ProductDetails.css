@@ -7,27 +7,6 @@
   position: relative;
   margin-top: 100px;
 }
-/* 
-.ProductDetails .navigate-container {
-  position: absolute;
-  top: -25px;
-  left: 0;
-  display: flex;
-  gap: 10px;
-  color: gray;
-}
-
-.ProductDetails .navigate-container p:not(:last-child) {
-  cursor: pointer;
-  transition: 0.2s color;
-}
-.ProductDetails .navigate-container p:not(:last-child):hover {
-  color: var(--pick-hover-color);
-}
-
-.ProductDetails .navigate-container p:last-child {
-  color: var(--pick-color);
-} */
 
 .ProductDetails .data {
   display: flex;
