@@ -1,5 +1,5 @@
 .ProductPage {
-  padding: 20px 400px;
+  padding: 0px 400px;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -12,9 +12,4 @@
 
 .ProductPage .back-container {
   display: flex;
-}
-
-.ProductPage #back-btn img {
-  width: 15px;
-  height: fit-content;
 }

@@ -11,6 +11,7 @@
   --dark-color: #333;
   --secondary-color: rgb(23, 83, 92);
   --pick-color: rgba(255, 0, 179, 0.8);
+  --pick-hover-color: rgb(157, 72, 132);
 }
 
 html {
@@ -87,25 +88,4 @@ hr {
 .link {
   text-decoration: none;
   width: fit-content;
-}
-
-#back-btn {
-  padding: 10px 15px;
-  background-color: transparent;
-  border: none;
-  color: rgb(247, 66, 66);
-  border: 2px solid rgb(247, 66, 66);
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  transition: 0.2s all;
-}
-
-#back-btn:hover {
-  background-color: rgb(247, 66, 66);
-  color: wheat;
 }

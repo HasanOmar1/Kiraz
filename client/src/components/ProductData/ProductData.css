@@ -23,7 +23,7 @@
 }
 
 .ProductData .size-container div:hover {
-  border-color: rgb(157, 72, 132);
+  border-color: var(--pick-hover-color);
 }
 
 .ProductData #type-info {

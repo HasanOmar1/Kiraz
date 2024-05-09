@@ -26,7 +26,7 @@
 .Cards p {
   padding: 0px 15px;
   font-size: 1rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--Segoe-font);
 }
 
 .Cards .green,

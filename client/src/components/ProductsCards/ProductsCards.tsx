@@ -9,7 +9,7 @@ type ProductsCardsProps = {
 
 const ProductsCards = ({ array }: ProductsCardsProps) => {
   return (
-    <div className="data">
+    <div className="ProductsCards data">
       {array?.length ?? 0 > 0 ? (
         <>
           {array?.map((clothes: Clothes) => {

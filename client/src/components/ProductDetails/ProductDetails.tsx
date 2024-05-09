@@ -1,12 +1,14 @@
 import { loadingGif } from "../../utils/Assets";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
 import useModal from "../../hooks/useModal";
 import { useBagContext, useClothesContext } from "../../utils/Context";
 import ProductDetailsModal from "../ProductDetailsModal/ProductDetailsModal";
 import sizes from "../../utils/SizeLetterToWord";
+import upperCaseLetter from "../../utils/UpperCaseLetter";
+import NavigateContainer from "../NavigateContainer/NavigateContainer";
 
 const ProductDetails = () => {
   const { getClothesById, clothesById } = useClothesContext();
@@ -16,6 +18,7 @@ const ProductDetails = () => {
   const [currentSize, setCurrentSize] = useState(clothesById?.size);
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const color = searchParams.get("color");
   const size = searchParams.get("size");
@@ -84,6 +87,8 @@ const ProductDetails = () => {
     <div className="ProductDetails">
       {clothesById ? (
         <div className="data-container">
+          <NavigateContainer clothesById={clothesById} />
+
           <img src={currentImg} alt="product img" />
           <div className="data">
             <ProductData

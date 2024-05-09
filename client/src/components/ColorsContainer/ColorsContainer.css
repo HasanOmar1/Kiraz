@@ -12,5 +12,5 @@
 }
 
 .ColorsContainer .color:hover {
-  border: 2px solid rgb(157, 72, 132);
+  border: 2px solid var(--pick-hover-color);
 }
