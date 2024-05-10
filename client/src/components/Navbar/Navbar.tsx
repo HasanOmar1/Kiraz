@@ -37,8 +37,15 @@ const Navbar = () => {
               type="image/webp"
               onClick={goHome}
               width={55}
+              height={"100%"}
             />
-            <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} width={55} />
+            <img
+              src={logo}
+              alt="Kiraz Kids Logo"
+              onClick={goHome}
+              width={55}
+              height={"100%"}
+            />
           </picture>
           <Link to={"/"} onClick={goHome} className="title">
             Kiraz
