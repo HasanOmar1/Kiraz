@@ -36,7 +36,7 @@ const ProductDetailsModal = ({
 
           <div className="buy-btn-container">
             <button id="buy-btn" onClick={goToBag}>
-              Go To Bag
+              <span> Go To Bag</span>
             </button>
           </div>
         </>

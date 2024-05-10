@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
 import { BagItems } from "../../types/ClothesTypes";
 import "./BagDetails.css";
-import upperCaseLetter from "../../utils/UpperCaseLetter";
-import { useThemeContext, useBagContext } from "../../utils/Context";
+import { useBagContext } from "../../utils/Context";
 import useModal from "../../hooks/useModal";
 import { useEffect, useState } from "react";
 import BagDetailsModal from "../BagDetailsModal/BagDetailsModal";
 import { CurrentLoggedUser } from "../../types/LoginContextTypes";
+import BagDetailsInfo from "../BagDetailsInfo/BagDetailsInfo";
 
 type BagDetailsProps = {
   showActions?: boolean;
@@ -15,9 +14,17 @@ type BagDetailsProps = {
 };
 
 const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
-  const { theme } = useThemeContext();
   const { removeItemFromBag, checkOut, clearBag } = useBagContext();
-  const { closeModal, isModalOpen, openModal } = useModal();
+  const {
+    closeModal: closeCheckOutModal,
+    isModalOpen: isCheckOutModalOpen,
+    openModal: openCheckOutModal,
+  } = useModal();
+  const {
+    closeModal: closeClearBagModal,
+    isModalOpen: isClearBagModalOpen,
+    openModal: openClearBagModal,
+  } = useModal();
   const [debouncedCheckOut, setDebouncedCheckOut] = useState<Function | null>(
     null
   );
@@ -38,13 +45,9 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
     removeItemFromBag(id);
   };
 
-  const checkOutModal = () => {
-    openModal();
-  };
-
   const handleCheckOut = () => {
     setDebouncedCheckOut(() => checkOut);
-    closeModal();
+    closeCheckOutModal();
   };
 
   const itemsPrice = currentUser?.bag.reduce((a, b) => {
@@ -55,8 +58,8 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
     <div className="BagDetails container">
       {showActions && (
         <div className="actions-container">
-          <p onClick={clearBag}>Clear Bag</p>
-          <p id="check-out" onClick={checkOutModal}>
+          <p onClick={openClearBagModal}>Clear Bag</p>
+          <p id="check-out" onClick={openCheckOutModal}>
             Check Out
           </p>
           <p>
@@ -67,53 +70,38 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
       <div className="items">
         {array?.map((items: BagItems) => {
           return (
-            <div key={items._id} className="list">
-              <Link to={`/product/${items.id}`}>
-                <img src={items.img} alt="img" />
-              </Link>
-              <div className="list-data">
-                <Link
-                  to={`/product/${items.id}`}
-                  className="link"
-                  style={{
-                    color: theme === "dark" ? "white" : "black",
-                  }}
-                >
-                  <p id="clothing-name">{items.name}</p>
-                </Link>
-                <div className="color-size">
-                  <p>
-                    Color:
-                    <span>{upperCaseLetter(items.color ?? "")}</span>
-                  </p>
-                  <p>
-                    Size:
-                    <span>{items.size}</span>
-                  </p>
-                </div>
-                <p>
-                  Type:
-                  <span>{upperCaseLetter(items.type ?? "")}</span>
-                </p>
-                <p>${items.price}</p>
-              </div>
-              {showActions && (
-                <button
-                  className="remove-btn"
-                  onClick={() => removeItem(items._id ?? "")}
-                >
-                  Remove
-                </button>
-              )}
-            </div>
+            <>
+              <BagDetailsInfo items={items}>
+                {showActions && (
+                  <button
+                    className="remove-btn"
+                    onClick={() => removeItem(items._id ?? "")}
+                  >
+                    Remove
+                  </button>
+                )}
+              </BagDetailsInfo>
+            </>
           );
         })}
       </div>
       <BagDetailsModal
-        closeModal={closeModal}
-        handleCheckOut={handleCheckOut}
-        isModalOpen={isModalOpen}
-      />
+        closeModal={closeCheckOutModal}
+        isModalOpen={isCheckOutModalOpen}
+        yesFunction={handleCheckOut}
+      >
+        <h3>Price: ${itemsPrice} </h3>
+        <br />
+        <h4>Complete Transaction?</h4>
+      </BagDetailsModal>
+
+      <BagDetailsModal
+        closeModal={closeClearBagModal}
+        isModalOpen={isClearBagModalOpen}
+        yesFunction={clearBag}
+      >
+        <h3>Are you sure you want to clear your bag?</h3>
+      </BagDetailsModal>
     </div>
   );
 };

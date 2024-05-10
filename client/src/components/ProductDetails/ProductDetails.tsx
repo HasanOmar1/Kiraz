@@ -99,9 +99,10 @@ const ProductDetails = () => {
 
             <div className="buy-btn-container">
               <button id="buy-btn" onClick={addToBagFunction}>
-                Add To Bag
+                <span>Add To Bag </span>
               </button>
             </div>
+
             <ProductDetailsModal
               addToBagErrorMsg={addToBagErrorMsg}
               closeModal={closeModal}
