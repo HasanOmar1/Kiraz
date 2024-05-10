@@ -83,8 +83,8 @@ const LoginModal = () => {
     <div className="Login">
       <div className="kiraz-logo-container">
         <picture>
-          <source srcSet={fastLogo} type="image/webp" />
-          <img src={logo} alt="site's logo" id="kiraz-logo" />
+          <source srcSet={fastLogo} type="image/webp" width={100} />
+          <img src={logo} alt="site's logo" id="kiraz-logo" width={100} />
         </picture>
       </div>
       <hr />

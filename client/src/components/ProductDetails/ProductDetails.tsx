@@ -1,13 +1,12 @@
 import { loadingGif } from "../../utils/Assets";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
 import useModal from "../../hooks/useModal";
 import { useBagContext, useClothesContext } from "../../utils/Context";
 import ProductDetailsModal from "../ProductDetailsModal/ProductDetailsModal";
 import sizes from "../../utils/SizeLetterToWord";
-import upperCaseLetter from "../../utils/UpperCaseLetter";
 import NavigateContainer from "../NavigateContainer/NavigateContainer";
 
 const ProductDetails = () => {
@@ -18,7 +17,6 @@ const ProductDetails = () => {
   const [currentSize, setCurrentSize] = useState(clothesById?.size);
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
 
   const color = searchParams.get("color");
   const size = searchParams.get("size");

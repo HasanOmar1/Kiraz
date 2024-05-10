@@ -18,8 +18,8 @@ const HomeImg = ({ img, text, webPImg }: HomeImgProps) => {
   return (
     <div className="HomeImg" onClick={navigateToPage}>
       <picture>
-        <source srcSet={webPImg} type="image/webp" />
-        <img src={img} alt={`${img} image`} />
+        <source srcSet={webPImg} type="image/webp" height={400} />
+        <img src={img} alt={`${img} image`} height={400} />
       </picture>
       <h3>{upperCaseLetter(text)}</h3>
     </div>

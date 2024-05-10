@@ -32,8 +32,13 @@ const Navbar = () => {
       <nav>
         <div className="logo-container">
           <picture>
-            <source srcSet={fastLogo} type="image/webp" />
-            <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} />
+            <source
+              srcSet={fastLogo}
+              type="image/webp"
+              onClick={goHome}
+              width={55}
+            />
+            <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} width={55} />
           </picture>
           <Link to={"/"} onClick={goHome} className="title">
             Kiraz

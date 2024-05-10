@@ -6,7 +6,7 @@
 }
 
 .Login #kiraz-logo {
-  width: 100px;
+  max-width: 100px;
   border-radius: 50%;
 }
 

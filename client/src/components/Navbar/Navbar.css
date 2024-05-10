@@ -21,7 +21,7 @@
 }
 
 .Navbar .logo-container img {
-  width: 55px;
+  max-width: 55px;
   border-radius: 50%;
   object-fit: cover;
   transition: box-shadow 0.2s;

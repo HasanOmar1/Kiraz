@@ -31,8 +31,12 @@ const Home = () => {
         <>
           <div className="background-container">
             <picture>
-              <source srcSet={fastBackgroundImg} type="image/webp" />
-              <img src={backgroundImg} alt="background img" />
+              <source
+                srcSet={fastBackgroundImg}
+                type="image/webp"
+                height={600}
+              />
+              <img src={backgroundImg} alt="background img" height={600} />
             </picture>
           </div>
           <section className="imgs-section">
