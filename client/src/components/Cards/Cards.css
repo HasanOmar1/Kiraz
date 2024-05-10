@@ -12,7 +12,7 @@
 
 .Cards img {
   max-width: 100%;
-  height: auto;
+  max-height: auto;
   object-fit: contain;
 }
 
