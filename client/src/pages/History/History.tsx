@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./History.css";
 import BagDetails from "../../components/BagDetails/BagDetails";
-import { emptyBag } from "../../utils/Assets";
+import { emptyBag, fastEmptyBag } from "../../utils/Assets";
 import Pagination from "../../components/Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
 import {
@@ -58,7 +58,10 @@ const History = () => {
           </>
         ) : (
           <div className="no-items">
-            <img src={emptyBag} alt="empty bag" />
+            <picture>
+              <source srcSet={fastEmptyBag} type="image/webp" />
+              <img src={emptyBag} alt="empty bag" />
+            </picture>
           </div>
         )}
       </div>

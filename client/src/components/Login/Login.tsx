@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Login.css";
 import { useLoginContext } from "../../utils/Context";
 
-import { emailSvg, nameSvg, lockSvg, logo } from "../../utils/Assets";
+import { emailSvg, nameSvg, lockSvg, logo, fastLogo } from "../../utils/Assets";
 import { LoginForm } from "../LoginForm/LoginForm";
 
 const LoginModal = () => {
@@ -82,7 +82,10 @@ const LoginModal = () => {
   return (
     <div className="Login">
       <div className="kiraz-logo-container">
-        <img src={logo} alt="logo" id="kiraz-logo" />
+        <picture>
+          <source srcSet={fastLogo} type="image/webp" />
+          <img src={logo} alt="site's logo" id="kiraz-logo" />
+        </picture>
       </div>
       <hr />
       <div className="title-container">

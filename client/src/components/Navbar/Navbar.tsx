@@ -4,7 +4,7 @@ import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
 import { useModalContext, useLoginContext } from "../../utils/Context";
 
-import { logo } from "../../utils/Assets";
+import { logo, fastLogo } from "../../utils/Assets";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -31,7 +31,10 @@ const Navbar = () => {
       )}
       <nav>
         <div className="logo-container">
-          <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} />
+          <picture>
+            <source srcSet={fastLogo} type="image/webp" />
+            <img src={logo} alt="Kiraz Kids Logo" onClick={goHome} />
+          </picture>
           <Link to={"/"} onClick={goHome} className="title">
             Kiraz
           </Link>

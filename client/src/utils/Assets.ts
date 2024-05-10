@@ -1,9 +1,9 @@
+// .png / .jpg / .svg / .gif
 import shirtsImg from "../assets/shirts.jpg";
 import hoodieImg from "../assets/hoodie.jpg";
 import pantsImg from "../assets/pants.jpg";
 import shortImg from "../assets/short.jpg";
-import backgroundImg from "../assets/background.jpg";
-import Loading from "../assets/loading-animation.gif";
+import backgroundImg from "../assets/background.png";
 import logo from "../assets/logo.jpg";
 import loginSvg from "../assets/svgs/login.svg";
 import emailSvg from "../assets/svgs/email-input.svg";
@@ -18,13 +18,29 @@ import loadingGif from "../assets/loading-animation.gif";
 import emptyBag from "../assets/empty-bag.png";
 import backSvg from "../assets/svgs/back-arrow.svg";
 
+// .webp for better performance
+
+import fastShirtsImg from "../assets/webp/shirts.webp";
+import fastHoodieImg from "../assets/webp/hoodie.webp";
+import fastPantsImg from "../assets/webp/pants.webp";
+import fastShortImg from "../assets/webp/short.webp";
+import fastBackgroundImg from "../assets/webp/background.webp";
+import fastLogo from "../assets/webp/logo.webp";
+import fastEmptyBag from "../assets/webp/empty-bag.webp";
+
 export {
+  fastBackgroundImg,
+  fastEmptyBag,
+  fastLogo,
+  fastHoodieImg,
+  fastPantsImg,
+  fastShirtsImg,
+  fastShortImg,
   shirtsImg,
   hoodieImg,
   pantsImg,
   shortImg,
   backgroundImg,
-  Loading,
   logo,
   loginSvg,
   emailSvg,

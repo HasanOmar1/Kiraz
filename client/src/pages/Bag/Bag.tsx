@@ -1,6 +1,6 @@
 import { useLoginContext, useThemeContext } from "../../utils/Context";
 import "./Bag.css";
-import { emptyBag } from "../../utils/Assets";
+import { emptyBag, fastEmptyBag } from "../../utils/Assets";
 import BagDetails from "../../components/BagDetails/BagDetails";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
@@ -44,7 +44,10 @@ const Bag = () => {
                 </div>
                 <div className="no-items">
                   <h3 id="empty">Your bag is empty</h3>
-                  <img src={emptyBag} alt="empty bag" />
+                  <picture>
+                    <source srcSet={fastEmptyBag} type="image/webp" />
+                    <img src={emptyBag} alt="empty bag" />
+                  </picture>
                 </div>
               </>
             ) : (

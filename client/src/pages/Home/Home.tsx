@@ -5,7 +5,12 @@ import {
   shirtsImg,
   shortImg,
   backgroundImg,
-  Loading,
+  loadingGif,
+  fastHoodieImg,
+  fastPantsImg,
+  fastShirtsImg,
+  fastShortImg,
+  fastBackgroundImg,
 } from "../../utils/Assets";
 import HomeImg from "../../components/HomeImg/HomeImg";
 import { useEffect } from "react";
@@ -25,14 +30,17 @@ const Home = () => {
       {latestProducts ? (
         <>
           <div className="background-container">
-            <img src={backgroundImg} alt="background img" />
+            <picture>
+              <source srcSet={fastBackgroundImg} type="image/webp" />
+              <img src={backgroundImg} alt="background img" />
+            </picture>
           </div>
           <section className="imgs-section">
             <div className="imgs-container">
-              <HomeImg img={shirtsImg} text="shirts" />
-              <HomeImg img={hoodieImg} text="hoodies" />
-              <HomeImg img={pantsImg} text="pants" />
-              <HomeImg img={shortImg} text="shorts" />
+              <HomeImg img={shirtsImg} webPImg={fastShirtsImg} text="shirts" />
+              <HomeImg img={hoodieImg} webPImg={fastHoodieImg} text="hoodies" />
+              <HomeImg img={pantsImg} webPImg={fastPantsImg} text="pants" />
+              <HomeImg img={shortImg} webPImg={fastShortImg} text="shorts" />
             </div>
           </section>
           <section className="latest-products">
@@ -42,7 +50,7 @@ const Home = () => {
         </>
       ) : (
         <>
-          <img src={Loading} alt="Loading animation" />
+          <img src={loadingGif} alt="Loading animation" />
           <div className="skeleton-container">
             <div className="skeleton"></div>
             <div className="skeleton"></div>
