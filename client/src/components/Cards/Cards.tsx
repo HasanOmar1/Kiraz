@@ -35,7 +35,7 @@ const Cards = ({
   return (
     <div className="Cards">
       <Link to={`/product/${id}`}>
-        <img src={cover} alt="img cover" />
+        <img src={cover} alt="img cover" width={280} />
       </Link>
       <div className="colors-container">
         {greenImg && <div className={`green ${greenColor}`}></div>}
