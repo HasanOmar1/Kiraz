@@ -6,6 +6,11 @@ import {
   useThemeContext,
 } from "../../utils/Context";
 import sizes from "../../utils/SizeLetterToWord";
+import DeleteBtn from "../DeleteBtn/DeleteBtn";
+import EditBtn from "../EditBtn/EditBtn";
+import GenericModal from "../GenericModal/GenericModal";
+import useModal from "../../hooks/useModal";
+import AddProductModal from "../AddProductModal/AddProductModal";
 
 type CardsProps = {
   cover?: string;
@@ -34,6 +39,17 @@ const Cards = ({
   const { pathname } = useLocation();
   const { deleteType } = useAllClothesTypesContext();
   const { currentUser } = useLoginContext();
+
+  const {
+    closeModal: closeDeleteModal,
+    isModalOpen: isDeleteModalOpen,
+    openModal: openDeleteModal,
+  } = useModal();
+  const {
+    closeModal: closeEditModal,
+    isModalOpen: isEditModalOpen,
+    openModal: openEditModal,
+  } = useModal();
 
   const greenColor = color === "green" && "activeColor";
   const blackColor = color === "black" && "activeColor";
@@ -65,10 +81,32 @@ const Cards = ({
       <p id="size">{sizes(size)}</p>
       <p id="price">${price}</p>
       {currentUser?.isAdmin && (
-        <button className="delete-btn" onClick={() => deleteCard(id ?? "")}>
-          Delete
-        </button>
+        <div className="actions-container">
+          <EditBtn onClick={openEditModal} />
+          <DeleteBtn onClick={openDeleteModal} />
+        </div>
       )}
+      <GenericModal closeModal={closeDeleteModal} isOpen={isDeleteModalOpen}>
+        <h3>Are you sure you want to delete this card:</h3>
+        <div className="modal-btns">
+          <button onClick={closeDeleteModal}>No</button>
+          <button onClick={() => deleteCard(id ?? "")}>Yes</button>
+        </div>
+      </GenericModal>
+
+      <GenericModal closeModal={closeEditModal} isOpen={isEditModalOpen}>
+        <AddProductModal
+          closeModal={closeEditModal}
+          cardId={id}
+          cardName={name}
+          cardColor={color}
+          cardGreenImg={greenImg}
+          cardBlackImg={blackImg}
+          cardBlueImg={blueImg}
+          cardPrice={price}
+          cardSize={size}
+        />
+      </GenericModal>
     </div>
   );
 };

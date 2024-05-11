@@ -12,6 +12,7 @@ type AllClothesTypesContextValues = {
   getType: (type: string) => Promise<void>;
   addType: (type: string, data: Type.Clothes) => Promise<void>;
   deleteType: (type: string, id: string) => Promise<void>;
+  updateType: (type: string, id: string, data: Type.Clothes) => Promise<void>;
   addTypeErrorMsg: string;
   setAddTypeErrorMsg: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -51,6 +52,15 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
     }
   };
 
+  const updateType = async (type: string, id: string, data: Type.Clothes) => {
+    try {
+      const response = await axios.put(`${type}/update/${id}`, data);
+      console.log(response.data);
+    } catch (error: any) {
+      console.log(error.response.data.message);
+    }
+  };
+
   const deleteType = async (type: string, id: string) => {
     try {
       const response = await axios.delete(`${type}/delete/${id}`);
@@ -60,15 +70,17 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
       console.log(error.response.data.message);
     }
   };
+
   return (
     <AllClothesTypesContext.Provider
       value={{
         getType,
         getClothesType,
         addType,
+        deleteType,
+        updateType,
         addTypeErrorMsg,
         setAddTypeErrorMsg,
-        deleteType,
       }}
     >
       {children}

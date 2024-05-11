@@ -1,6 +1,6 @@
 .Cards {
   width: 280px;
-  height: 600px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   outline: 1px solid rgba(128, 128, 128, 0.327);
@@ -67,15 +67,39 @@
   color: crimson;
 }
 
-.Cards .delete-btn {
-  padding: 5px 10px;
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  background-color: rgb(217, 10, 51);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+.Cards .actions-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.Cards .modal-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 25px;
+}
+
+.Cards .modal-btns button {
+  padding: 10px 30px;
   cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.Cards .modal-btns button:hover {
+  opacity: 0.9;
+}
+
+.Cards .modal-btns button:nth-child(1) {
+  background-color: crimson;
+}
+
+.Cards .modal-btns button:nth-child(2) {
+  background-color: rgb(52, 211, 52);
 }
