@@ -23,7 +23,7 @@ const Bag = () => {
         return prev;
       });
     }
-  }, [currentItems]);
+  }, [currentItems, setCurrentPage]);
 
   const goToPurchaseHistory = () => {
     navigate(`/history`);

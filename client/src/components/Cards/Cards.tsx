@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Cards.css";
-import { useThemeContext } from "../../utils/Context";
+import {
+  useAllClothesTypesContext,
+  useThemeContext,
+} from "../../utils/Context";
 import sizes from "../../utils/SizeLetterToWord";
 
 type CardsProps = {
@@ -27,10 +30,18 @@ const Cards = ({
   blueImg,
 }: CardsProps) => {
   const { theme } = useThemeContext();
+  const { pathname } = useLocation();
+  const { deleteType } = useAllClothesTypesContext();
 
   const greenColor = color === "green" && "activeColor";
   const blackColor = color === "black" && "activeColor";
   const blueColor = color === "blue" && "activeColor";
+
+  const path = pathname.split("/")[1];
+
+  const deleteCard = (id: string) => {
+    deleteType(path, id);
+  };
 
   return (
     <div className="Cards">
@@ -51,6 +62,9 @@ const Cards = ({
       </Link>
       <p id="size">{sizes(size)}</p>
       <p id="price">${price}</p>
+      <button className="delete-btn" onClick={() => deleteCard(id ?? "")}>
+        Delete
+      </button>
     </div>
   );
 };

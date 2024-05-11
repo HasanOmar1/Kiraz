@@ -7,16 +7,16 @@ import {
 } from "../../../utils/Context";
 
 const ShortsPage = () => {
-  const { getAllShorts, getShorts } = useAllClothesTypesContext();
+  const { getType, getClothesType } = useAllClothesTypesContext();
   const { getThemeClassName } = useThemeContext();
 
   useEffect(() => {
-    getAllShorts();
+    getType("shorts");
   }, []);
 
   return (
     <main className={`ClothesPage Page ${getThemeClassName()} `}>
-      <ClothesTypesData array={getShorts} text="Shorts" />
+      <ClothesTypesData array={getClothesType} text="Shorts" />
     </main>
   );
 };

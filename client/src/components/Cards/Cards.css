@@ -1,9 +1,10 @@
 .Cards {
   width: 280px;
-  height: 570px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   outline: 1px solid rgba(128, 128, 128, 0.327);
+  position: relative;
 }
 
 .Cards:hover {
@@ -64,4 +65,17 @@
 .Cards #price {
   padding-top: 5px;
   color: crimson;
+}
+
+.Cards .delete-btn {
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  background-color: rgb(217, 10, 51);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
 }

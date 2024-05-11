@@ -1,81 +1,74 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
 import * as Type from "../types/ClothesTypes";
-
-//not used
+import { useLocation } from "react-router-dom";
 
 type Props = {
   children: React.ReactNode;
 };
 
 type AllClothesTypesContextValues = {
-  getShirts: Type.Clothes[];
-  getHoodies: Type.Clothes[];
-  getPants: Type.Clothes[];
-  getShorts: Type.Clothes[];
-  getAllPants: () => void;
-  getAllShirts: () => void;
-  getAllShorts: () => void;
-  getAllHoodies: () => void;
+  getClothesType: Type.Clothes[];
+  getType: (type: string) => Promise<void>;
+  addType: (type: string, data: Type.Clothes) => Promise<void>;
+  deleteType: (type: string, id: string) => Promise<void>;
+  addTypeErrorMsg: string;
+  setAddTypeErrorMsg: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const AllClothesTypesContext =
   createContext<null | AllClothesTypesContextValues>(null);
 
 const AllClothesTypesContextProvider = ({ children }: Props) => {
-  const [getShirts, setGetShirts] = useState<Type.Clothes[]>([]);
-  const [getHoodies, setGetHoodies] = useState<Type.Clothes[]>([]);
-  const [getPants, setGetPants] = useState<Type.Clothes[]>([]);
-  const [getShorts, setGetShorts] = useState<Type.Clothes[]>([]);
+  const [getClothesType, setGetClothesType] = useState<Type.Clothes[]>([]);
+  const [addTypeErrorMsg, setAddTypeErrorMsg] = useState<string>("");
 
-  const getAllShirts = async () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setGetClothesType([]);
+  }, [pathname]);
+
+  const getType = async (type: string) => {
     try {
-      const response = await axios.get("/shirts");
-      setGetShirts(response.data);
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getAllHoodies = async () => {
-    try {
-      const response = await axios.get("/hoodies");
-      setGetHoodies(response.data);
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getAllPants = async () => {
-    try {
-      const response = await axios.get("/pants");
-      setGetPants(response.data);
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getAllShorts = async () => {
-    try {
-      const response = await axios.get("/shorts");
-      setGetShorts(response.data);
-      // console.log(response.data);
-    } catch (error) {
+      const response = await axios.get(`/${type}`);
+      setGetClothesType(response.data);
+      console.log(response.data);
+    } catch (error: any) {
       console.log(error);
     }
   };
 
+  const addType = async (type: string, data: Type.Clothes) => {
+    try {
+      const response = await axios.post(`${type}/add`, data);
+      setAddTypeErrorMsg("");
+      getType(type);
+      console.log(response.data);
+    } catch (error: any) {
+      setAddTypeErrorMsg(error.response.data.message);
+      console.log(error.response.data.message);
+    }
+  };
+
+  const deleteType = async (type: string, id: string) => {
+    try {
+      const response = await axios.delete(`${type}/delete/${id}`);
+      getType(type);
+      console.log(response.data.message);
+    } catch (error: any) {
+      console.log(error.response.data.message);
+    }
+  };
   return (
     <AllClothesTypesContext.Provider
       value={{
-        getShirts,
-        getHoodies,
-        getPants,
-        getShorts,
-        getAllPants,
-        getAllShirts,
-        getAllHoodies,
-        getAllShorts,
+        getType,
+        getClothesType,
+        addType,
+        addTypeErrorMsg,
+        setAddTypeErrorMsg,
+        deleteType,
       }}
     >
       {children}
