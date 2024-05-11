@@ -35,19 +35,12 @@ const LoginContextProvider = ({ children }: Props) => {
     }
   }, []);
 
-  // const getAllUsers = async () => {
-  //   try {
-  //     const response = await axios.get("/users");
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const createUser = async (user: Type.CreatedUser) => {
     try {
       const response = await axios.post(`/users/create`, user);
+      setCurrentUser(response.data);
       console.log(response.data);
+
       setErrorMsg("");
       closeModal();
     } catch (error: any) {

@@ -13,6 +13,8 @@ type BagDetailsProps = {
   currentUser?: CurrentLoggedUser;
 };
 
+type debouncedCheckOutFunction = () => void;
+
 const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
   const { removeItemFromBag, checkOut, clearBag } = useBagContext();
   const {
@@ -25,9 +27,8 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
     isModalOpen: isClearBagModalOpen,
     openModal: openClearBagModal,
   } = useModal();
-  const [debouncedCheckOut, setDebouncedCheckOut] = useState<Function | null>(
-    null
-  );
+  const [debouncedCheckOut, setDebouncedCheckOut] =
+    useState<debouncedCheckOutFunction | null>(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -70,18 +71,16 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
       <div className="items">
         {array?.map((items: BagItems) => {
           return (
-            <>
-              <BagDetailsInfo items={items}>
-                {showActions && (
-                  <button
-                    className="remove-btn"
-                    onClick={() => removeItem(items._id ?? "")}
-                  >
-                    Remove
-                  </button>
-                )}
-              </BagDetailsInfo>
-            </>
+            <BagDetailsInfo items={items} key={items._id}>
+              {showActions && (
+                <button
+                  className="remove-btn"
+                  onClick={() => removeItem(items._id ?? "")}
+                >
+                  Remove
+                </button>
+              )}
+            </BagDetailsInfo>
           );
         })}
       </div>

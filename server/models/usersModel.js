@@ -18,6 +18,10 @@ const usersSchema = new mongoose.Schema(
       required: [true, "Please provide a password"],
       minlength: [3, "Please provide at least three characters"],
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     bag: [
       {
         type: mongoose.Schema.Types.ObjectId,

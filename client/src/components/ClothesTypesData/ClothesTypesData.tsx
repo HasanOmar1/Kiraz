@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import { validateUrlInput } from "../../utils/ValidateUrl";
 import { useAllClothesTypesContext } from "../../context/AllClothesTypesContext";
 import AddProductModal from "../AddProductModal/AddProductModal";
+import { useLoginContext } from "../../context/LoginContext";
 
 type ClothesTypesDataProps = {
   text: string;
@@ -32,6 +33,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
     setIsColorChecked,
     setIsSizeChecked,
   } = useFilteredArray(array);
+  const { currentUser } = useLoginContext();
 
   const itemNameRef = useRef<HTMLInputElement>(null);
   const itemDefaultColorRef = useRef<HTMLSelectElement>(null);
@@ -83,7 +85,27 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
         <h1>{text}</h1>
         <p>{filteredArray?.length} Products</p>
       </div>
-      <div className="add-product-container" onClick={openModal}>
+      {currentUser?.isAdmin && (
+        <>
+          <div className="add-product-container" onClick={openModal}>
+            <h1>+</h1>
+          </div>
+          <GenericModal closeModal={closeModal} isOpen={isModalOpen}>
+            <AddProductModal
+              addTypeErrorMsg={addTypeErrorMsg}
+              handleOnSubmit={handleOnSubmit}
+              itemBlackImgRef={itemBlackImgRef}
+              itemBlueImgRef={itemBlueImgRef}
+              itemDefaultColorRef={itemDefaultColorRef}
+              itemDefaultSizeRef={itemDefaultSizeRef}
+              itemGreenImgRef={itemGreenImgRef}
+              itemNameRef={itemNameRef}
+              itemPriceRef={itemPriceRef}
+            />
+          </GenericModal>
+        </>
+      )}
+      {/* <div className="add-product-container" onClick={openModal}>
         <h1>+</h1>
       </div>
       <GenericModal closeModal={closeModal} isOpen={isModalOpen}>
@@ -98,7 +120,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
           itemNameRef={itemNameRef}
           itemPriceRef={itemPriceRef}
         />
-      </GenericModal>
+      </GenericModal> */}
       <div className="data-container">
         <div className="filters">
           <p>FILTERS</p>

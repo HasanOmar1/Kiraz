@@ -22,7 +22,7 @@ export const getAllUsers = async (req, res, next) => {
 
 export const createUser = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, isAdmin } = req.body;
     if (!name || !email || !password) {
       res.status(STATUS_CODE.BAD_REQUEST);
       throw new Error("Please fill all fields");
@@ -56,6 +56,7 @@ export const createUser = async (req, res, next) => {
       name: capitalLetter(name),
       email,
       password: hashedPassword,
+      isAdmin,
     });
 
     if (createdUser) {
@@ -64,6 +65,7 @@ export const createUser = async (req, res, next) => {
         _id: createdUser._id,
         name: createdUser.name,
         email: createdUser.email,
+        isAdmin: createdUser.isAdmin,
         bag: createdUser.bag,
         password: createdUser.password,
         token: generateToken(createdUser._id, createdUser.email),
@@ -92,6 +94,7 @@ export const login = async (req, res, next) => {
         email: user.email,
         token: generateToken(user._id, user.email),
         bag: user.bag,
+        isAdmin: user.isAdmin,
       });
     } else {
       res.status(STATUS_CODE.NOT_FOUND);
@@ -115,26 +118,6 @@ export const deleteUser = async (req, res, next) => {
     res.send({
       message: "User has been deleted",
       user,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-export const getCurrentUser = async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    const user = await User.findById(id).populate("bag");
-    if (!user) {
-      res.status(STATUS_CODE.NOT_FOUND);
-      throw new Error("User not found");
-    }
-
-    res.send({
-      _id: user.id,
-      name: user.name,
-      email: user.email,
-      bag: user.bag,
     });
   } catch (error) {
     next(error);

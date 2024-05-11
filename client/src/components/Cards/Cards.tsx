@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Cards.css";
 import {
   useAllClothesTypesContext,
+  useLoginContext,
   useThemeContext,
 } from "../../utils/Context";
 import sizes from "../../utils/SizeLetterToWord";
@@ -32,6 +33,7 @@ const Cards = ({
   const { theme } = useThemeContext();
   const { pathname } = useLocation();
   const { deleteType } = useAllClothesTypesContext();
+  const { currentUser } = useLoginContext();
 
   const greenColor = color === "green" && "activeColor";
   const blackColor = color === "black" && "activeColor";
@@ -62,9 +64,11 @@ const Cards = ({
       </Link>
       <p id="size">{sizes(size)}</p>
       <p id="price">${price}</p>
-      <button className="delete-btn" onClick={() => deleteCard(id ?? "")}>
-        Delete
-      </button>
+      {currentUser?.isAdmin && (
+        <button className="delete-btn" onClick={() => deleteCard(id ?? "")}>
+          Delete
+        </button>
+      )}
     </div>
   );
 };

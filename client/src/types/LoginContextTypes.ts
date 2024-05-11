@@ -5,11 +5,13 @@ export type CreatedUser = {
   email: string;
   bag: BagItems[];
   password: string;
+  isAdmin: boolean;
 };
 
-export type LoginUser = Omit<CreatedUser, "name" | "bag">;
+export type LoginUser = Omit<CreatedUser, "name" | "bag" | "isAdmin">;
 
 export type CurrentLoggedUser = Omit<CreatedUser, "password"> & {
   token: string;
   _id: string;
+  isAdmin: boolean;
 };

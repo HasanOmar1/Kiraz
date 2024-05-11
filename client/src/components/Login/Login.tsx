@@ -29,6 +29,7 @@ const LoginModal = () => {
       email: emailValue,
       password: passwordValue,
       bag: [],
+      isAdmin: false,
     });
     setNameValue("");
     setEmailValue("");
