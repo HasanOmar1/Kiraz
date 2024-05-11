@@ -83,3 +83,39 @@ export const removeClothingById = async (type, req, res, next) => {
     next(error);
   }
 };
+
+export const updateClothing = async (type, req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const { name, color, size, price, greenImg, blackImg, blueImg } = req.body;
+
+    const clothing = await type.findByIdAndUpdate(
+      id,
+      {
+        name,
+        color,
+        size,
+        price,
+        greenImg,
+        blackImg,
+        blueImg,
+      },
+      { new: true }
+    );
+
+    await Clothes.findByIdAndUpdate(id, {
+      name,
+      color,
+      size,
+      price,
+      greenImg,
+      blackImg,
+      blueImg,
+    });
+
+    res.send(clothing);
+  } catch (error) {
+    next(error);
+  }
+};

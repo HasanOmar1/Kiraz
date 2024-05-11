@@ -42,25 +42,3 @@ export const removeAllClothes = async (req, res, next) => {
     next(error);
   }
 };
-
-// not used
-export const updateClothing = async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    const { color } = req.body;
-    if (!color) {
-      res.status(STATUS_CODE.BAD_REQUEST);
-      throw new Error("add the new color");
-    }
-    const clothing = await Clothes.findByIdAndUpdate(
-      id,
-      {
-        color,
-      },
-      { new: true }
-    );
-    res.send(clothing);
-  } catch (error) {
-    next(error);
-  }
-};

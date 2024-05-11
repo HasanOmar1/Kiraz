@@ -4,6 +4,7 @@ import {
   getClothesTypeById,
   addClothesType,
   removeClothingById,
+  updateClothing,
 } from "../utils/clothingTypeController.js";
 
 export const getAllShirts = async (req, res, next) => {
@@ -20,4 +21,8 @@ export const addShirts = async (req, res, next) => {
 
 export const removeShirts = async (req, res, next) => {
   removeClothingById(Shirts, req, res, next);
+};
+
+export const updateShirts = async (req, res, next) => {
+  updateClothing(Shirts, req, res, next);
 };
