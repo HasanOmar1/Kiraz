@@ -5,9 +5,10 @@ import "./ProductsCards.css";
 
 type ProductsCardsProps = {
   array: Clothes[] | undefined | null;
+  showActions?: boolean;
 };
 
-const ProductsCards = ({ array }: ProductsCardsProps) => {
+const ProductsCards = ({ array, showActions }: ProductsCardsProps) => {
   return (
     <div className="ProductsCards">
       <div className="data">
@@ -16,6 +17,7 @@ const ProductsCards = ({ array }: ProductsCardsProps) => {
             {array?.map((clothes: Clothes) => {
               return (
                 <Cards
+                  showActions={showActions && true}
                   id={clothes._id}
                   key={clothes._id}
                   name={clothes.name}

@@ -22,6 +22,7 @@ type CardsProps = {
   greenImg?: string;
   blackImg?: string;
   blueImg?: string;
+  showActions?: boolean;
 };
 
 const Cards = ({
@@ -34,6 +35,7 @@ const Cards = ({
   greenImg,
   blackImg,
   blueImg,
+  showActions,
 }: CardsProps) => {
   const { theme } = useThemeContext();
   const { pathname } = useLocation();
@@ -80,7 +82,8 @@ const Cards = ({
       </Link>
       <p id="size">{sizes(size)}</p>
       <p id="price">${price}</p>
-      {currentUser?.isAdmin && (
+
+      {showActions && currentUser?.isAdmin && (
         <div className="actions-container">
           <EditBtn onClick={openEditModal} />
           <DeleteBtn onClick={openDeleteModal} />
