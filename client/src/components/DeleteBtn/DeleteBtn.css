@@ -1,60 +1,28 @@
 .DeleteBtn {
-  position: relative;
-  width: 150px;
-  height: 40px;
-  cursor: pointer;
   display: flex;
-  align-items: center;
-  border: 1px solid #cc0000;
-  background-color: #e50000;
-  overflow: hidden;
-  border-radius: 5px;
-}
-
-.DeleteBtn,
-.button__icon,
-.button__text {
-  transition: all 0.3s;
-}
-
-.DeleteBtn .button__text {
-  transform: translateX(35px);
-  color: #fff;
-  font-weight: 600;
-}
-
-.DeleteBtn .button__icon {
-  position: absolute;
-  transform: translateX(109px);
-  height: 100%;
-  width: 39px;
-  background-color: #cc0000;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 55px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+  border: none;
+  transition-duration: 0.3s;
 }
-
-.DeleteBtn .svg {
-  width: 20px;
+.DeleteBtn .bin-bottom {
+  width: 15px;
 }
-
-.DeleteBtn:hover {
-  background: #cc0000;
+.DeleteBtn .bin-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
 }
-
-.DeleteBtn:hover .button__text {
-  color: transparent;
-}
-
-.DeleteBtn:hover .button__icon {
-  width: 148px;
-  transform: translateX(0);
-}
-
-.DeleteBtn:active .button__icon {
-  background-color: #b20000;
+.DeleteBtn:hover .bin-top {
+  transform: rotate(45deg);
 }
 
 .DeleteBtn:active {
-  border: 1px solid #b20000;
+  transform: scale(0.9);
 }

@@ -34,7 +34,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.get(`/${type}`);
       setGetClothesType(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error: any) {
       console.log(error);
     }
@@ -55,6 +55,8 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
   const updateType = async (type: string, id: string, data: Type.Clothes) => {
     try {
       const response = await axios.put(`${type}/update/${id}`, data);
+      getType(type);
+
       console.log(response.data);
     } catch (error: any) {
       console.log(error.response.data.message);

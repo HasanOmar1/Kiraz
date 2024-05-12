@@ -1,0 +1,65 @@
+.AddProductModal #modal-title {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.AddProductModal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+.AddProductModal form div {
+  display: flex;
+  gap: 10px;
+}
+
+.AddProductModal form label {
+  font-size: 1.3rem;
+  width: 60px;
+  text-align: center;
+}
+
+.AddProductModal form select {
+  font-size: 1.2rem;
+  width: 100px;
+}
+
+.AddProductModal input {
+  padding: 5px 15px;
+  font-size: 1.3rem;
+  width: 250px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+}
+
+.AddProductModal .green-img {
+  color: green;
+}
+
+.AddProductModal .blue-img {
+  color: blue;
+}
+
+.AddProductModal .submit-btn {
+  padding: 5px 20px;
+  font-size: 1.3rem;
+  width: 250px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(109, 220, 109);
+  transition: all 0.2s;
+}
+
+.AddProductModal .submit-btn:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.AddProductModal #error-msg {
+  color: red;
+  text-align: center;
+  padding-bottom: 20px;
+}
