@@ -6,9 +6,6 @@ import ProductsCards from "../ProductsCards/ProductsCards";
 import "./ClothesTypesData.css";
 import useModal from "../../hooks/useModal";
 import GenericModal from "../GenericModal/GenericModal";
-// import { useLocation } from "react-router-dom";
-// import { validateUrlInput } from "../../utils/ValidateUrl";
-import { useAllClothesTypesContext } from "../../context/AllClothesTypesContext";
 import AddProductModal from "../AddProductModal/AddProductModal";
 import { useLoginContext } from "../../context/LoginContext";
 
@@ -24,8 +21,6 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
   const { closeModal, isModalOpen, openModal } = useModal();
-  // const { addType, addTypeErrorMsg, setAddTypeErrorMsg } =
-  useAllClothesTypesContext();
 
   const {
     filteredArray,

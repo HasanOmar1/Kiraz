@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { validateUrlInput } from "../../utils/ValidateUrl";
 import { useAllClothesTypesContext } from "../../context/AllClothesTypesContext";
@@ -34,7 +34,9 @@ const AddProductModal = ({
   const { addType, addTypeErrorMsg, setAddTypeErrorMsg, updateType } =
     useAllClothesTypesContext();
 
-  const path = pathname.split("/").join("");
+  useEffect(() => {
+    setAddTypeErrorMsg("");
+  }, [setAddTypeErrorMsg]);
 
   const itemNameRef = useRef<HTMLInputElement>(null);
   const itemDefaultColorRef = useRef<HTMLSelectElement>(null);
@@ -43,6 +45,8 @@ const AddProductModal = ({
   const itemGreenImgRef = useRef<HTMLInputElement>(null);
   const itemBlackImgRef = useRef<HTMLInputElement>(null);
   const itemBlueImgRef = useRef<HTMLInputElement>(null);
+
+  const path = pathname.split("/").join("");
 
   const addProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,15 +63,22 @@ const AddProductModal = ({
     };
 
     if (
-      validateUrlInput(itemValues.greenImg || "") ||
-      validateUrlInput(itemValues.blackImg || "") ||
-      validateUrlInput(itemValues.blueImg || "")
+      itemNameRef.current?.value.length !== 0 &&
+      itemPriceRef.current?.value.length !== 0
     ) {
-      addType(path, itemValues);
-      closeModal();
-      console.log(itemValues);
+      if (
+        validateUrlInput(itemValues.greenImg || "") ||
+        validateUrlInput(itemValues.blackImg || "") ||
+        validateUrlInput(itemValues.blueImg || "")
+      ) {
+        addType(path, itemValues);
+        closeModal();
+        console.log(itemValues);
+      } else {
+        setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
+      }
     } else {
-      setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
+      setAddTypeErrorMsg("Please fill all necessary fields");
     }
   };
 
@@ -84,17 +95,23 @@ const AddProductModal = ({
       blueImg: itemBlueImgRef.current?.value,
       type: path,
     };
-
     if (
-      validateUrlInput(itemValues.greenImg || "") ||
-      validateUrlInput(itemValues.blackImg || "") ||
-      validateUrlInput(itemValues.blueImg || "")
+      itemNameRef.current?.value.length !== 0 &&
+      itemPriceRef.current?.value.length !== 0
     ) {
-      updateType(path, cardId ?? "", itemValues);
-      closeModal();
-      console.log(itemValues);
+      if (
+        validateUrlInput(itemValues.greenImg || "") ||
+        validateUrlInput(itemValues.blackImg || "") ||
+        validateUrlInput(itemValues.blueImg || "")
+      ) {
+        updateType(path, cardId ?? "", itemValues);
+        closeModal();
+        console.log(itemValues);
+      } else {
+        setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
+      }
     } else {
-      setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
+      setAddTypeErrorMsg("Please fill all necessary fields");
     }
   };
 
@@ -106,12 +123,15 @@ const AddProductModal = ({
 
       <p id="error-msg">{addTypeErrorMsg}</p>
       <form onSubmit={isAddProduct ? addProduct : editProduct}>
-        <input
-          ref={itemNameRef}
-          type="text"
-          placeholder="Item Name"
-          defaultValue={cardName}
-        />
+        <div className="necessary-input">
+          <span>*</span>
+          <input
+            ref={itemNameRef}
+            type="text"
+            placeholder="Item Name*"
+            defaultValue={cardName}
+          />
+        </div>
 
         <div>
           <label htmlFor="Size">Color: </label>
@@ -139,13 +159,16 @@ const AddProductModal = ({
             {!(cardSize === "L") && <option value="L">L</option>}
           </select>
         </div>
-        <input
-          ref={itemPriceRef}
-          type="number"
-          placeholder="Item Price $"
-          min={1}
-          defaultValue={cardPrice}
-        />
+        <div className="necessary-input">
+          <span>*</span>
+          <input
+            ref={itemPriceRef}
+            type="number"
+            placeholder="Item Price*"
+            min={1}
+            defaultValue={cardPrice}
+          />
+        </div>
         <input
           ref={itemGreenImgRef}
           type="text"

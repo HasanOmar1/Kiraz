@@ -63,3 +63,15 @@
   text-align: center;
   padding-bottom: 20px;
 }
+
+.AddProductModal .necessary-input {
+  position: relative;
+}
+
+.AddProductModal .necessary-input span {
+  position: absolute;
+  top: -20px;
+
+  color: red;
+  font-size: 1.2rem;
+}
