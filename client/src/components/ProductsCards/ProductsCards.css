@@ -1,15 +1,15 @@
-.ProductsCards.data h1 {
+.ProductsCards .data h1 {
   text-align: center;
   padding-bottom: 40px;
 }
 
-.ProductsCards.data span {
+.ProductsCards .data span {
   font-family: var(--Segoe-font);
   font-size: 1.3rem;
   font-weight: 400;
 }
 
-.ProductsCards.loading {
+.ProductsCards .loading {
   width: 200px;
   height: 200px;
 }

@@ -7,8 +7,6 @@
 
 .Pagination button:hover:not(.next-prev-btns) {
   background-color: gray;
-  color: orange;
-  outline: 1px solid orange;
 }
 
 .Pagination .activePage {

@@ -15,7 +15,7 @@ const History = () => {
   const { getBagHistory, userBagHistory } = useBagContext();
   const { currentUser } = useLoginContext();
   const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
-    usePagination(userBagHistory);
+    usePagination(userBagHistory, 4);
 
   useEffect(() => {
     getBagHistory();

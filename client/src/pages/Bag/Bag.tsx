@@ -5,25 +5,13 @@ import BagDetails from "../../components/BagDetails/BagDetails";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
-import { useEffect } from "react";
 
 const Bag = () => {
   const { getThemeClassName } = useThemeContext();
   const { currentUser } = useLoginContext();
   const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
-    usePagination(currentUser?.bag || []);
+    usePagination(currentUser?.bag || [], 4);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (currentItems.length === 0) {
-      setCurrentPage((prev) => {
-        if (prev !== 1) {
-          return prev - 1;
-        }
-        return prev;
-      });
-    }
-  }, [currentItems, setCurrentPage]);
 
   const goToPurchaseHistory = () => {
     navigate(`/history`);

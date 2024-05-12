@@ -8,6 +8,8 @@ import useModal from "../../hooks/useModal";
 import GenericModal from "../GenericModal/GenericModal";
 import AddProductModal from "../AddProductModal/AddProductModal";
 import { useLoginContext } from "../../context/LoginContext";
+import Pagination from "../Pagination/Pagination";
+import usePagination from "../../hooks/usePagination";
 
 type ClothesTypesDataProps = {
   text: string;
@@ -30,6 +32,9 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
     setIsSizeChecked,
   } = useFilteredArray(array);
   const { currentUser } = useLoginContext();
+
+  const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
+    usePagination(filteredArray ?? [], 4);
 
   return (
     <main className="ClothesTypesData">
@@ -79,7 +84,17 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
             </div>
           </div>
         </div>
-        <ProductsCards array={filteredArray} />
+        <div className="cards-container">
+          <ProductsCards array={currentItems} />
+
+          <Pagination
+            currentPage={currentPage}
+            paginate={paginate}
+            setCurrentPage={setCurrentPage}
+            itemsPerPage={itemsPerPage}
+            totalItems={filteredArray?.length}
+          />
+        </div>
       </div>
     </main>
   );
