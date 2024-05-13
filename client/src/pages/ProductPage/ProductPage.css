@@ -1,15 +1,9 @@
 .ProductPage {
-  padding: 0px 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+  padding: 100px 400px;
 }
 
-.ProductPage img {
-  max-height: 550px;
-  border-radius: 10px;
-}
-
-.ProductPage .back-container {
-  display: flex;
+@media (max-width: 1024px) {
+  .ProductPage {
+    padding: 35px 20px;
+  }
 }

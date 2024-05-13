@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 10px;
+  width: fit-content;
 }
 
 .ProductData .size-container div {
@@ -29,4 +30,22 @@
 .ProductData #type-info {
   padding: 10px 0;
   font-family: var(--Segoe-font);
+}
+
+@media (max-width: 1024px) {
+  .ProductData {
+    width: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ProductData {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .ProductData .size-container {
+    font-size: 0.8rem;
+  }
 }

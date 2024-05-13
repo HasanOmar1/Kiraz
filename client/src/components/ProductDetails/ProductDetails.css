@@ -1,19 +1,29 @@
+.ProductDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .ProductDetails .data-container {
   display: flex;
   justify-content: center;
   gap: 100px;
   max-width: 100%;
-  min-width: 600px;
   position: relative;
-  margin-top: 100px;
+}
+
+.ProductDetails img {
+  height: 550px;
+  border-radius: 10px;
 }
 
 .ProductDetails .data {
   display: flex;
   flex-direction: column;
   font-family: var(--courier-font);
-  width: 100%;
   justify-content: space-between;
+  width: fit-content;
 }
 
 .ProductDetails .data h1 {
@@ -97,4 +107,70 @@
 .ProductDetails .loading {
   width: 200px;
   height: 200px;
+}
+
+@media (max-width: 1024px) {
+  .ProductDetails .data-container {
+    gap: 40px;
+    flex-direction: column;
+  }
+
+  .ProductDetails img {
+    height: 400px;
+    object-fit: contain;
+  }
+
+  .ProductDetails .data {
+    font-size: 1.1rem;
+  }
+
+  .ProductDetails .data h1 {
+    padding-bottom: 30px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ProductDetails img {
+    height: 300px;
+  }
+
+  .ProductDetails .data {
+    font-size: 1rem;
+  }
+  .ProductDetails .data h1 {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .ProductDetails .data-container {
+    gap: 20px;
+  }
+  .ProductDetails .data {
+    font-size: 0.9rem;
+  }
+
+  .ProductDetails .data h1 {
+    font-size: 1.4rem;
+  }
+  .ProductDetails .data h2 {
+    font-size: 1.3rem;
+  }
+  .ProductDetails .data span {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .ProductDetails .data h1 {
+    font-size: 1.2rem;
+  }
+  .ProductDetails .data h2 {
+    font-size: 1.1rem;
+  }
+
+  .ProductDetails img {
+    height: 210px;
+  }
 }

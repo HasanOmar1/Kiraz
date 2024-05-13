@@ -18,3 +18,41 @@
 .NavigateContainer p:last-child {
   color: var(--pick-color);
 }
+
+@media (max-width: 1275px) {
+  .NavigateContainer {
+    left: -200px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .NavigateContainer {
+    left: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .NavigateContainer {
+    left: 35%;
+  }
+}
+
+@media (max-width: 767px) {
+  .NavigateContainer {
+    left: 30%;
+  }
+}
+
+@media (max-width: 500px) {
+  .NavigateContainer {
+    left: 20%;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .NavigateContainer {
+    left: 30%;
+    font-size: 0.6rem;
+  }
+}

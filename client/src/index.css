@@ -89,3 +89,21 @@ hr {
   text-decoration: none;
   width: fit-content;
 }
+
+@media (max-width: 1024px) {
+  .Page {
+    min-height: 86.3vh;
+  }
+
+  @media (max-width: 768px) {
+    .Page {
+      min-height: 88.3vh;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .Page {
+    min-height: 89vh;
+  }
+}

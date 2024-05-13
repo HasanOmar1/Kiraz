@@ -34,6 +34,6 @@
 
 @media (max-width: 480px) {
   .SecondNavbar.second-nav {
-    height: 10dvh;
+    height: 5dvh;
   }
 }
