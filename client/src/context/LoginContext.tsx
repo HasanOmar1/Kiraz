@@ -39,7 +39,7 @@ const LoginContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.post(`/users/create`, user);
       setCurrentUser(response.data);
-      console.log(response.data);
+      // console.log(response.data);
 
       setErrorMsg("");
       closeModal();
@@ -52,7 +52,7 @@ const LoginContextProvider = ({ children }: Props) => {
   const loginUser = async (user: Type.LoginUser) => {
     try {
       const response = await axios.post(`/users/login`, user);
-      console.log(response.data);
+      // console.log(response.data);
       setCurrentUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       localStorage.setItem("token", response.data.token);

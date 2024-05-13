@@ -73,7 +73,6 @@ const AddProductModal = ({
       ) {
         addType(path, itemValues);
         closeModal();
-        console.log(itemValues);
       } else {
         setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
       }
@@ -106,7 +105,6 @@ const AddProductModal = ({
       ) {
         updateType(path, cardId ?? "", itemValues);
         closeModal();
-        console.log(itemValues);
       } else {
         setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
       }

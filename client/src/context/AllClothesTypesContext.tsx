@@ -45,7 +45,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
       const response = await axios.post(`${type}/add`, data);
       setAddTypeErrorMsg("");
       getType(type);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error: any) {
       setAddTypeErrorMsg(error.response.data.message);
       console.log(error.response.data.message);
@@ -57,7 +57,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
       const response = await axios.put(`${type}/update/${id}`, data);
       getType(type);
 
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error: any) {
       console.log(error.response.data.message);
     }
@@ -67,7 +67,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
     try {
       const response = await axios.delete(`${type}/delete/${id}`);
       getType(type);
-      console.log(response.data.message);
+      // console.log(response.data.message);
     } catch (error: any) {
       console.log(error.response.data.message);
     }
