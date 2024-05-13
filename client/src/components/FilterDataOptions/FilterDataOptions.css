@@ -30,3 +30,13 @@
 .FilterDataOptions #options-label {
   color: rgb(128, 117, 117);
 }
+
+@media (max-width: 1024px) {
+  .FilterDataOptions.panel {
+    gap: 10px;
+  }
+
+  .FilterDataOptions #options-label {
+    font-size: 1.1rem;
+  }
+}

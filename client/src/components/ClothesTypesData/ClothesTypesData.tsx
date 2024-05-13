@@ -34,7 +34,7 @@ const ClothesTypesData = ({ text, array }: ClothesTypesDataProps) => {
   const { currentUser } = useLoginContext();
 
   const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
-    usePagination(filteredArray ?? [], 8);
+    usePagination(filteredArray ?? [], 4);
 
   return (
     <main className="ClothesTypesData">

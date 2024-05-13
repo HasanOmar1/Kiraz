@@ -41,3 +41,9 @@
   rotate: 180deg;
   transition: 0.3s;
 }
+
+@media (max-width: 1024px) {
+  .FilterData #filter-by-text {
+    font-size: 1.2rem;
+  }
+}
