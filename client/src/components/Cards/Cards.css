@@ -13,8 +13,6 @@
 
 .Cards img {
   max-width: 100%;
-  max-height: auto;
-  object-fit: contain;
 }
 
 .Cards .colors-container {
@@ -103,4 +101,31 @@
 
 .Cards .modal-btns button:nth-child(2) {
   background-color: rgb(52, 211, 52);
+}
+
+@media (max-width: 900px) {
+  .Cards {
+    width: 200px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 500px) {
+  .Cards {
+    width: 160px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 375px) {
+  .Cards {
+    width: 165px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 360px) {
+  .Cards {
+    width: 165px;
+  }
 }

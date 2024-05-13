@@ -21,3 +21,37 @@
 .HomeImg:hover {
   scale: 0.95;
 }
+
+@media (max-width: 900px) {
+  .HomeImg {
+    width: 200px;
+  }
+
+  .HomeImg img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  .HomeImg {
+    width: 160px;
+  }
+}
+
+@media (max-width: 415px) {
+  .HomeImg {
+    width: 170px;
+  }
+}
+
+@media (max-width: 375px) {
+  .HomeImg {
+    width: 165px;
+  }
+}
+
+@media (max-width: 360px) {
+  .HomeImg {
+    width: 165px;
+  }
+}

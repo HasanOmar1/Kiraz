@@ -83,7 +83,7 @@
   border-radius: 0.2rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .Navbar nav {
     flex-direction: column;
     align-items: start;
