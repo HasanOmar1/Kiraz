@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 1200px;
+  max-width: 1200px;
   padding-bottom: 20px;
   column-gap: 80px;
   row-gap: 30px;
@@ -94,4 +94,40 @@
   color: orange;
   text-decoration: underline;
   text-decoration-color: orange;
+}
+
+@media (max-width: 1024px) {
+  .BagDetails .items {
+    row-gap: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .BagDetails .list {
+    width: 431px;
+  }
+  .BagDetails .list img {
+    object-fit: contain;
+    height: 100px;
+  }
+
+  .BagDetails .color-size {
+    gap: 20px;
+  }
+
+  .BagDetails .remove-btn {
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 430px) {
+  .BagDetails .list {
+    width: 390px;
+  }
+}
+
+@media (max-width: 390px) {
+  .BagDetails .list {
+    width: 360px;
+  }
 }

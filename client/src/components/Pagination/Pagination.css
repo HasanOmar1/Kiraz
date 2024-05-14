@@ -1,3 +1,6 @@
+.Pagination {
+  padding-bottom: 5px;
+}
 .Pagination button {
   padding: 10px;
   border: none;

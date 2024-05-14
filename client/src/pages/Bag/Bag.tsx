@@ -19,6 +19,11 @@ const Bag = () => {
 
   return (
     <div className={`Bag Page ${getThemeClassName()}`}>
+      {currentUser?.bag.length !== 0 && (
+        <div className="history-btn" onClick={goToPurchaseHistory}>
+          Purchase History
+        </div>
+      )}
       <>
         {currentUser && (
           <div className="data-container">
@@ -40,9 +45,6 @@ const Bag = () => {
               </>
             ) : (
               <>
-                <div className="history-btn" onClick={goToPurchaseHistory}>
-                  Purchase History
-                </div>
                 <h3 id="my-items">My Items</h3>
                 <BagDetails
                   currentUser={currentUser}

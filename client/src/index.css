@@ -95,6 +95,12 @@ hr {
     min-height: 86.3vh;
   }
 }
+/* 
+@media (max-width: 820px) {
+  .Page {
+    height: 93dvh;
+  }
+} */
 
 @media (max-width: 768px) {
   .Page {
