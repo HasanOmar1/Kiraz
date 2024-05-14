@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Chill Crew Neck Pullover",
+    "color": "black",
+    "size": "M",
+    "price": 440,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/files/M3207R_01_b1_s3_a1_1_m154_320x.jpg?v=1694217338"
+  },
+  {
+    "name": "Accolade Crew Neck Pullover",
+    "color": "black",
+    "size": "L",
+    "price": 530,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/files/U3031RG_01_b1_s3_a1_1_m93_320x.jpg?v=1699562627"
+  },
+  {
+    "name": "Conquer 1/4 Zip Reform Long Sleeve",
+    "color": "black",
+    "size": "S",
+    "price": 395,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/files/M3193R_01_b1_s3_a1_1_m93_320x.jpg?v=1707936535"
+  },
+  {
+    "name": "Accolade Hoodie",
+    "color": "black",
+    "size": "L",
+    "price": 575,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/files/U3032RG_01_b1_s3_a1_1_m108_320x.jpg?v=1700518403"
+  },
+  {
+    "name": "The Triumph Hoodie",
+    "color": "black",
+    "size": "S",
+    "price": 440,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/products/M3109R_01_b1_s3_a1_1_m93_320x.jpg?v=1675816036"
+  },
+  {
+    "name": "Scholar Cardigan Sweater",
+    "color": "black",
+    "size": "S",
+    "price": 890,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/files/M3227R_01_b1_s3_a1_1_m93_320x.jpg?v=1705085726"
+  },
+  {
+    "name": "Renown Heavy Weight 1/4 Zip",
+    "color": "black",
+    "size": "L",
+    "price": 620,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/files/M3214R_01_b1_s3_a1_1_m154_320x.jpg?v=1694317744"
+  },
+  {
+    "name": "Conquer Reform Long Sleeve With Hood",
+    "color": "black",
+    "size": "L",
+    "price": 425,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/products/M3199R_01_b1_s3_a1_1_m93_320x.jpg?v=1666806523"
+  },
+  {
+    "name": "Conquer Reform Long Sleeve With Hood",
+    "color": "blue",
+    "size": "L",
+    "price": 425,
+    "blueImg": "https://cdn.shopify.com/s/files/1/2185/2813/products/M3199R_03842_b1_s3_a1_1_m108_320x.jpg?v=1669492578"
+  },
+  {
+    "name": "Renown Heavy Weight Crew Neck Pullover",
+    "color": "black",
+    "size": "M",
+    "price": 585,
+    "blackImg": "https://cdn.shopify.com/s/files/1/2185/2813/files/U3014R_01_b1_s3_a1_1_m93_320x.jpg?v=1711147708"
+  }
+]

@@ -26,36 +26,81 @@ export const getClothesTypeById = async (type, req, res, next) => {
   }
 };
 
+// export const addClothesType = async (type, req, res, next) => {
+//   try {
+//     const { name, color, size, price, greenImg, blackImg, blueImg } = req.body;
+
+//     // if (!name || !color || !size || !price) {
+//     //   res.status(STATUS_CODE.BAD_REQUEST);
+//     //   throw new Error("Please fill all fields");
+//     // }
+
+//     const newClothes = await type.insertMany({
+//       name,
+//       color,
+//       size,
+//       price,
+//       greenImg,
+//       blueImg,
+//       blackImg,
+//     });
+
+//     await Clothes.insertMany({
+//       _id: newClothes._id,
+//       name,
+//       color,
+//       size,
+//       price,
+//       greenImg,
+//       blueImg,
+//       blackImg,
+//       type: newClothes.type,
+//     });
+
+//     res.status(STATUS_CODE.CREATED);
+//     res.send(newClothes);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+// inserted array of objects that i scrapped from a site
 export const addClothesType = async (type, req, res, next) => {
   try {
-    const { name, color, size, price, greenImg, blackImg, blueImg } = req.body;
-
-    if (!name || !color || !size || !price) {
+    const clothesArray = req.body;
+    if (!Array.isArray(clothesArray) || clothesArray.length === 0) {
       res.status(STATUS_CODE.BAD_REQUEST);
-      throw new Error("Please fill all fields");
+      throw new Error("Please provide an array of clothes objects");
     }
 
-    const newClothes = await type.create({
-      name,
-      color,
-      size,
-      price,
-      greenImg,
-      blueImg,
-      blackImg,
-    });
+    const newTypes = await type.insertMany(
+      clothesArray.map((clothes) => ({
+        name: clothes.name,
+        color: clothes.color,
+        size: clothes.size,
+        price: clothes.price,
+        greenImg: clothes.greenImg,
+        blueImg: clothes.blueImg,
+        blackImg: clothes.blackImg,
+      }))
+    );
 
-    await Clothes.create({
-      _id: newClothes._id,
-      name,
-      color,
-      size,
-      price,
-      greenImg,
-      blueImg,
-      blackImg,
-      type: newClothes.type,
-    });
+    // Insert documents into Clothes collection for each new type
+    const newClothes = [];
+    for (let i = 0; i < newTypes.length; i++) {
+      const newCloth = await Clothes.create({
+        _id: newTypes[i]._id,
+        name: newTypes[i].name,
+        color: newTypes[i].color,
+        size: newTypes[i].size,
+        price: newTypes[i].price,
+        greenImg: newTypes[i].greenImg,
+        blueImg: newTypes[i].blueImg,
+        blackImg: newTypes[i].blackImg,
+        type: newTypes[i].type,
+      });
+      newClothes.push(newCloth);
+    }
 
     res.status(STATUS_CODE.CREATED);
     res.send(newClothes);

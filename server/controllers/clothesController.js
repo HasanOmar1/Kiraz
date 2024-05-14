@@ -1,4 +1,3 @@
-import STATUS_CODE from "../constants/statusCodes.js";
 import Clothes from "../models/clothesModel.js";
 import Hoodies from "../models/hoodiesModel.js";
 import Pants from "../models/pantsModel.js";
