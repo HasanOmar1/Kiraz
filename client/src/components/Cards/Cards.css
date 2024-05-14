@@ -108,12 +108,23 @@
     width: 220px;
     height: 500px;
   }
+  .Cards .actions-container {
+    margin-top: -20px;
+  }
+  .Cards .actions-container button {
+    width: 40px;
+  }
 }
 
 @media (max-width: 980px) {
   .Cards {
     width: 200px;
     height: 500px;
+  }
+
+  .Cards .actions-container {
+    margin-top: -10px;
+    margin-left: 50px;
   }
 }
 
@@ -145,6 +156,15 @@
   }
   .Cards #clothing-name {
     font-size: 0.9rem;
+  }
+
+  .Cards .actions-container {
+    margin-top: -20px;
+    margin-left: 50px;
+  }
+  .Cards .actions-container button {
+    width: 30px;
+    height: 30px;
   }
 }
 
