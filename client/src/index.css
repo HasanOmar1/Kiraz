@@ -90,15 +90,15 @@ hr {
   width: fit-content;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
   .Page {
     min-height: 86.3vh;
   }
+}
 
-  @media (max-width: 768px) {
-    .Page {
-      min-height: 88.3vh;
-    }
+@media (max-width: 768px) {
+  .Page {
+    min-height: 88.3vh;
   }
 }
 

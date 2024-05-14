@@ -121,3 +121,9 @@
     display: flex;
   }
 }
+
+@media (max-width: 375px) {
+  .Navbar nav {
+    min-height: 9dvh;
+  }
+}

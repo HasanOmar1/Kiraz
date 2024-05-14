@@ -49,3 +49,9 @@
     font-size: 0.8rem;
   }
 }
+
+@media (max-width: 360px) {
+  .ProductData .size-container div {
+    padding: 10px 20px;
+  }
+}

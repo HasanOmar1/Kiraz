@@ -37,3 +37,9 @@
     height: 5dvh;
   }
 }
+
+@media (max-width: 375px) {
+  .SecondNavbar.second-nav {
+    height: 7dvh;
+  }
+}

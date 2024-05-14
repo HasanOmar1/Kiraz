@@ -42,8 +42,14 @@
   transition: 0.3s;
 }
 
-@media (max-width: 1024px) {
-  .FilterData #filter-by-text {
-    font-size: 1.2rem;
+@media (max-width: 529px) {
+  .FilterData .filter-by-data {
+    max-width: 350px;
+  }
+
+  @keyframes slideDown {
+    to {
+      height: 70px;
+    }
   }
 }

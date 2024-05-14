@@ -33,14 +33,50 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
+  .ClothesPage .filter-by {
+    width: 150px;
+  }
+}
+
+@media (max-width: 1124px) {
   .ClothesPage .filters {
     position: fixed;
     left: 25px;
-    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .ClothesPage .data {
+    margin-left: 0;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 529px) {
+  .ClothesPage .data {
+    gap: 24px;
+  }
+
+  .ClothesPage .data-container {
+    padding: 50px 20px;
+    margin-top: 300px;
+  }
+
+  .ClothesPage .filters {
+    z-index: 10;
+    position: absolute;
+    left: 10px;
+    top: -240px;
   }
 
   .ClothesPage .filter-by {
-    width: 150px;
+    width: 350px;
+  }
+}
+
+@media (max-width: 350px) {
+  .ClothesPage .filters {
+    left: 0px;
   }
 }

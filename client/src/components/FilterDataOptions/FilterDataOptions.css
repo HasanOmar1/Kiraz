@@ -40,3 +40,24 @@
     font-size: 1.1rem;
   }
 }
+
+@media (max-width: 768px) {
+  .FilterDataOptions #options-label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 529px) {
+  .FilterDataOptions.panel {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .FilterDataOptions .checkbox-container {
+    justify-content: center;
+    align-items: center;
+  }
+  .FilterDataOptions .checkbox-container input {
+    height: 17px;
+  }
+}
