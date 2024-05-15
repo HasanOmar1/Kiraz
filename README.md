@@ -9,9 +9,10 @@ Link: https://kiraz-clothing.netlify.app/
 #### Used Technologies
 
 - React
+- TypeScript
 - CSS
 - Axios
-- React Router.
+- React Router
 
 ## About
 
