@@ -34,12 +34,6 @@
 
 @media (max-width: 480px) {
   .SecondNavbar.second-nav {
-    height: 5dvh;
-  }
-}
-
-@media (max-width: 375px) {
-  .SecondNavbar.second-nav {
     height: 7dvh;
   }
 }
