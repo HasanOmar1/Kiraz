@@ -98,6 +98,8 @@ I have developed a responsive E-commerce clothing site using multiple technologi
 - BcryptJS
 - Puppeteer
 
+Used Postman to test my endpoints.
+
 ## About
 
 I used MongoDb for my database.
