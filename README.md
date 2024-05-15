@@ -4,6 +4,8 @@
 
 I have developed a responsive E-commerce clothing site using multiple technologies.
 
+Link: https://kiraz-clothing.netlify.app/
+
 #### Used Technologies
 
 - React
@@ -91,6 +93,8 @@ Installation Guide:
 # Backend
 
 I have developed a responsive E-commerce clothing site using multiple technologies.
+
+Link : https://kiraz-kids.onrender.com/
 
 #### Used Technologies
 
