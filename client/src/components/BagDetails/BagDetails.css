@@ -44,6 +44,7 @@
   align-items: center;
   border: 2px solid var(--secondary-color);
   border-radius: 5px;
+  max-width: 550px;
   width: 550px;
 }
 
@@ -56,7 +57,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 50%;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -103,12 +104,17 @@
 }
 
 @media (max-width: 550px) {
+  .BagDetails #clothing-name {
+    width: 10ch;
+    text-align: center;
+  }
+
   .BagDetails .list {
     width: 431px;
   }
   .BagDetails .list img {
     object-fit: contain;
-    height: 100px;
+    height: 75px;
   }
 
   .BagDetails .color-size {
@@ -121,12 +127,6 @@
 }
 
 @media (max-width: 430px) {
-  .BagDetails .list {
-    width: 390px;
-  }
-}
-
-@media (max-width: 390px) {
   .BagDetails .list {
     width: 360px;
   }
