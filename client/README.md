@@ -1,30 +1,79 @@
-# React + TypeScript + Vite
+# Kiraz - Ecommerce Clothing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I have developed a responsive E-commerce clothing site using multiple technologies.
 
-Currently, two official plugins are available:
+#### Used Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- CSS
+- Axios
+- React Router.
 
-## Expanding the ESLint configuration
+## About
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+#### HomePage
 
-- Configure the top-level `parserOptions` property like this:
+- There are four different collections : Shirts, Hoodies, Pants and Shorts.
+- You can see the latest added product to the page.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+#### Collection Pages
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- You can filter products by color and size.
+- You can choose multiple filtering options. (Example: filter by green color and black with large size)
+- You can see each product card with its details.
+- You can click on the product name or image to go to the product page.
+- Admin users can add a new product card.
+- Admin users can edit or delete the product card.
+
+#### Product Page
+
+- You can choose the color and the size of the product by the available options.
+- Clicking on different color changes the img of the product to the new color.
+- Whenever you choose a color or size it gets saved to the page parameter.
+- Refreshing the page or sharing the url keeps the selected color and size.
+- If you are logged in you can add the product to your bag.
+
+#### User's Bag Page
+
+- You can see the products you added to your bag.
+- You can remove a product from your bag.
+- You can clear your bag with one button.
+- You can checkout with the chosen products.
+- When you checkout , the items automatically gets moved to the history page.
+- You can click on purchase history button to move to your history's page.
+- I have added pagination functionality to the page.
+
+#### History Page
+
+- You can see the products you have bought before.
+- You can see how much money you spent in total.
+- I have added pagination functionality to the page.
+
+#### More
+
+- You have the ability to change the site's theme.
+- The theme is saved in local storage.
+- Navigation bar to move to a different page.
+- The site is fully responsive.
+- Used one generic modal for the whole site.
+
+---
+
+Installation Guide:
+
+- Clone this repository
+- Type npm install in the terminal to install the dependencies
+- Type npm run dev to start the client.
+
+---
+
+#### Showcasing my site
+
+![home-1](./src/assets/showcase/home-1.png)
+![home-2](./src/assets/showcase/home-two.png)
+![collection-1](./src/assets/showcase/collection-1.png)
+![collection-2](./src/assets/showcase/collection-2.png)
+![add-and-edit-modal](./src/assets/showcase/add-edit-modal.png)
+![bag](./src/assets/showcase/bag.png)
+![empty-bag](./src/assets/showcase/empty-bag.png)
+![history-page](./src/assets/showcase/history.png)

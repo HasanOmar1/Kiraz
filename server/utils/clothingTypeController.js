@@ -30,10 +30,10 @@ export const addClothesType = async (type, req, res, next) => {
   try {
     const { name, color, size, price, greenImg, blackImg, blueImg } = req.body;
 
-    // if (!name || !color || !size || !price) {
-    //   res.status(STATUS_CODE.BAD_REQUEST);
-    //   throw new Error("Please fill all fields");
-    // }
+    if (!name || !color || !size || !price) {
+      res.status(STATUS_CODE.BAD_REQUEST);
+      throw new Error("Please fill all fields");
+    }
 
     const newClothes = await type.insertMany({
       name,
