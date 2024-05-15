@@ -152,7 +152,7 @@
 @media (max-width: 659px) {
   .Cards {
     width: 150px;
-    height: 400px;
+    height: 450px;
   }
   .Cards #clothing-name {
     font-size: 0.9rem;
