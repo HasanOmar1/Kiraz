@@ -85,6 +85,15 @@ Each collection has its own controller file.
 
 ---
 
+#### ENV File
+
+PORT=9999
+NODE_ENV=dev
+MONGO_URI= [Your MongoDB link]
+JWT_SECRET= [Type any secret key]
+
+---
+
 Installation Guide:
 
 - Clone this repository

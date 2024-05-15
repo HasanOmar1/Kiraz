@@ -59,6 +59,12 @@ I have developed a responsive E-commerce clothing site using multiple technologi
 
 ---
 
+#### ENV File
+
+VITE_BACKEND_URL = http://localhost:9999
+
+---
+
 Installation Guide:
 
 - Clone this repository

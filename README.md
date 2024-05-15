@@ -61,6 +61,12 @@ I have developed a responsive E-commerce clothing site using multiple technologi
 
 ---
 
+#### ENV File
+
+VITE_BACKEND_URL = http://localhost:9999
+
+---
+
 Installation Guide:
 
 - Clone this repository
@@ -166,6 +172,15 @@ Each collection has its own controller file.
 ##### Bag History Routes
 
 ![bagItems-routes](./server/assets/bagHistory-routes.png)
+
+---
+
+#### ENV File
+
+PORT=9999
+NODE_ENV=dev
+MONGO_URI= [Your MongoDB link]
+JWT_SECRET= [Type any secret key]
 
 ---
 
