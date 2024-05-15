@@ -70,8 +70,9 @@
   gap: 20px;
   justify-content: center;
   align-items: center;
-  margin-top: -10px;
-  margin-left: 100px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .Cards .modal-btns {
@@ -108,9 +109,7 @@
     width: 220px;
     height: 500px;
   }
-  .Cards .actions-container {
-    margin-top: -20px;
-  }
+
   .Cards .actions-container button {
     width: 40px;
   }
@@ -158,10 +157,6 @@
     font-size: 0.9rem;
   }
 
-  .Cards .actions-container {
-    margin-top: -20px;
-    margin-left: 50px;
-  }
   .Cards .actions-container button {
     width: 30px;
     height: 30px;
