@@ -3,12 +3,19 @@ import bcrypt from "bcryptjs";
 import User from "../models/usersModel.js";
 import STATUS_CODE from "../constants/statusCodes.js";
 import { capitalLetter } from "../utils/capitalLetter.js";
+import { NextFunction, Request, Response } from "express";
 
-const generateToken = (id, email) => {
-  return jwt.sign({ id, email }, process.env.JWT_SECRET, { expiresIn: "7d" });
+const generateToken = (id: any, email: string) => {
+  return jwt.sign({ id, email }, process.env.JWT_SECRET ?? "", {
+    expiresIn: "7d",
+  });
 };
 
-export const getAllUsers = async (req, res, next) => {
+export const getAllUsers = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const users = await User.find({}).populate({
       path: "bag",
@@ -20,7 +27,11 @@ export const getAllUsers = async (req, res, next) => {
   }
 };
 
-export const createUser = async (req, res, next) => {
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { name, email, password, isAdmin } = req.body;
     if (!name || !email || !password) {
@@ -76,7 +87,11 @@ export const createUser = async (req, res, next) => {
   }
 };
 
-export const login = async (req, res, next) => {
+export const login = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { email, password } = req.body;
 
@@ -105,7 +120,11 @@ export const login = async (req, res, next) => {
   }
 };
 
-export const deleteUser = async (req, res, next) => {
+export const deleteUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { id } = req.params;
   try {
     const user = await User.findByIdAndDelete(id);

@@ -1,7 +1,14 @@
+import { NextFunction, Request, Response } from "express";
+import { Model } from "mongoose";
 import STATUS_CODE from "../constants/statusCodes.js";
 import Clothes from "../models/clothesModel.js";
 
-export const getAllClothesType = async (type, req, res, next) => {
+export const getAllClothesType = async (
+  type: Model<any>,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const clothes = await type.find({});
     res.send(clothes);
@@ -10,7 +17,12 @@ export const getAllClothesType = async (type, req, res, next) => {
   }
 };
 
-export const getClothesTypeById = async (type, req, res, next) => {
+export const getClothesTypeById = async (
+  type: Model<any>,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { id } = req.params;
   try {
     const clothesById = await type.findById(id);
@@ -26,7 +38,12 @@ export const getClothesTypeById = async (type, req, res, next) => {
   }
 };
 
-export const addClothesType = async (type, req, res, next) => {
+export const addClothesType = async (
+  type: Model<any>,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { name, color, size, price, greenImg, blackImg, blueImg } = req.body;
 
@@ -35,7 +52,7 @@ export const addClothesType = async (type, req, res, next) => {
       throw new Error("Please fill all fields");
     }
 
-    const newClothes = await type.insertMany({
+    const newClothes = await type.create({
       name,
       color,
       size,
@@ -45,7 +62,7 @@ export const addClothesType = async (type, req, res, next) => {
       blackImg,
     });
 
-    await Clothes.insertMany({
+    await Clothes.create({
       _id: newClothes._id,
       name,
       color,
@@ -65,7 +82,7 @@ export const addClothesType = async (type, req, res, next) => {
 };
 
 // use it only if i want to insert an array of objects [used it to insert what i scrapped]
-// export const addClothesType = async (type, req, res, next) => {
+// export const addClothesType = async (type, req:Request, res:Response, next:NextFunction) => {
 //   try {
 //     const clothesArray = req.body;
 //     if (!Array.isArray(clothesArray) || clothesArray.length === 0) {
@@ -109,7 +126,12 @@ export const addClothesType = async (type, req, res, next) => {
 //   }
 // };
 
-export const removeClothingById = async (type, req, res, next) => {
+export const removeClothingById = async (
+  type: Model<any>,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { id } = req.params;
   try {
     const removedClothes = await type.findByIdAndDelete(id);
@@ -129,7 +151,12 @@ export const removeClothingById = async (type, req, res, next) => {
   }
 };
 
-export const updateClothing = async (type, req, res, next) => {
+export const updateClothing = async (
+  type: Model<any>,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { id } = req.params;
 
   try {

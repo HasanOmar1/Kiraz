@@ -1,6 +1,12 @@
+import { NextFunction, Request, Response } from "express";
 import STATUS_CODE from "../constants/statusCodes.js";
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const statusCode =
     res.statusCode === STATUS_CODE.OK
       ? STATUS_CODE.INTERNAL_SERVER_ERROR

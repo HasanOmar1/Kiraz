@@ -7,12 +7,21 @@ import {
   getAllClothesType,
   getClothesTypeById,
 } from "../utils/clothingTypeController.js";
+import { NextFunction, Request, Response } from "express";
 
-export const getAllClothes = async (req, res, next) => {
+export const getAllClothes = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   getAllClothesType(Clothes, req, res, next);
 };
 
-export const getAllClothesById = async (req, res, next) => {
+export const getAllClothesById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     getClothesTypeById(Clothes, req, res, next);
   } catch (error) {
@@ -20,7 +29,11 @@ export const getAllClothesById = async (req, res, next) => {
   }
 };
 
-export const getLatestAddedClothes = async (req, res, next) => {
+export const getLatestAddedClothes = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const clothes = await Clothes.find({}).limit(5).sort({ createdAt: -1 });
     res.send(clothes);
@@ -29,7 +42,11 @@ export const getLatestAddedClothes = async (req, res, next) => {
   }
 };
 
-export const removeAllClothes = async (req, res, next) => {
+export const removeAllClothes = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const clothes = await Clothes.deleteMany({});
     await Hoodies.deleteMany({});

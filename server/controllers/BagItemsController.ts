@@ -1,10 +1,26 @@
-import mongoose from "mongoose";
+import mongoose, { Model } from "mongoose";
 import STATUS_CODE from "../constants/statusCodes.js";
 import BagItems from "../models/bagItemsModel.js";
 import BagHistory from "../models/bagHistoryModel.js";
 import User from "../models/usersModel.js";
+import { NextFunction, Response } from "express";
+import { AuthenticatedRequest } from "../utils/AuthenticatedRequest.js";
 
-export const getBagItems = async (req, res, next) => {
+type BagItem = {
+  id: string;
+  name: string;
+  color: string;
+  size: string;
+  img: string | undefined | null;
+  price: number;
+  type: string;
+};
+
+export const getBagItems = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const bagItems = await BagItems.find({});
     res.send(bagItems);
@@ -13,7 +29,11 @@ export const getBagItems = async (req, res, next) => {
   }
 };
 
-export const addItemToBag = async (req, res, next) => {
+export const addItemToBag = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { name, color, size, price, img, type, id } = req.body;
 
@@ -45,7 +65,11 @@ export const addItemToBag = async (req, res, next) => {
   }
 };
 
-export const deleteBagItem = async (req, res, next) => {
+export const deleteBagItem = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
   const { id } = req.params;
   try {
     const bag = await BagItems.findByIdAndDelete(id);
@@ -64,10 +88,15 @@ export const deleteBagItem = async (req, res, next) => {
   }
 };
 
-export const checkout = async (req, res, next) => {
+export const checkout = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const user = await User.findById(req.user._id).populate("bag");
-    const userBag = user.bag;
+
+    const userBag: BagItem[] = user?.bag;
 
     // Remove the bag array from the user document
     const updateUser = await User.findByIdAndUpdate(
@@ -80,7 +109,7 @@ export const checkout = async (req, res, next) => {
 
     // Create a new document in the Bag collection for each bag
     await BagHistory.insertMany(
-      userBag.map((bagItem) => ({
+      userBag?.map((bagItem) => ({
         _id: new mongoose.Types.ObjectId(),
         id: bagItem.id,
         name: bagItem.name,
@@ -89,7 +118,7 @@ export const checkout = async (req, res, next) => {
         img: bagItem.img,
         price: bagItem.price,
         type: bagItem.type,
-        user: user._id,
+        user: user?._id,
       }))
     );
 
@@ -101,7 +130,11 @@ export const checkout = async (req, res, next) => {
   }
 };
 
-export const clearBag = async (req, res, next) => {
+export const clearBag = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     await BagItems.deleteMany({ user: req.user._id });
 
@@ -113,7 +146,11 @@ export const clearBag = async (req, res, next) => {
   }
 };
 
-export const getBagItemsHistory = async (req, res, next) => {
+export const getBagItemsHistory = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const bagHistory = await BagHistory.find({ user: req.user._id });
     res.send(bagHistory);
