@@ -56,7 +56,6 @@ export const checkout = async (req, res, next) => {
     try {
         const user = await User.findById(req.user._id).populate("bag");
         const userBag = user?.bag;
-        console.log(userBag);
         // Remove the bag array from the user document
         const updateUser = await User.findByIdAndUpdate({ _id: req.user._id }, {
             $unset: { bag: 1 },
