@@ -128,6 +128,7 @@ const AddProductModal = ({
             type="text"
             placeholder="Item Name*"
             defaultValue={cardName}
+            required
           />
         </div>
 
@@ -165,6 +166,7 @@ const AddProductModal = ({
             placeholder="Item Price*"
             min={1}
             defaultValue={cardPrice}
+            required
           />
         </div>
         <input
