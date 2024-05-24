@@ -61,6 +61,7 @@ Link: https://kiraz-clothing.netlify.app/
 - Navigation bar to move to a different page.
 - The site is fully responsive.
 - Used one generic modal for the whole site.
+- You can use the search bar to search for products.
 
 ---
 
