@@ -2,19 +2,56 @@ import ThemeButton from "../ThemeButton/ThemeButton";
 import NavBarSvgs from "../NavBarSvgs/NavBarSvgs";
 import GenericModal from "../GenericModal/GenericModal";
 import LoginModal from "../Login/Login";
-import { useLoginContext } from "../../context/LoginContext";
-import { useModalContext } from "../../context/ModalContext";
-import { useThemeContext } from "../../context/ThemeContext";
+import {
+  useLoginContext,
+  useModalContext,
+  useThemeContext,
+  useClothesContext,
+} from "../../utils/Context";
 import { useNavigate } from "react-router-dom";
 import { loginSvg } from "../../utils/Assets";
-import "../Navbar/Navbar.css";
 import "./SecondNavbar.css";
+import { useEffect, useState } from "react";
+import SearchInfo from "../SearchInfo/SearchInfo";
+import { Clothes } from "../../types/ClothesTypes";
 
 const SecondNavbar = () => {
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [getClothes, setGetClothes] = useState<Clothes[]>([]);
+  const [isResults, setIsResults] = useState<boolean>(false);
   const navigate = useNavigate();
   const { setTheme, theme } = useThemeContext();
   const { closeModal, isModalOpen, openModal } = useModalContext();
   const { currentUser, setCurrentUser } = useLoginContext();
+  const { allClothes } = useClothesContext();
+
+  useEffect(() => {
+    if (getClothes.length > 0) {
+      setIsResults(true);
+    } else {
+      setIsResults(false);
+    }
+  }, [getClothes]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setGetClothes(() => {
+        if (searchInput.trim()) {
+          return (
+            allClothes?.filter((clothes) => {
+              return clothes?.name
+                ?.toLowerCase()
+                .includes(searchInput.toLowerCase());
+            }) ?? []
+          );
+        } else {
+          return [];
+        }
+      });
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchInput, allClothes]);
 
   const handleSwitchTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -28,7 +65,25 @@ const SecondNavbar = () => {
   };
 
   return (
-    <div className="SecondNavbar second-nav">
+    <div className="SecondNavbar">
+      <div className="search-bar-container">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        {isResults && (
+          <div className="search-results">
+            {allClothes && getClothes && (
+              <SearchInfo
+                array={getClothes}
+                setIsResults={setIsResults}
+                setSearchInput={setSearchInput}
+              />
+            )}
+          </div>
+        )}
+      </div>
       <div className="svgs-container">
         <ThemeButton handleSwitchTheme={handleSwitchTheme} />
         {currentUser ? (

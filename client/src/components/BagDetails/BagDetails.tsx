@@ -10,7 +10,7 @@ import BagDetailsInfo from "../BagDetailsInfo/BagDetailsInfo";
 type BagDetailsProps = {
   showActions?: boolean;
   array: BagItems[];
-  currentUser?: CurrentLoggedUser;
+  currentUser?: CurrentLoggedUser | null;
 };
 
 type debouncedCheckOutFunction = () => void;

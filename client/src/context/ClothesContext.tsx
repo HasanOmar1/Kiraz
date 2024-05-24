@@ -8,6 +8,7 @@ type ClothesContextProviderProps = {
 };
 
 type ClothesContextValues = {
+  allClothes: Type.Clothes[] | [];
   getClothesById: (id: string | undefined) => void;
   clothesById: null | Type.Clothes;
   setClothesById: React.Dispatch<React.SetStateAction<Type.Clothes | null>>;
@@ -18,6 +19,7 @@ type ClothesContextValues = {
 const ClothesContext = createContext<null | ClothesContextValues>(null);
 
 const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
+  const [allClothes, setAllClothes] = useState<Type.Clothes[] | []>([]);
   const [clothesById, setClothesById] = useState<null | Type.Clothes>(null);
   const [latestProducts, setLatestProducts] = useState<null | Type.Clothes[]>(
     null
@@ -28,6 +30,20 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   useEffect(() => {
     setClothesById(null);
   }, [pathname]);
+
+  useEffect(() => {
+    getAllClothes();
+  }, []);
+
+  const getAllClothes = async () => {
+    try {
+      const { data } = await axios.get("/clothes");
+      setAllClothes(data);
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getClothesById = async (id: string | undefined) => {
     try {
@@ -51,6 +67,7 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   return (
     <ClothesContext.Provider
       value={{
+        allClothes,
         getClothesById,
         clothesById,
         setClothesById,
