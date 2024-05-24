@@ -72,16 +72,22 @@ const SecondNavbar = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        {isResults && (
-          <div className="search-results">
-            {allClothes && getClothes && (
-              <SearchInfo
-                array={getClothes}
-                setIsResults={setIsResults}
-                setSearchInput={setSearchInput}
-              />
+        {allClothes ? (
+          <>
+            {isResults && (
+              <div className="search-results">
+                {allClothes && getClothes && (
+                  <SearchInfo
+                    array={getClothes}
+                    setIsResults={setIsResults}
+                    setSearchInput={setSearchInput}
+                  />
+                )}
+              </div>
             )}
-          </div>
+          </>
+        ) : (
+          <>asd</>
         )}
       </div>
       <div className="svgs-container">
