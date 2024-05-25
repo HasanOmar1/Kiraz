@@ -1,5 +1,7 @@
 import React from "react";
 import LoginInputs from "../LoginInputs/LoginInputs";
+import { useLoginContext } from "../../context/LoginContext";
+import { loadingGif } from "../../utils/Assets";
 
 type inputsArrayType = {
   name: string;
@@ -28,6 +30,8 @@ export const LoginForm = ({
   nameValue,
   handleChangeNameValue,
 }: LoginFormProps) => {
+  const { isLoading } = useLoginContext();
+
   return (
     <form onSubmit={isRegister ? handleRegister : handleLogIn}>
       {isRegister && (
@@ -54,6 +58,7 @@ export const LoginForm = ({
 
       <button type="submit" id="submit-btn">
         {isRegister ? "Sign Up" : "Sign In"}
+        {isLoading && <img src={loadingGif} alt="loading gif" width={80} />}
       </button>
     </form>
   );

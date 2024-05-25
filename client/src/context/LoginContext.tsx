@@ -12,6 +12,7 @@ type LoginContextValues = {
   setCurrentUser: React.Dispatch<
     React.SetStateAction<Type.CurrentLoggedUser | null>
   >;
+  isLoading: boolean;
 };
 
 type Props = {
@@ -24,6 +25,7 @@ const LoginContextProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<Type.CurrentLoggedUser | null>(
     null
   );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [errorMsg, setErrorMsg] = useState("");
   const { closeModal } = useModalContext();
@@ -37,6 +39,8 @@ const LoginContextProvider = ({ children }: Props) => {
 
   const createUser = async (user: Type.CreatedUser) => {
     try {
+      setIsLoading(true);
+
       const response = await axios.post(`/users/create`, user);
       setCurrentUser(response.data);
       // console.log(response.data);
@@ -46,11 +50,14 @@ const LoginContextProvider = ({ children }: Props) => {
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
       // console.log(error.response?.data.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const loginUser = async (user: Type.LoginUser) => {
     try {
+      setIsLoading(true);
       const response = await axios.post(`/users/login`, user);
       // console.log(response.data);
       setCurrentUser(response.data);
@@ -61,6 +68,8 @@ const LoginContextProvider = ({ children }: Props) => {
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
       // console.log(error.response?.data.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -73,6 +82,7 @@ const LoginContextProvider = ({ children }: Props) => {
         createUser,
         setErrorMsg,
         setCurrentUser,
+        isLoading,
       }}
     >
       {children}
