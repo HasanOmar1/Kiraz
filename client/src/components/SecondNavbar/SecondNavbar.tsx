@@ -68,26 +68,22 @@ const SecondNavbar = () => {
     <div className="SecondNavbar">
       <div className="search-bar-container">
         <input
-          type="text"
+          type="search"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Search for a product..."
         />
-        {allClothes ? (
-          <>
-            {isResults && (
-              <div className="search-results">
-                {allClothes && getClothes && (
-                  <SearchInfo
-                    array={getClothes}
-                    setIsResults={setIsResults}
-                    setSearchInput={setSearchInput}
-                  />
-                )}
-              </div>
+
+        {allClothes && isResults && (
+          <div className="search-results">
+            {allClothes && getClothes && (
+              <SearchInfo
+                array={getClothes}
+                setIsResults={setIsResults}
+                setSearchInput={setSearchInput}
+              />
             )}
-          </>
-        ) : (
-          <>asd</>
+          </div>
         )}
       </div>
       <div className="svgs-container">
