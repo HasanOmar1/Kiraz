@@ -41,14 +41,11 @@ const LoginContextProvider = ({ children }: Props) => {
   const createUser = async (user: Type.CreatedUser) => {
     try {
       setIsLoading(true);
-
       const response = await axios.post(`/users/create`, user);
       setCurrentUser(response.data);
       // console.log(response.data);
-
       setErrorMsg("");
       toast.success("User has been created!");
-
       closeModal();
     } catch (error: any) {
       toast.error(error.response?.data.message, {
