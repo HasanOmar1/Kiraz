@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../axiosConfig";
 import { useModalContext } from "./ModalContext";
 import * as Type from "../types/LoginContextTypes";
+import { toast } from "react-toastify";
 
 type LoginContextValues = {
   currentUser: Type.CurrentLoggedUser | null;
@@ -46,8 +47,13 @@ const LoginContextProvider = ({ children }: Props) => {
       // console.log(response.data);
 
       setErrorMsg("");
+      toast.success("User has been created!");
+
       closeModal();
     } catch (error: any) {
+      toast.error(error.response?.data.message, {
+        autoClose: 3000,
+      });
       setErrorMsg(error.response?.data.message);
       // console.log(error.response?.data.message);
     } finally {
@@ -64,8 +70,12 @@ const LoginContextProvider = ({ children }: Props) => {
       localStorage.setItem("user", JSON.stringify(response.data));
       localStorage.setItem("token", response.data.token);
       setErrorMsg("");
+      toast.success("Login successful");
       closeModal();
     } catch (error: any) {
+      toast.error(error.response?.data.message, {
+        autoClose: 3000,
+      });
       setErrorMsg(error.response?.data.message);
       // console.log(error.response?.data.message);
     } finally {

@@ -11,6 +11,7 @@ Link: https://kiraz-clothing.netlify.app/
 - CSS
 - Axios
 - React Router.
+- React Toastify
 
 ## About
 

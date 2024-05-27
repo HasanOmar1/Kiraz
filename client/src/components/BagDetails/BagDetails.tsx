@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import BagDetailsModal from "../BagDetailsModal/BagDetailsModal";
 import { CurrentLoggedUser } from "../../types/LoginContextTypes";
 import BagDetailsInfo from "../BagDetailsInfo/BagDetailsInfo";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type BagDetailsProps = {
   showActions?: boolean;
@@ -44,11 +46,13 @@ const BagDetails = ({ showActions, array, currentUser }: BagDetailsProps) => {
 
   const removeItem = (id: string) => {
     removeItemFromBag(id);
+    toast.success("Product has been removed");
   };
 
   const handleCheckOut = () => {
     setDebouncedCheckOut(() => checkOut);
     closeCheckOutModal();
+    toast.success("Payment has been completed");
   };
 
   const itemsPrice = currentUser?.bag.reduce((a, b) => {

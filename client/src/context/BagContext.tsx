@@ -2,6 +2,7 @@ import axios from "../axiosConfig";
 import { createContext, useContext, useState } from "react";
 import { useLoginContext } from "./LoginContext";
 import { BagItems } from "../types/ClothesTypes";
+import { toast } from "react-toastify";
 
 type Props = {
   children: React.ReactNode;
@@ -31,6 +32,7 @@ const BagContextProvider = ({ children }: Props) => {
       const userJSON = JSON.stringify(response.data);
       localStorage.setItem("user", userJSON);
       // console.log(response.data);
+      toast.success("Product has been added to your bag");
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
       // console.log(error.response?.data.message);

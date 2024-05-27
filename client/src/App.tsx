@@ -8,6 +8,8 @@ import {
 } from "./utils/Context";
 import * as Pages from "./pages/index";
 import SecondNavbar from "./components/SecondNavbar/SecondNavbar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { pathname } = useLocation();
@@ -23,6 +25,19 @@ function App() {
           <AllClothesTypesContextProvider>
             <Navbar />
             <SecondNavbar />
+            <ToastContainer
+              position="top-center"
+              autoClose={1000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              limit={3}
+            />
             <Routes>
               <Route path="/" element={<Pages.Home />} />
               <Route path="/bag" element={<Pages.Bag />} />
