@@ -1,5 +1,5 @@
 .SecondNavbar {
-  height: 5.7dvh;
+  height: 7dvh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,10 +81,6 @@
 }
 
 @media (max-width: 490px) {
-  .SecondNavbar {
-    height: 7dvh;
-  }
-
   .SecondNavbar .search-bar-container input {
     width: 250px;
   }

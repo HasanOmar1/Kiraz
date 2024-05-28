@@ -3,7 +3,6 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import LoginModal from "../Login/Login";
 import GenericModal from "../GenericModal/GenericModal";
 import { useModalContext, useLoginContext } from "../../utils/Context";
-
 import { logo, fastLogo } from "../../utils/Assets";
 import { useState } from "react";
 
@@ -20,6 +19,11 @@ const Navbar = () => {
   const handleOpenMenu = () => {
     setOpenMenu((prev) => !prev);
   };
+
+  const handleCloseMenu = () => {
+    setOpenMenu(false);
+  };
+
   return (
     <nav className="Navbar">
       {!currentUser && (
@@ -54,22 +58,22 @@ const Navbar = () => {
         <div className="menu" onClick={handleOpenMenu}>
           <span></span>
           <span></span>
-          <span></span>
+          <span></span>s
         </div>
         <ul className={openMenu ? "open" : ""}>
-          <li>
+          <li onClick={handleCloseMenu}>
             <NavLink to={"/"}>Home</NavLink>
           </li>
-          <li>
+          <li onClick={handleCloseMenu}>
             <NavLink to={"/shirts"}>Shirts</NavLink>
           </li>
-          <li>
+          <li onClick={handleCloseMenu}>
             <NavLink to={"/hoodies"}>Hoodies</NavLink>
           </li>
-          <li>
+          <li onClick={handleCloseMenu}>
             <NavLink to={"/pants"}>Pants</NavLink>
           </li>
-          <li>
+          <li onClick={handleCloseMenu}>
             <NavLink to={"/shorts"}>Shorts</NavLink>
           </li>
         </ul>
