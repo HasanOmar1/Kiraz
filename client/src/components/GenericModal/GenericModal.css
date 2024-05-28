@@ -10,7 +10,7 @@
 .GenericModal .modal-background {
   position: fixed;
   left: 0;
-  top: 0px;
+  top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -46,4 +46,10 @@
 
 .GenericModal .close-modal:hover {
   color: red;
+}
+
+@media (max-width: 1440px) {
+  .GenericModal .modal-body {
+    top: -80px;
+  }
 }
