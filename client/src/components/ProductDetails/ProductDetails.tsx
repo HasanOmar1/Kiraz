@@ -85,9 +85,11 @@ const ProductDetails = () => {
     <div className="ProductDetails">
       {clothesById ? (
         <div className="data-container">
-          <NavigateContainer clothesById={clothesById} />
+          <div className="img-container">
+            <NavigateContainer clothesById={clothesById} />
+            <img src={currentImg} alt="product img" />
+          </div>
 
-          <img src={currentImg} alt="product img" />
           <div className="data">
             <ProductData
               clothesById={clothesById}

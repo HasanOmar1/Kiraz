@@ -10,7 +10,13 @@
   justify-content: center;
   gap: 100px;
   max-width: 100%;
-  position: relative;
+}
+
+.ProductDetails .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .ProductDetails img {
