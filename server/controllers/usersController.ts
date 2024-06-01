@@ -112,7 +112,7 @@ export const login = async (
         isAdmin: user.isAdmin,
       });
     } else {
-      res.status(STATUS_CODE.NOT_FOUND);
+      res.status(STATUS_CODE.BAD_REQUEST);
       throw new Error("Invalid Credentials");
     }
   } catch (error) {
