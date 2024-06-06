@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="menu" onClick={handleOpenMenu}>
           <span></span>
           <span></span>
-          <span></span>s
+          <span></span>
         </div>
         <ul className={openMenu ? "open" : ""}>
           <li onClick={handleCloseMenu}>
