@@ -13,7 +13,6 @@ type ClothesContextValues = {
   clothesById: null | Type.Clothes;
   setClothesById: React.Dispatch<React.SetStateAction<Type.Clothes | null>>;
   latestProducts: Type.Clothes[] | null;
-  getLatestAddedProduct: () => Promise<void>;
 };
 
 const ClothesContext = createContext<null | ClothesContextValues>(null);
@@ -33,6 +32,7 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
 
   useEffect(() => {
     getAllClothes();
+    getLatestAddedProduct();
   }, []);
 
   const getAllClothes = async () => {
@@ -72,7 +72,6 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
         clothesById,
         setClothesById,
         latestProducts,
-        getLatestAddedProduct,
       }}
     >
       {children}

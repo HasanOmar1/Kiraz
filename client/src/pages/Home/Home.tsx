@@ -13,17 +13,12 @@ import {
   fastBackgroundImg,
 } from "../../utils/Assets";
 import HomeImg from "../../components/HomeImg/HomeImg";
-import { useEffect } from "react";
 import ProductsCards from "../../components/ProductsCards/ProductsCards";
 import { useThemeContext, useClothesContext } from "../../utils/Context";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();
-  const { latestProducts, getLatestAddedProduct } = useClothesContext();
-
-  useEffect(() => {
-    getLatestAddedProduct();
-  }, []);
+  const { latestProducts } = useClothesContext();
 
   return (
     <main className={`Home Page ${getThemeClassName()}`}>
