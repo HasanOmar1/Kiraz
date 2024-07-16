@@ -68,7 +68,7 @@ Link: https://kiraz-clothing.netlify.app/
 
 #### ENV File
 
-VITE_BACKEND_URL = http://localhost:9999
+VITE_BACKEND_URL
 
 ---
 
