@@ -1,5 +1,10 @@
 # Kiraz E-commerce Clothing site
 
+### Site Preview Video
+
+[![Watch the video](https://i3.ytimg.com/vi/Wq8CYsr7t7o/maxresdefault.jpg)](https://www.youtube.com/watch?v=Wq8CYsr7t7o)
+https://www.youtube.com/watch?v=Wq8CYsr7t7o
+
 # Frontend
 
 I have developed a responsive E-commerce clothing site using multiple technologies.
