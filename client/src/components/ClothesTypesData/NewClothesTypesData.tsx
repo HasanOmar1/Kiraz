@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import * as Types from "../../types/ClothesTypes";
-// import useFilteredArray from "../../hooks/useFilteredArray";
 import ProductsCards from "../ProductsCards/ProductsCards";
 import "./ClothesTypesData.css";
 import useModal from "../../hooks/useModal";
@@ -14,10 +12,9 @@ import NewFilterData from "../FilterData/NewFilterData";
 
 type ClothesTypesDataProps = {
   text: string;
-  array: Types.Clothes[] | null;
 };
 
-const NewData = ({ text, array }: ClothesTypesDataProps) => {
+const NewData = ({ text }: ClothesTypesDataProps) => {
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
   const { closeModal, isModalOpen, openModal } = useModal();
@@ -47,13 +44,13 @@ const NewData = ({ text, array }: ClothesTypesDataProps) => {
   const checkIfColorOrSizeIsChecked = () => {
     let filterByColorAndSize = "";
     for (const color in isColorChecked) {
-      if (isColorChecked[color]) {
+      if (isColorChecked[color as keyof typeof isColorChecked]) {
         filterByColorAndSize += `&color=${color}`;
       }
     }
 
     for (const size in isSizeChecked) {
-      if (isSizeChecked[size]) {
+      if (isSizeChecked[size as keyof typeof isSizeChecked]) {
         filterByColorAndSize += `&size=${size}`;
       }
     }

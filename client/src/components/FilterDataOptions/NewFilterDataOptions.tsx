@@ -68,23 +68,37 @@ const NewFilterDataOptions = ({
     }
   };
 
+  const isColorOption = (item: string): item is Color => {
+    return COLORS.includes(item as Color);
+  };
+
+  const isSizeOption = (item: string): item is Size => {
+    return SIZES.includes(item as Size);
+  };
+
   return (
     <div className={"FilterDataOptions panel"}>
-      {panelOptions.map((items) => {
+      {panelOptions.map((item) => {
+        const isChecked = isColorOption(item)
+          ? isColorChecked[item]
+          : isSizeOption(item)
+          ? isSizeChecked[item]
+          : false;
+
         return (
-          <label className="checkbox-container" htmlFor={items} key={items}>
+          <label className="checkbox-container" htmlFor={item} key={item}>
             <input
               type="checkbox"
-              id={items}
-              name={items}
-              checked={isColorChecked[items]}
+              id={item}
+              name={item}
+              checked={isChecked}
               onChange={checkFilter}
             />
-            {hasColor && (
-              <label className={`circle ${items}`} htmlFor={items}></label>
+            {hasColor && isColorOption(item) && (
+              <label className={`circle ${item}`} htmlFor={item}></label>
             )}
-            <label htmlFor={items} id="options-label">
-              {upperCaseLetter(items)}
+            <label htmlFor={item} id="options-label">
+              {upperCaseLetter(item)}
             </label>
           </label>
         );
