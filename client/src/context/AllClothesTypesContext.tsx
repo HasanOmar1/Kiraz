@@ -42,7 +42,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
 
   const addType = async (type: string, data: Type.Clothes) => {
     try {
-      const response = await axios.post(`${type}/add`, data);
+      await axios.post(`${type}/add`, data);
       setAddTypeErrorMsg("");
       getType(type);
       // console.log(response.data);
@@ -54,7 +54,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
 
   const updateType = async (type: string, id: string, data: Type.Clothes) => {
     try {
-      const response = await axios.put(`${type}/update/${id}`, data);
+      await axios.put(`${type}/update/${id}`, data);
       getType(type);
 
       // console.log(response.data);
@@ -65,7 +65,7 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
 
   const deleteType = async (type: string, id: string) => {
     try {
-      const response = await axios.delete(`${type}/delete/${id}`);
+      await axios.delete(`${type}/delete/${id}`);
       getType(type);
       // console.log(response.data.message);
     } catch (error: any) {

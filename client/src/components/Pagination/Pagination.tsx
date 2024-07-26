@@ -40,7 +40,7 @@ const Pagination = ({
 
   return (
     <div className="Pagination">
-      {totalItems && itemsPerPage && totalItems > itemsPerPage && (
+      {totalItems && itemsPerPage && totalItems > itemsPerPage ? (
         <>
           {!firstPage && (
             <button onClick={prevPage} className="next-prev-btns prev-btn">
@@ -65,6 +65,8 @@ const Pagination = ({
             </button>
           )}
         </>
+      ) : (
+        <></>
       )}
     </div>
   );

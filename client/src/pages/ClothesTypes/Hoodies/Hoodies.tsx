@@ -4,19 +4,23 @@ import ClothesTypesData from "../../../components/ClothesTypesData/ClothesTypesD
 import {
   useThemeContext,
   useAllClothesTypesContext,
+  useClothesContext,
 } from "../../../utils/Context";
+import NewData from "../../../components/ClothesTypesData/NewClothesTypesData";
 
 const HoodiesPage = () => {
-  const { getType, getClothesType } = useAllClothesTypesContext();
+  // const { getType, getClothesType } = useAllClothesTypesContext();
   const { getThemeClassName } = useThemeContext();
+  const { productsByFiltering } = useClothesContext();
 
-  useEffect(() => {
-    getType("hoodies");
-  }, []);
+  // useEffect(() => {
+  //   getType("hoodies");
+  // }, []);
 
   return (
     <main className={`ClothesPage Page ${getThemeClassName()} `}>
-      <ClothesTypesData array={getClothesType} text="Hoodies" />
+      {/* <ClothesTypesData array={getClothesType} text="Hoodies" /> */}
+      <NewData text="Hoodies" array={productsByFiltering} />
     </main>
   );
 };

@@ -58,3 +58,29 @@ export const removeAllClothes = async (
     next(error);
   }
 };
+
+export const getClothesByQuery = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { type, size, color } = req.query;
+
+    if (type && size && color) {
+      const itemsBySizeAndColor = await Clothes.find({ type, size, color });
+      return res.send(itemsBySizeAndColor);
+    } else if (type && size) {
+      const itemsBySize = await Clothes.find({ type, size });
+      return res.send(itemsBySize);
+    } else if (type && color) {
+      const itemsByColor = await Clothes.find({ type, color });
+      return res.send(itemsByColor);
+    } else {
+      const allItems = await Clothes.find({ type });
+      return res.send(allItems);
+    }
+  } catch (error) {
+    next(error);
+  }
+};

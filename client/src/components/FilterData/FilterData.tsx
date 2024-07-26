@@ -1,5 +1,6 @@
 import "./FilterData.css";
 import { arrowSvg } from "../../utils/Assets";
+// import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 
 type Colors = {
@@ -37,7 +38,6 @@ const FilterData = ({
   isSizeChecked,
   setIsSizeChecked,
 }: FilterDataProps) => {
-  //
   const checkIfChecked = (items: string) => {
     if (filterByText === "COLOR") {
       setIsColorChecked((prevChecked) => {
@@ -63,6 +63,7 @@ const FilterData = ({
             !prevChecked[items as keyof typeof isSizeChecked],
         };
 
+        console.log(updatedChecked);
         return updatedChecked;
       });
     }

@@ -1,22 +1,26 @@
 import "../ClothesStyles.css";
-import { useEffect } from "react";
-import ClothesTypesData from "../../../components/ClothesTypesData/ClothesTypesData";
+// import { useEffect } from "react";
 import {
   useThemeContext,
-  useAllClothesTypesContext,
+  // useAllClothesTypesContext,
+  useClothesContext,
 } from "../../../utils/Context";
+import NewData from "../../../components/ClothesTypesData/NewClothesTypesData";
 
 const PantsPage = () => {
-  const { getType, getClothesType } = useAllClothesTypesContext();
+  // const { getType } = useAllClothesTypesContext();
+  const { productsByFiltering } = useClothesContext();
+
   const { getThemeClassName } = useThemeContext();
 
-  useEffect(() => {
-    getType("pants");
-  }, []);
+  // useEffect(() => {
+  //   getType("pants");
+  // }, []);
 
   return (
     <main className={`ClothesPage Page ${getThemeClassName()} `}>
-      <ClothesTypesData array={getClothesType} text="Pants" />
+      {/* <ClothesTypesData array={getClothesType} text="Pants" /> */}
+      <NewData text="Pants" array={productsByFiltering} />
     </main>
   );
 };

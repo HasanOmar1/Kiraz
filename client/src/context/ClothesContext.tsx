@@ -13,6 +13,8 @@ type ClothesContextValues = {
   clothesById: null | Type.Clothes;
   setClothesById: React.Dispatch<React.SetStateAction<Type.Clothes | null>>;
   latestProducts: Type.Clothes[] | null;
+  filterClothesByQuery: (filterBy: string) => void;
+  productsByFiltering: Type.Clothes[] | null;
 };
 
 const ClothesContext = createContext<null | ClothesContextValues>(null);
@@ -21,8 +23,11 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   const [allClothes, setAllClothes] = useState<Type.Clothes[] | []>([]);
   const [clothesById, setClothesById] = useState<null | Type.Clothes>(null);
   const [latestProducts, setLatestProducts] = useState<null | Type.Clothes[]>(
-    null
+    []
   );
+  const [productsByFiltering, setProductsByFiltering] = useState<
+    null | Type.Clothes[]
+  >([]);
 
   const { pathname } = useLocation();
 
@@ -55,6 +60,16 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
     }
   };
 
+  const filterClothesByQuery = async (filterBy: string) => {
+    try {
+      const { data } = await axios.get(`/clothes/filterBy?${filterBy}`);
+      setProductsByFiltering(data);
+      // console.log(data);
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
+
   const getLatestAddedProduct = async () => {
     try {
       const response = await axios.get(`/clothes/latest`);
@@ -72,6 +87,8 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
         clothesById,
         setClothesById,
         latestProducts,
+        filterClothesByQuery,
+        productsByFiltering,
       }}
     >
       {children}
