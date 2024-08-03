@@ -1,6 +1,5 @@
 import { Clothes } from "../../types/ClothesTypes";
 import Cards from "../Cards/Cards";
-import { loadingGif } from "../../utils/Assets";
 import "./ProductsCards.css";
 
 type ProductsCardsProps = {
@@ -41,9 +40,7 @@ const ProductsCards = ({ array, showActions }: ProductsCardsProps) => {
             })}
           </>
         ) : (
-          <div id="loading">
-            <img src={loadingGif} alt="loading animation" />
-          </div>
+          <div id="no-data">No Products Available</div>
         )}
       </div>
     </div>

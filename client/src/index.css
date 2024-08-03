@@ -64,6 +64,10 @@ hr {
   margin: 0 25vw;
 }
 
+#no-data {
+  margin: 0 23vw;
+}
+
 .green {
   background-color: rgb(12, 142, 12);
 }
