@@ -22,6 +22,11 @@
   border: none;
 }
 
+.SecondNavbar .search-bar-container input:focus {
+  outline: 4px solid var(--secondary-color);
+  border-radius: 5px;
+}
+
 .SecondNavbar .search-results {
   width: 500px;
   position: absolute;

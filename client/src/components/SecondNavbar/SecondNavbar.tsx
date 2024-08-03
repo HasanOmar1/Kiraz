@@ -72,6 +72,7 @@ const SecondNavbar = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           placeholder="Search for a product..."
+          className="searchbar"
         />
 
         {allClothes && isResults && (
