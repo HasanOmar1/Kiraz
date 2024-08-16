@@ -1,4 +1,5 @@
 import { Clothes } from "../../types/ClothesTypes";
+import { loadingGif } from "../../utils/Assets";
 import Cards from "../Cards/Cards";
 import "./ProductsCards.css";
 
@@ -40,7 +41,7 @@ const ProductsCards = ({ array, showActions }: ProductsCardsProps) => {
             })}
           </>
         ) : (
-          <div id="no-data">No Products Available</div>
+          <img id="no-data" src={loadingGif} />
         )}
       </div>
     </div>
