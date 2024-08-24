@@ -12,7 +12,7 @@ const HomeImg = ({ img, text, webPImg }: HomeImgProps) => {
   const navigate = useNavigate();
 
   const navigateToPage = () => {
-    navigate(`${text}`, { state: text });
+    navigate(`/collection/${text}`, { state: text });
   };
 
   return (

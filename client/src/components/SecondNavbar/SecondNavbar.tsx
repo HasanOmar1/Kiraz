@@ -59,7 +59,6 @@ const SecondNavbar = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
     setCurrentUser(null);
     navigate("/");
   };

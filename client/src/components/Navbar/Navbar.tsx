@@ -65,16 +65,16 @@ const Navbar = () => {
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li onClick={handleCloseMenu}>
-            <NavLink to={"/shirts"}>Shirts</NavLink>
+            <NavLink to={"/collection/shirts"}>Shirts</NavLink>
           </li>
           <li onClick={handleCloseMenu}>
-            <NavLink to={"/hoodies"}>Hoodies</NavLink>
+            <NavLink to={"/collection/hoodies"}>Hoodies</NavLink>
           </li>
           <li onClick={handleCloseMenu}>
-            <NavLink to={"/pants"}>Pants</NavLink>
+            <NavLink to={"/collection/pants"}>Pants</NavLink>
           </li>
           <li onClick={handleCloseMenu}>
-            <NavLink to={"/shorts"}>Shorts</NavLink>
+            <NavLink to={"/collection/shorts"}>Shorts</NavLink>
           </li>
         </ul>
       </nav>

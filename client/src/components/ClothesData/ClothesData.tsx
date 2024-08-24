@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductsCards from "../ProductsCards/ProductsCards";
-import "./ClothesTypesData.css";
+import "./ClothesData.css";
 import useModal from "../../hooks/useModal";
 import GenericModal from "../GenericModal/GenericModal";
 import AddProductModal from "../AddProductModal/AddProductModal";
@@ -8,17 +8,16 @@ import { useLoginContext } from "../../context/LoginContext";
 import Pagination from "../Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
 import { useClothesContext } from "../../context/ClothesContext";
-import NewFilterData from "../FilterData/NewFilterData";
+import { useParams } from "react-router-dom";
+import FilterData from "../FilterData/FilterData";
 
-type ClothesTypesDataProps = {
-  text: string;
-};
-
-const NewData = ({ text }: ClothesTypesDataProps) => {
+const ClothesData = () => {
+  const { clothesType } = useParams();
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
   const { closeModal, isModalOpen, openModal } = useModal();
-  const { filterClothesByQuery, productsByFiltering } = useClothesContext();
+  const { filterClothesByQuery, productsByFiltering, setProductsByFiltering } =
+    useClothesContext();
 
   const [isColorChecked, setIsColorChecked] = useState({
     green: false,
@@ -37,9 +36,13 @@ const NewData = ({ text }: ClothesTypesDataProps) => {
 
   useEffect(() => {
     filterClothesByQuery(
-      `type=${text.toLowerCase()}${checkIfColorOrSizeIsChecked()}`
+      `type=${clothesType?.toLowerCase()}${checkIfColorOrSizeIsChecked()}`
     );
-  }, [isColorChecked, isSizeChecked]);
+
+    return () => {
+      setProductsByFiltering([]);
+    };
+  }, [isColorChecked, isSizeChecked, clothesType]);
 
   const checkIfColorOrSizeIsChecked = () => {
     let filterByColorAndSize = "";
@@ -65,7 +68,7 @@ const NewData = ({ text }: ClothesTypesDataProps) => {
   return (
     <main className="ClothesTypesData">
       <div id="title">
-        <h1>{text}</h1>
+        <h1>{clothesType}</h1>
         <p>{productsByFiltering?.length} Products</p>
       </div>
       {currentUser?.isAdmin && (
@@ -85,7 +88,7 @@ const NewData = ({ text }: ClothesTypesDataProps) => {
           <p>FILTERS</p>
           <div className="filter-by">
             <div className="filter-container">
-              <NewFilterData
+              <FilterData
                 filterByText={"COLOR"}
                 classNameCondition={isShowingColors}
                 onClickFunction={() => setIsShowingColors((prev) => !prev)}
@@ -96,7 +99,7 @@ const NewData = ({ text }: ClothesTypesDataProps) => {
                 setIsColorChecked={setIsColorChecked}
                 setIsSizeChecked={setIsSizeChecked}
               />
-              <NewFilterData
+              <FilterData
                 filterByText={"SIZE"}
                 classNameCondition={isShowingSizes}
                 onClickFunction={() => setIsShowingSizes((prev) => !prev)}
@@ -125,4 +128,4 @@ const NewData = ({ text }: ClothesTypesDataProps) => {
   );
 };
 
-export default NewData;
+export default ClothesData;

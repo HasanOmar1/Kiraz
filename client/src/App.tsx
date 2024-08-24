@@ -43,12 +43,10 @@ function App() {
               <Route path="/bag" element={<Pages.Bag />} />
               <Route path="/history" element={<Pages.History />} />
               <Route path="/product/:id" element={<Pages.ProductPage />} />
-              {/* Collections */}
-              <Route path="/pants" element={<Pages.PantsPage />} />
-              <Route path="/shirts" element={<Pages.ShirtsPage />} />
-              <Route path="/shorts" element={<Pages.ShortsPage />} />
-              <Route path="/hoodies" element={<Pages.HoodiesPage />} />
-              {/*  */}
+              <Route
+                path="/collection/:clothesType"
+                element={<Pages.Collection />}
+              />
               <Route path="*" element={<Pages.NotFoundPage />} />
             </Routes>
           </AllClothesTypesContextProvider>

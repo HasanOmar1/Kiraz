@@ -1,6 +1,5 @@
 import "./FilterData.css";
 import { arrowSvg } from "../../utils/Assets";
-// import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 import FilterDataOptions from "../FilterDataOptions/FilterDataOptions";
 
 type Colors = {
@@ -38,53 +37,6 @@ const FilterData = ({
   isSizeChecked,
   setIsSizeChecked,
 }: FilterDataProps) => {
-  const checkIfChecked = (items: string) => {
-    if (filterByText === "COLOR") {
-      setIsColorChecked((prevChecked) => {
-        const updatedChecked = {
-          ...prevChecked,
-          //keyof = value can only be the keys of isColorChecked which are green | black | blue (union)
-          //keyof typeof = is the same like keyof but used on objects
-
-          [items as keyof typeof isColorChecked]:
-            !prevChecked[items as keyof typeof isColorChecked],
-        };
-        //Object.keys(object) returns an array of the object's keys
-
-        return updatedChecked;
-      });
-    }
-
-    if (filterByText === "SIZE") {
-      setIsSizeChecked((prevChecked) => {
-        const updatedChecked = {
-          ...prevChecked,
-          [items as keyof typeof isSizeChecked]:
-            !prevChecked[items as keyof typeof isSizeChecked],
-        };
-
-        console.log(updatedChecked);
-        return updatedChecked;
-      });
-    }
-  };
-  //
-
-  const isCheckBoxChecked = (items: string) =>
-    items === "green"
-      ? isColorChecked.green
-      : items === "blue"
-      ? isColorChecked.blue
-      : items === "black"
-      ? isColorChecked.black
-      : items === "L"
-      ? isSizeChecked.L
-      : items === "M"
-      ? isSizeChecked.M
-      : items === "S"
-      ? isSizeChecked.S
-      : false;
-
   return (
     <>
       <div className="FilterData">
@@ -100,13 +52,14 @@ const FilterData = ({
               }`}
             />
           </div>
-
           {classNameCondition && (
             <FilterDataOptions
-              checkIfChecked={checkIfChecked}
-              hasColor={hasColor}
-              isCheckBoxChecked={isCheckBoxChecked}
+              isColorChecked={isColorChecked}
+              setIsColorChecked={setIsColorChecked}
               panelOptions={panelOptions}
+              hasColor={hasColor}
+              isSizeChecked={isSizeChecked}
+              setIsSizeChecked={setIsSizeChecked}
             />
           )}
         </div>

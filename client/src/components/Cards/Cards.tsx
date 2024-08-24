@@ -57,7 +57,7 @@ const Cards = ({
   const blackColor = color === "black" && "activeColor";
   const blueColor = color === "blue" && "activeColor";
 
-  const path = pathname.split("/")[1];
+  const path = pathname.split("/collection/")[1];
 
   const deleteCard = (id: string) => {
     deleteType(path, id);

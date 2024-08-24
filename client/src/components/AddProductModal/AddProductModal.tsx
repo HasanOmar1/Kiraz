@@ -45,8 +45,7 @@ const AddProductModal = ({
   const itemGreenImgRef = useRef<HTMLInputElement>(null);
   const itemBlackImgRef = useRef<HTMLInputElement>(null);
   const itemBlueImgRef = useRef<HTMLInputElement>(null);
-
-  const path = pathname.split("/").join("");
+  const path = pathname.split("/collection/").join("");
 
   const addProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

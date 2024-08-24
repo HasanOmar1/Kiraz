@@ -8,6 +8,7 @@ type ClothesContextProviderProps = {
 };
 
 type ClothesContextValues = {
+  getAllClothes: () => Promise<void>;
   allClothes: Type.Clothes[] | [];
   getClothesById: (id: string | undefined) => void;
   clothesById: null | Type.Clothes;
@@ -15,6 +16,9 @@ type ClothesContextValues = {
   latestProducts: Type.Clothes[] | null;
   filterClothesByQuery: (filterBy: string) => void;
   productsByFiltering: Type.Clothes[] | null;
+  setProductsByFiltering: React.Dispatch<
+    React.SetStateAction<Type.Clothes[] | null>
+  >;
 };
 
 const ClothesContext = createContext<null | ClothesContextValues>(null);
@@ -82,6 +86,7 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
   return (
     <ClothesContext.Provider
       value={{
+        getAllClothes,
         allClothes,
         getClothesById,
         clothesById,
@@ -89,6 +94,7 @@ const ClothesContextProvider = ({ children }: ClothesContextProviderProps) => {
         latestProducts,
         filterClothesByQuery,
         productsByFiltering,
+        setProductsByFiltering,
       }}
     >
       {children}

@@ -18,7 +18,7 @@ const NavigateContainer = ({ clothesById }: NavigateContainerProps) => {
     <div className="NavigateContainer">
       <p onClick={() => navigateTo("/")}>Home</p>
       <span>{">"}</span>
-      <p onClick={() => navigateTo(`/${clothesById?.type}`)}>
+      <p onClick={() => navigateTo(`/collection/${clothesById?.type}`)}>
         {upperCaseLetter(clothesById?.type ?? "")}
       </p>
       <span>{">"}</span>

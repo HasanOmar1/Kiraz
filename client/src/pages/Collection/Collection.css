@@ -1,11 +1,11 @@
-.ClothesPage .data-container {
+.Collection .data-container {
   margin-top: 100px;
   padding: 50px 0 50px 200px;
   display: flex;
   position: relative;
 }
 
-.ClothesPage .filters {
+.Collection .filters {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -13,20 +13,20 @@
   line-height: 24px;
 }
 
-.ClothesPage .filter-by {
+.Collection .filter-by {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 250px;
 }
 
-.ClothesPage .filter-container {
+.Collection .filter-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.ClothesPage .data {
+.Collection .data {
   display: flex;
   margin-left: 20px;
   gap: 50px;
@@ -34,49 +34,49 @@
 }
 
 @media (max-width: 1440px) {
-  .ClothesPage .filter-by {
+  .Collection .filter-by {
     width: 150px;
   }
 }
 
 @media (max-width: 1124px) {
-  .ClothesPage .filters {
+  .Collection .filters {
     position: fixed;
     left: 25px;
   }
 }
 
 @media (max-width: 980px) {
-  .ClothesPage .data {
+  .Collection .data {
     margin-left: 0;
     gap: 25px;
   }
 }
 
 @media (max-width: 529px) {
-  .ClothesPage .data {
+  .Collection .data {
     gap: 24px;
   }
 
-  .ClothesPage .data-container {
+  .Collection .data-container {
     padding: 50px 20px;
     margin-top: 300px;
   }
 
-  .ClothesPage .filters {
+  .Collection .filters {
     z-index: 10;
     position: absolute;
     left: 10px;
     top: -240px;
   }
 
-  .ClothesPage .filter-by {
+  .Collection .filter-by {
     width: 350px;
   }
 }
 
 @media (max-width: 350px) {
-  .ClothesPage .filters {
+  .Collection .filters {
     left: 0px;
   }
 }

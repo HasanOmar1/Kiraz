@@ -1,15 +1,13 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "../axiosConfig";
 import * as Type from "../types/ClothesTypes";
-import { useLocation } from "react-router-dom";
+import { useClothesContext } from "./ClothesContext";
 
 type Props = {
   children: React.ReactNode;
 };
 
 type AllClothesTypesContextValues = {
-  getClothesType: Type.Clothes[];
-  getType: (type: string) => Promise<void>;
   addType: (type: string, data: Type.Clothes) => Promise<void>;
   deleteType: (type: string, id: string) => Promise<void>;
   updateType: (type: string, id: string, data: Type.Clothes) => Promise<void>;
@@ -21,31 +19,15 @@ const AllClothesTypesContext =
   createContext<null | AllClothesTypesContextValues>(null);
 
 const AllClothesTypesContextProvider = ({ children }: Props) => {
-  const [getClothesType, setGetClothesType] = useState<Type.Clothes[]>([]);
+  const { filterClothesByQuery, getAllClothes } = useClothesContext();
   const [addTypeErrorMsg, setAddTypeErrorMsg] = useState<string>("");
-
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    setGetClothesType([]);
-  }, [pathname]);
-
-  const getType = async (type: string) => {
-    try {
-      const response = await axios.get(`/${type}`);
-      setGetClothesType(response.data);
-      // console.log(response.data);
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
 
   const addType = async (type: string, data: Type.Clothes) => {
     try {
       await axios.post(`${type}/add`, data);
       setAddTypeErrorMsg("");
-      getType(type);
-      // console.log(response.data);
+      filterClothesByQuery(`type=${type}`);
+      getAllClothes();
     } catch (error: any) {
       setAddTypeErrorMsg(error.response.data.message);
       console.log(error.response.data.message);
@@ -55,9 +37,8 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
   const updateType = async (type: string, id: string, data: Type.Clothes) => {
     try {
       await axios.put(`${type}/update/${id}`, data);
-      getType(type);
-
-      // console.log(response.data);
+      filterClothesByQuery(`type=${type}`);
+      getAllClothes();
     } catch (error: any) {
       console.log(error.response.data.message);
     }
@@ -66,8 +47,8 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
   const deleteType = async (type: string, id: string) => {
     try {
       await axios.delete(`${type}/delete/${id}`);
-      getType(type);
-      // console.log(response.data.message);
+      filterClothesByQuery(`type=${type}`);
+      getAllClothes();
     } catch (error: any) {
       console.log(error.response.data.message);
     }
@@ -76,8 +57,6 @@ const AllClothesTypesContextProvider = ({ children }: Props) => {
   return (
     <AllClothesTypesContext.Provider
       value={{
-        getType,
-        getClothesType,
         addType,
         deleteType,
         updateType,
