@@ -8,11 +8,15 @@ import { useLoginContext } from "../../context/LoginContext";
 import Pagination from "../Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
 import { useClothesContext } from "../../context/ClothesContext";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import FilterData from "../FilterData/FilterData";
+
+const COLORS = ["green", "black", "blue"];
+const SIZES = ["L", "M", "S"];
 
 const ClothesData = () => {
   const { clothesType } = useParams();
+  const { currentUser } = useLoginContext();
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
   const { closeModal, isModalOpen, openModal } = useModal();
@@ -60,10 +64,11 @@ const ClothesData = () => {
     return filterByColorAndSize;
   };
 
-  const { currentUser } = useLoginContext();
+  const validClothesTypes = ["pants", "shirts", "hoodies", "shorts"];
 
-  const COLORS = ["green", "black", "blue"];
-  const SIZES = ["L", "M", "S"];
+  if (!validClothesTypes.includes(clothesType as string)) {
+    return <Navigate to={"/notfound"} />;
+  }
 
   return (
     <main className="ClothesTypesData">

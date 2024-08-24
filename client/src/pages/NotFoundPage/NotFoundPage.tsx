@@ -16,14 +16,14 @@ const NotFoundPage = () => {
 
   useEffect(() => {
     if (timer === 0) {
-      navigate(-1);
+      navigate("/");
     }
   }, [timer]);
 
   return (
     <main className={`NotFoundPage Page ${getThemeClassName()}`}>
       <h1>Page not found </h1>
-      <h2>Moving you back in {timer} seconds</h2>
+      <h2>Moving you back to the home page in {timer} seconds</h2>
     </main>
   );
 };
