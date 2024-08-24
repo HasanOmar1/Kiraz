@@ -4,6 +4,7 @@ import User from "../models/usersModel.js";
 import STATUS_CODE from "../constants/statusCodes.js";
 import { capitalLetter } from "../utils/capitalLetter.js";
 import { NextFunction, Request, Response } from "express";
+import { AuthenticatedRequest } from "../utils/AuthenticatedRequest.js";
 
 const generateToken = (id: any, email: string) => {
   return jwt.sign({ id, email }, process.env.JWT_SECRET ?? "", {
@@ -138,6 +139,21 @@ export const deleteUser = async (
       message: "User has been deleted",
       user,
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const currentLoggedUser = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const user = await User.findById(req.user)
+      .select("-password")
+      .populate("bag");
+    res.send(user);
   } catch (error) {
     next(error);
   }

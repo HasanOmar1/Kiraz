@@ -14,6 +14,7 @@ type LoginContextValues = {
     React.SetStateAction<Type.CurrentLoggedUser | null>
   >;
   isLoading: boolean;
+  currentLoggedUser(): Promise<void>;
 };
 
 type Props = {
@@ -31,19 +32,17 @@ const LoginContextProvider = ({ children }: Props) => {
   const [errorMsg, setErrorMsg] = useState("");
   const { closeModal } = useModalContext();
 
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setCurrentUser(JSON.parse(user));
+    if (token) {
+      currentLoggedUser();
     }
-  }, []);
+  }, [token]);
 
   const createUser = async (user: Type.CreatedUser) => {
     try {
       setIsLoading(true);
-      const response = await axios.post(`/users/create`, user);
-      setCurrentUser(response.data);
-      // console.log(response.data);
+      await axios.post(`/users/create`, user);
       setErrorMsg("");
       toast.success("User has been created!");
       closeModal();
@@ -62,9 +61,6 @@ const LoginContextProvider = ({ children }: Props) => {
     try {
       setIsLoading(true);
       const response = await axios.post(`/users/login`, user);
-      // console.log(response.data);
-      setCurrentUser(response.data);
-      localStorage.setItem("user", JSON.stringify(response.data));
       localStorage.setItem("token", response.data.token);
       setErrorMsg("");
       toast.success("Login successful");
@@ -80,6 +76,16 @@ const LoginContextProvider = ({ children }: Props) => {
     }
   };
 
+  async function currentLoggedUser() {
+    try {
+      const { data } = await axios.get("/users/currentUser");
+      setCurrentUser(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <LoginContext.Provider
       value={{
@@ -90,6 +96,7 @@ const LoginContextProvider = ({ children }: Props) => {
         setErrorMsg,
         setCurrentUser,
         isLoading,
+        currentLoggedUser,
       }}
     >
       {children}

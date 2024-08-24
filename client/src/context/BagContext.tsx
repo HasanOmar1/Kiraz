@@ -23,15 +23,13 @@ const BagContext = createContext<null | BagContextValues>(null);
 const BagContextProvider = ({ children }: Props) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [userBagHistory, setUserBagHistory] = useState([]);
-  const { setCurrentUser } = useLoginContext();
+  const { currentLoggedUser } = useLoginContext();
 
   const addToBag = async (bag: BagItems) => {
     try {
-      const response = await axios.post(`/bag-items/add`, bag);
-      setCurrentUser(response.data);
-      const userJSON = JSON.stringify(response.data);
-      localStorage.setItem("user", userJSON);
-      // console.log(response.data);
+      await axios.post(`/bag-items/add`, bag);
+      currentLoggedUser();
+
       toast.success("Product has been added to your bag");
     } catch (error: any) {
       setErrorMsg(error.response?.data.message);
@@ -41,11 +39,8 @@ const BagContextProvider = ({ children }: Props) => {
 
   const removeItemFromBag = async (id: string) => {
     try {
-      const response = await axios.delete(`/bag-items/delete/${id}`);
-      setCurrentUser(response.data);
-      const userJSON = JSON.stringify(response.data);
-      localStorage.setItem("user", userJSON);
-      // console.log(response.data);
+      await axios.delete(`/bag-items/delete/${id}`);
+      currentLoggedUser();
     } catch (error: any) {
       console.log(error.response?.data.message);
     }
@@ -63,10 +58,8 @@ const BagContextProvider = ({ children }: Props) => {
 
   const checkOut = async () => {
     try {
-      const response = await axios.delete("/bag-items/checkout");
-      setCurrentUser(response.data);
-      const userJSON = JSON.stringify(response.data);
-      localStorage.setItem("user", userJSON);
+      await axios.delete("/bag-items/checkout");
+      currentLoggedUser();
     } catch (error: any) {
       console.log(error.response?.data.message);
     }
@@ -74,10 +67,8 @@ const BagContextProvider = ({ children }: Props) => {
 
   const clearBag = async () => {
     try {
-      const response = await axios.delete("/bag-items/clear-bag");
-      setCurrentUser(response.data);
-      const userJSON = JSON.stringify(response.data);
-      localStorage.setItem("user", userJSON);
+      await axios.delete("/bag-items/clear-bag");
+      currentLoggedUser();
     } catch (error: any) {
       console.log(error.response?.data.message);
     }
