@@ -16,6 +16,7 @@ type BagContextValues = {
   getBagHistory: () => Promise<void>;
   checkOut: () => Promise<void>;
   clearBag: () => Promise<void>;
+  setUserBagHistory: React.Dispatch<React.SetStateAction<never[]>>;
 };
 
 const BagContext = createContext<null | BagContextValues>(null);
@@ -84,6 +85,7 @@ const BagContextProvider = ({ children }: Props) => {
         getBagHistory,
         checkOut,
         clearBag,
+        setUserBagHistory,
       }}
     >
       {children}

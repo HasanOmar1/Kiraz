@@ -12,13 +12,15 @@ import {
 
 const History = () => {
   const { getThemeClassName } = useThemeContext();
-  const { getBagHistory, userBagHistory } = useBagContext();
+  const { getBagHistory, userBagHistory, setUserBagHistory } = useBagContext();
   const { currentUser } = useLoginContext();
   const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
     usePagination(userBagHistory, 4);
 
   useEffect(() => {
     getBagHistory();
+
+    return () => setUserBagHistory([]);
   }, [currentUser]);
 
   const totalPaid = userBagHistory.reduce((acc, item) => {

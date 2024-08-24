@@ -80,7 +80,6 @@ const LoginContextProvider = ({ children }: Props) => {
     try {
       const { data } = await axios.get("/users/currentUser");
       setCurrentUser(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
