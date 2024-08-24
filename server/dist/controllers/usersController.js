@@ -112,3 +112,14 @@ export const deleteUser = async (req, res, next) => {
         next(error);
     }
 };
+export const currentLoggedUser = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.user)
+            .select("-password")
+            .populate("bag");
+        res.send(user);
+    }
+    catch (error) {
+        next(error);
+    }
+};
