@@ -87,7 +87,7 @@ const ProductDetails = () => {
         <div className="data-container">
           <div className="img-container">
             <NavigateContainer clothesById={clothesById} />
-            <img src={currentImg} alt="product img" />
+            <img src={currentImg} alt="product img" loading="lazy" />
           </div>
 
           <div className="data">

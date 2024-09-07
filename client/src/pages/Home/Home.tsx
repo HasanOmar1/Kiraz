@@ -37,6 +37,7 @@ const Home = () => {
                 alt="background img"
                 height={600}
                 width={"100%"}
+                loading="lazy"
               />
             </picture>
           </div>

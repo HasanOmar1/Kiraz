@@ -13,7 +13,7 @@ const BagDetailsInfo = ({ items, children }: BagDetailsInfoProps) => {
   return (
     <div key={items._id} className="list">
       <Link to={`/product/${items.id}`}>
-        <img src={items.img} alt="img" />
+        <img src={items.img} alt="img" loading="lazy" />
       </Link>
       <div className="list-data">
         <Link

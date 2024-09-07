@@ -24,7 +24,13 @@ const HomeImg = ({ img, text, webPImg }: HomeImgProps) => {
           height={400}
           width={"100%"}
         />
-        <img src={img} alt={`${img} image`} height={400} width={"100%"} />
+        <img
+          src={img}
+          alt={`${img} image`}
+          height={400}
+          width={"100%"}
+          loading="lazy"
+        />
       </picture>
       <h3>{upperCaseLetter(text)}</h3>
     </div>

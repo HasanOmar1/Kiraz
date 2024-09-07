@@ -66,7 +66,13 @@ const Cards = ({
   return (
     <div className="Cards">
       <Link to={`/product/${id}`}>
-        <img src={cover} alt="img cover" width={280} height={"100%"} />
+        <img
+          src={cover}
+          alt="img cover"
+          width={280}
+          height={"100%"}
+          loading="lazy"
+        />
       </Link>
       <div className="colors-container">
         {greenImg && <div className={`green ${greenColor}`}></div>}
