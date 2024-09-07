@@ -19,7 +19,6 @@ const ProductDetails = () => {
   const [currentSize, setCurrentSize] = useState(clothesById?.size);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  console.log(isLoading ? "LOADING" : "NOT LOADING");
   const color = searchParams.get("color");
   const size = searchParams.get("size");
 
