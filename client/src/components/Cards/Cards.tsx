@@ -1,16 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Cards.css";
-import {
-  useAllClothesTypesContext,
-  useLoginContext,
-  useThemeContext,
-} from "../../utils/Context";
+import { useLoginContext, useThemeContext } from "../../utils/Context";
 import sizes from "../../utils/SizeLetterToWord";
 import DeleteBtn from "../DeleteBtn/DeleteBtn";
 import EditBtn from "../EditBtn/EditBtn";
 import GenericModal from "../GenericModal/GenericModal";
 import useModal from "../../hooks/useModal";
 import AddProductModal from "../AddProductModal/AddProductModal";
+import { useDeleteClothesMutation } from "../../api/clothesApi";
 
 type CardsProps = {
   cover?: string;
@@ -39,8 +36,8 @@ const Cards = ({
 }: CardsProps) => {
   const { theme } = useThemeContext();
   const { pathname } = useLocation();
-  const { deleteType } = useAllClothesTypesContext();
   const { currentUser } = useLoginContext();
+  const [deleteProduct] = useDeleteClothesMutation();
 
   const {
     closeModal: closeDeleteModal,
@@ -60,7 +57,10 @@ const Cards = ({
   const path = pathname.split("/collection/")[1];
 
   const deleteCard = (id: string) => {
-    deleteType(path, id);
+    deleteProduct({
+      type: path,
+      id: id,
+    });
   };
 
   return (

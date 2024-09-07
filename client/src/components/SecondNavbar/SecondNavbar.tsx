@@ -6,7 +6,6 @@ import {
   useLoginContext,
   useModalContext,
   useThemeContext,
-  useClothesContext,
 } from "../../utils/Context";
 import { useNavigate } from "react-router-dom";
 import { loginSvg } from "../../utils/Assets";
@@ -14,6 +13,7 @@ import "./SecondNavbar.css";
 import { useEffect, useState } from "react";
 import SearchInfo from "../SearchInfo/SearchInfo";
 import { Clothes } from "../../types/ClothesTypes";
+import { useGetClothesQuery } from "../../api/clothesApi";
 
 const SecondNavbar = () => {
   const [searchInput, setSearchInput] = useState<string>("");
@@ -23,7 +23,7 @@ const SecondNavbar = () => {
   const { setTheme, theme } = useThemeContext();
   const { closeModal, isModalOpen, openModal } = useModalContext();
   const { currentUser, setCurrentUser } = useLoginContext();
-  const { allClothes } = useClothesContext();
+  const { data: clothesData } = useGetClothesQuery();
 
   useEffect(() => {
     if (getClothes.length > 0) {
@@ -38,7 +38,7 @@ const SecondNavbar = () => {
       setGetClothes(() => {
         if (searchInput.trim()) {
           return (
-            allClothes?.filter((clothes) => {
+            clothesData?.filter((clothes) => {
               return clothes?.name
                 ?.toLowerCase()
                 .includes(searchInput.toLowerCase());
@@ -51,7 +51,7 @@ const SecondNavbar = () => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [searchInput, allClothes]);
+  }, [searchInput, clothesData]);
 
   const handleSwitchTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -74,9 +74,9 @@ const SecondNavbar = () => {
           className="searchbar"
         />
 
-        {allClothes && isResults && (
+        {clothesData && isResults && (
           <div className="search-results">
-            {allClothes && getClothes && (
+            {clothesData && getClothes && (
               <SearchInfo
                 array={getClothes}
                 setIsResults={setIsResults}

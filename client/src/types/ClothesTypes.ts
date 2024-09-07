@@ -1,13 +1,13 @@
 export type Clothes = {
+  _id?: string;
+  name?: string;
   color?: string;
+  size?: string;
+  price?: number;
   greenImg?: string;
   blackImg?: string;
   blueImg?: string;
-  name?: string;
-  price?: number;
-  size?: string;
   type?: string;
-  _id?: string;
   createdAt?: string;
   updatedAt?: string;
 };

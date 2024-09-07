@@ -7,15 +7,19 @@ import {
   ModalContextProvider,
   ThemeContextProvider,
 } from "./utils/Context.ts";
+import { store } from "./redux/store.ts";
+import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <ThemeContextProvider>
-      <ModalContextProvider>
-        <LoginContextProvider>
-          <App />
-        </LoginContextProvider>
-      </ModalContextProvider>
-    </ThemeContextProvider>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <ThemeContextProvider>
+        <ModalContextProvider>
+          <LoginContextProvider>
+            <App />
+          </LoginContextProvider>
+        </ModalContextProvider>
+      </ThemeContextProvider>
+    </BrowserRouter>
+  </Provider>
 );

@@ -14,11 +14,13 @@ import {
 } from "../../utils/Assets";
 import HomeImg from "../../components/HomeImg/HomeImg";
 import ProductsCards from "../../components/ProductsCards/ProductsCards";
-import { useThemeContext, useClothesContext } from "../../utils/Context";
+import { useThemeContext } from "../../utils/Context";
+import { useGetLatestAddedProductQuery } from "../../api/clothesApi";
 
 const Home = () => {
   const { getThemeClassName } = useThemeContext();
-  const { latestProducts } = useClothesContext();
+  // const { latestProducts } = useClothesContext();
+  const { data: latestProducts } = useGetLatestAddedProductQuery();
 
   return (
     <main className={`Home Page ${getThemeClassName()}`}>

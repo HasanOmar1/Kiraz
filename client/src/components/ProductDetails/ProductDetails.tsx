@@ -4,26 +4,23 @@ import { useParams, useSearchParams } from "react-router-dom";
 import "./ProductDetails.css";
 import ProductData from "../ProductData/ProductData";
 import useModal from "../../hooks/useModal";
-import { useBagContext, useClothesContext } from "../../utils/Context";
+import { useBagContext } from "../../utils/Context";
 import ProductDetailsModal from "../ProductDetailsModal/ProductDetailsModal";
 import sizes from "../../utils/SizeLetterToWord";
 import NavigateContainer from "../NavigateContainer/NavigateContainer";
+import { useGetClothesByIdQuery } from "../../api/clothesApi";
 
 const ProductDetails = () => {
-  const { getClothesById, clothesById } = useClothesContext();
+  const { id } = useParams();
+  const { data: clothesById } = useGetClothesByIdQuery(id);
   const { addToBag, errorMsg: addToBagErrorMsg } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
   const [currentColor, setCurrentColor] = useState(clothesById?.color);
   const [currentSize, setCurrentSize] = useState(clothesById?.size);
-  const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const color = searchParams.get("color");
   const size = searchParams.get("size");
-
-  useEffect(() => {
-    getClothesById(id);
-  }, [id]);
 
   useEffect(() => {
     if (color && size) {
@@ -43,7 +40,7 @@ const ProductDetails = () => {
         );
       }, 100);
     }
-  }, [clothesById?.color, id, clothesById?.size]);
+  }, [clothesById?.color, id, clothesById?.size, color, size, setSearchParams]);
 
   const currentActiveColor = (color: string) => {
     setSearchParams(

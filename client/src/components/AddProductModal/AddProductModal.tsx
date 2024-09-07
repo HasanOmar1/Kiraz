@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { validateUrlInput } from "../../utils/ValidateUrl";
-import { useAllClothesTypesContext } from "../../context/AllClothesTypesContext";
 import upperCaseLetter from "../../utils/UpperCaseLetter";
 import "./AddProductModal.css";
+import {
+  useAddClothesByTypeMutation,
+  useUpdateClothesByTypeMutation,
+} from "../../api/clothesApi";
 
 type AddProductModalProps = {
   closeModal: () => void;
@@ -31,8 +34,9 @@ const AddProductModal = ({
   cardBlueImg,
 }: AddProductModalProps) => {
   const { pathname } = useLocation();
-  const { addType, addTypeErrorMsg, setAddTypeErrorMsg, updateType } =
-    useAllClothesTypesContext();
+  const [addTypeErrorMsg, setAddTypeErrorMsg] = useState("");
+  const [addClothes] = useAddClothesByTypeMutation();
+  const [updateProduct] = useUpdateClothesByTypeMutation();
 
   useEffect(() => {
     setAddTypeErrorMsg("");
@@ -47,7 +51,7 @@ const AddProductModal = ({
   const itemBlueImgRef = useRef<HTMLInputElement>(null);
   const path = pathname.split("/collection/").join("");
 
-  const addProduct = (e: React.FormEvent<HTMLFormElement>) => {
+  const editOrAddProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const itemValues = {
@@ -70,39 +74,18 @@ const AddProductModal = ({
         validateUrlInput(itemValues.blackImg || "") ||
         validateUrlInput(itemValues.blueImg || "")
       ) {
-        addType(path, itemValues);
-        closeModal();
-      } else {
-        setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
-      }
-    } else {
-      setAddTypeErrorMsg("Please fill all necessary fields");
-    }
-  };
-
-  const editProduct = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const itemValues = {
-      name: itemNameRef.current?.value,
-      color: itemDefaultColorRef.current?.value.toLowerCase(),
-      size: itemDefaultSizeRef.current?.value,
-      price: parseInt(itemPriceRef.current?.value ?? "0"),
-      greenImg: itemGreenImgRef.current?.value,
-      blackImg: itemBlackImgRef.current?.value,
-      blueImg: itemBlueImgRef.current?.value,
-      type: path,
-    };
-    if (
-      itemNameRef.current?.value.length !== 0 &&
-      itemPriceRef.current?.value.length !== 0
-    ) {
-      if (
-        validateUrlInput(itemValues.greenImg || "") ||
-        validateUrlInput(itemValues.blackImg || "") ||
-        validateUrlInput(itemValues.blueImg || "")
-      ) {
-        updateType(path, cardId ?? "", itemValues);
+        if (isAddProduct) {
+          addClothes({
+            type: path,
+            data: itemValues,
+          });
+        } else {
+          updateProduct({
+            type: path,
+            id: cardId ?? "",
+            data: itemValues,
+          });
+        }
         closeModal();
       } else {
         setAddTypeErrorMsg("Invalid URL format for green / black / blue img");
@@ -119,15 +102,14 @@ const AddProductModal = ({
       </h3>
 
       <p id="error-msg">{addTypeErrorMsg}</p>
-      <form onSubmit={isAddProduct ? addProduct : editProduct}>
+
+      <form onSubmit={editOrAddProduct}>
         <div className="necessary-input">
-          <span>*</span>
           <input
             ref={itemNameRef}
             type="text"
             placeholder="Item Name*"
             defaultValue={cardName}
-            required
           />
         </div>
 
@@ -158,14 +140,12 @@ const AddProductModal = ({
           </select>
         </div>
         <div className="necessary-input">
-          <span>*</span>
           <input
             ref={itemPriceRef}
             type="number"
             placeholder="Item Price*"
             min={1}
             defaultValue={cardPrice}
-            required
           />
         </div>
         <input

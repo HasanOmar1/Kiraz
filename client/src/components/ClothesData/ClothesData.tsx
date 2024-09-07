@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProductsCards from "../ProductsCards/ProductsCards";
 import "./ClothesData.css";
 import useModal from "../../hooks/useModal";
@@ -7,9 +7,10 @@ import AddProductModal from "../AddProductModal/AddProductModal";
 import { useLoginContext } from "../../context/LoginContext";
 import Pagination from "../Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
-import { useClothesContext } from "../../context/ClothesContext";
 import { Navigate, useParams } from "react-router-dom";
 import FilterData from "../FilterData/FilterData";
+import { useFilterClothesByQuery } from "../../api/clothesApi";
+import useFilterByColorAndSize from "../../hooks/useFilterByColorAndSize";
 
 const COLORS = ["green", "black", "blue"];
 const SIZES = ["L", "M", "S"];
@@ -20,49 +21,18 @@ const ClothesData = () => {
   const [isShowingColors, setIsShowingColors] = useState(false);
   const [isShowingSizes, setIsShowingSizes] = useState(false);
   const { closeModal, isModalOpen, openModal } = useModal();
-  const { filterClothesByQuery, productsByFiltering, setProductsByFiltering } =
-    useClothesContext();
-
-  const [isColorChecked, setIsColorChecked] = useState({
-    green: false,
-    black: false,
-    blue: false,
-  });
-
-  const [isSizeChecked, setIsSizeChecked] = useState({
-    L: false,
-    M: false,
-    S: false,
-  });
-
+  const {
+    checkIfColorOrSizeIsChecked,
+    isColorChecked,
+    isSizeChecked,
+    setIsColorChecked,
+    setIsSizeChecked,
+  } = useFilterByColorAndSize();
+  const { data: filteredClothes } = useFilterClothesByQuery(
+    `type=${clothesType?.toLowerCase()}${checkIfColorOrSizeIsChecked()}`
+  );
   const { currentItems, currentPage, itemsPerPage, paginate, setCurrentPage } =
-    usePagination(productsByFiltering ?? [], 8);
-
-  useEffect(() => {
-    filterClothesByQuery(
-      `type=${clothesType?.toLowerCase()}${checkIfColorOrSizeIsChecked()}`
-    );
-
-    return () => {
-      setProductsByFiltering([]);
-    };
-  }, [isColorChecked, isSizeChecked, clothesType]);
-
-  const checkIfColorOrSizeIsChecked = () => {
-    let filterByColorAndSize = "";
-    for (const color in isColorChecked) {
-      if (isColorChecked[color as keyof typeof isColorChecked]) {
-        filterByColorAndSize += `&color=${color}`;
-      }
-    }
-
-    for (const size in isSizeChecked) {
-      if (isSizeChecked[size as keyof typeof isSizeChecked]) {
-        filterByColorAndSize += `&size=${size}`;
-      }
-    }
-    return filterByColorAndSize;
-  };
+    usePagination(filteredClothes ?? [], 8);
 
   const validClothesTypes = ["pants", "shirts", "hoodies", "shorts"];
 
@@ -74,7 +44,7 @@ const ClothesData = () => {
     <main className="ClothesTypesData">
       <div id="title">
         <h1>{clothesType}</h1>
-        <p>{productsByFiltering?.length} Products</p>
+        <p>{filteredClothes?.length} Products</p>
       </div>
       {currentUser?.isAdmin && (
         <>
@@ -125,7 +95,7 @@ const ClothesData = () => {
             paginate={paginate}
             setCurrentPage={setCurrentPage}
             itemsPerPage={itemsPerPage}
-            totalItems={productsByFiltering?.length}
+            totalItems={filteredClothes?.length}
           />
         </div>
       </div>
