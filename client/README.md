@@ -12,6 +12,7 @@ Link: https://kiraz-clothing.netlify.app/
 - Axios
 - React Router.
 - React Toastify
+- Redux - RTK Query
 
 ## About
 
