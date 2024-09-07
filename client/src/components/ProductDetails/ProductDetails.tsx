@@ -12,13 +12,14 @@ import { useGetClothesByIdQuery } from "../../api/clothesApi";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { data: clothesById } = useGetClothesByIdQuery(id);
+  const { data: clothesById, isLoading } = useGetClothesByIdQuery(id);
   const { addToBag, errorMsg: addToBagErrorMsg } = useBagContext();
   const { closeModal, isModalOpen, openModal } = useModal();
   const [currentColor, setCurrentColor] = useState(clothesById?.color);
   const [currentSize, setCurrentSize] = useState(clothesById?.size);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  console.log(isLoading ? "LOADING" : "NOT LOADING");
   const color = searchParams.get("color");
   const size = searchParams.get("size");
 
@@ -80,7 +81,11 @@ const ProductDetails = () => {
 
   return (
     <div className="ProductDetails">
-      {clothesById ? (
+      {isLoading ? (
+        <div id="loading">
+          <img src={loadingGif} alt="Loading animation" className="loading" />
+        </div>
+      ) : (
         <div className="data-container">
           <div className="img-container">
             <NavigateContainer clothesById={clothesById} />
@@ -109,10 +114,6 @@ const ProductDetails = () => {
               isModalOpen={isModalOpen}
             />
           </div>
-        </div>
-      ) : (
-        <div id="loading">
-          <img src={loadingGif} alt="Loading animation" className="loading" />
         </div>
       )}
     </div>
